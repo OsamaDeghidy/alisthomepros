@@ -11,10 +11,10 @@ class EmailDeliverabilityConfig:
     
     # إعدادات المرسل - Sender Settings
     SENDER_NAME = "A-List Home Professionals"
-    SENDER_EMAIL = settings.SENDGRID_FROM_EMAIL
-    REPLY_TO_EMAIL = settings.SENDGRID_FROM_EMAIL
+    SENDER_EMAIL = "noreply@alisthomepros.com"  # استخدام النطاق المخصص
+    REPLY_TO_EMAIL = "support@alisthomepros.com"  # بريد الدعم الفني
     
-    # إعدادات المحتوى - Content Settings
+    # إعدادات الموقع - Site Settings
     SITE_NAME = "A-List Home Professionals"
     BRAND_NAME = "A-List Home Professionals"
     COMPANY_NAME = "A-List Home Professionals"
@@ -23,16 +23,17 @@ class EmailDeliverabilityConfig:
     FRONTEND_DOMAIN = "alisthomepros.com"
     FRONTEND_URL = f"https://{FRONTEND_DOMAIN}"
     
-    # رؤوس البريد الإلكتروني المحسنة - Enhanced Email Headers
+    # رؤوس البريد الإلكتروني - Email Headers
     EMAIL_HEADERS = {
         'X-Entity-ID': 'alist-home-professionals',
         'X-Auto-Response-Suppress': 'OOF, DR, RN, NRN, AutoReply',
         'X-Mailer': 'A-List Home Professionals Platform',
         'X-Priority': '3',  # Normal priority
         'Importance': 'Normal',
+        'List-Unsubscribe': '<mailto:unsubscribe@alisthomepros.com>, <https://alisthomepros.com/unsubscribe>',
+        'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
     }
     
-    # إعدادات إلغاء الاشتراك - Unsubscribe Settings
     @classmethod
     def get_unsubscribe_url(cls, email: str) -> str:
         return f"{cls.FRONTEND_URL}/unsubscribe?email={email}"

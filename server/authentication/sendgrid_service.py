@@ -33,7 +33,6 @@ class SendGridEmailService:
         إرسال بريد التحقق من البريد الإلكتروني
         """
         print(f"DEBUG: Starting send_verification_email for user: {user.email if hasattr(user, 'email') else 'Unknown'}")
-        print(f"DEBUG: verification_token type: {type(verification_token)}, value: {verification_token}")
         
         if not self.client:
             logger.error("SendGrid client not initialized")
@@ -74,6 +73,7 @@ class SendGridEmailService:
                 'site_name': EmailDeliverabilityConfig.SITE_NAME,
                 'brand_name': EmailDeliverabilityConfig.BRAND_NAME,
                 'company_name': EmailDeliverabilityConfig.COMPANY_NAME,
+                'unsubscribe_url': EmailDeliverabilityConfig.get_unsubscribe_url(user.email),
                 'frontend_url': frontend_url,
                 'welcome_url': self._get_success_redirect_url(),
             }
@@ -523,7 +523,7 @@ class SendGridEmailService:
         """
         # في بيئة التطوير، استخدم localhost
         if settings.DEBUG:
-            return "http://localhost:3000"
+            return "https://www.alisthomepros.com"
         
         # في بيئة الإنتاج، استخدم الرابط المنشور
         return EmailDeliverabilityConfig.FRONTEND_URL
