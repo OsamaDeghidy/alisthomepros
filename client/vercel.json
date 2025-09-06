@@ -8,10 +8,5 @@
   ],
   "env": {
     "NEXT_PUBLIC_API_URL": "https://www.custrus.com/api"
-  },
-  "functions": {
-    "app/api/**/*.js": {
-      "maxDuration": 30
-    }
   }
 }
