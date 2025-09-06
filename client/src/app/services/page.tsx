@@ -1,0 +1,300 @@
+'use client';
+
+import Link from 'next/link';
+import { 
+  Shield, 
+  Users, 
+  CreditCard, 
+  FileText, 
+  CheckCircle, 
+  AlertTriangle,
+  Mail,
+  Phone,
+  Calendar,
+  Lock,
+  Scale,
+  UserCheck,
+  Briefcase,
+  Home,
+  Hammer,
+  Star
+} from 'lucide-react';
+
+export default function TermsOfServicePage() {
+  const sections = [
+    {
+      id: 'platform-overview',
+      title: 'Platform Overview',
+      icon: Home,
+      content: 'A List Home Pros connects homeowners with trusted service providers, skilled workers, and project specialists for home improvement and construction-related services. We provide tools for posting projects, hiring professionals, managing jobs, funding payments through escrow, and resolving disputes.'
+    },
+    {
+      id: 'user-roles',
+      title: 'User Roles',
+      icon: Users,
+      content: 'There are several user roles on our platform. Clients post jobs and fund the work. Home Pros offer professional services. Crew Members provide skilled labor. Specialists serve as project coordinators or homeowner representatives. Each role comes with its own permissions, responsibilities, and access.'
+    },
+    {
+      id: 'account-registration',
+      title: 'Account Registration',
+      icon: UserCheck,
+      content: 'To use the platform, you must register and create an account. You\'re responsible for maintaining the confidentiality of your login credentials and for all activity on your account. Misuse of your account or the platform may result in suspension or termination.'
+    },
+    {
+      id: 'payment-processing',
+      title: 'Payment Processing',
+      icon: CreditCard,
+      content: 'All payments are processed securely through our escrow wallet system. Clients fund their wallet before hiring a professional. Wallets can be funded using a debit card, ACH bank transfer, or a home improvement loan through one of our third-party lenders. Payments are processed by National Bank Card Services. A List does not store your banking or card information.'
+    },
+    {
+      id: 'escrow-system',
+      title: 'Escrow & Dispute Resolution',
+      icon: Shield,
+      content: 'Funds are held in escrow and only released once the client verifies that work has been completed or a milestone has been met. If there\'s a disagreement, A List offers a dispute resolution process. We do not guarantee outcomes but will mediate based on the evidence provided.'
+    },
+    {
+      id: 'subscription-plans',
+      title: 'Subscription Plans',
+      icon: Star,
+      content: 'We offer free directory listings and paid subscription plans. Free users can list their business but do not have access to tools like messaging, proposal submission, lead generation, or marketing resources. Paid plans unlock these features and more. You may upgrade or cancel your subscription anytime. Plan changes take effect at the start of your next billing cycle. We do not issue prorated refunds for unused time.'
+    },
+    {
+      id: 'conduct-standards',
+      title: 'Conduct Standards',
+      icon: Scale,
+      content: 'By using the platform, you agree to conduct business with honesty and professionalism. Misrepresentation, solicitation outside of A List, payment circumvention, harassment, or uploading harmful content may result in removal from the platform and forfeiture of funds in escrow.'
+    },
+    {
+      id: 'intellectual-property',
+      title: 'Intellectual Property',
+      icon: Lock,
+      content: 'You retain ownership of your profile content, photos, and portfolio uploads, but grant us the right to use them to promote your services on the platform. All site content and platform code is the exclusive property of A List Home Professionals and may not be copied or reused without permission.'
+    },
+    {
+      id: 'liability-disclaimer',
+      title: 'Liability Disclaimer',
+      icon: AlertTriangle,
+      content: 'We do not guarantee the quality, timing, or success of any project. A List is a marketplace and tool provider, not the contractor on record. Use of the platform is at your own risk. We are not liable for damages, delays, or losses resulting from services rendered by professionals listed on the platform.'
+    },
+    {
+      id: 'account-termination',
+      title: 'Account Termination',
+      icon: FileText,
+      content: 'You may close your account at any time. We reserve the right to remove users who violate our terms or compromise the integrity of the platform. Funds held in escrow at the time of termination may be reviewed before release.'
+    },
+    {
+      id: 'terms-updates',
+      title: 'Terms Updates',
+      icon: Calendar,
+      content: 'We may update these Terms periodically. Continued use of the platform means you accept the updated version. A timestamp of the last revision will always be visible.'
+    }
+  ];
+
+  const userRoles = [
+    {
+      title: 'Clients',
+      description: 'Post jobs and fund work through secure escrow',
+      icon: Home,
+      features: ['Post Projects', 'Fund Escrow', 'Hire Professionals', 'Manage Payments']
+    },
+    {
+      title: 'Home Pros',
+      description: 'Professional service providers and contractors',
+      icon: Hammer,
+      features: ['Submit Proposals', 'Manage Projects', 'Receive Payments', 'Build Portfolio']
+    },
+    {
+      title: 'Crew Members',
+      description: 'Skilled labor and specialized workers',
+      icon: Users,
+      features: ['Join Projects', 'Track Time', 'Collaborate', 'Get Paid']
+    },
+    {
+      title: 'Specialists',
+      description: 'Project coordinators and homeowner representatives',
+      icon: Briefcase,
+      features: ['Coordinate Projects', 'Represent Clients', 'Manage Teams', 'Oversee Quality']
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center">
+            <div className="flex justify-center mb-6">
+              <div className="bg-white/10 p-4 rounded-2xl">
+                <FileText className="h-12 w-12 text-white" />
+              </div>
+            </div>
+            <h1 className="font-heading font-bold text-4xl lg:text-6xl mb-6">
+              Terms of Service
+            </h1>
+            <p className="text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed mb-8">
+              Welcome to A List Home Professionals. By using our platform, services, or website, you agree to these Terms of Service. Please read them carefully.
+            </p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 inline-flex items-center space-x-2">
+              <Calendar className="h-5 w-5" />
+              <span className="font-medium">Last Updated: July 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Table of Contents */}
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <h2 className="font-heading font-bold text-2xl text-dark-900 mb-6 text-center">
+            Table of Contents
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {sections.map((section, index) => {
+              const IconComponent = section.icon;
+              return (
+                <a
+                  key={section.id}
+                  href={`#${section.id}`}
+                  className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 group"
+                >
+                  <div className="bg-primary-100 p-2 rounded-lg group-hover:bg-primary-200 transition-colors duration-200">
+                    <IconComponent className="h-4 w-4 text-primary-600" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-700 group-hover:text-primary-600 transition-colors duration-200">
+                    {section.title}
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* User Roles Overview */}
+      <div className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center mb-12">
+            <h2 className="font-heading font-bold text-3xl text-dark-900 mb-4">
+              Platform User Roles
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Understanding the different roles and their responsibilities on our platform
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {userRoles.map((role, index) => {
+              const IconComponent = role.icon;
+              return (
+                <div key={index} className="bg-gray-50 rounded-xl p-6 text-center">
+                  <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <IconComponent className="h-8 w-8 text-primary-600" />
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-dark-900 mb-2">
+                    {role.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    {role.description}
+                  </p>
+                  <ul className="space-y-1">
+                    {role.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-xs text-gray-500">
+                        <CheckCircle className="h-3 w-3 text-green-500 mr-2 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Terms Sections */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="space-y-12">
+          {sections.map((section, index) => {
+            const IconComponent = section.icon;
+            return (
+              <div key={section.id} id={section.id} className="bg-white rounded-xl shadow-sm border p-8">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-primary-100 p-3 rounded-xl flex-shrink-0">
+                    <IconComponent className="h-6 w-6 text-primary-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-heading font-bold text-2xl text-dark-900 mb-4">
+                      {index + 1}. {section.title}
+                    </h3>
+                    <div className="prose prose-gray max-w-none">
+                      <p className="text-gray-700 leading-relaxed text-lg">
+                        {section.content}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div className="bg-primary-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <h2 className="font-heading font-bold text-3xl text-dark-900 mb-6">
+              Questions About Our Terms?
+            </h2>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              If you have questions about these Terms of Service, please don't hesitate to contact us.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8">
+              <a
+                href="mailto:legal@alisthomepros.com"
+                className="flex items-center space-x-3 bg-white px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+              >
+                <Mail className="h-5 w-5 text-primary-600" />
+                <span className="font-medium text-gray-900">legal@alisthomepros.com</span>
+              </a>
+              <a
+                href="tel:+18668825478"
+                className="flex items-center space-x-3 bg-white px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+              >
+                <Phone className="h-5 w-5 text-primary-600" />
+                <span className="font-medium text-gray-900">+1 (866) 88-ALIST</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer CTA */}
+      <div className="bg-dark-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="text-center">
+            <h3 className="font-heading font-bold text-2xl mb-4">
+              Ready to Get Started?
+            </h3>
+            <p className="text-gray-300 mb-6">
+              Join thousands of homeowners and professionals on A List Home Pros
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <Link
+                href="/register"
+                className="bg-primary-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors duration-200"
+              >
+                Create Account
+              </Link>
+              <Link
+                href="/post-project"
+                className="bg-white text-dark-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+              >
+                Post a Project
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

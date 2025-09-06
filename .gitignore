@@ -1,0 +1,42 @@
+# Django settings and sensitive files
+server/alist_backend/
+server/README.md
+# Environment variables
+.env
+.env.local
+.env.production
+*.env
+
+# Database
+*.sqlite3
+*.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Node modules
+node_modules/
+
+# Build outputs
+build/
+dist/
+.next/
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Media files (if sensitive)
+media/
+staticfiles/
+../server/alist_backend/settings.py
+../server/README.md
+../server/logs/

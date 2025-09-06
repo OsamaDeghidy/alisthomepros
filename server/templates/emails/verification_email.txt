@@ -1,0 +1,22 @@
+A-List Home Professionals - Email Verification
+
+Hello {{ user.get_full_name|default:user.username }},
+
+Thank you for registering with A-List Home Professionals! We're excited to have you join our community of homeowners and professionals.
+
+To complete your registration and activate your account, please click the link below to verify your email address. After verification, you'll be redirected to our welcome page to get started:
+
+{{ verification_url }}
+
+Important Information:
+- This verification link is valid for 24 hours only
+- If you didn't create this account, please ignore this message
+- You won't be able to access all platform features until you verify your email
+
+{{ site_name|default:"A-List Home Professionals" }}
+Find Trusted Home Improvement Experts
+
+If you have any questions, don't hesitate to contact us.
+
+Best regards,
+The A-List Home Professionals Team

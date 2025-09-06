@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Created Successfully - A-List Home Professionals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        .success-text {
+            font-size: 24px;
+            color: #059669;
+            margin-bottom: 20px;
+        }
+        .content {
+            margin-bottom: 30px;
+        }
+        .project-details {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .project-details h3 {
+            color: #1f2937;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .detail-item {
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #374151;
+            display: inline-block;
+            width: 100px;
+        }
+        .detail-value {
+            color: #6b7280;
+        }
+        .action-button {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .action-button:hover {
+            background-color: #1d4ed8;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #6b7280;
+            text-align: center;
+        }
+        .success-icon {
+            background-color: #d1fae5;
+            border: 2px solid #10b981;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            color: #059669;
+        }
+        .next-steps {
+            background-color: #eff6ff;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .next-steps h4 {
+            color: #1e40af;
+            margin-top: 0;
+        }
+        .next-steps ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .next-steps li {
+            margin-bottom: 8px;
+            color: #1f2937;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">A-List Home Professionals</div>
+            <div class="success-icon">✓</div>
+            <h1 class="success-text">Project Created Successfully!</h1>
+        </div>
+        
+        <div class="content">
+            <p>Dear {{ user.first_name|default:user.username }},</p>
+            
+            <p>Congratulations! Your project has been successfully created and published on the A-List Home Professionals platform.</p>
+            
+            <div class="project-details">
+                <h3>Project Details</h3>
+                <div class="detail-item">
+                    <span class="detail-label">Title:</span>
+                    <span class="detail-value">{{ project.title }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Budget:</span>
+                    <span class="detail-value">{{ project.budget_display|default:"Not specified" }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Timeline:</span>
+                    <span class="detail-value">{{ project.timeline|default:"Not specified" }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Location:</span>
+                    <span class="detail-value">{{ project.location|default:"Not specified" }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Created:</span>
+                    <span class="detail-value">{{ project.created_at|date:"F d, Y at g:i A" }}</span>
+                </div>
+            </div>
+            
+            <div class="next-steps">
+                <h4>What happens next?</h4>
+                <ul>
+                    <li>Your project is now live and visible to qualified professionals</li>
+                    <li>Professionals will start submitting proposals for your project</li>
+                    <li>You'll receive email notifications when new proposals are submitted</li>
+                    <li>Review proposals and communicate with professionals through our platform</li>
+                    <li>Select the best professional for your project and start working together</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="http://localhost:3000/client/projects/{{ project.id }}" class="action-button">Manage Your Project</a>
+            </div>
+            
+            <p>You can manage your project, review proposals, and communicate with professionals by visiting your project dashboard.</p>
+            
+            <p>If you have any questions or need assistance, our support team is here to help.</p>
+            
+            <p>Thank you for choosing A-List Home Professionals!</p>
+            <p><strong>Best regards,<br>The A-List Home Professionals Team</strong></p>
+        </div>
+        
+        <div class="footer">
+            <p>This email was sent to {{ user.email }}. If you have any questions, please contact our support team.</p>
+            <p>&copy; 2024 A-List Home Professionals. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

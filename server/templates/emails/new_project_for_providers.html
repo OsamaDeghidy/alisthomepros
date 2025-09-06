@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Project Available</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .title {
+            color: #28a745;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .project-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .project-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .project-details {
+            margin: 15px 0;
+        }
+        .detail-item {
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            .title {
+                font-size: 20px;
+            }
+            .project-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">A-List Home Professionals</div>
+            <div class="title">🎯 New Project Available in Your Specialty!</div>
+        </div>
+
+        <p>Hello <strong>{{ provider.first_name }} {{ provider.last_name }}</strong>,</p>
+
+        <p>Great news! A new project has been published that matches your expertise and skills. This could be a perfect opportunity for you!</p>
+
+        <div class="project-info">
+            <div class="project-title">{{ project.title }}</div>
+            
+            <div class="project-details">
+                <div class="detail-item">
+                    <span class="detail-label">Description:</span>
+                    <p>{{ project.description|truncatewords:30 }}</p>
+                </div>
+                
+                {% if project.location %}
+                <div class="detail-item">
+                    <span class="detail-label">Location:</span> {{ project.location }}
+                </div>
+                {% endif %}
+                
+                {% if project.budget_display %}
+                <div class="detail-item">
+                    <span class="detail-label">Budget:</span> {{ project.budget_display }}
+                </div>
+                {% endif %}
+                
+                {% if project.timeline %}
+                <div class="detail-item">
+                    <span class="detail-label">Timeline:</span> {{ project.timeline }}
+                </div>
+                {% endif %}
+                
+                {% if project.urgency %}
+                <div class="detail-item">
+                    <span class="detail-label">Urgency:</span> 
+                    <span style="color: {% if project.urgency == 'urgent' %}#dc3545{% elif project.urgency == 'high' %}#fd7e14{% else %}#28a745{% endif %};">{{ project.get_urgency_display }}</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="highlight">
+            <strong>💡 Why this project matches you:</strong>
+            <p>This project requires skills in your specialty area ({{ provider.get_user_type_display }}). Don't miss this opportunity to showcase your expertise!</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="{{ project_url }}" class="cta-button">View Project Details & Submit Proposal</a>
+        </div>
+
+        <p><strong>Next Steps:</strong></p>
+        <ul>
+            <li>Review the complete project details</li>
+            <li>Submit a competitive proposal</li>
+            <li>Highlight your relevant experience</li>
+            <li>Respond quickly - early proposals often get more attention!</li>
+        </ul>
+
+        <div class="footer">
+            <p>Best regards,<br>
+            <strong>The A-List Home Professionals Team</strong></p>
+            
+            <p style="font-size: 12px; color: #868e96;">
+                You received this email because you're a registered service provider on our platform. 
+                If you no longer wish to receive project notifications, you can update your preferences in your account settings.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+# A-List Home Professionals - Next.js Project Requirements
+
+## Core Dependencies
+next@15.3.5
+react@19.0.0
+react-dom@19.0.0
+
+## UI & Icons
+lucide-react@0.525.0
+tailwindcss@4.0.0
+@tailwindcss/postcss@4.0.0
+postcss@8.4.49
+
+## TypeScript & Types
+typescript@5.0.0
+@types/node@20.0.0
+@types/react@19.0.0
+@types/react-dom@19.0.0
+
+## Linting & Development
+eslint@9.0.0
+eslint-config-next@15.3.5
+@eslint/eslintrc@3.0.0
+
+## Fonts (included with Next.js)
+# next/font/google - Inter & Poppins fonts
+
+## Image Optimization (included with Next.js)
+# next/image - for optimizing img tags
+
+## Installation Commands:
+# npm install next@15.3.5 react@19.0.0 react-dom@19.0.0
+# npm install lucide-react@0.525.0
+# npm install -D tailwindcss@4.0.0 @tailwindcss/postcss@4.0.0 postcss@8.4.49
+# npm install -D typescript@5.0.0 @types/node@20.0.0 @types/react@19.0.0 @types/react-dom@19.0.0
+# npm install -D eslint@9.0.0 eslint-config-next@15.3.5 @eslint/eslintrc@3.0.0
+
+## Quick Install All:
+# npm install
+
+## Development Server:
+# npm run dev
+
+## Build Production:
+# npm run build
+
+## Start Production:
+# npm start 
