@@ -62,8 +62,8 @@ export default function Hero({ stats: apiStats }: HeroProps) {
       label: 'Projects Completed' 
     },
     { 
-      value: '24/7', 
-      label: 'Support Available' 
+      value: '100%', 
+      label: 'Secure Payment Protection' 
     },
   ];
 
@@ -94,13 +94,12 @@ export default function Hero({ stats: apiStats }: HeroProps) {
             </div>
             
             <h1 className="font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-dark-900 leading-tight">
-              Find Trusted Professionals
-              <span className="block text-gradient-primary">For Your Home</span>
+              Find Trusted Professionals for Every Project
+              <span className="block text-gradient-primary">From New Construction and Additions to Renovations, Repairs, and Remodeling</span>
             </h1>
             
             <p className="text-xl lg:text-2xl text-dark-600 leading-relaxed max-w-4xl mx-auto">
-              Connect with vetted home service professionals in your area. From kitchen remodels to electrical work, 
-              find the right expert for your project today.
+              Whether you're building from the ground up, expanding your space, or handling essential repairs, A-List Home Pros connects you with qualified experts. From new construction to remodels, renovations, and everyday maintenance, we've got you covered. Find the right professional today and bring your vision to life.
             </p>
           </div>
 

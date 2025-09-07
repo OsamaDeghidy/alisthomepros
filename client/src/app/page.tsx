@@ -104,29 +104,29 @@ export default function Home() {
     {
       step: "01", 
       title: "Post Your Project",
-      description: "Tell us what you need done.",
-      icon: Search,
+      description: "Tell us what you need done in minutes.",
+      icon: UserPlus,
       color: "primary"
     },
     {
       step: "02",
       title: "Get Matched Instantly",
-      description: "We connect you with verified pros who fit your job.",
-      icon: Calendar, 
+      description: "We connect you with verified pros who fit your job perfectly.",
+      icon: MessageSquare, 
       color: "accent"
     },
     {
       step: "03",
       title: "Hire with Confidence",
-      description: "Review bids, compare profiles, and choose the right fit.",
-      icon: Shield,
+      description: "Review bids, compare profiles, and choose the right fit with signed agreements.",
+      icon: BookOpen,
       color: "success"
     },
     {
       step: "04",
       title: "Pay Securely",
-      description: "Funds are held in escrow until the work is done to your satisfaction.",
-      icon: Star,
+      description: "Funds are held in escrow with secure payment protection until work is completed.",
+      icon: Shield,
       color: "primary"
     }
   ];
@@ -147,7 +147,7 @@ export default function Home() {
               <span className="text-gradient-primary"> Available Projects</span>
             </h2>
             <p className="text-xl text-dark-600 max-w-3xl mx-auto">
-              From kitchen renovations to electrical work, find verified professionals for every home improvement need.
+              Browse the latest projects posted by homeowners. See which opportunities align with your business and choose the ones that fit.
             </p>
           </div>
           
@@ -277,7 +277,7 @@ export default function Home() {
               <span className="text-gradient-accent"> 4 Simple Steps</span>
             </h2>
             <p className="text-xl text-dark-600 max-w-3xl mx-auto">
-              Our streamlined process makes it easy to find, hire, and work with trusted professionals for your home projects.
+              With A-List Home Pros, hiring and working with professionals has never been easier. Post your project in minutes, get matched with vetted experts instantly, and manage everything in one place—from contracts to secure payments.
             </p>
           </div>
           

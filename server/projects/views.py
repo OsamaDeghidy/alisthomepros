@@ -289,20 +289,20 @@ class ProjectCreateView(generics.CreateAPIView):
         project = serializer.save(client=self.request.user)
         
         # Send notification to project owner about successful project creation
-        try:
-            send_project_created_notification(self.request.user, project)
-        except Exception as e:
-            print(f"⚠️ Failed to send notification: {str(e)}")
+        #try:
+           # send_project_created_notification(self.request.user, project)
+        #except Exception as e:
+            #print(f"⚠️ Failed to send notification: {str(e)}")
             # Don't fail the project creation if notification fails
-            pass
+          #  pass
         
         # Send notifications to matching service providers
-        try:
-            send_new_project_notifications_to_providers(project)
-        except Exception as e:
-            print(f"⚠️ Failed to send provider notifications: {str(e)}")
+       # try:
+          # send_new_project_notifications_to_providers(project)
+        #except Exception as e:
+            #print(f"⚠️ Failed to send provider notifications: {str(e)}")
             # Don't fail the project creation if provider notifications fail
-            pass
+            #pass
     
     def create(self, request, *args, **kwargs):
         # Validate user is a client

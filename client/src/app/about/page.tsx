@@ -4,31 +4,31 @@ import Link from 'next/link';
 import { Shield, Award, Target, Heart, Check, X } from 'lucide-react';
 
 export default function AboutPage() {
-  const values = [
+  const whyChooseUs = [
     {
       icon: Target,
-      title: 'We Work Within Your Budget',
-      description: 'We do our best to keep your project within budget while delivering quality results. If anything changes, we communicate clearly and never move forward without your approval.'
+      title: 'Comprehensive Coverage',
+      description: 'From new construction to essential repairs, we connect you with professionals across every area of construction and home improvement.'
     },
     {
       icon: Shield,
-      title: 'Trusted Professionals',
-      description: 'We partner with experienced pros and skilled crew members who are reviewed and rated for their work. We strive to connect you with reliable talent you can feel good about hiring.'
+      title: 'Verified Professionals',
+      description: 'All our professionals are background-checked, licensed, and insured to ensure you work with trusted experts you can rely on.'
     },
     {
       icon: Award,
-      title: 'Commitment to Quality',
-      description: 'We stand behind the work performed through our platform. If something doesn\'t meet expectations, we\'ll help make it right.'
-    },
-    {
-      icon: Target,
-      title: 'Smart Matching',
-      description: 'Our system connects you with the right professionals for your project based on skills, availability, and job fit.'
+      title: 'Secure Payments (escrow)',
+      description: 'Our secure escrow system protects your funds until work is completed and approved, giving you peace of mind throughout the project.'
     },
     {
       icon: Heart,
-      title: 'Customer Focused',
-      description: 'We care about your experience. From the first request to final cleanup, we prioritize clear communication, accountability, and support every step of the way.'
+      title: 'Fair Opportunities for all roles',
+      description: 'We provide equal opportunities for clients, home pros, crew members, and specialists to succeed and grow within our platform.'
+    },
+    {
+      icon: Target,
+      title: 'Customer Confidence',
+      description: 'Our transparent review system and quality assurance processes ensure you can hire with confidence every time.'
     }
   ];
 
@@ -139,59 +139,67 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Our Story Section */}
+      {/* Who We Are Section */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-heading font-bold text-3xl lg:text-4xl text-dark-900 mb-8 text-center">
-              Our Story
+              Who We Are
             </h2>
             <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
               <p>
-                At A-List Home Pros, we know how important it is to stick to a budget — and we take that seriously. Since launching in 2019, our mission has been to help homeowners find skilled, verified professionals who can get the job done right without breaking the bank.
+                A-List Home Pros was built on a simple idea: homeowners deserve reliable, skilled professionals, and professionals deserve a platform that respects their work and ensures fair payment. We bridge the gap between clients and trusted experts across every area of construction and home improvement.
               </p>
               <p>
-                We built this platform after experiencing the frustrations ourselves — shady contractors, surprise costs, and poor communication. So we created something better: a system that prioritizes transparency, trust, and real protection for homeowners.
-              </p>
-              <p>
-                We always aim to keep projects within your set budget, and in most cases, we do. But when unexpected changes come up whether it's materials, permits, or structural issues — we communicate clearly, adjust responsibly, and never move forward without your approval. No pressure. No surprises.
-              </p>
-              <p>
-                Today, A-List Home Pros is a growing network of reliable contractors, skilled crews, and experienced specialists who value your time, your home, and your wallet. We're here to make sure the job gets done the right way with honesty, quality, and your peace of mind in place from start to finish.
+                Whether it's new construction, additions, renovations, remodels, or essential repairs, we connect clients to pros who can bring their projects to life. Our mission is to make the process of finding, hiring, and paying professionals as seamless and secure as possible.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Values Section */}
+      {/* Why Choose A-List Home Pros Section */}
       <div className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-16">
             <h2 className="font-heading font-bold text-3xl lg:text-4xl text-dark-900 mb-6">
-              Our Values
+              Why Choose A-List Home Pros
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A-List Home Pros was built with homeowners in mind. Every decision we make is rooted in trust, quality, and respect for your investment.
+              We provide a comprehensive platform that connects homeowners with trusted professionals while ensuring security, quality, and fair opportunities for everyone.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((value, index) => (
+            {whyChooseUs.map((reason, index) => (
               <div key={index} className="bg-white rounded-2xl p-8 shadow-sm">
                 <div className="flex items-center mb-4">
                   <div className="p-3 bg-primary-100 rounded-xl mr-4">
-                    <value.icon className="h-6 w-6 text-primary-600" />
+                    <reason.icon className="h-6 w-6 text-primary-600" />
                   </div>
                   <h3 className="font-heading font-semibold text-xl text-dark-900">
-                    {value.title}
+                    {reason.title}
                   </h3>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
-                  {value.description}
+                  {reason.description}
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Our Commitment Section */}
+      <div className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-heading font-bold text-3xl lg:text-4xl text-dark-900 mb-8">
+              Our Commitment
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              At A-List Home Pros, we're more than just a platform — we're a community built on trust, accountability, and results.
+            </p>
           </div>
         </div>
       </div>

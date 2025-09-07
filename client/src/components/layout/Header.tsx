@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
-import { Menu, X, Bell, User, Briefcase, Users, MessageCircle, Settings, Plus, Search, BarChart3, DollarSign, Heart, FileText, Home, Info, Phone, HelpCircle, Calendar, Clock, CheckSquare, Timer, ChevronDown, LogOut, Crown, FileCheck, Send, Star, Eye, CreditCard } from 'lucide-react';
+import { Menu, X, Bell, User, Briefcase, Users, MessageCircle, Settings, Plus, Search, BarChart3, DollarSign, Heart, FileText, Home, Info, Phone, HelpCircle, Calendar, Clock, CheckSquare, Timer, ChevronDown, LogOut, Crown, FileCheck, Send, Star, Eye, CreditCard, Shield } from 'lucide-react';
 import { getMainNavRoutes, type UserRole } from '@/lib/routes';
 import { useAuthStore } from '@/lib/store';
 import { authService } from '@/lib/auth';
@@ -18,9 +18,15 @@ function Header() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const { user, isAuthenticated, logout } = useAuthStore();
+
+  // Prevent hydration mismatch by ensuring client-side rendering
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   
   // Fetch unread notifications count
   useEffect(() => {
@@ -69,11 +75,13 @@ function Header() {
     { name: 'Home', href: '/', icon: 'Home' },
     { name: 'Find Work', href: '/find-work', icon: 'Users' },
     { name: 'How It Works', href: '/how-it-works', icon: 'HelpCircle' },
-    { name: 'Services', href: '/services', icon: 'Settings' },
     { name: 'Pricing', href: '/pricing', icon: 'CreditCard' },
     { name: 'About Us', href: '/about', icon: 'Info' },
     { name: 'Help', href: '/help', icon: 'HelpCircle' },
-    { name: 'Privacy', href: '/privacy', icon: 'FileText' },
+    { name: 'Privacy', href: '/privacy', icon: 'FileText', submenu: [
+      { name: 'Privacy Policy', href: '/privacy', icon: 'Shield' },
+      { name: 'Terms of Service', href: '/terms', icon: 'FileText' }
+    ] },
   ];
   
   // Conditionally set navigation routes based on user role
@@ -120,7 +128,8 @@ function Header() {
     'Send': Send,
     'Star': Star,
     'Eye': Eye,
-    'CreditCard': CreditCard
+    'CreditCard': CreditCard,
+    'Shield': Shield
   };
 
   const isActivePage = (href: string) => {
@@ -182,23 +191,49 @@ function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navigationRoutes.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`group relative px-3 py-2 font-medium text-xs rounded-lg transition-all duration-300 ${
-                  isActivePage(item.href)
-                    ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50/50'
-                }`}
-              >
-                <span className="relative z-10">{item.name}</span>
-                {isActivePage(item.href) && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-lg"></div>
-                )}
-                {!isActivePage(item.href) && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
-                )}
-              </Link>
+              item.submenu ? (
+                <div key={item.name} className="relative group">
+                  <button
+                    className={`group relative px-3 py-2 font-medium text-xs rounded-lg transition-all duration-300 flex items-center space-x-1 ${
+                      isActivePage(item.href) || item.submenu.some(sub => isActivePage(sub.href))
+                        ? 'text-blue-600 bg-blue-50'
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50/50'
+                    }`}
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                    <ChevronDown className="h-3 w-3" />
+                  </button>
+                  <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    {item.submenu.map((subItem) => (
+                      <Link
+                        key={subItem.name}
+                        href={subItem.href}
+                        className="flex items-center space-x-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      >
+                        <span>{subItem.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`group relative px-3 py-2 font-medium text-xs rounded-lg transition-all duration-300 ${
+                    isActivePage(item.href)
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50/50'
+                  }`}
+                >
+                  <span className="relative z-10">{item.name}</span>
+                  {isActivePage(item.href) && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-lg"></div>
+                  )}
+                  {!isActivePage(item.href) && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
+                  )}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -297,28 +332,24 @@ function Header() {
               </div>
             ) : (
               /* Guest User Buttons */
-              <>
-                <Link
-                  href="/register"
-                  className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Get Started
-                </Link>
-                <div className="hidden md:flex items-center space-x-3">
-                  <Link
-                    href="/login"
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
-                  >
-                    Sign In
-                  </Link>
-                  <Link
-                    href="/register"
-                    className="bg-gray-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
-                  >
-                    Sign Up
-                  </Link>
-                </div>
-              </>
+              <div className="flex items-center space-x-4">
+                {isClient && (
+                  <>
+                    <Link
+                      href="/login"
+                      className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200"
+                    >
+                      Sign In
+                    </Link>
+                    <Link
+                      href="/register"
+                      className="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg"
+                    >
+                      Sign Up
+                    </Link>
+                  </>
+                )}
+              </div>
             )}
 
             {/* Mobile Menu Button */}
@@ -411,32 +442,24 @@ function Header() {
             ) : (
               /* Guest Mobile Auth Buttons */
               <>
-                <div className="flex space-x-3 mb-4">
-                  <Link
-                    href="/login"
-                    className="flex-1 text-center bg-gray-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Sign In
-                  </Link>
-                  <Link
-                    href="/register"
-                    className="flex-1 text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Sign Up
-                  </Link>
-                </div>
-
-                {/* Get Started Button - Mobile */}
-                <Link
-                  href="/register"
-                  className="flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg mb-4"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <Plus className="h-4 w-4 mr-2" />
-                  Get Started
-                </Link>
+                {isClient && (
+                  <div className="flex space-x-3 mb-4">
+                    <Link
+                      href="/login"
+                      className="flex-1 text-center bg-gray-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Sign In
+                    </Link>
+                    <Link
+                      href="/register"
+                      className="flex-1 text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Sign Up
+                    </Link>
+                  </div>
+                )}
               </>
             )}
 
@@ -445,23 +468,62 @@ function Header() {
               <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-2 mb-2">Navigation</div>
               {navigationRoutes.map((item) => {
                 const IconComponent = item.icon ? iconMap[item.icon] || Users : Users;
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group ${
-                      isActivePage(item.href)
-                        ? 'bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-600'
-                        : 'text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-600'
-                    }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <IconComponent className={`h-5 w-5 ${
-                      isActivePage(item.href) ? 'text-blue-500' : 'text-gray-400 group-hover:text-blue-500'
-                    }`} />
-                    <span className="font-medium">{item.name}</span>
-                  </Link>
-                );
+                if (item.submenu) {
+                  return (
+                    <div key={item.name} className="space-y-1">
+                      <div className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group ${
+                        isActivePage(item.href) || item.submenu.some(sub => isActivePage(sub.href))
+                          ? 'bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-600'
+                          : 'text-gray-700'
+                      }`}>
+                        <IconComponent className={`h-5 w-5 ${
+                          isActivePage(item.href) || item.submenu.some(sub => isActivePage(sub.href)) ? 'text-blue-500' : 'text-gray-400'
+                        }`} />
+                        <span className="font-medium">{item.name}</span>
+                      </div>
+                      <div className="ml-8 space-y-1">
+                        {item.submenu.map((subItem) => {
+                          const SubIconComponent = subItem.icon ? iconMap[subItem.icon] || FileText : FileText;
+                          return (
+                            <Link
+                              key={subItem.name}
+                              href={subItem.href}
+                              className={`flex items-center space-x-3 px-4 py-2 rounded-lg transition-all duration-300 group text-sm ${
+                                isActivePage(subItem.href)
+                                  ? 'bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-600'
+                                  : 'text-gray-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-600'
+                              }`}
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              <SubIconComponent className={`h-4 w-4 ${
+                                isActivePage(subItem.href) ? 'text-blue-500' : 'text-gray-400 group-hover:text-blue-500'
+                              }`} />
+                              <span>{subItem.name}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group ${
+                        isActivePage(item.href)
+                          ? 'bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-600'
+                          : 'text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-600'
+                      }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <IconComponent className={`h-5 w-5 ${
+                        isActivePage(item.href) ? 'text-blue-500' : 'text-gray-400 group-hover:text-blue-500'
+                      }`} />
+                      <span className="font-medium">{item.name}</span>
+                    </Link>
+                  );
+                }
               })}
             </div>
           </div>
