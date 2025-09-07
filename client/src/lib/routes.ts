@@ -5,6 +5,7 @@ export interface RouteItem {
   description?: string;
   requiresAuth?: boolean;
   roles?: UserRole[];
+  submenu?: RouteItem[];
 }
 
 export type UserRole = 'client' | 'home-pro' | 'specialist' | 'crew-member';
