@@ -7,6 +7,7 @@ urlpatterns = [
     # Project management
     path('', views.ProjectListView.as_view(), name='project_list'),
     path('create/', views.ProjectCreateView.as_view(), name='project_create'),
+    path('intake/', views.IntakeLeadCreateView.as_view(), name='intake_create'),
     path('my/', views.MyProjectsView.as_view(), name='my_projects'),
     path('search/', views.project_search, name='project_search'),
     path('stats/', views.project_stats, name='project_stats'),

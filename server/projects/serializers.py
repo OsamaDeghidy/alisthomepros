@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.core.files.base import ContentFile
-from .models import Project, Category, ProjectImage, ProjectFile, ProjectFavorite, ProjectView, ProjectUpdate
+from .models import Project, Category, ProjectImage, ProjectFile, ProjectFavorite, ProjectView, ProjectUpdate, IntakeLead
 from file_management.models import UploadedFile
 from payments.models import Payment, WalletTransaction
 import os
@@ -531,3 +531,27 @@ class ProjectSearchSerializer(serializers.Serializer):
     skills = serializers.ListField(child=serializers.CharField(), required=False)
     roles = serializers.ListField(child=serializers.CharField(), required=False)
     ordering = serializers.CharField(required=False)
+
+
+class IntakeLeadSerializer(serializers.ModelSerializer):
+    """Serializer لنموذج استقبال بيانات نموذج المشروع العام"""
+    class Meta:
+        model = IntakeLead
+        fields = [
+            'id', 'full_name', 'email', 'phone', 'message',
+            'source_path', 'language', 'consent', 'status',
+            'created_at', 'updated_at'
+        ]
+        read_only_fields = ['id', 'status', 'created_at', 'updated_at']
+
+    def validate_phone(self, value):
+        # تحقق مبسط من رقم الهاتف
+        digits = ''.join(ch for ch in value if ch.isdigit())
+        if len(digits) < 7:
+            raise serializers.ValidationError('Please enter a valid phone number')
+        return value
+
+    def create(self, validated_data):
+        # الحالة الافتراضية new
+        validated_data.setdefault('status', 'new')
+        return super().create(validated_data)

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { X, Send, Loader2, CheckCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { apiClient, handleApiError } from '../../services/api';
 
 interface ProjectIntakeFormProps {
   onClose: () => void;
@@ -46,12 +47,18 @@ const ProjectIntakeForm = ({ onClose }: ProjectIntakeFormProps) => {
     setError('');
 
     try {
-      // هنا يمكن إضافة طلب API لإرسال بيانات النموذج
-      // await api.post('/projects/intake', formData);
-      
-      // للتجربة، سنقوم بمحاكاة طلب API
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      const payload = {
+        full_name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        message: `Project Type: ${formData.projectType}\nBudget: ${formData.budget || 'N/A'}\nTimeline: ${formData.timeline || 'N/A'}\n\n${formData.description}`,
+        source_path: typeof window !== 'undefined' ? window.location.pathname : '',
+        language: 'en',
+        consent: true,
+      };
+
+      await apiClient.post('/projects/intake/', payload);
+
       // إظهار رسالة النجاح قبل التوجيه
       setSuccess(true);
       
@@ -61,8 +68,9 @@ const ProjectIntakeForm = ({ onClose }: ProjectIntakeFormProps) => {
         router.push('/post-project');
       }, 1000);
     } catch (err) {
+      const info = (err as any)?.errorInfo || handleApiError(err);
       setLoading(false);
-      setError('An error occurred while submitting the form. Please try again.');
+      setError(info?.message || 'An error occurred while submitting the form. Please try again.');
     }
   };
 
@@ -340,12 +348,12 @@ const ProjectIntakeForm = ({ onClose }: ProjectIntakeFormProps) => {
                 {loading ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                    جاري الإرسال...
+                    Submitting...
                   </>
                 ) : (
                   <>
                     <Send className="h-4 w-4 mr-2" />
-                    إرسال المشروع
+                    Submit Project
                   </>
                 )}
               </button>
@@ -354,10 +362,10 @@ const ProjectIntakeForm = ({ onClose }: ProjectIntakeFormProps) => {
         </form>
 
         <div className="bg-gray-50 p-4 text-center text-sm text-gray-600">
-          بالضغط على "إرسال المشروع"، أنت توافق على 
-          <a href="/terms" className="text-primary-600 hover:underline mx-1">شروط الخدمة</a>
-          و
-          <a href="/privacy" className="text-primary-600 hover:underline mx-1">سياسة الخصوصية</a>
+          By clicking "Submit Project", you agree to 
+          <a href="/terms" className="text-primary-600 hover:underline mx-1">Terms of Service</a>
+          and
+          <a href="/privacy" className="text-primary-600 hover:underline mx-1">Privacy Policy</a>
         </div>
       </motion.div>
     </div>

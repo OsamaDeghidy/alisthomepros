@@ -441,3 +441,31 @@ class ProjectUpdate(models.Model):
     
     def __str__(self):
         return f"{self.project.title} - {self.title}"
+
+class IntakeLead(models.Model):
+    """Requests from public intake/contact form."""
+    full_name = models.CharField(max_length=120)
+    email = models.EmailField()
+    phone = models.CharField(max_length=30)
+    message = models.TextField(blank=True)
+    source_path = models.CharField(max_length=255, blank=True)
+    language = models.CharField(max_length=10, blank=True)
+    consent = models.BooleanField(default=False)
+    status = models.CharField(
+        max_length=20,
+        choices=(
+            ('new', 'New'),
+            ('contacted', 'Contacted'),
+            ('converted', 'Converted'),
+        ),
+        default='new'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'intake_leads'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.full_name} ({self.email})"

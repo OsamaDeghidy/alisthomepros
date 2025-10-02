@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from .models import Category, Project, ProjectImage, ProjectFile, ProjectFavorite, ProjectView, ProjectUpdate
+from .models import Category, Project, ProjectImage, ProjectFile, ProjectFavorite, ProjectView, ProjectUpdate, IntakeLead
 
 
 @admin.register(Category)
@@ -154,6 +154,25 @@ class ProjectUpdateAdmin(admin.ModelAdmin):
         }),
     ]
 
+
+# Intake leads admin
+@admin.register(IntakeLead)
+class IntakeLeadAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'email', 'phone', 'status', 'consent', 'source_path', 'language', 'created_at']
+    list_filter = ['status', 'consent', 'language', 'created_at']
+    search_fields = ['full_name', 'email', 'phone', 'message', 'source_path']
+    readonly_fields = ['created_at', 'updated_at']
+    actions = ['mark_contacted', 'mark_converted']
+
+    def mark_contacted(self, request, queryset):
+        updated = queryset.update(status='contacted')
+        self.message_user(request, f"{updated} leads marked as contacted.")
+    mark_contacted.short_description = "Mark selected as contacted"
+
+    def mark_converted(self, request, queryset):
+        updated = queryset.update(status='converted')
+        self.message_user(request, f"{updated} leads marked as converted.")
+    mark_converted.short_description = "Mark selected as converted"
 
 # تخصيص موقع الإدارة
 admin.site.site_header = 'A-List Projects Admin'

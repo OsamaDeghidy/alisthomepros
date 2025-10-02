@@ -15,7 +15,8 @@ from .serializers import (
     ProjectCreateSerializer,
     CategorySerializer,
     ProjectImageSerializer,
-    ProjectFileSerializer
+    ProjectFileSerializer,
+    IntakeLeadSerializer
 )
 from notifications.views import send_project_created_notification, send_new_project_notifications_to_providers
 
@@ -218,8 +219,9 @@ def project_search(request):
             'results': [],
             'suggestions': []
         })
-    
-    # Search projects
+
+
+ 
     projects = Project.objects.filter(
         Q(title__icontains=query) | 
         Q(description__icontains=query) |
@@ -277,6 +279,21 @@ def project_search(request):
         'results': serializer.data,
         'suggestions': suggestions
     })
+
+
+class IntakeLeadCreateView(generics.CreateAPIView):
+    """Receive public project intake form submissions without authentication"""
+    serializer_class = IntakeLeadSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        return Response({
+            'message': 'Your request has been received successfully',
+            'lead_id': serializer.instance.id
+        }, status=status.HTTP_201_CREATED)
 
 
 class ProjectCreateView(generics.CreateAPIView):
