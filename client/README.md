@@ -2400,3 +2400,37 @@ All tasks completed
 تشغيل البناء النهائي للتأكد من حل جميع الأخطاء
 
 إصلاح خطأ TypeScript في layout.tsx - 'pathname' is possibly 'null'
+
+
+
+5/5 Tasks done
+
+All tasks completed
+
+Change lang/dir in layout.tsx to English and LTR
+
+Update ToastProvider to use LTR direction
+
+Convert StickyCallToAction texts to English
+
+Convert ProjectIntakeForm texts to English
+
+Run local server and visually preview changes
+
+0/4 Tasks done
+
+إعادة تصميم قسم البطل للصفحة الرئيسية بإضافة خلفية متدرجة وشارات الثقة وCTA احترافي
+
+تحسين بطاقات الميزات لضمان مظهر عصري ومتسق مع الهوية
+
+تشغيل خادم التطوير وفتح معاينة للتحقق البصري من التغييرات
+
+إعادة تصميم قسم البطل للصفحة الرئيسية بإضافة خلفية متدرجة وشارات الثقة وCTA احترافي
+
+تحسين بطاقات الميزات لضمان مظهر عصري ومتسق مع الهوية
+
+تشغيل خادم التطوير وفتح معاينة للتحقق البصري من التغييرات
+
+تحسين أقسام الضمان وحل النزاعات بإطار بصري أنيق
+
+
