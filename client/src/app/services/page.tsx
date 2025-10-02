@@ -19,6 +19,7 @@ import {
   Hammer,
   Star
 } from 'lucide-react';
+import { PAYMENTS_PROVIDER_NAME, PAYMENTS_STORY, CONTACT_EMAIL, CONTACT_PHONE } from '@/config/site';
 
 export default function TermsOfServicePage() {
   const sections = [
@@ -44,7 +45,7 @@ export default function TermsOfServicePage() {
       id: 'payment-processing',
       title: 'Payment Processing',
       icon: CreditCard,
-      content: 'All payments are processed securely through our escrow wallet system. Clients fund their wallet before hiring a professional. Wallets can be funded using a debit card, ACH bank transfer, or a home improvement loan through one of our third-party lenders. Payments are processed by National Bank Card Services. A List does not store your banking or card information.'
+      content: `${PAYMENTS_STORY} Clients fund their wallet before hiring a professional. Wallets can be funded using a debit card or ACH bank transfer. Payments are processed by ${PAYMENTS_PROVIDER_NAME}. A List does not store your banking or card information.`
     },
     {
       id: 'escrow-system',
@@ -250,18 +251,18 @@ export default function TermsOfServicePage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8">
               <a
-                href="mailto:legal@alisthomepros.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="flex items-center space-x-3 bg-white px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
               >
                 <Mail className="h-5 w-5 text-primary-600" />
-                <span className="font-medium text-gray-900">legal@alisthomepros.com</span>
+                <span className="font-medium text-gray-900">{CONTACT_EMAIL}</span>
               </a>
               <a
-                href="tel:+18668825478"
+                href={`tel:${CONTACT_PHONE}`}
                 className="flex items-center space-x-3 bg-white px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
               >
                 <Phone className="h-5 w-5 text-primary-600" />
-                <span className="font-medium text-gray-900">+1 (866) 88-ALIST</span>
+                <span className="font-medium text-gray-900">{CONTACT_PHONE}</span>
               </a>
             </div>
           </div>

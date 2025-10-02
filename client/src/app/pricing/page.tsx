@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Check, X, Star, Crown, Zap, Shield, Phone, Home, Users, Settings, CreditCard, HelpCircle, MessageCircle } from 'lucide-react';
+import { PAYMENTS_STORY, PAYMENTS_PROVIDER_NAME } from '@/config/site';
 
 export default function PricingPage() {
   const plans = [
@@ -98,11 +99,11 @@ export default function PricingPage() {
               Professional Subscription Plans
             </h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-              Choose the plan that fits your level of growth. Whether you're just getting listed or ready to expand, we've got a plan for you. All payments are securely processed through National Bank Card Services — no hidden fees, no guesswork.
+              Choose the plan that fits your level of growth. Whether you're just getting listed or ready to expand, we've got a plan for you. {PAYMENTS_STORY}
             </p>
             <div className="flex justify-center items-center space-x-4 text-sm text-gray-500">
               <Shield className="h-5 w-5" />
-              <span>Secure payments powered by National Bank Card Services</span>
+              <span>Secure payments powered by {PAYMENTS_PROVIDER_NAME}</span>
             </div>
           </div>
         </div>
@@ -180,7 +181,7 @@ export default function PricingPage() {
                 <Shield className="h-8 w-8 text-primary-600" />
               </div>
               <h3 className="font-semibold text-lg text-dark-900 mb-2">Secure Payments</h3>
-              <p className="text-gray-600">All subscriptions are processed safely through National Bank Card Services.</p>
+              <p className="text-gray-600">{PAYMENTS_STORY}</p>
             </div>
 
             <div className="text-center">

@@ -12,6 +12,7 @@ import { authService } from '@/lib/auth';
 import { getMediaUrl } from '@/lib/utils';
 import NotificationDropdown from '../NotificationDropdown';
 import { notificationsApi } from '@/services/notificationsApi';
+import Cookies from 'js-cookie';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,7 +47,60 @@ function Header() {
     // Poll for updates every 30 seconds
     const interval = setInterval(fetchUnreadCount, 30000);
     
-    return () => clearInterval(interval);
+    // Listen for custom refresh notifications event
+    const handleRefreshNotifications = () => {
+      fetchUnreadCount();
+    };
+    
+    window.addEventListener('refreshNotifications', handleRefreshNotifications);
+    
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('refreshNotifications', handleRefreshNotifications);
+    };
+  }, [isAuthenticated]);
+  
+  // Real-time notifications via WebSocket (Django Channels)
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    const token = Cookies.get('access_token');
+    if (!token) return;
+
+    try {
+      // Build WebSocket URL from backend API URL
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
+      const wsBase = apiUrl.replace(/\/api$/, '').replace(/^http/, 'ws');
+      const wsUrl = `${wsBase}/ws/notifications/?token=${encodeURIComponent(token)}`;
+
+      const ws = new WebSocket(wsUrl);
+
+      ws.onopen = () => {
+        // console.log('Notifications WebSocket connected');
+      };
+
+      ws.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data?.type === 'notification') {
+            // Increase unread count for new incoming notification
+            setUnreadCount((prev) => prev + 1);
+            // Notify other parts to refresh if they need fresh data
+            if (typeof window !== 'undefined') {
+              window.dispatchEvent(new Event('refreshNotifications'));
+            }
+          }
+        } catch (e) {
+          console.error('Failed to parse WebSocket message:', e);
+        }
+      };
+
+      ws.onerror = () => {};
+
+      return () => {
+        try { ws.close(); } catch {}
+      };
+    } catch {}
   }, [isAuthenticated]);
   
   // Get user role from authenticated user or default to guest
@@ -57,7 +111,7 @@ function Header() {
         case 'home_pro':
         case 'specialist':
         case 'crew_member':
-          return 'home-pro';
+          return 'home_pro';
         case 'client':
         default:
           return 'client';
@@ -129,7 +183,8 @@ function Header() {
     'Star': Star,
     'Eye': Eye,
     'CreditCard': CreditCard,
-    'Shield': Shield
+    'Shield': Shield,
+    'Bell': Bell
   };
 
   const isActivePage = (href: string) => {
@@ -144,17 +199,19 @@ function Header() {
         { name: 'My Projects', href: '/client/projects', icon: 'Briefcase' },
         { name: 'Contracts', href: '/client/contracts', icon: 'FileText' },
         { name: 'Messages', href: '/messages', icon: 'MessageCircle' },
+        { name: 'Notifications', href: '/notifications', icon: 'Bell' },
         { name: 'Payments', href: '/client/payments', icon: 'DollarSign' },
         { name: 'Reviews', href: '/client/reviews', icon: 'Star' },
         { name: 'Profile', href: '/profile', icon: 'User' },
         { name: 'Settings', href: '/settings', icon: 'Settings' },
       ];
-    } else if (userRole === 'home-pro') {
+    } else if (userRole === 'home_pro') {
       return [
         { name: 'Dashboard', href: '/professional/dashboard', icon: 'BarChart3' },
         { name: 'Find Work', href: '/find-work', icon: 'Search' },
         { name: 'My Jobs', href: '/professional/contracts', icon: 'Briefcase' },
         { name: 'Messages', href: '/messages', icon: 'MessageCircle' },
+        { name: 'Notifications', href: '/notifications', icon: 'Bell' },
         { name: 'Earnings', href: '/professional/earnings', icon: 'DollarSign' },
         { name: 'Calendar', href: '/professional/calendar', icon: 'Calendar' },
         { name: 'Portfolio', href: '/professional/portfolio', icon: 'Eye' },

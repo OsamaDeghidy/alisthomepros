@@ -7,6 +7,7 @@ import { projectsService } from '@/lib/projects';
 import { authService } from '@/lib/auth';
 import { fileUploadService, type UploadedFile } from '@/lib/fileUpload';
 import { walletApi, type Wallet } from '@/services/paymentsApi';
+import { notificationsApi } from '@/services/notificationsApi';
 
 export default function PostProjectPage() {
   const router = useRouter();
@@ -117,9 +118,9 @@ export default function PostProjectPage() {
   ];
 
   const roleOptions = [
-    { value: 'home-pro', label: 'Home Pro', description: 'General home improvement professionals' },
+    { value: 'home_pro', label: 'Home Pro', description: 'General home improvement professionals' },
     { value: 'specialist', label: 'A-List Specialist', description: 'Highly skilled specialists for complex projects' },
-    { value: 'crew-member', label: 'Crew Member', description: 'Team members for collaborative projects' }
+    { value: 'crew_member', label: 'Crew Member', description: 'Team members for collaborative projects' }
   ];
 
   const steps = [
@@ -282,6 +283,24 @@ export default function PostProjectPage() {
 
       // Create project
       const response = await projectsService.createProject(projectData);
+      
+      // Trigger notification refresh after successful project creation
+      // This will help update the notification bell in the header
+      try {
+        // Small delay to allow backend notifications to be processed
+        setTimeout(async () => {
+          try {
+            await notificationsApi.getUnreadCount();
+            // Dispatch a custom event to notify the header to refresh notifications
+            window.dispatchEvent(new CustomEvent('refreshNotifications'));
+          } catch (error) {
+            console.log('Could not refresh notifications, but project was created successfully');
+          }
+        }, 1000);
+      } catch (error) {
+        // Don't fail project creation if notification refresh fails
+        console.log('Notification refresh failed, but project was created successfully');
+      }
       
       if (paymentOption === 'pay') {
         alert('Project created and paid successfully! Funds have been deducted from your wallet.');

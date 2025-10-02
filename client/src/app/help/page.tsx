@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Search, MessageCircle, Phone, Mail } from 'lucide-react';
+import { CONTACT_PHONE, CONTACT_EMAIL, BUSINESS_HOURS_WEEKDAYS, BUSINESS_HOURS_WEEKEND, PAYMENTS_STORY } from '@/config/site';
 
 export default function HelpPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -29,7 +30,7 @@ export default function HelpPage() {
         },
         {
           question: 'What payment methods are accepted?',
-          answer: 'We accept all major credit cards, PayPal, and bank transfers. All payments are processed securely.'
+          answer: PAYMENTS_STORY
         }
       ]
     },
@@ -41,12 +42,15 @@ export default function HelpPage() {
           answer: 'Yes, all professionals undergo background checks, license verification, and insurance validation before joining our platform.'
         },
         {
-          question: 'What if I\'m not satisfied with the work?',
+          question: "What if I'm not satisfied with the work?",
           answer: 'We offer dispute resolution services and our satisfaction guarantee protects you in case of unsatisfactory work.'
         }
       ]
     }
   ];
+
+  const phoneHref = `tel:${CONTACT_PHONE.replace(/\s|\(|\)|-/g, '')}`;
+  const mailHref = `mailto:${CONTACT_EMAIL}`;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -126,26 +130,32 @@ export default function HelpPage() {
                 </a>
                 
                 <a 
-                  href="tel:+15551234567"
+                  href={phoneHref}
                   className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                 >
                   <Phone className="h-6 w-6 text-gray-600" />
                   <div>
                     <div className="font-medium text-gray-700">Call Us</div>
-                    <div className="text-sm text-gray-600">+1 (555) 123-4567</div>
+                    <div className="text-sm text-gray-600">{CONTACT_PHONE}</div>
                   </div>
                 </a>
                 
                 <a 
-                  href="mailto:support@alisthomepros.com"
+                  href={mailHref}
                   className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                 >
                   <Mail className="h-6 w-6 text-gray-600" />
                   <div>
                     <div className="font-medium text-gray-700">Email Us</div>
-                    <div className="text-sm text-gray-600">support@alisthomepros.com</div>
+                    <div className="text-sm text-gray-600">{CONTACT_EMAIL}</div>
                   </div>
                 </a>
+              </div>
+
+              <div className="mt-6 text-sm text-gray-600">
+                <div className="font-medium text-gray-700 mb-1">Business Hours</div>
+                <div>{BUSINESS_HOURS_WEEKDAYS}</div>
+                <div>{BUSINESS_HOURS_WEEKEND}</div>
               </div>
             </div>
 
@@ -173,4 +183,4 @@ export default function HelpPage() {
       </div>
     </div>
   );
-} 
+}

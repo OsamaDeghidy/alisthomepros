@@ -3,13 +3,15 @@ from .models import Notification
 
 
 class NotificationSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = Notification
         fields = [
-            'id', 'type', 'title', 'message', 'is_read', 
+            'id', 'user', 'type', 'title', 'message', 'is_read', 
             'data', 'created_at', 'read_at'
         ]
-        read_only_fields = ['id', 'created_at', 'read_at']
+        read_only_fields = ['id', 'user', 'created_at', 'read_at']
 
 
 class NotificationCreateSerializer(serializers.ModelSerializer):
@@ -21,4 +23,4 @@ class NotificationCreateSerializer(serializers.ModelSerializer):
 class NotificationUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
-        fields = ['is_read'] 
+        fields = ['is_read']

@@ -8,13 +8,13 @@ export interface RouteItem {
   submenu?: RouteItem[];
 }
 
-export type UserRole = 'client' | 'home-pro' | 'specialist' | 'crew-member';
+export type UserRole = 'client' | 'home_pro' | 'specialist' | 'crew_member';
 
-export const userRoles = {
+export const USER_ROLES = {
   CLIENT: 'client' as UserRole,
-  HOME_PRO: 'home-pro' as UserRole,
+  HOME_PRO: 'home_pro' as UserRole,
   SPECIALIST: 'specialist' as UserRole,
-  CREW_MEMBER: 'crew-member' as UserRole,
+  CREW_MEMBER: 'crew_member' as UserRole,
 };
 
 // صفحات عامة (للجميع)
@@ -44,21 +44,21 @@ export const clientRoutes: RouteItem[] = [
 
 // صفحات المحترفين (Professional Dashboard)
 export const professionalRoutes: RouteItem[] = [
-  { name: 'Dashboard', href: '/professional/dashboard', icon: 'BarChart3', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Find Work', href: '/find-work', icon: 'Search', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'My Jobs', href: '/my-jobs', icon: 'Briefcase', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Proposals', href: '/professional/proposals', icon: 'Send', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Messages', href: '/messages', icon: 'MessageCircle', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Contracts', href: '/professional/contracts', icon: 'FileText', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Earnings', href: '/professional/earnings', icon: 'DollarSign', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Calendar', href: '/professional/calendar', icon: 'Calendar', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Availability', href: '/professional/availability', icon: 'Clock', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Time Tracker', href: '/professional/time-tracker', icon: 'Timer', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Task Management', href: '/professional/tasks', icon: 'CheckSquare', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Profile', href: '/profile', icon: 'User', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Portfolio', href: '/professional/portfolio', icon: 'Camera', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Reviews', href: '/professional/reviews', icon: 'Star', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
-  { name: 'Settings', href: '/settings', icon: 'Settings', requiresAuth: true, roles: ['home-pro', 'specialist', 'crew-member'] },
+  { name: 'Dashboard', href: '/professional/dashboard', icon: 'BarChart3', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Find Work', href: '/find-work', icon: 'Search', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'My Jobs', href: '/my-jobs', icon: 'Briefcase', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Proposals', href: '/professional/proposals', icon: 'Send', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Messages', href: '/messages', icon: 'MessageCircle', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Contracts', href: '/professional/contracts', icon: 'FileText', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Earnings', href: '/professional/earnings', icon: 'DollarSign', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Calendar', href: '/professional/calendar', icon: 'Calendar', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Availability', href: '/professional/availability', icon: 'Clock', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Time Tracker', href: '/professional/time-tracker', icon: 'Timer', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Task Management', href: '/professional/tasks', icon: 'CheckSquare', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Profile', href: '/profile', icon: 'User', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Portfolio', href: '/professional/portfolio', icon: 'Camera', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Reviews', href: '/professional/reviews', icon: 'Star', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
+  { name: 'Settings', href: '/settings', icon: 'Settings', requiresAuth: true, roles: ['home_pro', 'specialist', 'crew_member'] },
 ];
 
 
@@ -89,9 +89,9 @@ export function getRoutesByRole(role: UserRole): RouteItem[] {
   switch (role) {
     case 'client':
       return clientRoutes;
-    case 'home-pro':
+    case 'home_pro':
     case 'specialist':
-    case 'crew-member':
+    case 'crew_member':
       return professionalRoutes;
     default:
       return publicRoutes;
@@ -109,9 +109,9 @@ export function getMainNavRoutes(role: UserRole): RouteItem[] {
         { name: 'Professionals', href: '/professionals', icon: 'Users' },
         { name: 'Messages', href: '/messages', icon: 'MessageCircle' },
       ];
-    case 'home-pro':
+    case 'home_pro':
     case 'specialist':
-    case 'crew-member':
+    case 'crew_member':
       return [
         { name: 'Dashboard', href: '/professional/dashboard', icon: 'BarChart3' },
         { name: 'Find Work', href: '/find-work', icon: 'Search' },
@@ -137,9 +137,9 @@ export function getQuickActionRoutes(role: UserRole): RouteItem[] {
         { name: 'Browse Professionals', href: '/professionals', icon: 'Users' },
         { name: 'View Messages', href: '/messages', icon: 'MessageCircle' },
       ];
-    case 'home-pro':
+    case 'home_pro':
     case 'specialist':
-    case 'crew-member':
+    case 'crew_member':
       return [
         { name: 'Browse Jobs', href: '/find-work', icon: 'Search' },
         { name: 'Submit Proposal', href: '/professional/proposals/new', icon: 'Send' },

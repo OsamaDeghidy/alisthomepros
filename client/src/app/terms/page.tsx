@@ -1,6 +1,7 @@
 'use client';
 
 import { Shield, Users, CreditCard, Scale, FileText, AlertTriangle, Mail, Phone } from 'lucide-react';
+import { PAYMENTS_PROVIDER_NAME, PAYMENTS_STORY, CONTACT_EMAIL, CONTACT_PHONE } from '@/config/site';
 
 export default function TermsPage() {
   const sections = [
@@ -26,7 +27,7 @@ export default function TermsPage() {
       id: 'payment-processing',
       title: 'Payment Processing',
       icon: CreditCard,
-      content: 'All payments are processed securely through our escrow wallet system. Clients fund their wallet before hiring a professional. Wallets can be funded using a debit card, ACH bank transfer, or a home improvement loan through one of our third-party lenders. Payments are processed by National Bank Card Services. A List does not store your banking or card information.'
+      content: `${PAYMENTS_STORY} Clients fund their wallet before hiring a professional. Wallets can be funded using a debit card or ACH bank transfer. Payments are processed by ${PAYMENTS_PROVIDER_NAME}. A List does not store your banking or card information.`
     },
     {
       id: 'escrow-disputes',
@@ -166,20 +167,20 @@ export default function TermsPage() {
                 <Mail className="h-8 w-8 text-primary-400 mx-auto mb-4" />
                 <h3 className="font-semibold text-white mb-2">Email Support</h3>
                 <a 
-                  href="mailto:legal@alisthomepros.com" 
+                  href={`mailto:${CONTACT_EMAIL}`} 
                   className="text-primary-400 hover:text-primary-300 transition-colors duration-200"
                 >
-                  legal@alisthomepros.com
+                  {CONTACT_EMAIL}
                 </a>
               </div>
               <div className="bg-gray-800 rounded-lg p-6">
                 <Phone className="h-8 w-8 text-primary-400 mx-auto mb-4" />
                 <h3 className="font-semibold text-white mb-2">Phone Support</h3>
                 <a 
-                  href="tel:+18668825478" 
+                  href={`tel:${CONTACT_PHONE}`} 
                   className="text-primary-400 hover:text-primary-300 transition-colors duration-200"
                 >
-                  +1 (866) 88-ALIST
+                  {CONTACT_PHONE}
                 </a>
               </div>
             </div>

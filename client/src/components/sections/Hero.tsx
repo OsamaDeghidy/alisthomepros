@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, MapPin, ChevronDown, Shield } from 'lucide-react';
+import { Search, MapPin, ChevronDown, Shield, UserPlus, MessageSquare, ShieldCheck, ArrowRight } from 'lucide-react';
 
 interface HeroProps {
   stats?: {
@@ -39,6 +39,24 @@ export default function Hero({ stats: apiStats }: HeroProps) {
     'Carpentry'
   ];
 
+  const steps = [
+    {
+      icon: UserPlus,
+      title: 'Post Your Project',
+      desc: 'Tell us what you need in minutes'
+    },
+    {
+      icon: MessageSquare,
+      title: 'Get Vetted Florida Pros',
+      desc: 'Get matched with verified experts fast'
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Pay with Escrow Protection',
+      desc: 'Funds held securely until work is done'
+    }
+  ];
+
   const formatNumber = (num: number) => {
     if (num >= 1000000) {
       return `${(num / 1000000).toFixed(1)}M+`;
@@ -67,10 +85,12 @@ export default function Hero({ stats: apiStats }: HeroProps) {
     },
   ];
 
-  const trustedCompanies = [
-    { name: 'Home Depot', logo: 'https://logos-world.net/wp-content/uploads/2020/05/Home-Depot-Logo.png' },
-    { name: 'Lowes', logo: 'https://logos-world.net/wp-content/uploads/2020/04/Lowes-Logo.png' },
-    { name: 'Angie List', logo: '/angies-list-logo.svg' },
+  // Local trusted logos from public/
+  const trustLogos = [
+    { name: 'Florida Contractors Association', src: '/images/trust/florida-contractors.svg', width: 240, height: 56 },
+    { name: 'Better Business Bureau', src: '/images/trust/bbb.svg', width: 200, height: 56 },
+    { name: 'HomeAdvisor', src: '/images/trust/homeadvisor.svg', width: 220, height: 56 },
+    { name: 'Angie\'s List', src: '/images/trust/angies-list.svg', width: 192, height: 56 },
   ];
 
   return (
@@ -94,13 +114,40 @@ export default function Hero({ stats: apiStats }: HeroProps) {
             </div>
             
             <h1 className="font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-dark-900 leading-tight">
-              Find Trusted Professionals for Every Project
-              <span className="block text-gradient-primary">From New Construction and Additions to Renovations, Repairs, and Remodeling</span>
+              Post Your Project — Get Vetted Florida Pros with Escrow Protection
+              <span className="block text-gradient-primary">Hire confidently with licensed, insured, background-checked experts</span>
             </h1>
             
             <p className="text-xl lg:text-2xl text-dark-600 leading-relaxed max-w-4xl mx-auto">
-              Whether you're building from the ground up, expanding your space, or handling essential repairs, A-List Home Pros connects you with qualified experts. From new construction to remodels, renovations, and everyday maintenance, we've got you covered. Find the right professional today and bring your vision to life.
+              Share your project in minutes and get matched with verified Florida professionals. Your funds are protected in escrow and released only when milestones are approved.
             </p>
+
+            {/* Primary CTA */}
+            <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
+              <Link href="/post-project" className="inline-flex items-center bg-gradient-primary text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                <UserPlus className="h-5 w-5 mr-2" />
+                Post a Project
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </Link>
+              <Link href="/how-it-works" className="inline-flex items-center px-6 py-3 rounded-lg font-semibold border border-gray-300 text-dark-700 hover:bg-gray-50 transition">
+                Learn How It Works
+              </Link>
+            </div>
+          </div>
+
+          {/* 3-step Mini Explainer */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {steps.map((s, i) => (
+              <div key={i} className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-4 text-left flex items-start gap-3">
+                <div className="shrink-0 rounded-lg bg-primary-50 p-2">
+                  <s.icon className="h-6 w-6 text-primary-600" />
+                </div>
+                <div>
+                  <div className="font-semibold text-dark-900">{s.title}</div>
+                  <div className="text-sm text-dark-600">{s.desc}</div>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Search Bar */}
@@ -115,7 +162,7 @@ export default function Hero({ stats: apiStats }: HeroProps) {
                   <div className="relative">
                     <select className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent appearance-none">
                       {serviceCategories.map((service, index) => (
-                        <option key={index} value={service.toLowerCase().replace(/\s+/g, '-')}>
+                        <option key={index} value={service.toLowerCase().replace(/\s+/g, '-')}> 
                           {service}
                         </option>
                       ))}
@@ -177,6 +224,18 @@ export default function Hero({ stats: apiStats }: HeroProps) {
             ))}
           </div>
 
+          {/* Trust Bar */}
+          <div className="pt-8">
+            <div className="flex flex-col items-center gap-4">
+              <p className="text-sm text-dark-500 font-medium">Trusted by Florida homeowners and professionals</p>
+              <div className="flex flex-wrap items-center justify-center gap-8 opacity-90">
+                {/* Use trust logos from site config */}
+                {trustLogos.map((logo) => (
+                  <Image key={logo.name} src={logo.src} alt={`${logo.name} logo`} width={logo.width} height={logo.height} className="h-16 w-auto object-contain" />
+                ))}
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>

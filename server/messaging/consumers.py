@@ -494,7 +494,7 @@ class NotificationConsumer(AsyncWebsocketConsumer):
         try:
             notification = Notification.objects.get(
                 id=notification_id,
-                recipient=self.user
+                user=self.user
             )
             notification.is_read = True
             notification.read_at = timezone.now()

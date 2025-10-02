@@ -1,23 +1,30 @@
 'use client';
 
 import { Toaster } from 'react-hot-toast';
+import { ReactNode } from 'react';
 
-export default function ToastProvider() {
+interface ToastProviderProps {
+  children: ReactNode;
+}
+
+function ToastProvider({ children }: ToastProviderProps) {
   return (
-    <Toaster
-      position="top-right"
-      reverseOrder={false}
-      gutter={8}
-      containerClassName=""
-      containerStyle={{}}
-      toastOptions={{
-        // إعدادات افتراضية للإشعارات
-        duration: 4000,
-        style: {
-          background: '#363636',
-          color: '#fff',
-          direction: 'rtl',
-          fontFamily: 'inherit',
+    <>
+      {children}
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // إعدادات افتراضية للإشعارات
+          duration: 4000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+            direction: 'ltr',
+            fontFamily: 'inherit',
         },
         // إعدادات الإشعارات الناجحة
         success: {
@@ -41,5 +48,9 @@ export default function ToastProvider() {
         },
       }}
     />
+    </>
   );
 }
+
+export default ToastProvider;
+export { ToastProvider };

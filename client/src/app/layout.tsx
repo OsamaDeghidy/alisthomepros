@@ -1,77 +1,86 @@
-import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import AuthProvider from "@/components/providers/AuthProvider";
-import ToastProvider from "@/components/ToastProvider";
-import ErrorBoundary from "@/components/ErrorBoundary";
+'use client';
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import { ToastProvider } from '@/components/providers/ToastProvider';
+import { AuthProvider } from '@/components/providers/AuthProvider';
+import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+const inter = Inter({ subsets: ['latin'] });
+
+// استيراد ديناميكي للمكونات الثقيلة
+const StickyCallToAction = dynamic(() => import('@/components/ui/StickyCallToAction'), {
+  ssr: false,
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+const ProjectIntakeForm = dynamic(() => import('@/components/forms/ProjectIntakeForm'), {
+  ssr: false,
 });
 
-export const metadata: Metadata = {
-  title: "A-List Home Professionals - Find Trusted Home Improvement Experts",
-  description: "Connect with skilled home improvement professionals. From contractors to consultants, find the right expertise for your home projects. Quality guaranteed.",
-  keywords: "home improvement, contractors, home professionals, renovation, repair, construction",
-  authors: [{ name: "A-List Home Professionals" }],
-  creator: "A-List Home Professionals",
-  publisher: "A-List Home Professionals",
-  openGraph: {
-    title: "A-List Home Professionals",
-    description: "Connect with trusted home improvement professionals",
-    url: "https://alisthomepros.com",
-    siteName: "A-List Home Professionals",
-    type: "website",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "A-List Home Professionals",
-    description: "Connect with trusted home improvement professionals",
-    creator: "@alisthomepros",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
+// مكون لتتبع محاولات الخروج من الموقع
+const ExitIntent = () => {
+  const [showExitForm, setShowExitForm] = useState(false);
+  const pathname = usePathname();
+
+  // تجاهل صفحات معينة مثل صفحة تسجيل الدخول أو صفحة نشر المشروع
+  const excludedPaths = ['/login', '/register', '/post-project'];
+  const shouldShowExitIntent = pathname ? !excludedPaths.some(path => pathname.startsWith(path)) : true;
+
+  useEffect(() => {
+    if (!shouldShowExitIntent) return;
+
+    // التحقق مما إذا كان المستخدم قد رأى النموذج بالفعل
+    const hasSeenExitForm = localStorage.getItem('hasSeenExitForm');
+    if (hasSeenExitForm) return;
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      // إظهار النموذج فقط عندما يحاول المستخدم مغادرة النافذة من الأعلى
+      if (e.clientY <= 0) {
+        setShowExitForm(true);
+        // تسجيل أن المستخدم قد رأى النموذج (لمدة يوم واحد)
+        const expiryDate = new Date();
+        expiryDate.setDate(expiryDate.getDate() + 1);
+        localStorage.setItem('hasSeenExitForm', expiryDate.toString());
+      }
+    };
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+    return () => {
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [pathname, shouldShowExitIntent]);
+
+  if (!showExitForm) return null;
+
+  return <ProjectIntakeForm onClose={() => setShowExitForm(false)} />;
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const pathname = usePathname();
+  
+  // تحديد الصفحات التي يجب أن يظهر فيها مكون StickyCallToAction
+  const showStickyCallToAction = pathname ? ['/how-it-works', '/'].includes(pathname) : false;
+
   return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body className={`${inter.variable} ${poppins.variable} antialiased`}>
-        <ErrorBoundary>
+    <html lang="en" dir="ltr">
+      <body className={inter.className}>
+        <AuthProvider>
           <ToastProvider>
-            <AuthProvider>
-              <Header />
-              <main className="min-h-screen">
-                {children}
-              </main>
-              <Footer />
-            </AuthProvider>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+            {showStickyCallToAction && <StickyCallToAction />}
+            <ExitIntent />
           </ToastProvider>
-        </ErrorBoundary>
+        </AuthProvider>
       </body>
     </html>
   );

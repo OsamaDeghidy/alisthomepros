@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <path d="M20,50 L150,20 L280,50 L280,150 L150,280 L20,150 Z" fill="#ffffff" stroke="#00843d" stroke-width="10"/>
+  <text x="150" y="100" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#00843d" text-anchor="middle">Angie's list</text>
+  <rect x="70" y="130" width="160" height="50" fill="#00843d"/>
+  <text x="150" y="165" font-family="Arial, sans-serif" font-weight="bold" font-size="30" fill="#ffffff" text-anchor="middle">2020</text>
+  <text x="150" y="210" font-family="Arial, sans-serif" font-size="16" fill="#000000" text-anchor="middle">SUPER SERVICE</text>
+  <text x="150" y="240" font-family="Arial, sans-serif" font-weight="bold" font-size="24" fill="#000000" text-anchor="middle">AWARD</text>
+</svg>

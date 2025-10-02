@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <rect x="50" y="50" width="200" height="200" rx="10" ry="10" fill="#6d7e8c"/>
+  <rect x="60" y="60" width="180" height="180" rx="5" ry="5" fill="#fff"/>
+  <path d="M100 100 L120 80 L140 100 Z" fill="#f7941d"/>
+  <path d="M120 80 L140 100 L160 80 Z" fill="#f7941d"/>
+  <text x="150" y="140" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#6d7e8c">HomeAdvisor</text>
+  <text x="150" y="180" font-family="Arial" font-size="40" font-weight="bold" text-anchor="middle" fill="#f7941d">20</text>
+  <text x="150" y="220" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#fff">REVIEWS</text>
+  <path d="M100 240 L110 230 L120 240 L130 230 L140 240 L150 230 L160 240 L170 230 L180 240 L190 230 L200 240" fill="none" stroke="#f7941d" stroke-width="5"/>
+</svg>

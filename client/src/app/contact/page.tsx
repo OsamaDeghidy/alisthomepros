@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare, HelpCircle, Star } from 'lucide-react';
+import { CONTACT_PHONE, CONTACT_EMAIL, BUSINESS_HOURS_WEEKDAYS, BUSINESS_HOURS_WEEKEND } from '@/config/site';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -22,13 +23,13 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: 'Phone',
-      details: '+1 (555) 123-4567',
-      subtitle: 'Mon-Fri 8AM-8PM PST'
+      details: CONTACT_PHONE,
+      subtitle: BUSINESS_HOURS_WEEKDAYS
     },
     {
       icon: Mail,
       title: 'Email',
-      details: 'support@alisthomepros.com',
+      details: CONTACT_EMAIL,
       subtitle: 'We reply within 24 hours'
     },
     {
@@ -40,8 +41,8 @@ export default function ContactPage() {
     {
       icon: Clock,
       title: 'Business Hours',
-      details: 'Monday - Friday: 8AM - 8PM PST',
-      subtitle: 'Saturday: 9AM - 5PM PST'
+      details: BUSINESS_HOURS_WEEKDAYS,
+      subtitle: BUSINESS_HOURS_WEEKEND
     }
   ];
 
@@ -214,4 +215,4 @@ export default function ContactPage() {
       </div>
     </div>
   );
-} 
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <rect x="30" y="30" width="340" height="340" fill="#ffffff" stroke="#6b7b8a" stroke-width="10" rx="10" />
+  <g transform="translate(65, 70)">
+    <path d="M30,0 L60,30 L90,0 L90,30 L30,30 Z" fill="#f7941d" />
+    <rect x="30" y="0" width="60" height="30" fill="#6b7b8a" />
+  </g>
+  <text x="135" y="100" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#f7941d">Home</text>
+  <text x="220" y="100" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#6b7b8a">Advisor</text>
+  <text x="200" y="200" font-family="Arial, sans-serif" font-weight="bold" font-size="120" fill="#f7941d" text-anchor="middle">20</text>
+  <rect x="30" y="260" width="340" height="100" fill="#6b7b8a" />
+  <text x="200" y="320" font-family="Arial, sans-serif" font-weight="bold" font-size="40" fill="#ffffff" text-anchor="middle">REVIEWS</text>
+  <g transform="translate(140, 380)">
+    <path d="M20,0 L25,15 L40,15 L30,25 L35,40 L20,30 L5,40 L10,25 L0,15 L15,15 Z" fill="#f7941d" stroke="#ffffff" stroke-width="2" />
+    <path d="M60,0 L65,15 L80,15 L70,25 L75,40 L60,30 L45,40 L50,25 L40,15 L55,15 Z" fill="#f7941d" stroke="#ffffff" stroke-width="2" />
+    <path d="M100,0 L105,15 L120,15 L110,25 L115,40 L100,30 L85,40 L90,25 L80,15 L95,15 Z" fill="#f7941d" stroke="#ffffff" stroke-width="2" />
+    <path d="M140,0 L145,15 L160,15 L150,25 L155,40 L140,30 L125,40 L130,25 L120,15 L135,15 Z" fill="#f7941d" stroke="#ffffff" stroke-width="2" />
+  </g>
+</svg>

@@ -2114,3 +2114,289 @@ git push -u origin main
 	Home Additions	
 	Deck Repair	
 	New Deck Installation	
+
+
+
+	9manth taske
+
+	p\help\page.tsx 1 - 160
+
+9 tasks
+
+اعتماد قصة مدفوعات موحّدة (بطاقات + ACH عبر National Bank Card Services أم تضمين PayPal؟) وصياغة نص قياسي موحّد لكل الصفحات
+
+تحديث الهيرو في الصفحة الرئيسية بعنوان قوي وCTA “Post a Project” + شرح 3 خطوات مختصر وتحسينات تتبع التحويل
+
+إضافة قسم عناصر ثقة على الصفحة الرئيسية (شهادات عملاء، أمثلة مشاريع مكتملة، شارات ترخيص/تأمين، شعارات موثوقية)
+
+توحيد رسائل المدفوعات عبر الصفحات (التسعير، المساعدة، عن الموقع، السياسة، الشروط، الخدمات) وإزالة التناقضات (ذكر PayPal عند عدم دعمه)
+
+استبدال بيانات الاتصال الوهمية (+1-555-123-4567) بالرقم والبريد الحقيقيين وساعات العمل، ويفضل تكوينها عبر متغيرات بيئة
+
+مراجعة واجهات إدارة طرق الدفع وإخفاء/تعديل حقول PayPal إذا لم تكن معتمدة حالياً
+
+إعادة تسمية/إخراج قسم "Our Projects" ليعرض مشاريع مكتملة مع صور قبل/بعد أو بيانات واقعية من الـ API إن توفرت
+
+اختبارات يدوية وتحسين الأداء والفهارس ومعالجة الحالات الطرفية
+
+خطة قياس وتحسين التحويل (أحداث تتبع، لوحة مؤشرات، A/B لاختبار الهيرو الجديد)
+
+
+
+
+
+0/5 Tasks done
+
+تأكيد أن Hero في الصفحة الرئيسية يعرض العنوان والـ CTA والشرح بثلاث خطوات كما طُلِب، وتحديثه إن لزم.
+
+توحيد قصة الدفع عبر الموقع: استبدال أي ذكر لـ PayPal أو National Bank Card Services بنص مركزي من config/site.ts في صفحات Pricing وHelp وطرق الدفع وغيرها.
+
+استبدال أي أرقام/إيميلات placeholder في كل الصفحات بقيم مركزية من config/site.ts.
+
+تأكيد أن Hero في الصفحة الرئيسية يعرض العنوان والـ CTA والشرح بثلاث خطوات كما طُلِب، وتحديثه إن لزم.
+
+توحيد قصة الدفع عبر الموقع: استبدال أي ذكر لـ PayPal أو National Bank Card Services بنص مركزي من config/site.ts في صفحات Pricing وHelp وطرق الدفع وغيرها.
+
+استبدال أي أرقام/إيميلات placeholder في كل الصفحات بقيم مركزية من config/site.ts.
+
+إضافة عناصر الثقة للصفحة الرئيسية: testimonials، أمثلة مشاريع، شارات ترخيص/تأمين، وشريط شعارات ثقة.
+
+مراجعة بصرية عبر تشغيل الخادم المحلي ومعاينة التغييرات وإصلاح أي مشاكل CSS.
+
+user52255012877
+Copy
+Delete
+العميل    طلب التعديلات   دى اعمل خطه و ظبط التعديلات من غير ما تبوظا المشروع 
+ 1. Homepage conversion – Add a strong hero section headline like:
+“Post Your Project — Get Vetted Florida Pros with Escrow Protection”
+with a bold “Post a Project” CTA and a simple 3-step explainer.
+2. Unify payments – The site currently shows “National Bank Card Services” on pricing but mentions PayPal/other methods in Help. We need one clear and consistent payments story across the whole site.
+3. Fix placeholder details – Replace the placeholder phone number (+1-555-123-4567) with our real contact number and email, plus business hours.
+4. Trust elements – Add testimonials, completed project examples, license/insurance verification badges, and trust logos on the homepage.
+Builder
+
+
+Search codebase for 'Pricing|/pricing|Help|/help|help-center|help centre|National Bank Card Services|PayPal|payment|payments|contact|phone|\+1-555-123-4567|555-123-4567|Testimonials|testimonial|licenses|insurance|badge|trust|hero|Hero|headline'
+Search codebase for '(^|\/)app\/(pricing|help)(\/|$)|href: '\/pricing'|href: '\/help'|Pricing|Help Center|How payments work|PayPal|National Bank Card Services|Authorize.Net|Stripe|bank card'
+Search codebase for 'Testimonial|Testimonials|testimonial|trust|Trusted|badge|Badges|verification_badges|Showcase|Completed Projects|portfolio|case studies|sections'
+Search codebase for 'href: '/(client/)?projects/(new|create)'|post project|Post a Project|/projects/new|/client/projects/new|create project|new project'
+Search codebase for '\+1-555-123-4567|555-123-4567|\(555\)|contact@|support@|Business Hours|Hours|Mon|Sun|Saturday|email'
+client\src\app\page.tsx
+1-350
+client\src\components\sections\Hero.tsx
+1-260
+client\src\app\help\page.tsx
+1-160
+9 tasks
+اعتماد قصة مدفوعات موحّدة (بطاقات + ACH عبر National Bank Card Services أم تضمين PayPal؟) وصياغة نص قياسي موحّد لكل الصفحات
+تحديث الهيرو في الصفحة الرئيسية بعنوان قوي وCTA “Post a Project” + شرح 3 خطوات مختصر وتحسينات تتبع التحويل
+إضافة قسم عناصر ثقة على الصفحة الرئيسية (شهادات عملاء، أمثلة مشاريع مكتملة، شارات ترخيص/تأمين، شعارات موثوقية)
+توحيد رسائل المدفوعات عبر الصفحات (التسعير، المساعدة، عن الموقع، السياسة، الشروط، الخدمات) وإزالة التناقضات (ذكر PayPal عند عدم دعمه)
+استبدال بيانات الاتصال الوهمية (+1-555-123-4567) بالرقم والبريد الحقيقيين وساعات العمل، ويفضل تكوينها عبر متغيرات بيئة
+مراجعة واجهات إدارة طرق الدفع وإخفاء/تعديل حقول PayPal إذا لم تكن معتمدة حالياً
+إعادة تسمية/إخراج قسم "Our Projects" ليعرض مشاريع مكتملة مع صور قبل/بعد أو بيانات واقعية من الـ API إن توفرت
+اختبارات يدوية وتحسين الأداء والفهارس ومعالجة الحالات الطرفية
+خطة قياس وتحسين التحويل (أحداث تتبع، لوحة مؤشرات، A/B لاختبار الهيرو الجديد)
+Search codebase for 'Find paths for: homepage page (root app page.tsx), components/Hero.tsx, components/Footer.tsx, components/Header.tsx, app/pricing/page.tsx, app/help/page.tsx, lib/routes.ts, and any homepage data provider (homepageApi.ts). Return absolute paths.'
+client\src\app\page.tsx
+1-300
+client\src\components\sections\Hero.tsx
+1-250
+client\src\services\homepageApi.ts
+1-250
+client\src\app\pricing\page.tsx
+1-250
+client\src\app\help\page.tsx
+1-300
+client\src\components\layout\Footer.tsx
+1-300
+client\src\components\sections\Hero.tsx
++51
+-6
+
+Review
+homs\client\src\components\sections
+Builder
+Abnormally stopped
+
+
+0/5 Tasks done
+تحديث Hero في الصفحة الرئيسية بعنوان قوي وCTA "Post a Project" وإضافة شرح بثلاث خطوات بسيطة.
+توحيد قصة الدفع (إزالة أي تعارض بين National Bank Card Services وPayPal) عبر صفحات Pricing وHelp وكل أماكن الذكر.
+استبدال أرقام/إيميلات placeholder بتفاصيل الاتصال الحقيقية ووقت العمل، مع مركزتها في ملف إعداد واحد لاستخدامها عبر الموقع.
+تحديث Hero في الصفحة الرئيسية بعنوان قوي وCTA "Post a Project" وإضافة شرح بثلاث خطوات بسيطة.
+توحيد قصة الدفع (إزالة أي تعارض بين National Bank Card Services وPayPal) عبر صفحات Pricing وHelp وكل أماكن الذكر.
+استبدال أرقام/إيميلات placeholder بتفاصيل الاتصال الحقيقية ووقت العمل، مع مركزتها في ملف إعداد واحد لاستخدامها عبر الموقع.
+إضافة عناصر الثقة للصفحة الرئيسية: testimonials، أمثلة مشاريع مكتملة، شارات ترخيص/تأمين، شعارات ثقة.
+مراجعة بصرية للواجهة بعد التغييرات ورفع أي تعديلات CSS لازمة للحفاظ على الاتساق.
+client\src\components\sections\Hero.tsx
+1-300
+Search codebase for 'National Bank Card Services|PayPal|paypal'
+Search codebase for 'Post a Project|post a project|/projects/new|/client/projects/new|/projects/create|/client/projects/create'
+Search codebase for 'export default function Home|metadata.*home|<main|HomePage|src/app/page.tsx|A-List Home Pros'
+Search codebase for '\+1-555-123-4567|555-123|\(555\)|example@|support@alishomepros|contact@|info@|support@|business hours|Mon|Sun'
+client\src\app\page.tsx
+1-420
+client\src\app\page.tsx
+421-900
+client\src\app\help\page.tsx
+1-220
+client\src\app\contact\page.tsx
+1-200
+client\src\config\site.ts
++11
+-0
+
+Review
+client\src\app\contact\page.tsx
++28
+-5
+
+Review
+homs\client
+client\src\config\site.ts
+1-220
+client\src\app\contact\page.tsx
+1-320
+client\src\app\contact\page.tsx
++1
+-23
+
+Review
+Search codebase for 'PayPal|paypal|National Bank Card Services'
+client\src\app\page.tsx
+1-300
+client\src\app\client\payments\methods\page.tsx
+1-320
+client\src\app\help\page.tsx
+1-220
+Search codebase for 'Find the Hero section component to update headline, CTA, and add 3-step explainer.'
+0/5 Tasks done
+تأكيد أن Hero في الصفحة الرئيسية يعرض العنوان والـ CTA والشرح بثلاث خطوات كما طُلِب، وتحديثه إن لزم.
+توحيد قصة الدفع عبر الموقع: استبدال أي ذكر لـ PayPal أو National Bank Card Services بنص مركزي من config/site.ts في صفحات Pricing وHelp وطرق الدفع وغيرها.
+استبدال أي أرقام/إيميلات placeholder في كل الصفحات بقيم مركزية من config/site.ts.
+تأكيد أن Hero في الصفحة الرئيسية يعرض العنوان والـ CTA والشرح بثلاث خطوات كما طُلِب، وتحديثه إن لزم.
+توحيد قصة الدفع عبر الموقع: استبدال أي ذكر لـ PayPal أو National Bank Card Services بنص مركزي من config/site.ts في صفحات Pricing وHelp وطرق الدفع وغيرها.
+استبدال أي أرقام/إيميلات placeholder في كل الصفحات بقيم مركزية من config/site.ts.
+إضافة عناصر الثقة للصفحة الرئيسية: testimonials، أمثلة مشاريع، شارات ترخيص/تأمين، وشريط شعارات ثقة.
+مراجعة بصرية عبر تشغيل الخادم المحلي ومعاينة التغييرات وإصلاح أي مشاكل CSS.
+client\src\config\site.ts
+1-200
+Search codebase for 'PayPal|paypal|National Bank Card Services'
+Search codebase for 'Testimonials|Testimonial|reviews|trust|badge|badges|insurance|licensed|verified'
+Search codebase for '\+1 \(555\)|555-123-4567|support@alisthomepros\.com|example@|hello@|contact@'
+client\src\components\sections\Hero.tsx
+1-250
+homs\client\public
+client\src\app\help\page.tsx
+1-260
+client\src\app\pricing\page.tsx
+1-260
+client\src\app\about\page.tsx
+190-260
+client\src\app\help\page.tsx
++17
+-7
+
+Review
+Search codebase for '(export\s+const|export\s+default)\s+.*(CONTACT_|BUSINESS_HOURS|PAYMENTS_STORY|SITE|site)'
+
+
+
+0/5 Tasks done
+تحديث الهيرو بالعنوان المطلوب وCTA "Post a Project" مع التأكد من وجود الشرح بثلاث خطوات وعرض شريط شعارات الثقة.
+
+توحيد قصة الدفع عبر كل الصفحات (Pricing, Help, About, Terms, وغيرهم) لاستخدام PAYMENTS_STORY من config/site.ts بدل PayPal/National Bank Card Services.
+استبدال أرقام الهاتف والإيميلات placeholder في جميع الصفحات بقيم CONTACT_PHONE/CONTACT_EMAIL وساعات العمل BUSINESS_HOURS_* من config/site.ts.
+تحديث الهيرو بالعنوان المطلوب وCTA "Post a Project" مع التأكد من وجود الشرح بثلاث خطوات وعرض شريط شعارات الثقة.
+توحيد قصة الدفع عبر كل الصفحات (Pricing, Help, About, Terms, وغيرهم) لاستخدام PAYMENTS_STORY من config/site.ts بدل PayPal/National Bank Card Services.
+استبدال أرقام الهاتف والإيميلات placeholder في جميع الصفحات بقيم CONTACT_PHONE/CONTACT_EMAIL وساعات العمل BUSINESS_HOURS_* من config/site.ts.
+تشغيل الخادم المحلي ومعاينة التغييرات بصرياً وإصلاح أي مشاكل CSS.
+إضافة عناصر الثقة في الصفحة الرئيسية: testimonials، أمثلة مشاريع من البيانات الموجودة، شارات ترخيص/تأمين، وشريط شعارات (Angie’s List, Trustpilot
+
+3 tasks
+
+تحميل شعارات Florida Contractors Association و Better Business Bureau و HomeAdvisor و Angie's List
+
+تحديث مكون Hero لعرض الشعارات الجديدة
+
+التحقق من عرض الشعارات في الصفحة الرئيسية
+
+تحديث مسارات الشعارات في مكون Hero
+
+التحقق من عرض الشعارات في الصفحة الرئيسية
+
+إعادة تشغيل الخادم المحلي لمعاينة التغييرات
+
+تحديث أحجام الشعارات في مكون Hero لتكون ضعف الحجم الحالي
+
+التحقق من عرض الشعارات بالحجم الجديد في الصفحة الرئيسية
+
+ضبط المسافات بين الشعارات إذا لزم الأمر
+
+
+
+### 2. الإجراءات التالية:
+1. 1.
+   إنشاء ملف sitemap.xml يحتوي على جميع صفحات الموقع
+2. 2.
+   تنفيذ العناوين والأوصاف التعريفية الفريدة لكل صفحة
+3. 3.
+   إضافة مخططات JSON-LD للمنظمة والأعمال المحلية والأسئلة الشائعة والمنتجات
+4. 4.
+   تكوين Open Graph و Twitter Cards لتحسين مشاركة الروابط
+
+### 4. الموارد المطلوبة:
+- مطور واجهة أمامية لتنفيذ التغييرات
+- مختص SEO لمراجعة التنفيذ
+- أدوات اختبار SEO للتحقق من صحة التنفيذ
+
+
+6/6 Tasks done
+
+All tasks completed
+
+تحليل هيكل المشروع وفهم البنية الحالية
+
+إنشاء ملف robots.txt وإضافته للمشروع
+
+إنشاء ملف sitemap.xml وإضافته للمشروع
+
+تنفيذ العناوين والأوصاف التعريفية الفريدة لجميع الصفحات
+
+تنفيذ مخطط JSON-LD للمنظمة والأعمال المحلية والأسئلة الشائعة والمنتجات
+
+ضمان إعداد Open Graph و Twitter Cards لمشاركة الروابط بشكل نظيف
+
+
+
+3/4 Tasks done
+
+إصلاح خطأ في صفحة about/page.tsx - مشكلة في بنية JSX
+
+التحقق من تثبيت جميع التبعيات المطلوبة
+
+تشغيل البناء مرة أخرى للتأكد من حل جميع الأخطاء
+
+إصلاح خطأ في مكون ProjectIntakeForm.tsx - مشكلة في استيراد framer-motion
+
+إصلاح خطأ في صفحة about/page.tsx - مشكلة في بنية JSX
+
+التحقق من تثبيت جميع التبعيات المطلوبة
+
+تشغيل البناء مرة أخرى للتأكد من حل جميع الأخطاء
+
+
+5/5 Tasks done
+
+All tasks completed
+
+إصلاح خطأ BookConsultationModal.tsx ليكون وحدة نمطية صحيحة
+
+إصلاح خطأ تصدير AuthProvider في src/components/providers/AuthProvider.tsx
+
+إصلاح خطأ تصدير ToastProvider في src/components/providers/ToastProvider.tsx
+
+تشغيل البناء النهائي للتأكد من حل جميع الأخطاء
+
+إصلاح خطأ TypeScript في layout.tsx - 'pathname' is possibly 'null'

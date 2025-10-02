@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <circle cx="150" cy="150" r="140" fill="#0072bc"/>
+  <path d="M150,50 C160,80 190,90 190,90 C190,90 160,100 150,130 C140,100 110,90 110,90 C110,90 140,80 150,50 Z" fill="white"/>
+  <rect x="110" y="150" width="80" height="20" fill="white"/>
+  <text x="150" y="210" font-family="Arial, sans-serif" font-weight="bold" font-size="30" fill="white" text-anchor="middle">BBB</text>
+  <text x="150" y="240" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">ACCREDITED</text>
+  <text x="150" y="260" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">BUSINESS</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <circle cx="200" cy="200" r="190" fill="#000000"/>
+  <path d="M200,50 L200,350 M50,200 L350,200" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M100,100 L300,100 L350,150 L350,250 L300,300 L100,300 L50,250 L50,150 Z" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <path d="M100,150 L100,100 L150,50 L250,50 L300,100 L300,150 M100,250 L100,300 L150,350 L250,350 L300,300 L300,250" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M80,200 C80,120 320,120 320,200 C320,280 80,280 80,200 Z" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <path d="M150,150 L150,100 L250,100 L250,150 M150,250 L150,300 L250,300 L250,250" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M100,150 L100,250 M300,150 L300,250" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M150,150 L150,250 M250,150 L250,250" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M100,200 L150,200 M250,200 L300,200" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M150,150 L250,150 M150,250 L250,250" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M120,120 L120,280 M280,120 L280,280" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M120,120 L280,120 M120,280 L280,280" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M120,200 L280,200" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M200,120 L200,280" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M120,160 L280,160 M120,240 L280,240" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M160,120 L160,280 M240,120 L240,280" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M80,160 L120,160 M80,240 L120,240" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M280,160 L320,160 M280,240 L320,240" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M160,80 L160,120 M240,80 L240,120" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M160,280 L160,320 M240,280 L240,320" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M100,100 L120,120 M300,100 L280,120" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M100,300 L120,280 M300,300 L280,280" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M150,50 L160,80 M250,50 L240,80" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <path d="M150,350 L160,320 M250,350 L240,320" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <text x="200" y="190" font-family="Arial, sans-serif" font-weight="bold" font-size="30" fill="#ff0000" text-anchor="middle">AGC</text>
+  <path d="M70,30 C90,40 120,20 150,30 C180,40 220,40 250,30 C280,20 310,40 330,30 C330,30 330,370 330,370 C310,360 280,380 250,370 C220,360 180,360 150,370 C120,380 90,360 70,370 C70,370 70,30 70,30 Z" fill="#ffffff" opacity="0.1"/>
+  <text x="200" y="30" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">ASSOCIATED GENERAL CONTRACTORS</text>
+  <text x="200" y="370" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">GREATER FLORIDA</text>
+</svg>

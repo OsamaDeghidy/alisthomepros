@@ -1,6 +1,7 @@
 'use client';
 
 import { Shield, Lock, Eye, Users, CreditCard, FileText, Clock, Mail, CheckCircle } from 'lucide-react';
+import { PAYMENTS_PROVIDER_NAME, CONTACT_EMAIL } from '@/config/site';
 
 export default function PrivacyPage() {
   const sections = [
@@ -41,7 +42,7 @@ export default function PrivacyPage() {
         '• Debit or credit card',
         '• Personal home improvement loan (subject to third-party approval)',
         '',
-        'We use National Bank Card Services to securely process all payment methods. Your card or bank information is never stored on our servers.'
+        `We use ${PAYMENTS_PROVIDER_NAME} to securely process all payment methods. Your card or bank information is never stored on our servers.`
       ]
     },
     {
@@ -80,7 +81,7 @@ export default function PrivacyPage() {
       title: 'Your Rights',
       icon: CheckCircle,
       content: [
-        'You have the right to access, correct, or delete your personal data. You may also request that we stop processing your information or provide a portable copy. To make a privacy request, contact us at legal@alisthomepros.com.',
+        `You have the right to access, correct, or delete your personal data. You may also request that we stop processing your information or provide a portable copy. To make a privacy request, contact us at ${CONTACT_EMAIL}.`,
         '',
         'We respond to all verified requests within 30 days.'
       ]
@@ -211,11 +212,11 @@ export default function PrivacyPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="mailto:legal@alisthomepros.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="bg-primary-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors duration-200 flex items-center"
               >
                 <Mail className="h-5 w-5 mr-2" />
-                legal@alisthomepros.com
+                {CONTACT_EMAIL}
               </a>
               <span className="text-gray-500">We respond within 30 days</span>
             </div>

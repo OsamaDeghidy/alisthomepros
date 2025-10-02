@@ -12,8 +12,37 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from .models import Notification
 from .serializers import NotificationSerializer, NotificationUpdateSerializer
+from rest_framework.pagination import PageNumberPagination
+import logging
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 
 User = get_user_model()
+logger = logging.getLogger(__name__)
+
+
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+def broadcast_notification_ws(notification):
+    """Broadcast a single notification over the user's WebSocket group."""
+    try:
+        channel_layer = get_channel_layer()
+        if not channel_layer:
+            return
+        data = NotificationSerializer(notification).data
+        async_to_sync(channel_layer.group_send)(
+            f"notifications_{notification.user_id}",
+            {
+                'type': 'send_notification',
+                'notification': data,
+            },
+        )
+    except Exception as e:
+        logger.warning(f"WebSocket broadcast failed: {e}")
 
 
 class NotificationListView(generics.ListAPIView):
@@ -23,6 +52,7 @@ class NotificationListView(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['type', 'is_read']
     ordering = ['-created_at']
+    pagination_class = StandardResultsSetPagination
     
     def get_queryset(self):
         return Notification.objects.filter(user=self.request.user)
@@ -64,8 +94,12 @@ class NotificationUpdateView(generics.UpdateAPIView):
         return Notification.objects.filter(user=self.request.user)
     
     def perform_update(self, serializer):
-        if serializer.validated_data.get('is_read'):
+        is_read = serializer.validated_data.get('is_read')
+        if is_read is True:
             serializer.save(read_at=timezone.now())
+        elif is_read is False:
+            # عند وضع الإشعار كغير مقروء، نقوم بإزالة ختم الوقت read_at
+            serializer.save(read_at=None)
         else:
             serializer.save()
     
@@ -158,6 +192,9 @@ def send_project_created_notification(user, project):
             data={'project_id': project.id, 'project_slug': project.slug}
         )
         
+        # Broadcast via WebSocket
+        broadcast_notification_ws(notification)
+        
         # إرسال البريد الإلكتروني مع قالب HTML
         if user.email:
             template_context = {
@@ -184,23 +221,89 @@ def send_project_created_notification(user, project):
 def send_new_project_notifications_to_providers(project):
     """
     Send notifications to service providers whose user_type matches project required_roles
+    Uses background task processing for better performance
+    """
+    try:
+        from .tasks import send_project_notifications_async
+        
+        print(f"🔍 Project: {project.title}")
+        print(f"🔍 Scheduling background notification task for project ID: {project.id}")
+        
+        # Schedule background task for notification processing
+        task = send_project_notifications_async.delay(project.id)
+        
+        print(f"✅ Background task scheduled with ID: {task.id}")
+        
+        # Return estimated count for immediate feedback
+        # This is a quick estimate without the full processing
+        required_roles = project.required_roles or []
+        if not required_roles:
+            return 0
+        
+        # Convert roles for quick count
+        converted_roles = []
+        for role in required_roles:
+            if role == 'home-pro':
+                converted_roles.append('home_pro')
+            elif role == 'crew-member':
+                converted_roles.append('crew_member')
+            else:
+                converted_roles.append(role)
+        
+        # Quick count of potential recipients
+        estimated_count = User.objects.filter(
+            user_type__in=converted_roles,
+            is_active=True,
+            email_verified=True
+        ).exclude(
+            id=project.client.id
+        ).exclude(
+            user_type='client'
+        ).count()
+        
+        print(f"📊 Estimated notifications to be sent: {estimated_count}")
+        return estimated_count
+        
+    except ImportError:
+        # Fallback to synchronous processing if Celery is not available
+        print("⚠️ Celery not available, falling back to synchronous processing")
+        return send_new_project_notifications_to_providers_sync(project)
+    except Exception as e:
+        print(f"❌ Error scheduling notification task: {str(e)}")
+        # Fallback to synchronous processing
+        return send_new_project_notifications_to_providers_sync(project)
+
+
+def send_new_project_notifications_to_providers_sync(project):
+    """
+    Synchronous version of notification sending (fallback)
     """
     try:
         # Get required roles from project
         required_roles = project.required_roles or []
         
-        print(f"🔍 Project: {project.title}")
+        print(f"🔍 Project: {project.title} (sync mode)")
         print(f"🔍 Required roles: {required_roles}")
-        print(f"🔍 Project client: {project.client.email} (ID: {project.client.id})")
         
         if not required_roles:
             print(f"⚠️ No required roles specified for project: {project.title}")
             return 0
         
+        # Convert frontend role format to backend format
+        converted_roles = []
+        for role in required_roles:
+            if role == 'home-pro':
+                converted_roles.append('home_pro')
+            elif role == 'crew-member':
+                converted_roles.append('crew_member')
+            else:
+                converted_roles.append(role)
+        
+        print(f"🔄 Converted roles: {converted_roles}")
+        
         # Find service providers whose user_type matches required roles
-        # Exclude clients and the project creator
         matching_providers = User.objects.filter(
-            user_type__in=required_roles,
+            user_type__in=converted_roles,
             is_active=True,
             email_verified=True
         ).exclude(
@@ -229,6 +332,9 @@ def send_new_project_notifications_to_providers(project):
                     data={'project_id': project.id, 'project_slug': project.slug}
                 )
                 
+                # Broadcast via WebSocket
+                broadcast_notification_ws(notification)
+                
                 # Send email notification
                 if provider.email:
                     template_context = {
@@ -252,11 +358,11 @@ def send_new_project_notifications_to_providers(project):
                 print(f"⚠️ Failed to send notification to provider {provider.email}: {str(e)}")
                 continue
         
-        print(f"✅ Sent {notification_count} notifications to matching service providers for project: {project.title}")
+        print(f"✅ Sent {notification_count} notifications to matching service providers for project: {project.title} (sync)")
         return notification_count
         
     except Exception as e:
-        print(f"⚠️ Failed to send project notifications to providers: {str(e)}")
+        print(f"⚠️ Failed to send project notifications to providers (sync): {str(e)}")
         return 0
 
 
@@ -271,6 +377,9 @@ def create_and_send_notification(user, title, message, notification_type='system
         title=title,
         message=message
     )
+    
+    # Broadcast via WebSocket
+    broadcast_notification_ws(notification)
     
     # إرسال البريد الإلكتروني إذا كان مطلوباً
     if send_email and user.email:

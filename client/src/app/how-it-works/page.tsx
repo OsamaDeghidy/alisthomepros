@@ -22,9 +22,15 @@ import {
   Award,
   MessageSquare,
   Clock,
-  DollarSign
+  DollarSign,
+  AlertCircle,
+  ThumbsUp
 } from 'lucide-react';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+// استيراد مكون زر حجز المكالمة الاستشارية بشكل ديناميكي
+const BookConsultationButton = dynamic(() => import('../components/BookConsultationButton'), { ssr: false });
 
 export default function HowItWorksPage() {
   const [activeTab, setActiveTab] = useState('client');
@@ -38,14 +44,14 @@ export default function HowItWorksPage() {
       color: 'primary'
     },
     {
-      id: 'home-pro',
+      id: 'home_pro',
       title: 'Home Pros',
       description: 'Professional contractors',
       icon: Hammer,
       color: 'accent'
     },
     {
-      id: 'crew-member',
+      id: 'crew_member',
       title: 'Crew Members',
       description: 'Skilled trade workers',
       icon: Users,
@@ -95,7 +101,7 @@ export default function HowItWorksPage() {
         features: ['Milestone Approval', 'Fund Release', 'Review System', 'Quality Assurance']
       }
     ],
-    'home-pro': [
+    'home_pro': [
       {
         step: '01',
         title: 'Set Up Profile',
@@ -129,7 +135,7 @@ export default function HowItWorksPage() {
         features: ['Automatic Payment', 'Milestone Release', 'Review Building', 'Job Growth']
       }
     ],
-    'crew-member': [
+    'crew_member': [
       {
         step: '01',
         title: 'Build Profile',
@@ -361,7 +367,7 @@ export default function HowItWorksPage() {
               </p>
               <div className="space-y-3">
                 <Link
-                  href="/register?type=home-pro"
+                  href="/register?type=home_pro"
                   className="bg-accent-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-600 transition-colors duration-200 flex items-center justify-center space-x-2 w-full"
                 >
                   <Hammer className="h-4 w-4" />
@@ -390,7 +396,7 @@ export default function HowItWorksPage() {
               </p>
               <div className="space-y-3">
                 <Link
-                  href="/register?type=crew-member"
+                  href="/register?type=crew_member"
                   className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors duration-200 flex items-center justify-center space-x-2 w-full"
                 >
                   <Users className="h-4 w-4" />
