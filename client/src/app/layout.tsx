@@ -9,6 +9,10 @@ import { AuthProvider } from '@/components/providers/AuthProvider';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { useAuthStore } from '@/lib/store';
+import GuestHeader from '@/components/layout/GuestHeader';
+import GuestFooter from '@/components/layout/GuestFooter';
+import { SITE_MODE } from '@/config/site';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -69,16 +73,33 @@ export default function RootLayout({
   // تحديد الصفحات التي يجب أن يظهر فيها مكون StickyCallToAction
   const showStickyCallToAction = pathname ? ['/how-it-works', '/'].includes(pathname) : false;
 
+  // تحديد ما إذا كانت الصفحة الحالية ضمن "واجهة الزوار البسيطة"
+  // If SITE_MODE is 'gateway', we use the Guest layout for the root and specified paths.
+  // Explicit /guest paths always use the guest layout.
+  const guestPaths = ['/', '/about', '/contact', '/gallery', '/referral'];
+  const isGuestPage = pathname?.startsWith('/guest') || 
+                     (SITE_MODE === 'gateway' && guestPaths.includes(pathname || ''));
+
   return (
     <html lang="en" dir="ltr">
       <body className={inter.className}>
         <AuthProvider>
           <ToastProvider>
-            <Header />
-            <main className="min-h-screen">{children}</main>
-            <Footer />
-            {showStickyCallToAction && <StickyCallToAction />}
-            <ExitIntent />
+            {isGuestPage ? (
+              <>
+                <GuestHeader />
+                <main className="min-h-screen">{children}</main>
+                <GuestFooter />
+              </>
+            ) : (
+              <>
+                <Header />
+                <main className="min-h-screen">{children}</main>
+                <Footer />
+                {showStickyCallToAction && <StickyCallToAction />}
+                <ExitIntent />
+              </>
+            )}
           </ToastProvider>
         </AuthProvider>
       </body>

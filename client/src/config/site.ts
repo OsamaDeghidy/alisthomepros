@@ -1,7 +1,7 @@
 // Centralized site-wide constants for contact and trust information
 // Values can be overridden via environment variables at build/runtime
 
-export const CONTACT_PHONE = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1 (800) 555-7890';
+export const CONTACT_PHONE = process.env.NEXT_PUBLIC_CONTACT_PHONE || '18668825478';
 export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@alisthomepros.com';
 
 export const BUSINESS_HOURS_WEEKDAYS = process.env.NEXT_PUBLIC_BUSINESS_HOURS_WEEKDAYS || 'Monday - Friday: 8AM - 6PM EST';
@@ -18,3 +18,10 @@ export const TRUST_LOGOS = [
   { name: 'HomeAdvisor', image: '/images/trust/homeadvisor-logo.svg' },
   { name: 'Angie\'s List', image: '/images/trust/angies-logo.svg' }
 ];
+
+// App Gateway Redirection
+export const APP_GATEWAY_URL = process.env.NEXT_PUBLIC_APP_GATEWAY_URL || 'https://alisthomepros.base44.app/';
+
+// Site Operation Mode
+export type SiteMode = 'gateway' | 'platform';
+export const SITE_MODE = (process.env.NEXT_PUBLIC_SITE_MODE as SiteMode) || 'platform';

@@ -1,0 +1,66 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export function middleware(request: NextRequest) {
+  const { pathname, searchParams } = request.nextUrl;
+  const siteMode = process.env.NEXT_PUBLIC_SITE_MODE;
+
+  // Only apply logic if in gateway mode
+  if (siteMode !== 'gateway') {
+    return NextResponse.next();
+  }
+
+  // Define gateway routes mapping
+  const gatewayRoutes: Record<string, string> = {
+    '/': '/guest',
+    '/about': '/guest/about',
+    '/gallery': '/guest/gallery',
+    '/referral': '/guest/referral',
+    '/contact': '/guest/contact',
+  };
+
+  // Case-insensitive mapping for static pages
+  const normalizedPath = pathname.toLowerCase();
+  
+  if (gatewayRoutes[normalizedPath]) {
+    const url = request.nextUrl.clone();
+    url.pathname = gatewayRoutes[normalizedPath];
+    return NextResponse.rewrite(url);
+  }
+
+  // Special handling for Profile links to show a Guest View
+  if (normalizedPath === '/profile' || normalizedPath === '/Profile') {
+     const url = request.nextUrl.clone();
+     url.pathname = '/guest/profile'; // I will create this page
+     return NextResponse.rewrite(url);
+  }
+
+  // Prevent accessing platform pages in gateway mode unless explicitly allowed
+  const platformExclusions = ['/client', '/professional', '/api', '/_next', '/images', '/favicon.ico'];
+  const isExcluded = platformExclusions.some(prefix => pathname.startsWith(prefix));
+
+  // Also exclude common file extensions
+  const isFile = pathname.includes('.');
+
+  if (!isExcluded && !isFile && !pathname.startsWith('/guest')) {
+    // For other platform pages, redirect to home or show gateway version
+    const url = request.nextUrl.clone();
+    url.pathname = '/guest';
+    return NextResponse.rewrite(url);
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
+};
