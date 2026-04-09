@@ -77,7 +77,7 @@ export default function RootLayout({
   // تحديد ما إذا كانت الصفحة الحالية ضمن "واجهة الزوار البسيطة"
   // If SITE_MODE is 'gateway', we use the Guest layout for the root and specified paths.
   // Explicit /guest paths always use the guest layout.
-  const guestPaths = ['/', '/about', '/contact', '/gallery', '/referral'];
+  const guestPaths = ['/', '/about', '/contact', '/gallery', '/referral', '/terms', '/privacy', '/safety'];
   const isGuestPage = pathname?.startsWith('/guest') || 
                      (SITE_MODE === 'gateway' && guestPaths.includes(pathname || ''));
 

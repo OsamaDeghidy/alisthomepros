@@ -36,7 +36,11 @@ export function middleware(request: NextRequest) {
   }
 
   // Prevent accessing platform pages in gateway mode unless explicitly allowed
-  const platformExclusions = ['/client', '/professional', '/api', '/_next', '/images', '/favicon.ico'];
+  // Legal pages and other standalone pages that should always be accessible directly
+  const platformExclusions = [
+    '/client', '/professional', '/api', '/_next', '/images', '/favicon.ico',
+    '/terms', '/privacy', '/safety',
+  ];
   const isExcluded = platformExclusions.some(prefix => pathname.startsWith(prefix));
 
   // Also exclude common file extensions

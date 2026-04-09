@@ -1,220 +1,196 @@
 'use client';
 
-import { Shield, Users, CreditCard, Scale, FileText, AlertTriangle, Mail, Phone } from 'lucide-react';
-import { PAYMENTS_PROVIDER_NAME, PAYMENTS_STORY, CONTACT_EMAIL, CONTACT_PHONE } from '@/config/site';
+import Link from 'next/link';
+import { ArrowRight, Shield, CheckCircle, AlertTriangle, CreditCard, Users, FileText, Lock, Scale } from 'lucide-react';
+import { APP_GATEWAY_URL, CONTACT_EMAIL, CONTACT_PHONE } from '@/config/site';
+
+const sections = [
+  {
+    id: 'acceptance',
+    icon: FileText,
+    title: '1. Acceptance of Terms',
+    body: `By accessing or using the A-List Home Professionals platform — whether via our website, mobile app, or any related services — you agree to be bound by these Terms of Service. If you do not agree, do not use the platform. These terms apply to all users: Homeowners, Home Pros, Crew Members, Specialists, and Referral Partners.`
+  },
+  {
+    id: 'platform-overview',
+    icon: Shield,
+    title: '2. What A-List Does',
+    body: `A-List Home Professionals is a private network connecting homeowners with verified home service professionals, skilled crew members, project specialists, and referral partners across South Florida. We provide tools for posting projects, hiring vetted professionals, funding work through our Project Funds Account system, communicating within the network, and managing jobs end-to-end inside the A-List app.
+
+We are a marketplace and technology provider — not a contractor of record. All service agreements are between the homeowner and the professional.`
+  },
+  {
+    id: 'user-roles',
+    icon: Users,
+    title: '3. User Roles & Responsibilities',
+    bullets: [
+      'Homeowners: Post real projects, fund them through the Project Funds Account, release payments only when milestones are met.',
+      'Home Pros: Represent your business honestly, maintain valid licenses and insurance, deliver work as agreed.',
+      'Crew Members: Provide skilled, professional labor as committed on each job.',
+      'Specialists: Coordinate projects and represent homeowners or pros with full transparency.',
+      'Referral Partners: Refer genuine users into the network and earn commissions per the referral terms.'
+    ]
+  },
+  {
+    id: 'project-funds',
+    icon: CreditCard,
+    title: '4. Project Funds Account',
+    body: `All payments on the platform are processed through our secure Project Funds Account system. Funds are held and only released when a client confirms that work has been completed or a milestone has been met.
+
+You may fund your account via ACH bank transfer, debit card, credit card, or approved home improvement financing. A-List does not store your card or bank details — all payment data is handled by our certified payment processor.
+
+Attempting to pay or receive payment outside the platform is a violation of these terms and may result in account termination.`
+  },
+  {
+    id: 'conduct',
+    icon: Scale,
+    title: '5. Code of Conduct',
+    bullets: [
+      'No misrepresentation of skills, credentials, or identity.',
+      'No payment circumvention — all transactions must flow through the Project Funds Account.',
+      'No harassment, discrimination, or abusive communication.',
+      'No fake reviews, lead manipulation, or fraudulent project postings.',
+      'No soliciting clients or pros to work outside the platform.'
+    ]
+  },
+  {
+    id: 'subscriptions',
+    icon: CheckCircle,
+    title: '6. Memberships & Subscriptions',
+    body: `A-List offers both free directory listings and paid subscription plans. Free members can create a profile but do not have access to messaging, proposals, job leads, or project tools. Paid plans unlock the full A-List network experience.
+
+Subscriptions are billed monthly. You may cancel anytime — cancellations take effect at the end of the current billing period. We do not issue prorated refunds for unused time. Plans are limited per trade category and geographic area to maintain network quality.`
+  },
+  {
+    id: 'disputes',
+    icon: AlertTriangle,
+    title: '7. Dispute Resolution',
+    body: `If a dispute arises between a homeowner and a professional, A-List offers mediation through our trust and safety team. Funds in the Project Funds Account are held during the review period.
+
+We do not guarantee specific outcomes, but we review all evidence submitted and work toward a fair resolution. Users who repeatedly file bad-faith disputes may be removed from the platform.`
+  },
+  {
+    id: 'intellectual-property',
+    icon: Lock,
+    title: '8. Intellectual Property',
+    body: `You retain ownership of content you upload (portfolio photos, project descriptions, reviews). By posting on the platform, you grant A-List a license to display this content to promote your services.
+
+All platform code, design, branding, and system architecture is the exclusive property of A-List Home Professionals, Inc. Unauthorized use, copying, or reproduction is prohibited.`
+  },
+  {
+    id: 'liability',
+    icon: Shield,
+    title: '9. Limitation of Liability',
+    body: `A-List is a technology platform that facilitates connections. We are not liable for project outcomes, contractor performance, delays, property damage, or any loss resulting from services arranged through the network. Use of the platform is at your own risk. Our maximum liability in any dispute is limited to the fees paid to A-List in the 3 months preceding the claim.`
+  },
+  {
+    id: 'termination',
+    icon: AlertTriangle,
+    title: '10. Account Termination',
+    body: `You may close your account at any time. A-List reserves the right to suspend or permanently remove users who violate these terms, compromise network integrity, or engage in fraudulent behavior. Funds held in the Project Funds Account at the time of termination may be reviewed before release depending on any active disputes.`
+  },
+  {
+    id: 'changes',
+    icon: FileText,
+    title: '11. Changes to These Terms',
+    body: `We may update these Terms of Service periodically. Continued use of the platform after any update constitutes acceptance of the new terms. The effective date at the top of this page will always reflect the most recent revision.`
+  }
+];
 
 export default function TermsPage() {
-  const sections = [
-    {
-      id: 'platform-overview',
-      title: 'Platform Overview',
-      icon: Shield,
-      content: 'A List Home Pros connects homeowners with trusted service providers, skilled workers, and project specialists for home improvement and construction-related services. We provide tools for posting projects, hiring professionals, managing jobs, funding payments through the Project Funds Account, and resolving disputes.'
-    },
-    {
-      id: 'user-roles',
-      title: 'User Roles',
-      icon: Users,
-      content: 'There are several user roles on our platform. Clients post jobs and fund the work. Home Pros offer professional services. Crew Members provide skilled labor. Specialists serve as project coordinators or homeowner representatives. Each role comes with its own permissions, responsibilities, and access.'
-    },
-    {
-      id: 'account-registration',
-      title: 'Account Registration',
-      icon: FileText,
-      content: 'To use the platform, you must register and create an account. You\'re responsible for maintaining the confidentiality of your login credentials and for all activity on your account. Misuse of your account or the platform may result in suspension or termination.'
-    },
-    {
-      id: 'payment-processing',
-      title: 'Payment Processing',
-      icon: CreditCard,
-      content: `${PAYMENTS_STORY} Clients fund their wallet before hiring a professional. Wallets can be funded using a debit card or ACH bank transfer. Payments are processed by ${PAYMENTS_PROVIDER_NAME}. A List does not store your banking or card information.`
-    },
-    {
-      id: 'project-funds-disputes',
-      title: 'Project Funds Account & Dispute Resolution',
-      icon: Scale,
-      content: 'Funds are held in a Project Funds Account and only released once the client verifies that work has been completed or a milestone has been met. If there\'s a disagreement, A List offers a dispute resolution process. We do not guarantee outcomes but will mediate based on the evidence provided.'
-    },
-    {
-      id: 'subscription-plans',
-      title: 'Subscription Plans',
-      icon: CreditCard,
-      content: 'We offer free directory listings and paid subscription plans. Free users can list their business but do not have access to tools like messaging, proposal submission, lead generation, or marketing resources. Paid plans unlock these features and more. You may upgrade or cancel your subscription anytime. Plan changes take effect at the start of your next billing cycle. We do not issue prorated refunds for unused time.'
-    },
-    {
-      id: 'conduct-standards',
-      title: 'Conduct Standards',
-      icon: Shield,
-      content: 'By using the platform, you agree to conduct business with honesty and professionalism. Misrepresentation, solicitation outside of A List, payment circumvention, harassment, or uploading harmful content may result in removal from the platform and forfeiture of funds in the Project Funds Account.'
-    },
-    {
-      id: 'intellectual-property',
-      title: 'Intellectual Property',
-      icon: FileText,
-      content: 'You retain ownership of your profile content, photos, and portfolio uploads, but grant us the right to use them to promote your services on the platform. All site content and platform code is the exclusive property of A List Home Professionals and may not be copied or reused without permission.'
-    },
-    {
-      id: 'liability-disclaimer',
-      title: 'Liability Disclaimer',
-      icon: AlertTriangle,
-      content: 'We do not guarantee the quality, timing, or success of any project. A List is a marketplace and tool provider, not the contractor on record. Use of the platform is at your own risk. We are not liable for damages, delays, or losses resulting from services rendered by professionals listed on the platform.'
-    },
-    {
-      id: 'account-termination',
-      title: 'Account Termination',
-      icon: Users,
-      content: 'You may close your account at any time. We reserve the right to remove users who violate our terms or compromise the integrity of the platform. Funds held in the Project Funds Account at the time of termination may be reviewed before release.'
-    },
-    {
-      id: 'terms-updates',
-      title: 'Terms Updates',
-      icon: FileText,
-      content: 'We may update these Terms periodically. Continued use of the platform means you accept the updated version. A timestamp of the last revision will always be visible.'
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6">
-              <Scale className="h-5 w-5 mr-2" />
-              <span className="text-sm font-semibold">Legal Document</span>
-            </div>
-            <h1 className="font-heading font-bold text-5xl lg:text-6xl mb-6">
-              Terms of Service
-            </h1>
-            <p className="text-xl text-primary-100 max-w-3xl mx-auto mb-8">
-              Welcome to A List Home Professionals. By using our platform, services, or website, you agree to these Terms of Service. Please read them carefully.
-            </p>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 inline-block">
-              <p className="text-primary-100 text-sm">
-                <strong>Last Updated:</strong> July 2025
-              </p>
-            </div>
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
+
+      {/* Hero */}
+      <div className="bg-gray-950 text-white py-24 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-xs font-black uppercase tracking-widest mb-8">
+            <Scale className="w-4 h-4" /> Legal Document
           </div>
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-6">
+            Terms of Service
+          </h1>
+          <p className="text-xl text-white/60 max-w-2xl mx-auto font-medium leading-relaxed">
+            By using A-List Home Professionals, you agree to the following terms. Please read them carefully before entering the network.
+          </p>
+          <p className="mt-6 text-white/40 text-sm font-bold uppercase tracking-widest">
+            Effective Date: July 1, 2025
+          </p>
         </div>
       </div>
 
-      {/* Table of Contents */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-white rounded-2xl p-8 shadow-lg mb-12">
-          <h2 className="font-heading font-bold text-2xl text-dark-900 mb-6 text-center">
-            Table of Contents
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {sections.map((section, index) => {
-              const IconComponent = section.icon;
-              return (
-                <a
-                  key={index}
-                  href={`#${section.id}`}
-                  className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-colors duration-200 group"
-                >
-                  <div className="bg-gray-100 group-hover:bg-primary-100 p-2 rounded-lg mr-4 transition-colors duration-200">
-                    <IconComponent className="h-5 w-5 text-gray-600 group-hover:text-primary-600" />
-                  </div>
-                  <span className="font-medium text-gray-900 group-hover:text-primary-700">
-                    {section.title}
-                  </span>
-                </a>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Content Sections */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="space-y-12">
-          {sections.map((section, index) => {
-            const IconComponent = section.icon;
-            return (
-              <div key={index} id={section.id} className="bg-white rounded-2xl p-8 shadow-sm">
-                <div className="flex items-center mb-6">
-                  <div className="bg-primary-100 p-3 rounded-lg mr-4">
-                    <IconComponent className="h-6 w-6 text-primary-600" />
-                  </div>
-                  <h2 className="font-heading font-bold text-2xl text-dark-900">
-                    {section.title}
-                  </h2>
+      {/* Content */}
+      <div className="max-w-3xl mx-auto px-4 py-20 space-y-16">
+        {sections.map((section) => {
+          const Icon = section.icon;
+          return (
+            <div key={section.id} id={section.id} className="scroll-mt-8">
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-xl flex items-center justify-center shrink-0">
+                  <Icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                 </div>
-                <div className="prose prose-gray max-w-none">
-                  <p className="text-gray-700 leading-relaxed text-lg">
-                    {section.content}
-                  </p>
+                <h2 className="text-2xl font-black tracking-tight text-gray-900 dark:text-white">{section.title}</h2>
+              </div>
+
+              {section.body && (
+                <div className="pl-14 space-y-4">
+                  {section.body.split('\n\n').map((para, i) => (
+                    <p key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">{para}</p>
+                  ))}
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              )}
+
+              {section.bullets && (
+                <ul className="pl-14 space-y-3">
+                  {section.bullets.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
+                      <span className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
       </div>
 
-      {/* Contact Section */}
-      <div className="bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center">
-            <h2 className="font-heading font-bold text-3xl mb-8">
-              Questions About Our Terms?
-            </h2>
-            <p className="text-gray-300 text-lg mb-8">
-              If you have questions about these Terms of Service, please contact us:
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-              <div className="bg-gray-800 rounded-lg p-6">
-                <Mail className="h-8 w-8 text-primary-400 mx-auto mb-4" />
-                <h3 className="font-semibold text-white mb-2">Email Support</h3>
-                <a 
-                  href={`mailto:${CONTACT_EMAIL}`} 
-                  className="text-primary-400 hover:text-primary-300 transition-colors duration-200"
-                >
-                  {CONTACT_EMAIL}
-                </a>
-              </div>
-              <div className="bg-gray-800 rounded-lg p-6">
-                <Phone className="h-8 w-8 text-primary-400 mx-auto mb-4" />
-                <h3 className="font-semibold text-white mb-2">Phone Support</h3>
-                <a 
-                  href={`tel:${CONTACT_PHONE}`} 
-                  className="text-primary-400 hover:text-primary-300 transition-colors duration-200"
-                >
-                  {CONTACT_PHONE}
-                </a>
-              </div>
-            </div>
+      {/* Questions */}
+      <div className="bg-gray-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 py-16 px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white">Questions About These Terms?</h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-8 font-medium">
+            Reach out to our team and we'll clarify anything.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="px-8 py-4 bg-gray-900 dark:bg-white dark:text-gray-900 text-white rounded-2xl font-black hover:bg-black transition-all">
+              {CONTACT_EMAIL}
+            </a>
+            <a href={`tel:${CONTACT_PHONE}`} className="px-8 py-4 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-2xl font-black hover:border-gray-400 transition-all">
+              {CONTACT_PHONE}
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Footer CTA */}
-      <div className="bg-primary-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
-            <h3 className="font-heading font-bold text-2xl mb-4">
-              Ready to Get Started?
-            </h3>
-            <p className="text-primary-100 mb-6">
-              Join thousands of homeowners and professionals on our platform.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/register"
-                className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-              >
-                Sign Up Today
-              </a>
-              <a
-                href="/how-it-works"
-                className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors duration-200"
-              >
-                Learn How It Works
-              </a>
-            </div>
-          </div>
+      {/* CTA */}
+      <div className="bg-primary-600 py-20 px-4">
+        <div className="max-w-3xl mx-auto text-center text-white">
+          <h3 className="text-4xl font-black tracking-tighter mb-4">Ready to Enter the Network?</h3>
+          <p className="text-primary-100 font-medium mb-8 text-lg">
+            South Florida's private network for serious homeowners and elite home professionals.
+          </p>
+          <Link
+            href={APP_GATEWAY_URL}
+            target="_blank"
+            className="inline-flex items-center gap-3 bg-white text-primary-600 px-10 py-5 rounded-[2rem] font-black text-lg hover:bg-primary-50 transition-all"
+          >
+            Enter the Network
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </div>
+
     </div>
   );
 }

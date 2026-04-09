@@ -26,6 +26,7 @@ export default function Footer() {
       { name: 'About Us', href: '/about' },
       { name: 'Terms of Service', href: '/terms' },
       { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Safety Standard', href: '/safety' },
       { name: 'Services', href: '/services' },
     ],
   };
@@ -107,6 +108,12 @@ export default function Footer() {
               className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
             >
               Privacy Policy
+            </Link>
+            <Link
+              href="/safety"
+              className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+            >
+              Safety Standard
             </Link>
             <Link
               href="/contact"

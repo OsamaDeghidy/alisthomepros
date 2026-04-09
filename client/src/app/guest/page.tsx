@@ -679,6 +679,7 @@ export default function GuestHomePage() {
             <div className="flex justify-center gap-12 text-gray-400 font-bold text-xs uppercase tracking-widest">
                <Link href="/privacy" className="hover:text-primary-600 transition-colors">Privacy</Link>
                <Link href="/terms" className="hover:text-primary-600 transition-colors">Terms</Link>
+               <Link href="/safety" className="hover:text-primary-600 transition-colors">Safety</Link>
                <Link href="/about" className="hover:text-primary-600 transition-colors">How it works</Link>
             </div>
          </div>
