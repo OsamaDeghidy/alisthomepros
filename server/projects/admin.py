@@ -158,8 +158,8 @@ class ProjectUpdateAdmin(admin.ModelAdmin):
 # Intake leads admin
 @admin.register(IntakeLead)
 class IntakeLeadAdmin(admin.ModelAdmin):
-    list_display = ['full_name', 'email', 'phone', 'status', 'consent', 'source_path', 'language', 'created_at']
-    list_filter = ['status', 'consent', 'language', 'created_at']
+    list_display = ['full_name', 'email', 'phone', 'lead_source', 'role_type', 'service_type', 'status', 'consent', 'source_path', 'language', 'created_at']
+    list_filter = ['status', 'consent', 'language', 'lead_source', 'role_type', 'created_at']
     search_fields = ['full_name', 'email', 'phone', 'message', 'source_path']
     readonly_fields = ['created_at', 'updated_at']
     actions = ['mark_contacted', 'mark_converted']

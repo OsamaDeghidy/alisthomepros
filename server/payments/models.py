@@ -307,7 +307,7 @@ class EscrowAccount(models.Model):
         super().save(*args, **kwargs)
     
     def fund_escrow(self):
-        """Fund the escrow account"""
+        """Fund the Project Funds Account"""
         self.status = 'funded'
         self.funded_at = timezone.now()
         
@@ -348,7 +348,7 @@ class EscrowAccount(models.Model):
         return False
     
     def refund_escrow(self, reason=''):
-        """Refund escrow to client"""
+        """Refund the Project Funds Account back to client"""
         if self.status in ['funded', 'disputed']:
             # Refund to client (minus processing fees already charged)
             refund_amount = self.amount - self.processing_fee_amount

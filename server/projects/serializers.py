@@ -261,7 +261,7 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
                             status='draft'  # Temporary status
                         )
                         
-                        # Create escrow account linked to temporary contract
+                        # Create Project Funds Account linked to temporary contract
                         escrow = EscrowAccount.objects.create(
                             client=client,
                             professional=client,  # Temporary - will be updated when proposal is accepted
@@ -294,14 +294,14 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
                             escrow=escrow
                         )
                         
-                        # Create payment record linked to escrow
+                        # Create payment record linked to Project Funds Account
                         Payment.objects.create(
                             payer=client,
                             payee=client,  # For project payments, client is both payer and payee initially
                             amount=Decimal(str(project_cost)),
                             payment_type='project_payment',
                             status='succeeded',
-                            description=f"Payment for project: {project.title}",
+                            description=f"Project Funds Account for project: {project.title}",
                             contract=temp_contract,
                             escrow=escrow,
                             gross_amount=Decimal(str(project_cost)),
@@ -406,7 +406,7 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
         if new_status == 'cancelled' and old_status != 'cancelled' and instance.is_paid:
             with transaction.atomic():
                 try:
-                    # Find the temporary contract and escrow for this project
+                    # Find the temporary contract and Project Funds Account for this project
                     temp_contracts = Contract.objects.filter(
                         project=instance,
                         client=instance.client,
@@ -417,7 +417,7 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
                     if temp_contracts.exists():
                         temp_contract = temp_contracts.first()
                         
-                        # Find associated escrow account
+                        # Find associated Project Funds Account
                         escrow_accounts = EscrowAccount.objects.filter(
                             contract=temp_contract,
                             client=instance.client,
@@ -449,7 +449,7 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
                                     description=f"Refund for cancelled project: {instance.title}"
                                 )
                                 
-                                # Update escrow status
+                                # Update Project Funds Account status
                                 escrow.status = 'refunded'
                                 escrow.save()
                                 
@@ -466,7 +466,7 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
                             else:
                                 print(f"❌ Insufficient pending balance for refund. Required: ${refund_amount}, Available: ${wallet.pending_balance}")
                         else:
-                            print(f"❌ No funded escrow account found for project {instance.title}")
+                            print(f"❌ No funded Project Funds Account found for project {instance.title}")
                     else:
                         print(f"❌ No temporary contract found for project {instance.title}")
                         
