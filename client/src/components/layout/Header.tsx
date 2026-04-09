@@ -5,16 +5,20 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
-import { Menu, X, Bell, User, Briefcase, Users, MessageCircle, Settings, Plus, Search, BarChart3, DollarSign, Heart, FileText, Home, Info, Phone, HelpCircle, Calendar, Clock, CheckSquare, Timer, ChevronDown, LogOut, Crown, FileCheck, Send, Star, Eye, CreditCard, Shield } from 'lucide-react';
+import { Menu, X, Bell, User, Briefcase, Users, MessageCircle, Settings, Plus, Search, BarChart3, DollarSign, Heart, FileText, Home, Info, Phone, HelpCircle, Calendar, Clock, CheckSquare, Timer, ChevronDown, LogOut, Crown, FileCheck, Send, Star, Eye, CreditCard, Shield, Sun, Moon } from 'lucide-react';
 import { getMainNavRoutes, type UserRole } from '@/lib/routes';
 import { useAuthStore } from '@/lib/store';
 import { authService } from '@/lib/auth';
 import { getMediaUrl } from '@/lib/utils';
+import { useTheme } from 'next-themes';
+import { BrandLogo } from '../ui/BrandLogo';
 import NotificationDropdown from '../NotificationDropdown';
 import { notificationsApi } from '@/services/notificationsApi';
 import Cookies from 'js-cookie';
 
 function Header() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
@@ -26,8 +30,13 @@ function Header() {
 
   // Prevent hydration mismatch by ensuring client-side rendering
   useEffect(() => {
+    setMounted(true);
     setIsClient(true);
   }, []);
+  
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
   
   // Fetch unread notifications count
   useEffect(() => {
@@ -226,21 +235,19 @@ function Header() {
   const userDropdownItems = getUserDropdownItems();
 
   return (
-    <header className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-blue-100/50 shadow-lg">
+    <header className="sticky top-0 z-50 bg-white/95 dark:bg-black/95 backdrop-blur-md border-b border-primary-100/50 dark:border-primary-900/30 shadow-lg transition-colors duration-300">
       {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-50/40 to-cyan-50/30 -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-50/40 to-accent-50/30 dark:from-primary-900/10 dark:to-transparent -z-10"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <Image 
-                src="/logo.png" 
-                alt="A-List Home Pros" 
-                width={120}
-                height={60}
-                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              <BrandLogo 
+                width={180}
+                height={90}
+                className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
               />
             </div>
           </Link>
@@ -253,19 +260,19 @@ function Header() {
                   <button
                     className={`group relative px-3 py-2 font-medium text-xs rounded-lg transition-all duration-300 flex items-center space-x-1 ${
                       isActivePage(item.href) || item.submenu.some(sub => isActivePage(sub.href))
-                        ? 'text-blue-600 bg-blue-50'
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50/50'
+                        ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/10'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50/50 dark:hover:bg-primary-900/5'
                     }`}
                   >
                     <span className="relative z-10">{item.name}</span>
                     <ChevronDown className="h-3 w-3" />
                   </button>
-                  <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-dark-900 rounded-lg shadow-lg border border-primary-100/20 dark:border-primary-800/20 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     {item.submenu.map((subItem) => (
                       <Link
                         key={subItem.name}
                         href={subItem.href}
-                        className="flex items-center space-x-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                        className="flex items-center space-x-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/40 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                       >
                         <span>{subItem.name}</span>
                       </Link>
@@ -273,36 +280,45 @@ function Header() {
                   </div>
                 </div>
               ) : (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`group relative px-3 py-2 font-medium text-xs rounded-lg transition-all duration-300 ${
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`group relative px-3 py-2 font-medium text-xs rounded-lg transition-all duration-300 ${
                     isActivePage(item.href)
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50/50'
-                  }`}
-                >
-                  <span className="relative z-10">{item.name}</span>
-                  {isActivePage(item.href) && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-lg"></div>
-                  )}
-                  {!isActivePage(item.href) && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
-                  )}
-                </Link>
+                      ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/10'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50/50 dark:hover:bg-primary-900/5'
+                    }`}
+                  >
+                    <span className="relative z-10">{item.name}</span>
+                    {isActivePage(item.href) && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-lg"></div>
+                    )}
+                    {!isActivePage(item.href) && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
+                    )}
+                  </Link>
               )
             ))}
           </nav>
 
           {/* Right Side */}
           <div className="flex items-center space-x-2">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 mr-1 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+              aria-label="Toggle theme"
+            >
+              {mounted && (theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
+            </button>
+
             {/* Authenticated User Section */}
             {isAuthenticated && user ? (
               <div className="flex items-center space-x-4">
                 {/* Action Button */}
                 <Link
                   href={userRole === 'client' ? '/post-project' : '/find-work'}
-                  className="hidden md:flex bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                  className="hidden md:flex bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium shadow-md hover:shadow-primary-500/20"
                 >
                   {userRole === 'client' ? 'Post Project' : 'Find Work'}
                 </Link>
@@ -311,7 +327,7 @@ function Header() {
                 <div className="hidden md:block relative">
                   <button 
                     onClick={() => setIsNotificationOpen(!isNotificationOpen)}
-                    className="p-2 text-gray-600 hover:text-blue-600 transition-colors relative"
+                    className="p-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors relative"
                   >
                     <Bell className="h-5 w-5" />
                     {unreadCount > 0 && (
@@ -333,7 +349,7 @@ function Header() {
                 <div className="relative">
                   <button
                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center space-x-2 p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/10 transition-colors"
                   >
                     <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200">
                       <Image
@@ -400,7 +416,7 @@ function Header() {
                     </Link>
                     <Link
                       href="/register"
-                      className="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg"
+                      className="px-6 py-2 bg-gradient-to-r from-primary-600 to-accent-600 text-white text-sm font-medium rounded-lg hover:from-primary-700 hover:to-accent-700 transition-all duration-200 shadow-md hover:shadow-primary-500/20"
                     >
                       Sign Up
                     </Link>
@@ -412,7 +428,7 @@ function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 text-gray-600 hover:text-blue-600 transition-colors"
+              className="lg:hidden p-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -422,7 +438,7 @@ function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200">
+        <div className="lg:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
           <div className="px-4 py-4 space-y-2">
             {/* Authenticated User Mobile Section */}
             {isAuthenticated && user ? (
@@ -451,7 +467,7 @@ function Header() {
                 {/* Action Button - Mobile */}
                 <Link
                   href={userRole === 'client' ? '/post-project' : '/find-work'}
-                  className="flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg mb-4"
+                  className="flex items-center justify-center bg-gradient-to-r from-primary-500 to-accent-600 text-white px-4 py-3 rounded-xl font-semibold hover:from-primary-600 hover:to-accent-700 transition-all duration-300 shadow-lg mb-4"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {userRole === 'client' ? (
@@ -510,7 +526,7 @@ function Header() {
                     </Link>
                     <Link
                       href="/register"
-                      className="flex-1 text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                      className="flex-1 text-center bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Sign Up
@@ -530,11 +546,11 @@ function Header() {
                     <div key={item.name} className="space-y-1">
                       <div className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group ${
                         isActivePage(item.href) || item.submenu.some(sub => isActivePage(sub.href))
-                          ? 'bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-600'
-                          : 'text-gray-700'
+                          ? 'bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 text-primary-600'
+                          : 'text-gray-700 dark:text-gray-300'
                       }`}>
                         <IconComponent className={`h-5 w-5 ${
-                          isActivePage(item.href) || item.submenu.some(sub => isActivePage(sub.href)) ? 'text-blue-500' : 'text-gray-400'
+                          isActivePage(item.href) || item.submenu.some(sub => isActivePage(sub.href)) ? 'text-primary-500' : 'text-gray-400 dark:text-gray-500'
                         }`} />
                         <span className="font-medium">{item.name}</span>
                       </div>
@@ -547,8 +563,8 @@ function Header() {
                               href={subItem.href}
                               className={`flex items-center space-x-3 px-4 py-2 rounded-lg transition-all duration-300 group text-sm ${
                                 isActivePage(subItem.href)
-                                  ? 'bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-600'
-                                  : 'text-gray-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-600'
+                                  ? 'bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/10 dark:to-accent-900/10 text-primary-600'
+                                  : 'text-gray-600 dark:text-gray-400 hover:bg-gradient-to-r hover:from-primary-50 hover:to-accent-50 dark:hover:from-primary-900/10 dark:hover:to-accent-900/10 hover:text-primary-600'
                               }`}
                               onClick={() => setIsMenuOpen(false)}
                             >
@@ -564,18 +580,18 @@ function Header() {
                   );
                 } else {
                   return (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group ${
-                        isActivePage(item.href)
-                          ? 'bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-600'
-                          : 'text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-600'
-                      }`}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 group ${
+                          isActivePage(item.href)
+                            ? 'bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 text-primary-600'
+                            : 'text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-primary-50 hover:to-accent-50 dark:hover:from-primary-900/10 dark:hover:to-accent-900/10 hover:text-primary-600'
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
                       <IconComponent className={`h-5 w-5 ${
-                        isActivePage(item.href) ? 'text-blue-500' : 'text-gray-400 group-hover:text-blue-500'
+                        isActivePage(item.href) ? 'text-primary-500' : 'text-gray-400 dark:text-gray-500 group-hover:text-primary-500'
                       }`} />
                       <span className="font-medium">{item.name}</span>
                     </Link>

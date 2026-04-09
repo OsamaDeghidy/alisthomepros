@@ -9,6 +9,8 @@ import { Eye, EyeOff, Mail, Lock, User, CheckCircle, Shield, Users, Star } from 
 import { authService } from '@/lib/auth';
 import { useAuthStore } from '@/lib/store';
 import { RegisterData } from '@/lib/types';
+import { BrandLogo } from '@/components/ui/BrandLogo';
+import { useTheme } from 'next-themes';
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -140,84 +142,27 @@ export default function RegisterPage() {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-white dark:bg-dark-950 flex transition-colors duration-300">
       {/* Left Side - Registration Form */}
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-md w-full space-y-8">
           {/* Header */}
           <div className="text-center">
             <Link href="/" className="inline-flex items-center justify-center mb-8">
-              {/* 
-                DEVELOPMENT GUIDELINES - قواعد التطوير
-                
-                القواعد الأساسية للتطوير:
-                
-                1. تحليل الصفحات والـ APIs
-                - قراءة الكود أولاً: عند إعطاء صفحة جديدة، يجب قراءة جزء الفرونت إند والباك إند أولاً
-                - فهم الـ API: تحديد نقاط الربط (endpoints) والعناصر المطلوبة في كل API
-                - الربط الاحترافي: ربط كل حقل في الفرونت إند بما يناسبه في الباك إند بدقة
-                
-                2. إدارة الخوادم (Servers)
-                - خادم واحد للباك إند: http://127.0.0.1:8000/
-                - خادم واحد للفرونت إند: http://localhost:3000
-                - عدم فتح خوادم متعددة: تجنب إنشاء terminals كثيرة والعمل على خادمين فقط
-                
-                3. معالجة الأخطاء
-                - متابعة الأخطاء: عند ظهور خطأ، يجب متابعته وتوقع السبب
-                - حل الأخطاء بذكاء: إصلاح الخطأ دون إفساد أجزاء أخرى من النظام
-                - تجنب الأخطاء الشائعة: أخطاء المصادقة، مشاكل تثبيت المكتبات، ملفات ناقصة
-                
-                4. العمل مع النماذج (Forms)
-                - التحقق من إرسال البيانات: التأكد من أن البيانات ترسل بالشكل الصحيح
-                - حفظ النماذج: ضمان حفظ البيانات في قاعدة البيانات
-                - الربط مع الباك إند: التأكد من ربط النموذج بالـ API المناسب
-                
-                5. التطوير الذكي
-                - الكفاءة في التطوير: إنجاز المطلوب بأقل تعقيد ممكن
-                - عدم إفساد الأجزاء الأخرى: الحذر عند تطوير جزء معين لعدم تأثير أجزاء أخرى
-                - إضافة عناصر جديدة: عند الحاجة لإضافة عناصر في الصفحة، ربطها بالباك إند حسب المطلوب
-                
-                6. هيكل المشروع
-                homs/
-                ├── client/          # Frontend (Next.js)
-                │   ├── src/
-                │   │   ├── app/     # Pages
-                │   │   ├── components/  # Components
-                │   │   └── lib/     # Utilities & Services
-                │   └── package.json
-                └── server/          # Backend (Django)
-                    ├── authentication/
-                    ├── projects/
-                    ├── proposals/
-                    └── manage.py
-                
-                7. اللغة المستخدمة في العمل
-                - اللغة الإنجليزية: جميع أعمال التطوير والبرمجة ستكون باللغة الإنجليزية
-                - أسماء المتغيرات والدوال: يجب أن تكون باللغة الإنجليزية
-                - التعليقات في الكود: يفضل كتابتها باللغة الإنجليزية
-                - أسماء الملفات والمجلدات: باللغة الإنجليزية فقط
-                
-                8. نصائح إضافية
-                - استخدام Git بحذر: عمل commit للتغييرات المهمة
-                - اختبار الوظائف: التأكد من عمل الوظائف قبل الانتقال للمرحلة التالية
-                - التوثيق: توثيق التغييرات المهمة في هذا الملف
-              */}
-              <div className="bg-gradient-to-r from-primary-500 to-accent-500 p-2 rounded-xl">
-                <img src="/logo.svg" alt="A-List Home Pros" className="h-8 w-auto" />
-              </div>
+              <BrandLogo className="h-16 w-auto" />
             </Link>
             
-            <h2 className="font-heading font-bold text-3xl text-dark-900 mb-2">
+            <h2 className="font-heading font-bold text-3xl text-dark-900 dark:text-white mb-2">
               Create New Account
             </h2>
-            <p className="text-dark-600">
+            <p className="text-dark-600 dark:text-dark-400">
               Join thousands of homeowners and professionals
             </p>
           </div>
 
           {/* Account Type Selection */}
           <div className="mb-6">
-            <label className="block text-sm font-medium text-dark-700 mb-3">
+            <label className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-3">
               Account Type
             </label>
             <div className="grid grid-cols-2 gap-4">
@@ -226,8 +171,8 @@ export default function RegisterPage() {
                 onClick={() => setAccountType('client')}
                 className={`p-4 rounded-xl border-2 transition-all duration-200 ${
                   accountType === 'client'
-                    ? 'border-primary-500 bg-primary-50 text-primary-700'
-                    : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
+                    ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400'
+                    : 'border-gray-200 dark:border-dark-800 bg-white dark:bg-dark-900 text-gray-700 dark:text-dark-400 hover:border-gray-300 dark:hover:border-dark-700'
                 }`}
               >
                 <Users className={`h-8 w-8 mx-auto mb-2 ${accountType === 'client' ? 'text-primary-500' : 'text-gray-400'}`} />
@@ -239,8 +184,8 @@ export default function RegisterPage() {
                 onClick={() => setAccountType('professional')}
                 className={`p-4 rounded-xl border-2 transition-all duration-200 ${
                   accountType !== 'client'
-                    ? 'border-primary-500 bg-primary-50 text-primary-700'
-                    : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
+                    ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400'
+                    : 'border-gray-200 dark:border-dark-800 bg-white dark:bg-dark-900 text-gray-700 dark:text-dark-400 hover:border-gray-300 dark:hover:border-dark-700'
                 }`}
               >
                 <Shield className={`h-8 w-8 mx-auto mb-2 ${accountType !== 'client' ? 'text-primary-500' : 'text-gray-400'}`} />
@@ -252,22 +197,22 @@ export default function RegisterPage() {
             {/* Professional Type Selection */}
             {accountType !== 'client' && (
               <div className="mt-4 space-y-2">
-                <label className="block text-sm font-medium text-dark-700">
+                <label className="block text-sm font-medium text-dark-700 dark:text-dark-300">
                   Professional Type
                 </label>
                 {userTypes.map((type) => (
-                  <label key={type.value} className="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                  <label key={type.value} className="flex items-center p-3 border dark:border-dark-800 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-900 cursor-pointer">
                     <input
                       type="radio"
                       name="userType"
                       value={type.value}
                       checked={accountType === type.value}
                       onChange={(e) => setAccountType(e.target.value as any)}
-                      className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500"
+                      className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:bg-dark-800 dark:border-dark-700"
                     />
                     <div className="ml-3">
-                      <div className="font-medium text-gray-900">{type.label}</div>
-                      <div className="text-sm text-gray-600">{type.description}</div>
+                      <div className="font-medium text-gray-900 dark:text-white">{type.label}</div>
+                      <div className="text-sm text-gray-600 dark:text-dark-400">{type.description}</div>
                     </div>
                   </label>
                 ))}
@@ -280,7 +225,7 @@ export default function RegisterPage() {
             {/* Name Fields */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="first_name" className="block text-sm font-medium text-dark-700 mb-2">
+                <label htmlFor="first_name" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
                   First Name
                 </label>
                 <div className="relative">
@@ -294,8 +239,8 @@ export default function RegisterPage() {
                         message: 'Name must be at least 2 characters'
                       }
                     })}
-                    className={`w-full bg-white border rounded-xl px-4 py-3 pl-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
-                      errors.first_name ? 'border-red-500' : 'border-gray-300'
+                    className={`w-full bg-white dark:bg-dark-900 border rounded-xl px-4 py-3 pl-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-dark-900 dark:text-white ${
+                      errors.first_name ? 'border-red-500' : 'border-gray-300 dark:border-dark-800'
                     }`}
                     placeholder="John"
                   />
@@ -306,7 +251,7 @@ export default function RegisterPage() {
                 )}
               </div>
               <div>
-                <label htmlFor="last_name" className="block text-sm font-medium text-dark-700 mb-2">
+                <label htmlFor="last_name" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
                   Last Name
                 </label>
                 <input
@@ -319,8 +264,8 @@ export default function RegisterPage() {
                       message: 'Name must be at least 2 characters'
                     }
                   })}
-                  className={`w-full bg-white border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
-                    errors.last_name ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full bg-white dark:bg-dark-900 border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-dark-900 dark:text-white ${
+                    errors.last_name ? 'border-red-500' : 'border-gray-300 dark:border-dark-800'
                   }`}
                   placeholder="Doe"
                 />
@@ -332,7 +277,7 @@ export default function RegisterPage() {
 
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-dark-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
                 Email Address
               </label>
               <div className="relative">
@@ -346,8 +291,8 @@ export default function RegisterPage() {
                       message: 'Invalid email address'
                     }
                   })}
-                  className={`w-full bg-white border rounded-xl px-4 py-3 pl-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full bg-white dark:bg-dark-900 border rounded-xl px-4 py-3 pl-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-dark-900 dark:text-white ${
+                    errors.email ? 'border-red-500' : 'border-gray-300 dark:border-dark-800'
                   }`}
                   placeholder="john@example.com"
                 />
@@ -367,7 +312,7 @@ export default function RegisterPage() {
 
             {/* Password Fields */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-dark-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
                 Password
               </label>
               <div className="relative">
@@ -385,8 +330,8 @@ export default function RegisterPage() {
                       message: 'Password must contain uppercase, lowercase and number'
                     }
                   })}
-                  className={`w-full bg-white border rounded-xl px-4 py-3 pl-10 pr-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
-                    errors.password ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full bg-white dark:bg-dark-900 border rounded-xl px-4 py-3 pl-10 pr-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-dark-900 dark:text-white ${
+                    errors.password ? 'border-red-500' : 'border-gray-300 dark:border-dark-800'
                   }`}
                   placeholder="Create a strong password"
                 />
@@ -394,7 +339,7 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                 >
                   {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </button>
@@ -405,7 +350,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label htmlFor="password_confirm" className="block text-sm font-medium text-dark-700 mb-2">
+              <label htmlFor="password_confirm" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
                 Confirm Password
               </label>
               <div className="relative">
@@ -419,8 +364,8 @@ export default function RegisterPage() {
                       return value === password || 'Passwords do not match';
                     }
                   })}
-                  className={`w-full bg-white border rounded-xl px-4 py-3 pl-10 pr-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
-                    errors.password_confirm ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full bg-white dark:bg-dark-900 border rounded-xl px-4 py-3 pl-10 pr-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-dark-900 dark:text-white ${
+                    errors.password_confirm ? 'border-red-500' : 'border-gray-300 dark:border-dark-800'
                   }`}
                   placeholder="Confirm your password"
                 />
@@ -428,7 +373,7 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                 >
                   {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </button>
@@ -446,9 +391,9 @@ export default function RegisterPage() {
                   {...register('agreeTos', {
                     required: 'You must agree to the Terms and Conditions'
                   })}
-                  className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 mt-1"
+                  className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 dark:bg-dark-800 dark:border-dark-700 mt-1"
                 />
-                <span className="text-sm text-dark-700">
+                <span className="text-sm text-dark-700 dark:text-dark-300">
                   I agree to the{' '}
                   <Link href="/terms" className="text-primary-600 hover:text-primary-700 font-medium">
                     Terms and Conditions
@@ -466,9 +411,9 @@ export default function RegisterPage() {
                 <input
                   type="checkbox"
                   {...register('agreeMarketing')}
-                  className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 mt-1"
+                  className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 dark:bg-dark-800 dark:border-dark-700 mt-1"
                 />
-                <span className="text-sm text-dark-700">
+                <span className="text-sm text-dark-700 dark:text-dark-300">
                   I want to receive emails about new projects and platform updates
                 </span>
               </label>
@@ -476,18 +421,18 @@ export default function RegisterPage() {
 
             {/* Email Status Indicator */}
             {registrationComplete && (
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
+              <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-xl p-4 mb-4">
                 <div className="flex items-center space-x-3">
                   {emailStatus === 'sending' && (
                     <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-                      <span className="text-blue-700 font-medium">Sending verification email...</span>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-600"></div>
+                      <span className="text-primary-700 dark:text-primary-400 font-medium">Sending verification email...</span>
                     </>
                   )}
                   {emailStatus === 'sent' && (
                     <>
-                      <CheckCircle className="h-5 w-5 text-green-600" />
-                      <span className="text-green-700 font-medium">Verification email sent successfully!</span>
+                      <CheckCircle className="h-5 w-5 text-success-600" />
+                      <span className="text-success-700 dark:text-success-400 font-medium">Verification email sent successfully!</span>
                     </>
                   )}
                   {emailStatus === 'failed' && (
@@ -495,7 +440,7 @@ export default function RegisterPage() {
                       <div className="h-5 w-5 bg-red-600 rounded-full flex items-center justify-center">
                         <span className="text-white text-xs">!</span>
                       </div>
-                      <span className="text-red-700 font-medium">Failed to send verification email. Please try again.</span>
+                      <span className="text-red-700 dark:text-red-400 font-medium">Failed to send verification email. Please try again.</span>
                     </>
                   )}
                 </div>
@@ -514,10 +459,10 @@ export default function RegisterPage() {
             {/* Divider */}
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
+                <div className="w-full border-t border-gray-300 dark:border-dark-800" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-gray-50 text-gray-500">Or register with</span>
+                <span className="px-2 bg-white dark:bg-dark-950 text-gray-500 dark:text-dark-400">Or register with</span>
               </div>
             </div>
 
@@ -525,7 +470,7 @@ export default function RegisterPage() {
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
-                className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
+                className="w-full bg-white dark:bg-dark-900 border border-gray-300 dark:border-dark-800 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-dark-800 transition-colors duration-200 flex items-center justify-center"
               >
                 <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                   <path fill="#4285f4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -537,7 +482,7 @@ export default function RegisterPage() {
               </button>
               <button
                 type="button"
-                className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
+                className="w-full bg-white dark:bg-dark-900 border border-gray-300 dark:border-dark-800 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-dark-800 transition-colors duration-200 flex items-center justify-center"
               >
                 <svg className="w-5 h-5 mr-2" fill="#1877f2" viewBox="0 0 24 24">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -548,7 +493,7 @@ export default function RegisterPage() {
 
             {/* Login Link */}
             <div className="text-center">
-              <span className="text-dark-600">Already have an account? </span>
+              <span className="text-dark-600 dark:text-dark-400">Already have an account? </span>
               <Link href="/login" className="text-primary-600 hover:text-primary-700 font-semibold">
                 Sign in here
               </Link>
@@ -558,7 +503,7 @@ export default function RegisterPage() {
       </div>
 
       {/* Right Side - Benefits */}
-      <div className="hidden lg:flex lg:flex-1 bg-gradient-to-br from-accent-400 via-accent-500 to-primary-500 relative overflow-hidden">
+      <div className="hidden lg:flex lg:flex-1 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 relative overflow-hidden">
         {/* Background Decorations */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_60%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.1),transparent_60%)]"></div>
@@ -571,7 +516,7 @@ export default function RegisterPage() {
                 : 'Find the Perfect Professional for Your Home'
               }
             </h3>
-            <p className="text-xl text-yellow-100 leading-relaxed">
+            <p className="text-xl text-primary-100 leading-relaxed">
               {accountType !== 'client'
                 ? 'Join our network of trusted professionals and access thousands of quality leads.'
                 : 'Connect with verified professionals who will bring your home vision to life.'
@@ -589,7 +534,7 @@ export default function RegisterPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Quality Leads</h4>
-                    <p className="text-yellow-100">Access to pre-qualified homeowners ready to hire</p>
+                    <p className="text-primary-100">Access to pre-qualified homeowners ready to hire</p>
                   </div>
                 </div>
 
@@ -599,7 +544,7 @@ export default function RegisterPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Secure Payments</h4>
-                    <p className="text-yellow-100">Get paid safely with our Project Funds Account protection system</p>
+                    <p className="text-primary-100">Get paid safely with our Project Funds Account protection system</p>
                   </div>
                 </div>
 
@@ -609,7 +554,7 @@ export default function RegisterPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Build Your Reputation</h4>
-                    <p className="text-yellow-100">Showcase your work and earn 5-star reviews</p>
+                    <p className="text-primary-100">Showcase your work and earn 5-star reviews</p>
                   </div>
                 </div>
               </>
@@ -621,7 +566,7 @@ export default function RegisterPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Verified Professionals</h4>
-                    <p className="text-yellow-100">All professionals are background checked and verified</p>
+                    <p className="text-primary-100">All professionals are background checked and verified</p>
                   </div>
                 </div>
 
@@ -631,7 +576,7 @@ export default function RegisterPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Project Protection</h4>
-                    <p className="text-yellow-100">Your payments are protected until work is completed</p>
+                    <p className="text-primary-100">Your payments are protected until work is completed</p>
                   </div>
                 </div>
 
@@ -641,7 +586,7 @@ export default function RegisterPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Quality Guarantee</h4>
-                    <p className="text-yellow-100">Money-back guarantee if you&apos;re not satisfied</p>
+                    <p className="text-primary-100">Money-back guarantee if you&apos;re not satisfied</p>
                   </div>
                 </div>
               </>
@@ -652,15 +597,15 @@ export default function RegisterPage() {
           <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/20">
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-1">50K+</div>
-              <div className="text-sm text-yellow-100">Professionals</div>
+              <div className="text-sm text-primary-100">Professionals</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-1">$2.8M+</div>
-              <div className="text-sm text-yellow-100">Projects Value</div>
+              <div className="text-sm text-primary-100">Projects Value</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-1">4.9★</div>
-              <div className="text-sm text-yellow-100">Rating</div>
+              <div className="text-sm text-primary-100">Rating</div>
             </div>
           </div>
         </div>

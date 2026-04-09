@@ -94,7 +94,7 @@ export default function GuestHomePage() {
       title: 'Home Pros',
       desc: 'Access high-value jobs and grow your business with elite tools.',
       icon: Hammer,
-      color: 'bg-success-50 text-success-600',
+      color: 'bg-gold-50 dark:bg-gold-500/10 text-gold-600 dark:text-gold-500',
       cta: "I'm a Home Pro",
       slug: 'pro'
     },
@@ -143,7 +143,7 @@ export default function GuestHomePage() {
               </div>
               <h1 className="text-6xl lg:text-8xl font-black text-gray-900 leading-[0.9] mb-8 tracking-tighter">
                 South Florida’s <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-500 to-success-500">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-400 to-gold-400">
                   Private Network.
                 </span>
               </h1>
@@ -185,10 +185,10 @@ export default function GuestHomePage() {
                        <span className="text-sm font-black text-gray-900 leading-none">5k+ Florida Pros</span>
                     </div>
                  </div>
-                 <div className="flex items-center gap-1">
-                    {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 fill-primary-400 text-primary-400" />)}
+                  <div className="flex items-center gap-1">
+                    {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 fill-blue-400 text-blue-400" />)}
                     <span className="text-xs font-black text-gray-900 ml-2">4.9/5 RATING</span>
-                 </div>
+                  </div>
               </div>
             </div>
 
@@ -230,14 +230,14 @@ export default function GuestHomePage() {
                     </button>
                  </form>
                  
-                 <div className="mt-8 flex items-center justify-center gap-8 opacity-30 grayscale contrast-125">
+                                  <div className="mt-8 flex items-center justify-center gap-8 opacity-30 grayscale contrast-125">
                     <span className="text-xs font-black tracking-tighter">FLORIDA TRUST</span>
                     <span className="text-xs font-black tracking-tighter underline decoration-primary-500 underline-offset-4">PRO SECURE</span>
                     <span className="text-xs font-black tracking-tighter italic">ELITE HUB</span>
-                 </div>
+                  </div>
               </div>
               {/* Decorative Orb */}
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-success-400 rounded-full blur-[80px] opacity-20 -z-10"></div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-400 rounded-full blur-[80px] opacity-20 -z-10"></div>
             </div>
           </div>
         </div>
@@ -336,11 +336,11 @@ export default function GuestHomePage() {
                </div>
                
                {/* Right: A-List (Highlighted) */}
-               <div className="bg-gold-600 p-12 md:p-20 text-white relative">
-                  <div className="absolute top-0 right-0 p-12 opacity-10 text-gold-200">
+               <div className="bg-primary-600 p-12 md:p-20 text-white relative">
+                  <div className="absolute top-0 right-0 p-12 opacity-10 text-white">
                      <ShieldCheck className="w-64 h-64" />
                   </div>
-                  <h3 className="text-3xl font-black mb-12 uppercase tracking-widest text-gold-100">The A-List Network</h3>
+                  <h3 className="text-3xl font-black mb-12 uppercase tracking-widest text-primary-100">The A-List Network</h3>
                   <ul className="space-y-8 relative z-10">
                      {[
                         'Direct access to real opportunities',
@@ -350,14 +350,14 @@ export default function GuestHomePage() {
                         'One connected ecosystem for every role'
                      ].map((point, i) => (
                         <li key={i} className="flex items-center gap-4 text-white font-black text-lg">
-                           <CheckCircle className="w-6 h-6 text-gold-300" />
+                           <CheckCircle className="w-6 h-6 text-gold-400" />
                            {point}
                         </li>
                      ))}
                   </ul>
                   <div className="mt-16 pt-12 border-t border-white/20">
                      <p className="text-2xl font-black italic mb-2">“Most platforms make you compete. A-List puts you in position.”</p>
-                     <p className="text-gold-100 font-bold text-sm tracking-widest uppercase">The Power Move for Florida Pros</p>
+                     <p className="text-primary-100 font-bold text-sm tracking-widest uppercase">The Power Move for Florida Pros</p>
                   </div>
                </div>
             </div>
@@ -525,7 +525,7 @@ export default function GuestHomePage() {
                <div className="space-y-6">
                   {['Verified Specialists', 'Rapid Response Time', 'Direct Connections', 'Secure Milestone Funding'].map((text, i) => (
                      <div key={i} className="flex items-center gap-4 text-gray-950 font-black tracking-tight text-lg">
-                        <CheckCircle className="w-6 h-6 text-success-500" />
+                        <CheckCircle className="w-6 h-6 text-gold-500" />
                         {text}
                      </div>
                   ))}
@@ -655,9 +655,9 @@ export default function GuestHomePage() {
       <section className="py-40 px-4 text-center bg-gray-50 border-t border-gray-100 overflow-hidden relative">
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-600/10 rounded-full blur-[150px] -z-10"></div>
          <div className="max-w-4xl mx-auto relative z-10">
-            <h2 className="text-6xl md:text-8xl font-black text-gray-950 mb-10 tracking-tighter leading-none uppercase">
+            <h2 className="text-6xl md:text-8xl font-black text-gray-950 dark:text-white mb-10 tracking-tighter leading-none uppercase text-center">
                Your Network <br />
-               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-success-500">Determines Your</span> <br />
+               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-300">Determines Your</span> <br />
                Opportunities.
             </h2>
             <p className="text-2xl text-gray-500 font-medium mb-16 italic max-w-2xl mx-auto">

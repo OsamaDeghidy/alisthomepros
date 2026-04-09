@@ -3,6 +3,8 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { BrandLogo } from '@/components/ui/BrandLogo';
+import { Mail, CheckCircle, XCircle, Loader2, ArrowRight } from 'lucide-react';
 
 // Force dynamic rendering to avoid prerendering issues
 export const dynamic = 'force-dynamic';
@@ -103,115 +105,126 @@ function VerifyEmailContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-dark-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="text-center mb-8">
+          <Link href="/" className="inline-flex items-center justify-center">
+            <BrandLogo className="h-16 w-auto" />
+          </Link>
+        </div>
+        
+        <div className="bg-white dark:bg-dark-900 py-8 px-4 shadow-xl sm:rounded-2xl sm:px-10 border border-gray-100 dark:border-dark-800">
           <div className="text-center">
             {verificationStatus === 'loading' && (
               <>
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Verifying Email</h2>
-                <p className="text-gray-600">Please wait while we verify your email address...</p>
+                <Loader2 className="animate-spin h-12 w-12 text-primary-600 mx-auto mb-4" />
+                <h2 className="text-2xl font-bold text-dark-900 dark:text-white mb-2">Verifying Email</h2>
+                <p className="text-dark-600 dark:text-dark-400">Please wait while we verify your email address...</p>
               </>
             )}
 
             {verificationStatus === 'success' && (
               <>
-                <div className="w-16 h-16 text-green-500 mx-auto mb-4 flex items-center justify-center text-6xl">✓</div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Email Verified!</h2>
-                <p className="text-gray-600 mb-4">{message}</p>
-                <p className="text-sm text-gray-500 mb-6">
+                <div className="w-16 h-16 bg-success-50 dark:bg-success-900/20 text-success-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <CheckCircle className="h-10 w-10" />
+                </div>
+                <h2 className="text-2xl font-bold text-dark-900 dark:text-white mb-2">Email Verified!</h2>
+                <p className="text-dark-600 dark:text-dark-400 mb-4">{message}</p>
+                <p className="text-sm text-dark-500 dark:text-dark-500 mb-6">
                   You will be redirected to the login page in a few seconds...
                 </p>
                 <Link
                   href="/login"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-xl shadow-lg text-white bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 transition-all duration-300 transform hover:scale-105"
                 >
                   Go to Login
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </>
             )}
 
             {verificationStatus === 'pending' && (
               <>
-                <div className="w-16 h-16 text-blue-500 mx-auto mb-4 flex items-center justify-center text-6xl">📧</div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Check Your Email</h2>
-                <p className="text-gray-600 mb-4">{message}</p>
+                <div className="w-20 h-20 bg-primary-50 dark:bg-primary-900/20 text-primary-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                  <Mail className="h-10 w-10" />
+                </div>
+                <h2 className="text-2xl font-bold text-dark-900 dark:text-white mb-2">Check Your Email</h2>
+                <p className="text-dark-600 dark:text-dark-400 mb-6">{message}</p>
                 
                 {/* Email Address Display */}
                 {(searchParams?.get('email') || localStorage.getItem('registrationEmail')) && (
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4">
-                    <p className="text-sm text-gray-600">
+                  <div className="bg-dark-50 dark:bg-dark-800/50 border border-gray-100 dark:border-dark-700 rounded-xl p-4 mb-6">
+                    <p className="text-sm text-dark-500 dark:text-dark-400 mb-1">
                       Verification email sent to:
                     </p>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-base font-semibold text-dark-900 dark:text-white">
                       {searchParams?.get('email') || localStorage.getItem('registrationEmail')}
                     </p>
                   </div>
                 )}
                 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                  <h3 className="text-sm font-semibold text-blue-800 mb-2">Next Steps:</h3>
-                  <ul className="text-sm text-blue-700 space-y-1">
-                    <li>• Check your email inbox</li>
-                    <li>• Look for an email from A-List Home Pros</li>
-                    <li>• Click the verification link in the email</li>
-                    <li>• If you don't see the email, check your spam folder</li>
-                    <li>• The verification link expires in 24 hours</li>
+                <div className="bg-primary-50 dark:bg-primary-900/10 border border-primary-100 dark:border-primary-900/30 rounded-xl p-5 mb-8 text-left">
+                  <h3 className="text-sm font-bold text-primary-800 dark:text-primary-400 mb-3 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></span>
+                    Next Steps:
+                  </h3>
+                  <ul className="text-sm text-primary-700 dark:text-primary-300 space-y-2">
+                    <li className="flex items-start">
+                      <span className="mr-2 text-primary-500">•</span>
+                      Check your email inbox
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 text-primary-500">•</span>
+                      Look for an email from A-List Home Pros
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 text-primary-500">•</span>
+                      Click the verification link in the email
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 text-primary-500">•</span>
+                      Check your spam folder if missing
+                    </li>
                   </ul>
                 </div>
                 
                 {/* Resend Email Section */}
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
-                  <h3 className="text-sm font-semibold text-gray-800 mb-2">Didn't receive the email?</h3>
-                  <p className="text-xs text-gray-600 mb-3">
+                <div className="bg-white dark:bg-dark-900 border border-gray-100 dark:border-dark-800 rounded-xl p-5 mb-8 shadow-sm">
+                  <h3 className="text-sm font-bold text-dark-900 dark:text-white mb-2">Didn't receive the email?</h3>
+                  <p className="text-xs text-dark-500 dark:text-dark-400 mb-4 leading-relaxed">
                     Wait a few minutes and check your spam folder. You can request a new verification email up to 3 times per hour.
                   </p>
                   {resendMessage && (
-                    <div className={`mb-3 p-3 rounded text-sm ${
+                    <div className={`mb-4 p-3 rounded-lg text-sm border ${
                       resendMessage.includes('successfully') 
-                        ? 'bg-green-100 text-green-700 border border-green-200' 
-                        : resendMessage.includes('Too many')
-                        ? 'bg-yellow-100 text-yellow-700 border border-yellow-200'
-                        : 'bg-red-100 text-red-700 border border-red-200'
+                        ? 'bg-success-50 dark:bg-success-900/20 text-success-700 dark:text-success-400 border-success-100 dark:border-success-800' 
+                        : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border-red-100 dark:border-red-800'
                     }`}>
-                      <div className="flex items-start">
-                        <div className="flex-shrink-0">
-                          {resendMessage.includes('successfully') ? '✓' : 
-                           resendMessage.includes('Too many') ? '⚠️' : '✗'}
-                        </div>
-                        <div className="ml-2">
-                          {resendMessage}
-                        </div>
-                      </div>
+                      {resendMessage}
                     </div>
                   )}
                   <button
                     onClick={resendVerificationEmail}
                     disabled={isResending || resendMessage.includes('Too many')}
-                    className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full inline-flex justify-center items-center px-4 py-3 border border-gray-200 dark:border-dark-700 text-sm font-semibold rounded-xl text-dark-700 dark:text-white bg-white dark:bg-dark-800 hover:bg-gray-50 dark:hover:bg-dark-700 transition-all duration-200 disabled:opacity-50"
                   >
                     {isResending ? (
-                      <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600 mr-2"></div>
-                        Sending...
-                      </>
-                    ) : (
-                      'Resend Verification Email'
-                    )}
+                      <Loader2 className="animate-spin h-5 w-5 mr-2" />
+                    ) : null}
+                    {isResending ? 'Sending...' : 'Resend Verification Email'}
                   </button>
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <Link
                     href="/login"
-                    className="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="w-full inline-flex justify-center items-center px-6 py-3 border border-transparent text-sm font-bold rounded-xl text-white bg-primary-600 hover:bg-primary-700 shadow-md transition-all duration-200"
                   >
                     Back to Login
                   </Link>
                   <Link
                     href="/register"
-                    className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="w-full inline-flex justify-center items-center px-6 py-3 border border-gray-200 dark:border-dark-700 text-sm font-bold rounded-xl text-dark-700 dark:text-white bg-white dark:bg-dark-800 hover:bg-gray-50 dark:hover:bg-dark-700 transition-all duration-200"
                   >
                     Create New Account
                   </Link>
@@ -221,62 +234,41 @@ function VerifyEmailContent() {
 
             {verificationStatus === 'error' && (
               <>
-                <div className="w-16 h-16 text-red-500 mx-auto mb-4 flex items-center justify-center text-6xl">✗</div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Verification Failed</h2>
-                <p className="text-gray-600 mb-4">{message}</p>
+                <div className="w-16 h-16 bg-red-50 dark:bg-red-900/20 text-red-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <XCircle className="h-10 w-10" />
+                </div>
+                <h2 className="text-2xl font-bold text-dark-900 dark:text-white mb-2">Verification Failed</h2>
+                <p className="text-dark-600 dark:text-dark-400 mb-6">{message}</p>
                 
                 {/* Error Details */}
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-                  <h3 className="text-sm font-semibold text-red-800 mb-2">Common Issues:</h3>
-                  <ul className="text-sm text-red-700 space-y-1">
-                    <li>• The verification link may have expired (24 hours)</li>
-                    <li>• The link may have been used already</li>
-                    <li>• The link may be corrupted or incomplete</li>
+                <div className="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-xl p-5 mb-8 text-left">
+                  <h3 className="text-sm font-bold text-red-800 dark:text-red-400 mb-3">Common Issues:</h3>
+                  <ul className="text-sm text-red-700 dark:text-red-300 space-y-2">
+                    <li className="flex items-start">
+                      <span className="mr-2 text-red-500">•</span>
+                      Link expired (24 hours)
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 text-red-500">•</span>
+                      Link already used
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 text-red-500">•</span>
+                      Link is corrupted
+                    </li>
                   </ul>
                 </div>
                 
-                {/* Resend Option for Error State */}
-                {(searchParams?.get('email') || localStorage.getItem('registrationEmail')) && (
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
-                    <h3 className="text-sm font-semibold text-gray-800 mb-2">Need a new verification link?</h3>
-                    {resendMessage && (
-                      <div className={`mb-3 p-3 rounded text-sm ${
-                        resendMessage.includes('successfully') 
-                          ? 'bg-green-100 text-green-700 border border-green-200' 
-                          : resendMessage.includes('Too many')
-                          ? 'bg-yellow-100 text-yellow-700 border border-yellow-200'
-                          : 'bg-red-100 text-red-700 border border-red-200'
-                      }`}>
-                        {resendMessage}
-                      </div>
-                    )}
-                    <button
-                      onClick={resendVerificationEmail}
-                      disabled={isResending || resendMessage.includes('Too many')}
-                      className="w-full inline-flex justify-center items-center px-3 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed mb-3"
-                    >
-                      {isResending ? (
-                        <>
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600 mr-2"></div>
-                          Sending...
-                        </>
-                      ) : (
-                        'Request New Verification Email'
-                      )}
-                    </button>
-                  </div>
-                )}
-                
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <Link
                     href="/register"
-                    className="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="w-full inline-flex justify-center items-center px-6 py-3 border border-transparent text-sm font-bold rounded-xl text-white bg-primary-600 hover:bg-primary-700 shadow-md transition-all duration-200"
                   >
                     Register Again
                   </Link>
                   <Link
                     href="/login"
-                    className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="w-full inline-flex justify-center items-center px-6 py-3 border border-gray-200 dark:border-dark-700 text-sm font-bold rounded-xl text-dark-700 dark:text-white bg-white dark:bg-dark-800 hover:bg-gray-50 dark:hover:bg-dark-700 transition-all duration-200"
                   >
                     Back to Login
                   </Link>
@@ -293,12 +285,10 @@ function VerifyEmailContent() {
 export default function VerifyEmailPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading...</p>
-          </div>
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-dark-950 px-4">
+        <div className="max-w-md w-full text-center">
+          <Loader2 className="animate-spin h-12 w-12 text-primary-600 mx-auto" />
+          <p className="mt-4 text-dark-600 dark:text-dark-400 font-medium">Loading verification...</p>
         </div>
       </div>
     }>

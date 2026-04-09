@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { BrandLogo } from '../ui/BrandLogo';
 
 export default function Footer() {
   const footerSections = {
@@ -44,12 +45,10 @@ export default function Footer() {
           {/* Logo and Description */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-3 mb-6">
-              <Image
-                src="/logo.png"
-                alt="A-List Home Pros"
-                width={150}
-                height={50}
-                className="h-10 w-auto"
+              <BrandLogo
+                width={210}
+                height={70}
+                className="h-14 w-auto"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
@@ -78,7 +77,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                      className="text-gray-400 hover:text-primary-400 transition-colors duration-200 text-sm"
                     >
                       {link.name}
                     </Link>

@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic';
 import { useAuthStore } from '@/lib/store';
 import GuestHeader from '@/components/layout/GuestHeader';
 import GuestFooter from '@/components/layout/GuestFooter';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import { SITE_MODE } from '@/config/site';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -83,25 +84,27 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body className={inter.className}>
-        <AuthProvider>
-          <ToastProvider>
-            {isGuestPage ? (
-              <>
-                <GuestHeader />
-                <main className="min-h-screen">{children}</main>
-                <GuestFooter />
-              </>
-            ) : (
-              <>
-                <Header />
-                <main className="min-h-screen">{children}</main>
-                <Footer />
-                {showStickyCallToAction && <StickyCallToAction />}
-                <ExitIntent />
-              </>
-            )}
-          </ToastProvider>
-        </AuthProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <AuthProvider>
+            <ToastProvider>
+              {isGuestPage ? (
+                <>
+                  <GuestHeader />
+                  <main className="min-h-screen">{children}</main>
+                  <GuestFooter />
+                </>
+              ) : (
+                <>
+                  <Header />
+                  <main className="min-h-screen">{children}</main>
+                  <Footer />
+                  {showStickyCallToAction && <StickyCallToAction />}
+                  <ExitIntent />
+                </>
+              )}
+            </ToastProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
