@@ -1,7 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Shield, CheckCircle, AlertTriangle, CreditCard, Users, FileText, Lock, Scale } from 'lucide-react';
+import {
+  ArrowRight, Shield, CheckCircle, AlertTriangle, CreditCard,
+  Users, FileText, Lock, Scale, Briefcase, Ban, RefreshCw,
+  Gavel, Globe, Edit
+} from 'lucide-react';
 import { APP_GATEWAY_URL, CONTACT_EMAIL, CONTACT_PHONE } from '@/config/site';
 
 const sections = [
@@ -9,92 +13,187 @@ const sections = [
     id: 'acceptance',
     icon: FileText,
     title: '1. Acceptance of Terms',
-    body: `By accessing or using the A-List Home Professionals platform — whether via our website, mobile app, or any related services — you agree to be bound by these Terms of Service. If you do not agree, do not use the platform. These terms apply to all users: Homeowners, Home Pros, Crew Members, Specialists, and Referral Partners.`
-  },
-  {
-    id: 'platform-overview',
-    icon: Shield,
-    title: '2. What A-List Does',
-    body: `A-List Home Professionals is a private network connecting homeowners with verified home service professionals, skilled crew members, project specialists, and referral partners across South Florida. We provide tools for posting projects, hiring vetted professionals, funding work through our Project Funds Account system, communicating within the network, and managing jobs end-to-end inside the A-List app.
+    body: `By accessing or using A-List Home Professionals, LLC ("A-List," "Company," "Platform"), whether through our website, mobile application, or related services, you agree to be bound by these Terms of Service.
 
-We are a marketplace and technology provider — not a contractor of record. All service agreements are between the homeowner and the professional.`
+If you do not agree, you must not use the Platform.
+
+These Terms apply to all users, including A-List Clients (Homeowners), A-List Home Pros, A-List Crew Members, A-List Specialists, and Referral Partners.`,
   },
   {
-    id: 'user-roles',
+    id: 'platform',
+    icon: Globe,
+    title: '2. Platform Description',
+    body: `A-List Home Professionals, LLC is a private marketplace and technology platform that connects homeowners with vetted home service professionals, skilled labor, project coordinators, and referral partners.
+
+The Platform provides tools for posting and managing projects, connecting with professionals, facilitating payments through the Project Funds Account, and managing communications and workflow.`,
+    warning: 'A-List Home Professionals, LLC is not a contractor, subcontractor, or employer. All services are performed by independent third parties.',
+  },
+  {
+    id: 'eligibility',
     icon: Users,
-    title: '3. User Roles & Responsibilities',
+    title: '3. User Eligibility',
+    body: 'Users must be at least 18 years old to access and use the Platform. However:',
     bullets: [
-      'Homeowners: Post real projects, fund them through the Project Funds Account, release payments only when milestones are met.',
-      'Home Pros: Represent your business honestly, maintain valid licenses and insurance, deliver work as agreed.',
-      'Crew Members: Provide skilled, professional labor as committed on each job.',
-      'Specialists: Coordinate projects and represent homeowners or pros with full transparency.',
-      'Referral Partners: Refer genuine users into the network and earn commissions per the referral terms.'
-    ]
+      'Individuals aged 16–17 may participate only as Referral Partners.',
+      'Minor participation requires verified parental or legal guardian consent.',
+      'Minors are restricted to referral-based activity only.',
+      'A-List Home Professionals, LLC reserves the right to verify age and deny access at any time.',
+    ],
   },
   {
-    id: 'project-funds',
+    id: 'minors',
+    icon: Shield,
+    title: '4. Minor Participation & Parental Responsibility',
+    body: 'Users under 18 may not perform construction services, act as Home Pros, Crew Members, or Specialists, or enter into contracts with clients. Parents or legal guardians:',
+    bullets: [
+      'Accept full legal responsibility for the minor\'s participation.',
+      'Must supervise all Platform activity.',
+      'Must receive and manage all earnings.',
+      'Agree to be bound by these Terms on behalf of the minor.',
+    ],
+  },
+  {
+    id: 'roles',
+    icon: Briefcase,
+    title: '5. User Roles & Responsibilities',
+    subsections: [
+      {
+        label: 'A-List Clients (Homeowners)',
+        bullets: ['Post legitimate projects.', 'Fund projects through the Project Funds Account.', 'Release payments only upon milestone completion.'],
+      },
+      {
+        label: 'A-List Home Pros',
+        bullets: ['Represent qualifications honestly.', 'Maintain proper licensing and insurance.', 'Deliver services as agreed.'],
+      },
+      {
+        label: 'A-List Crew Members',
+        bullets: ['Provide skilled labor professionally.', 'Fulfill agreed responsibilities on each project.'],
+      },
+      {
+        label: 'A-List Specialists',
+        bullets: ['Coordinate projects transparently.', 'Act in the best interest of involved parties.'],
+      },
+      {
+        label: 'Referral Partners',
+        bullets: ['Refer genuine users into the Platform.', 'Comply with all referral program rules.'],
+      },
+    ],
+  },
+  {
+    id: 'independent',
+    icon: Users,
+    title: '6. Independent Relationships',
+    body: 'All users operate as independent entities. Nothing in these Terms creates employment relationships, partnerships, or joint ventures. A-List Home Professionals, LLC does not control or supervise work performed by users.',
+  },
+  {
+    id: 'funds',
     icon: CreditCard,
-    title: '4. Project Funds Account',
-    body: `All payments on the platform are processed through our secure Project Funds Account system. Funds are held and only released when a client confirms that work has been completed or a milestone has been met.
-
-You may fund your account via ACH bank transfer, debit card, credit card, or approved home improvement financing. A-List does not store your card or bank details — all payment data is handled by our certified payment processor.
-
-Attempting to pay or receive payment outside the platform is a violation of these terms and may result in account termination.`
+    title: '7. Project Funds Account',
+    body: 'All payments must be processed through the Project Funds Account system. Funds are held and released based on confirmed milestones. Payment methods may include ACH, debit card, credit card, or financing. Payment processing is handled by third-party providers.',
+    warning: 'A-List Home Professionals, LLC is a payment facilitator only, not a bank or escrow institution.',
+  },
+  {
+    id: 'noncircumvention',
+    icon: Ban,
+    title: '8. Non-Circumvention',
+    body: 'Users agree not to bypass the Platform to conduct transactions with users introduced through A-List Home Professionals, LLC. Violations may result in:',
+    bullets: [
+      'Immediate account termination.',
+      'Forfeiture of earnings.',
+      'Additional legal action if necessary.',
+    ],
   },
   {
     id: 'conduct',
-    icon: Scale,
-    title: '5. Code of Conduct',
+    icon: Shield,
+    title: '9. Code of Conduct',
+    body: 'Users may NOT:',
     bullets: [
-      'No misrepresentation of skills, credentials, or identity.',
-      'No payment circumvention — all transactions must flow through the Project Funds Account.',
-      'No harassment, discrimination, or abusive communication.',
-      'No fake reviews, lead manipulation, or fraudulent project postings.',
-      'No soliciting clients or pros to work outside the platform.'
-    ]
+      'Misrepresent identity, licensing, or qualifications.',
+      'Circumvent Platform payments.',
+      'Engage in harassment, discrimination, or abuse.',
+      'Post fake projects, reviews, or leads.',
+      'Solicit off-platform transactions.',
+      'Attempt to manipulate or exploit the system.',
+    ],
   },
   {
     id: 'subscriptions',
-    icon: CheckCircle,
-    title: '6. Memberships & Subscriptions',
-    body: `A-List offers both free directory listings and paid subscription plans. Free members can create a profile but do not have access to messaging, proposals, job leads, or project tools. Paid plans unlock the full A-List network experience.
-
-Subscriptions are billed monthly. You may cancel anytime — cancellations take effect at the end of the current billing period. We do not issue prorated refunds for unused time. Plans are limited per trade category and geographic area to maintain network quality.`
+    icon: RefreshCw,
+    title: '10. Memberships & Subscriptions',
+    body: 'A-List Home Professionals, LLC offers free directory listings and paid subscription plans. Paid plans provide access to messaging, leads, proposals, and full platform tools.',
+    bullets: [
+      'Subscriptions are billed monthly.',
+      'Cancellation takes effect at end of billing cycle.',
+      'No prorated refunds.',
+      'A-List may limit memberships by region or trade category.',
+    ],
+  },
+  {
+    id: 'referral',
+    icon: Users,
+    title: '11. Referral Program',
+    body: 'A-List Home Professionals, LLC may offer compensation for referring new users.',
+    bullets: [
+      'Referral earnings are performance-based.',
+      'A-List may modify or revoke commissions at any time.',
+      'Fraudulent referrals will result in forfeiture.',
+    ],
+  },
+  {
+    id: 'ip',
+    icon: Lock,
+    title: '12. Intellectual Property',
+    body: 'Users retain ownership of content they upload. However, by posting content, you grant A-List Home Professionals, LLC a license to display, promote, and distribute it. All platform elements — including code, system architecture, workflows, and branding — are the exclusive property of A-List Home Professionals, LLC. Copying, replicating, or reverse-engineering the platform is strictly prohibited.',
   },
   {
     id: 'disputes',
-    icon: AlertTriangle,
-    title: '7. Dispute Resolution',
-    body: `If a dispute arises between a homeowner and a professional, A-List offers mediation through our trust and safety team. Funds in the Project Funds Account are held during the review period.
-
-We do not guarantee specific outcomes, but we review all evidence submitted and work toward a fair resolution. Users who repeatedly file bad-faith disputes may be removed from the platform.`
+    icon: Scale,
+    title: '13. Dispute Resolution',
+    body: 'A-List Home Professionals, LLC may assist in dispute mediation between users. Funds may be held during investigation. A-List does not guarantee outcomes. Repeated bad-faith disputes may result in removal.',
   },
   {
-    id: 'intellectual-property',
-    icon: Lock,
-    title: '8. Intellectual Property',
-    body: `You retain ownership of content you upload (portfolio photos, project descriptions, reviews). By posting on the platform, you grant A-List a license to display this content to promote your services.
-
-All platform code, design, branding, and system architecture is the exclusive property of A-List Home Professionals, Inc. Unauthorized use, copying, or reproduction is prohibited.`
+    id: 'warranties',
+    icon: AlertTriangle,
+    title: '14. Disclaimer of Warranties',
+    body: 'The Platform is provided "AS IS" and "AS AVAILABLE." A-List Home Professionals, LLC makes no guarantees regarding project success, user performance, or availability of opportunities.',
   },
   {
     id: 'liability',
     icon: Shield,
-    title: '9. Limitation of Liability',
-    body: `A-List is a technology platform that facilitates connections. We are not liable for project outcomes, contractor performance, delays, property damage, or any loss resulting from services arranged through the network. Use of the platform is at your own risk. Our maximum liability in any dispute is limited to the fees paid to A-List in the 3 months preceding the claim.`
+    title: '15. Limitation of Liability',
+    body: 'To the fullest extent permitted by law, A-List Home Professionals, LLC is not liable for damages arising from user interactions. Maximum liability is limited to fees paid to A-List Home Professionals, LLC in the past 3 months.',
+  },
+  {
+    id: 'indemnification',
+    icon: Briefcase,
+    title: '16. Indemnification',
+    body: 'Users agree to defend and indemnify A-List Home Professionals, LLC from any claims arising from their actions, services, or violations.',
   },
   {
     id: 'termination',
-    icon: AlertTriangle,
-    title: '10. Account Termination',
-    body: `You may close your account at any time. A-List reserves the right to suspend or permanently remove users who violate these terms, compromise network integrity, or engage in fraudulent behavior. Funds held in the Project Funds Account at the time of termination may be reviewed before release depending on any active disputes.`
+    icon: Ban,
+    title: '17. Account Termination',
+    body: 'A-List Home Professionals, LLC may suspend or terminate accounts for violations of these Terms, fraudulent behavior, or threats to platform integrity. Funds may be held pending review of disputes.',
+  },
+  {
+    id: 'arbitration',
+    icon: Gavel,
+    title: '18. Dispute Resolution & Arbitration',
+    body: 'All disputes shall be resolved through binding arbitration in the State of Florida. No class actions are permitted.',
+  },
+  {
+    id: 'governing-law',
+    icon: Globe,
+    title: '19. Governing Law',
+    body: 'These Terms are governed by the laws of the State of Florida.',
   },
   {
     id: 'changes',
-    icon: FileText,
-    title: '11. Changes to These Terms',
-    body: `We may update these Terms of Service periodically. Continued use of the platform after any update constitutes acceptance of the new terms. The effective date at the top of this page will always reflect the most recent revision.`
-  }
+    icon: Edit,
+    title: '20. Changes to Terms',
+    body: 'A-List Home Professionals, LLC may update these Terms at any time. Continued use of the Platform constitutes acceptance of updated Terms.',
+  },
 ];
 
 export default function TermsPage() {
@@ -111,11 +210,29 @@ export default function TermsPage() {
             Terms of Service
           </h1>
           <p className="text-xl text-white/60 max-w-2xl mx-auto font-medium leading-relaxed">
-            By using A-List Home Professionals, you agree to the following terms. Please read them carefully before entering the network.
+            A-List Home Professionals, LLC — Version 2.0
           </p>
-          <p className="mt-6 text-white/40 text-sm font-bold uppercase tracking-widest">
-            Effective Date: July 1, 2025
+          <p className="mt-4 text-white/40 text-sm font-bold uppercase tracking-widest">
+            Effective Date: April 9, 2026
           </p>
+        </div>
+      </div>
+
+      {/* Table of Contents */}
+      <div className="bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 py-10 px-4">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-5">Table of Contents</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+            {sections.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors truncate"
+              >
+                {s.title}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -129,38 +246,57 @@ export default function TermsPage() {
                 <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-xl flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                 </div>
-                <h2 className="text-2xl font-black tracking-tight text-gray-900 dark:text-white">{section.title}</h2>
+                <h2 className="text-xl md:text-2xl font-black tracking-tight text-gray-900 dark:text-white">{section.title}</h2>
               </div>
 
-              {section.body && (
-                <div className="pl-14 space-y-4">
-                  {section.body.split('\n\n').map((para, i) => (
-                    <p key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">{para}</p>
-                  ))}
-                </div>
-              )}
+              <div className="pl-14 space-y-4">
+                {section.body && section.body.split('\n\n').map((para, i) => (
+                  <p key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">{para}</p>
+                ))}
 
-              {section.bullets && (
-                <ul className="pl-14 space-y-3">
-                  {section.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
-                      <span className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                {section.warning && (
+                  <div className="flex items-start gap-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-4">
+                    <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                    <p className="text-amber-800 dark:text-amber-300 font-bold text-sm leading-relaxed">{section.warning}</p>
+                  </div>
+                )}
+
+                {section.bullets && (
+                  <ul className="space-y-3">
+                    {section.bullets.map((bullet, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
+                        <span className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {section.subsections && section.subsections.map((sub, si) => (
+                  <div key={si} className="mt-6">
+                    <h3 className="text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white mb-3">{sub.label}</h3>
+                    <ul className="space-y-2">
+                      {sub.bullets.map((bullet, bi) => (
+                        <li key={bi} className="flex items-start gap-3">
+                          <CheckCircle className="w-4 h-4 text-primary-500 shrink-0 mt-1" />
+                          <span className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm">{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           );
         })}
       </div>
 
-      {/* Questions */}
+      {/* Contact */}
       <div className="bg-gray-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 py-16 px-4">
         <div className="max-w-2xl mx-auto text-center">
           <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white">Questions About These Terms?</h3>
           <p className="text-gray-500 dark:text-gray-400 mb-8 font-medium">
-            Reach out to our team and we'll clarify anything.
+            Reach out to our team for clarification.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={`mailto:${CONTACT_EMAIL}`} className="px-8 py-4 bg-gray-900 dark:bg-white dark:text-gray-900 text-white rounded-2xl font-black hover:bg-black transition-all">

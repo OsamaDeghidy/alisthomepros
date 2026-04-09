@@ -1,117 +1,178 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Shield, Eye, Lock, Users, CreditCard, FileText, CheckCircle, Mail } from 'lucide-react';
-import { APP_GATEWAY_URL, CONTACT_EMAIL, PAYMENTS_PROVIDER_NAME } from '@/config/site';
+import {
+  ArrowRight, Shield, Eye, Lock, Users, CreditCard, FileText,
+  CheckCircle, Mail, AlertTriangle, Database, Globe, RefreshCw, Baby
+} from 'lucide-react';
+import { APP_GATEWAY_URL, CONTACT_EMAIL, CONTACT_PHONE } from '@/config/site';
 
 const sections = [
   {
     id: 'overview',
     icon: Eye,
     title: '1. What This Policy Covers',
-    body: `A-List Home Professionals ("A-List," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and share your personal data when you use our platform — including the website, mobile app, and any related services.
+    body: `A-List Home Professionals, LLC ("A-List," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and share your personal data when you use our platform — including the website, mobile application, and any related services.
 
-This policy applies to all user types: Homeowners, Home Pros, Crew Members, Specialists, and Referral Partners.`
+This policy applies to all users: A-List Clients (Homeowners), A-List Home Pros, A-List Crew Members, A-List Specialists, and Referral Partners.`,
   },
   {
     id: 'data-collected',
-    icon: FileText,
+    icon: Database,
     title: '2. Information We Collect',
-    bullets: [
-      'Identity information: name, email address, phone number, business name.',
-      'Profile data: portfolio photos, trade licenses, certifications, work history, and user-generated reviews.',
-      'Financial information: bank account or card details for funding your Project Funds Account (processed securely — never stored on our servers).',
-      'Project data: descriptions, budgets, timelines, and milestones you enter on the platform.',
-      'Communication data: messages exchanged with other users or our support team.',
-      'Usage data: device type, IP address, browser, pages visited, and platform interactions.',
-      'Location data: general area or zip code to match you with relevant professionals in South Florida.'
-    ]
+    subsections: [
+      {
+        label: 'Identity Information',
+        bullets: ['Name', 'Email address', 'Phone number', 'Business name'],
+      },
+      {
+        label: 'Profile Data',
+        bullets: ['Portfolio photos', 'Trade licenses and certifications', 'Work history', 'Reviews and ratings'],
+      },
+      {
+        label: 'Financial Information',
+        bullets: ['Payment details submitted through our payment processor', 'Transaction records (amounts, dates, status)'],
+        warning: 'A-List does not store full card numbers or bank account details.',
+      },
+      {
+        label: 'Project Data',
+        bullets: ['Project descriptions', 'Budgets', 'Timelines', 'Milestones'],
+      },
+      {
+        label: 'Communication Data',
+        bullets: ['Messages between users', 'Messages with support'],
+      },
+      {
+        label: 'Usage Data',
+        bullets: ['Device type', 'IP address', 'Browser type', 'Pages visited', 'Platform interactions'],
+      },
+      {
+        label: 'Location Data',
+        bullets: ['General location (city, zip code, or region)', 'Used to match users with relevant professionals in target markets such as South Florida'],
+      },
+    ],
   },
   {
     id: 'how-we-use',
     icon: Users,
     title: '3. How We Use Your Information',
+    body: 'We use your data to:',
     bullets: [
-      'To verify your identity and onboard you into the network.',
-      'To match homeowners with the right professionals, crew, or specialists.',
-      'To process payments through the Project Funds Account system.',
-      'To facilitate communication within the platform.',
-      'To provide customer support and resolve disputes.',
-      'To send you relevant updates, notifications, and platform announcements.',
-      'To analyze usage patterns and improve the platform experience.',
-      'To comply with legal obligations.'
-    ]
+      'Verify identity and onboard users.',
+      'Match homeowners with professionals, crew, and specialists.',
+      'Facilitate payments through the Project Funds Account.',
+      'Enable communication within the platform.',
+      'Provide customer support and resolve disputes.',
+      'Send platform updates, alerts, and notifications.',
+      'Improve platform performance and user experience.',
+      'Analyze usage trends (aggregated and anonymized where possible).',
+      'Comply with legal and regulatory obligations.',
+    ],
   },
   {
-    id: 'payments-security',
+    id: 'payments',
     icon: CreditCard,
     title: '4. Payments & Financial Data',
-    body: `All payment processing is handled by ${PAYMENTS_PROVIDER_NAME}. When you fund your Project Funds Account via ACH, debit card, credit card, or home improvement financing, your financial data is transmitted directly to our payment processor using industry-standard encryption.
-
-A-List does not store your full card numbers or bank account details on our servers. We only retain transaction records (amounts, dates, status) necessary for account management and dispute resolution.`
+    body: 'All payment processing is handled by third-party providers supporting the Project Funds Account system. Payments may include ACH, debit card, credit card, or financing. Data is transmitted securely using industry-standard encryption.',
+    bullets: [
+      'A-List Home Professionals, LLC does not store sensitive financial data.',
+      'Only retains transaction records necessary for account management, dispute resolution, and compliance.',
+    ],
   },
   {
-    id: 'data-sharing',
-    icon: Shield,
+    id: 'sharing',
+    icon: Globe,
     title: '5. Who We Share Your Data With',
-    bullets: [
-      'Other platform users — only the information needed to facilitate your project or business relationship.',
-      'Payment processors and financial service partners who power the Project Funds Account system.',
-      'Customer support and platform operations vendors who assist in running A-List.',
-      'Analytics providers (data is anonymized and aggregated).',
-      'Law enforcement or legal authorities when required by applicable law.',
-      'A successor entity in the event of a business merger, acquisition, or sale.'
-    ]
+    subsections: [
+      {
+        label: 'Other Platform Users',
+        bullets: ['Only the information necessary to complete projects or business relationships.'],
+      },
+      {
+        label: 'Payment Processors',
+        bullets: ['To facilitate Project Funds Account transactions.'],
+      },
+      {
+        label: 'Service Providers',
+        bullets: ['Customer support tools', 'Platform infrastructure providers', 'Operational partners'],
+      },
+      {
+        label: 'Analytics Providers',
+        bullets: ['Data is anonymized and aggregated', 'Used strictly for platform improvement'],
+      },
+      {
+        label: 'Legal Authorities',
+        bullets: ['When required by law, subpoena, or regulatory obligation.'],
+      },
+      {
+        label: 'Business Transfers',
+        bullets: ['In the event of a merger, acquisition, or sale of assets.'],
+      },
+    ],
   },
   {
     id: 'no-sale',
-    icon: Lock,
+    icon: Shield,
     title: '6. We Do Not Sell Your Data',
-    body: `A-List does not sell, rent, or trade your personal information to third-party advertisers. Your data is used solely to operate and improve the platform and to serve you as a member of the network.`
+    body: 'A-List Home Professionals, LLC does not sell, rent, or trade your personal information to third parties. Your data is used solely to operate the platform, improve services, and support your experience as a member of the network.',
   },
   {
     id: 'cookies',
     icon: Eye,
-    title: '7. Cookies & Tracking',
-    body: `We use cookies and similar technologies to keep you logged in, remember your preferences, and understand how users interact with the platform. You can disable cookies in your browser settings, but doing so may limit certain features.
-
-We do not use tracking for third-party advertising purposes.`
+    title: '7. Cookies & Tracking Technologies',
+    body: 'We use cookies and similar technologies to keep users logged in, remember preferences, and understand platform usage. You may disable cookies in your browser, but this may limit functionality.',
+    bullets: [
+      'We do not use cookies for third-party advertising tracking.',
+    ],
   },
   {
-    id: 'data-retention',
-    icon: FileText,
-    title: '8. How Long We Keep Your Data',
-    body: `We retain your account data for as long as your account is active, or as required by applicable law. If you close your account, we may retain certain records for legal, financial, or dispute-related purposes for up to 7 years.
-
-You may request deletion of your personal data at any time (subject to legal retention requirements) by contacting our support team.`
+    id: 'retention',
+    icon: Database,
+    title: '8. Data Retention',
+    body: 'We retain your data while your account is active, and as required for legal, financial, or dispute purposes. Retention period may extend up to 7 years where necessary.',
+    bullets: [
+      'You may request deletion of your data, subject to legal obligations.',
+    ],
   },
   {
-    id: 'your-rights',
+    id: 'rights',
     icon: CheckCircle,
     title: '9. Your Rights',
+    body: 'You have the right to:',
     bullets: [
-      'Access: Request a copy of the personal data we hold about you.',
-      'Correction: Ask us to correct inaccurate or outdated information.',
-      'Deletion: Request removal of your data where legally permitted.',
-      'Portability: Receive your data in a portable format.',
-      'Objection: Opt out of certain data processing activities.',
-      'All requests are responded to within 30 days.'
-    ]
+      'Access your personal data.',
+      'Correct inaccurate information.',
+      'Request deletion of your data.',
+      'Request portability of your data.',
+      'Object to certain processing activities.',
+      'All verified requests are processed within 30 days.',
+    ],
   },
   {
     id: 'security',
     icon: Lock,
     title: '10. Data Security',
-    body: `We use industry-standard security measures including TLS encryption, access controls, and regular audits to protect your data. While no system is 100% immune to risk, we take every reasonable precaution to safeguard your information.
-
-If you suspect unauthorized access to your account, contact us immediately at ${CONTACT_EMAIL}.`
+    body: 'We implement industry-standard security measures including TLS encryption, secure servers, access controls, and routine system monitoring.',
+    warning: 'No system is 100% secure, but we take all reasonable measures to protect your data. If you suspect unauthorized access, contact us immediately.',
+  },
+  {
+    id: 'minors',
+    icon: Baby,
+    title: '11. Children & Minor Data',
+    body: 'The platform is intended for users 18 and older. However:',
+    bullets: [
+      'Users aged 16–17 may participate as Referral Partners only.',
+      'Parental or legal guardian consent is required.',
+      'Parent or guardian is responsible for all data and activity.',
+      'We do not knowingly collect data from users under 16.',
+    ],
   },
   {
     id: 'updates',
-    icon: FileText,
-    title: '11. Policy Updates',
-    body: `We may update this Privacy Policy as our platform evolves. When we do, we'll notify active users by email or in-app notification. Continued use of the platform after an update constitutes your acceptance of the revised policy. The effective date is always displayed at the top of this page.`
-  }
+    icon: RefreshCw,
+    title: '12. Policy Updates',
+    body: 'We may update this Privacy Policy periodically. When updates occur, users may be notified via email or in-app notification. Continued use of the platform constitutes acceptance. The Effective Date at the top reflects the latest version.',
+  },
 ];
 
 export default function PrivacyPage() {
@@ -128,11 +189,29 @@ export default function PrivacyPage() {
             Your Privacy Matters.
           </h1>
           <p className="text-xl text-white/60 max-w-2xl mx-auto font-medium leading-relaxed">
-            We built A-List on trust. Here's exactly how we collect, use, and protect your data inside the network.
+            A-List Home Professionals, LLC — Version 2.0
           </p>
-          <p className="mt-6 text-white/40 text-sm font-bold uppercase tracking-widest">
-            Effective Date: July 1, 2025
+          <p className="mt-4 text-white/40 text-sm font-bold uppercase tracking-widest">
+            Effective Date: April 9, 2026
           </p>
+        </div>
+      </div>
+
+      {/* Table of Contents */}
+      <div className="bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 py-10 px-4">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-5">Table of Contents</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+            {sections.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors truncate"
+              >
+                {s.title}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -146,27 +225,52 @@ export default function PrivacyPage() {
                 <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-xl flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                 </div>
-                <h2 className="text-2xl font-black tracking-tight text-gray-900 dark:text-white">{section.title}</h2>
+                <h2 className="text-xl md:text-2xl font-black tracking-tight text-gray-900 dark:text-white">{section.title}</h2>
               </div>
 
-              {section.body && (
-                <div className="pl-14 space-y-4">
-                  {section.body.split('\n\n').map((para, i) => (
-                    <p key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">{para}</p>
-                  ))}
-                </div>
-              )}
+              <div className="pl-14 space-y-4">
+                {section.body && section.body.split('\n\n').map((para, i) => (
+                  <p key={i} className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">{para}</p>
+                ))}
 
-              {section.bullets && (
-                <ul className="pl-14 space-y-3">
-                  {section.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
-                      <span className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                {section.warning && (
+                  <div className="flex items-start gap-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-4">
+                    <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                    <p className="text-amber-800 dark:text-amber-300 font-bold text-sm leading-relaxed">{section.warning}</p>
+                  </div>
+                )}
+
+                {section.bullets && (
+                  <ul className="space-y-3">
+                    {section.bullets.map((bullet, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
+                        <span className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {section.subsections && section.subsections.map((sub, si) => (
+                  <div key={si} className="mt-6 border-l-2 border-primary-100 dark:border-primary-900 pl-5">
+                    <h3 className="text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white mb-3">{sub.label}</h3>
+                    {sub.warning && (
+                      <div className="flex items-start gap-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-3 mb-3">
+                        <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                        <p className="text-amber-800 dark:text-amber-300 font-bold text-xs leading-relaxed">{sub.warning}</p>
+                      </div>
+                    )}
+                    <ul className="space-y-2">
+                      {sub.bullets.map((bullet, bi) => (
+                        <li key={bi} className="flex items-start gap-3">
+                          <CheckCircle className="w-4 h-4 text-primary-500 shrink-0 mt-1" />
+                          <span className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm">{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           );
         })}
@@ -178,16 +282,18 @@ export default function PrivacyPage() {
           <Mail className="w-8 h-8 text-primary-600 mx-auto mb-4" />
           <h3 className="text-2xl font-black mb-4 text-gray-900 dark:text-white">Privacy Questions?</h3>
           <p className="text-gray-500 dark:text-gray-400 mb-8 font-medium">
-            To submit a data request or ask about our privacy practices, contact our team directly.
+            To submit a data access, correction, or deletion request — contact our team directly.
           </p>
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 dark:bg-white dark:text-gray-900 text-white rounded-2xl font-black hover:bg-black transition-all"
-          >
-            <Mail className="w-5 h-5" />
-            {CONTACT_EMAIL}
-          </a>
-          <p className="mt-4 text-gray-400 text-sm font-medium">We respond to all privacy requests within 30 days.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 dark:bg-white dark:text-gray-900 text-white rounded-2xl font-black hover:bg-black transition-all">
+              <Mail className="w-5 h-5" />
+              {CONTACT_EMAIL}
+            </a>
+            <a href={`tel:${CONTACT_PHONE}`} className="inline-flex items-center gap-2 px-8 py-4 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-2xl font-black hover:border-gray-400 transition-all">
+              {CONTACT_PHONE}
+            </a>
+          </div>
+          <p className="mt-4 text-gray-400 text-sm font-medium">All verified requests are processed within 30 days.</p>
         </div>
       </div>
 
