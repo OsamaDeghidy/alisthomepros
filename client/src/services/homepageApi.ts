@@ -297,7 +297,7 @@ class HomepageApiService {
         };
       } catch (fallbackError) {
         return {
-          professionals: professionalsResponse.results,
+          professionals: [],
           services: []
         };
       }

@@ -1,13 +1,14 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { UserCheck, ShieldCheck, Star, MapPin, Award, Smartphone, ArrowRight, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { APP_GATEWAY_URL } from '@/config/site';
 
-export default function GuestProfilePage() {
+function ProfileContent() {
   const searchParams = useSearchParams();
-  const profileId = searchParams.get('id');
+  const profileId = searchParams?.get('id');
 
   return (
     <div className="bg-[#fcfdff] min-h-screen pb-20">
@@ -93,6 +94,18 @@ export default function GuestProfilePage() {
          </div>
       </div>
     </div>
+  );
+}
+
+export default function GuestProfilePage() {
+  return (
+    <Suspense fallback={
+       <div className="min-h-screen bg-[#fcfdff] flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+       </div>
+    }>
+       <ProfileContent />
+    </Suspense>
   );
 }
 
