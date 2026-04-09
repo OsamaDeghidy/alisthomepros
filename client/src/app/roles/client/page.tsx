@@ -23,8 +23,8 @@ export default function ClientRolePage() {
             <li className="flex items-start">
               <CheckCircle className="h-6 w-6 text-green-500 mr-2 flex-shrink-0 mt-1" />
               <div>
-                <span className="font-medium">نظام الضمان المالي (Escrow)</span>
-                <p className="text-gray-600">أموالك محمية في حساب ضمان آمن ولا يتم تحريرها إلا بعد اكتمال العمل ورضاك عنه.</p>
+                <span className="font-medium">نظام حماية الدفع (Project Funds Account)</span>
+                <p className="text-gray-600">أموالك محمية في حساب تمويل مشروع آمن ولا يتم تحريرها إلا بعد اكتمال العمل ورضاك عنه.</p>
               </div>
             </li>
             <li className="flex items-start">
@@ -46,7 +46,7 @@ export default function ClientRolePage() {
         
         {/* نظام الضمان المالي */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6">كيف يحميك نظام الضمان المالي</h2>
+          <h2 className="text-3xl font-bold mb-6">كيف يحميك حساب تمويل المشروع</h2>
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="p-6">
               <div className="flex items-center mb-4">
@@ -54,7 +54,7 @@ export default function ClientRolePage() {
                 <h3 className="text-xl font-semibold">حماية مالية كاملة</h3>
               </div>
               <p className="text-gray-700 mb-6">
-                على عكس المنصات الأخرى التي تترك التعاملات المالية بينك وبين المهني، نظام الضمان المالي لدينا يحمي أموالك حتى اكتمال العمل بشكل مرضٍ.
+                على عكس المنصات الأخرى التي تترك التعاملات المالية بينك وبين المهني، حساب تمويل المشروع لدينا يحمي أموالك حتى اكتمال العمل بشكل مرضٍ.
               </p>
               
               <div className="space-y-4">
@@ -63,8 +63,8 @@ export default function ClientRolePage() {
                     <span className="font-bold">1</span>
                   </div>
                   <div>
-                    <h4 className="font-medium">إيداع الدفعة في حساب الضمان</h4>
-                    <p className="text-gray-600">تقوم بإيداع المبلغ المتفق عليه في حساب ضمان آمن تديره منصتنا.</p>
+                    <h4 className="font-medium">إيداع الدفعة في حساب تمويل المشروع</h4>
+                    <p className="text-gray-600">تقوم بإيداع المبلغ المتفق عليه في حساب تمويل آمن تديره منصتنا.</p>
                   </div>
                 </div>
                 
@@ -94,7 +94,7 @@ export default function ClientRolePage() {
                   </div>
                   <div>
                     <h4 className="font-medium">تحرير الدفعة</h4>
-                    <p className="text-gray-600">بعد موافقتك، يتم تحرير الدفعة للمهني من حساب الضمان.</p>
+                    <p className="text-gray-600">بعد موافقتك، يتم تحرير الدفعة للمهني من حساب تمويل المشروع.</p>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@ export default function ClientRolePage() {
                   <td className="py-3 px-4 text-center bg-green-50">
                     <div className="flex items-center justify-center">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-1" />
-                      <span>نظام ضمان مالي كامل</span>
+                      <span>نظام حساب تمويل المشروع</span>
                     </div>
                   </td>
                   <td className="py-3 px-4 text-center bg-red-50">

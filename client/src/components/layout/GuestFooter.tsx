@@ -24,10 +24,12 @@ export default function GuestFooter() {
             <p className="text-lg text-gray-500 font-medium leading-relaxed max-w-md mx-auto md:mx-0">
                The elite bridge for South Florida home services. Connecting homeowners with verified specialists and professional crews.
             </p>
-            <div className="flex justify-center md:justify-start gap-10 opacity-30 grayscale contrast-125">
-               <ShieldCheck className="w-6 h-6 text-gray-950" />
-               <span className="text-[10px] font-black uppercase tracking-widest border border-gray-950 px-2 py-1 rounded">Secured</span>
-               <span className="text-[10px] font-black uppercase tracking-widest border border-gray-950 px-2 py-1 rounded italic">Florida Hub</span>
+            <div className="flex justify-center md:justify-start gap-10 opacity-80">
+               <div className="flex items-center gap-2 text-success-600">
+                  <ShieldCheck className="w-6 h-6" />
+                  <span className="text-[10px] font-black uppercase tracking-widest border border-success-600 px-2 py-1 rounded">Secured</span>
+               </div>
+               <span className="text-[10px] font-black uppercase tracking-widest border border-primary-600 text-primary-600 px-2 py-1 rounded italic flex items-center">Florida Hub</span>
             </div>
           </div>
 
@@ -35,10 +37,10 @@ export default function GuestFooter() {
           <div className="space-y-6">
             <h4 className="text-xs font-black uppercase tracking-[0.2em] text-gray-900">Platform</h4>
             <div className="flex flex-col space-y-4 text-sm font-bold text-gray-500">
-               <Link href="/about" className="hover:text-gold-500 transition-colors">About the Network</Link>
-               <Link href="/gallery" className="hover:text-gold-500 transition-colors">Project Gallery</Link>
-               <Link href="/referral" className="hover:text-gold-500 transition-colors">Network Hub</Link>
-               <Link href="/contact" className="hover:text-gold-500 transition-colors">Direct Contact</Link>
+               <Link href="/about" className="hover:text-primary-500 transition-colors">About the Network</Link>
+               <Link href="/gallery" className="hover:text-primary-500 transition-colors">Project Gallery</Link>
+               <Link href="/referral" className="hover:text-primary-500 transition-colors">Network Hub</Link>
+               <Link href="/contact" className="hover:text-primary-500 transition-colors">Direct Contact</Link>
             </div>
           </div>
 
@@ -48,7 +50,7 @@ export default function GuestFooter() {
             <Link
                href={APP_GATEWAY_URL}
                target="_blank"
-               className="inline-flex items-center justify-center bg-gray-950 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-gold-500 hover:text-gray-950 transition-all shadow-xl w-full"
+               className="inline-flex items-center justify-center bg-primary-500 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-primary-600 transition-all shadow-xl w-full"
             >
                <Smartphone className="w-4 h-4 mr-2" />
                Open App
@@ -59,7 +61,7 @@ export default function GuestFooter() {
         {/* Bottom Strip */}
         <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
           <div className="flex items-center gap-2 text-xs font-black text-gray-400 uppercase tracking-widest">
-             <Heart className="w-3 h-3 text-gold-500" />
+             <Heart className="w-3 h-3 text-primary-500" />
              &copy; {currentYear} A-List Home Professionals. All rights reserved.
           </div>
           <div className="flex gap-8 text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">

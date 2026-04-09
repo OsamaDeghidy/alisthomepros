@@ -8,8 +8,8 @@ export const BUSINESS_HOURS_WEEKDAYS = process.env.NEXT_PUBLIC_BUSINESS_HOURS_WE
 export const BUSINESS_HOURS_WEEKEND = process.env.NEXT_PUBLIC_BUSINESS_HOURS_WEEKEND || 'Saturday: 10AM - 4PM EST';
 
 // Unified payment information across the site
-export const PAYMENTS_PROVIDER_NAME = process.env.NEXT_PUBLIC_PAYMENTS_PROVIDER_NAME || 'SecurePay Escrow Services';
-export const PAYMENTS_STORY = `All payments are securely processed via our escrow wallet powered by ${PAYMENTS_PROVIDER_NAME}. We accept all major credit/debit cards and ACH bank transfers for your convenience and security.`;
+export const PAYMENTS_PROVIDER_NAME = process.env.NEXT_PUBLIC_PAYMENTS_PROVIDER_NAME || 'SecurePay Project Funds Account Services';
+export const PAYMENTS_STORY = `All payments are securely processed via our project funds account wallet powered by ${PAYMENTS_PROVIDER_NAME}. We accept all major credit/debit cards and ACH bank transfers for your convenience and security.`;
 
 // Trust elements for the homepage
 export const TRUST_LOGOS = [

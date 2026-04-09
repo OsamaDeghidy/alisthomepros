@@ -54,15 +54,15 @@ class ContractCreateView(generics.CreateAPIView):
     def perform_create(self, serializer):
         contract = serializer.save(client=self.request.user)
         
-        # Handle temporary contract and escrow account if exists
-        self._handle_temporary_contract_and_escrow(contract)
+        # Handle temporary contract and project funds account if exists
+        self._handle_temporary_contract_and_project_funds(contract)
     
-    def _handle_temporary_contract_and_escrow(self, new_contract):
-        """Handle temporary contract and escrow account when creating a new contract"""
+    def _handle_temporary_contract_and_project_funds(self, new_contract):
+        """Handle temporary contract and project funds account when creating a new contract"""
         from payments.models import EscrowAccount, Payment
         
         try:
-            print(f"\n=== HANDLING TEMPORARY CONTRACT AND ESCROW ===")
+            print(f"\n=== HANDLING TEMPORARY CONTRACT AND PROJECT FUNDS ACCOUNT ===")
             print(f"New contract: {new_contract.id} for project: {new_contract.project.id}")
             print(f"Professional: {new_contract.professional}")
             
@@ -76,19 +76,19 @@ class ContractCreateView(generics.CreateAPIView):
             if temp_contract:
                 print(f"Found temporary contract: {temp_contract.id}")
                 
-                # Find associated escrow account
+                # Find associated project funds account
                 temp_escrow = EscrowAccount.objects.filter(
                     contract=temp_contract,
                     client=new_contract.client,
-                    professional=new_contract.client,  # Temporary escrow has professional set to client
+                    professional=new_contract.client,  # Temporary project funds account has professional set to client
                     status='funded'
                 ).first()
                 
                 if temp_escrow:
-                    print(f"Found temporary escrow: {temp_escrow.escrow_id}")
-                    print(f"Escrow amount: {temp_escrow.amount}")
+                    print(f"Found temporary project funds account: {temp_escrow.escrow_id}")
+                    print(f"Project funds amount: {temp_escrow.amount}")
                     
-                    # Update escrow to point to new contract and professional
+                    # Update project funds account to point to new contract and professional
                     temp_escrow.contract = new_contract
                     temp_escrow.professional = new_contract.professional
                     temp_escrow.metadata = temp_escrow.metadata or {}
@@ -98,9 +98,9 @@ class ContractCreateView(generics.CreateAPIView):
                         'updated_at': timezone.now().isoformat()
                     })
                     temp_escrow.save()
-                    print(f"Updated escrow to point to new contract and professional")
+                    print(f"Updated project funds account to point to new contract and professional")
                     
-                    # Update payment records associated with this escrow
+                    # Update payment records associated with this account
                     Payment.objects.filter(
                         escrow_account=temp_escrow
                     ).update(
@@ -114,12 +114,12 @@ class ContractCreateView(generics.CreateAPIView):
                     print(f"Deleted temporary contract: {temp_contract.id}")
                     
                 else:
-                    print("No temporary escrow found")
+                    print("No temporary project funds account found")
             else:
                 print("No temporary contract found")
                 
         except Exception as e:
-            print(f"Error handling temporary contract and escrow: {str(e)}")
+            print(f"Error handling temporary contract and project funds account: {str(e)}")
             # Don't raise the exception to avoid breaking contract creation
             pass
 

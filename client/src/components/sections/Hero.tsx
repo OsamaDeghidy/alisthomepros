@@ -52,7 +52,7 @@ export default function Hero({ stats: apiStats }: HeroProps) {
     },
     {
       icon: ShieldCheck,
-      title: 'Pay with Escrow Protection',
+      title: 'Pay with Project Funds Account Protection',
       desc: 'Funds held securely until work is done'
     }
   ];
@@ -114,12 +114,12 @@ export default function Hero({ stats: apiStats }: HeroProps) {
             </div>
             
             <h1 className="font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-dark-900 leading-tight">
-              Post Your Project — Get Vetted Florida Pros with Escrow Protection
+              Post Your Project — Get Vetted Florida Pros with Project Funds Account Protection
               <span className="block text-gradient-primary">Hire confidently with licensed, insured, background-checked experts</span>
             </h1>
             
             <p className="text-xl lg:text-2xl text-dark-600 leading-relaxed max-w-4xl mx-auto">
-              Share your project in minutes and get matched with verified Florida professionals. Your funds are protected in escrow and released only when milestones are approved.
+              Share your project in minutes and get matched with verified Florida professionals. Your funds are protected in our Project Funds Account and released only when milestones are approved.
             </p>
 
             {/* Primary CTA */}

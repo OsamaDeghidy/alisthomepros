@@ -35,8 +35,8 @@ export default function AboutPage() {
     },
     {
       icon: Award,
-      title: 'Secure Payments (escrow)',
-      description: 'Our secure escrow system protects your funds until work is completed and approved, giving you peace of mind throughout the project.'
+      title: 'Secure Payments (Project Funds Account)',
+      description: 'Our secure Project Funds Account protects your funds until work is completed and approved, giving you peace of mind throughout the project.'
     },
     {
       icon: Heart,

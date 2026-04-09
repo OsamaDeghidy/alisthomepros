@@ -87,10 +87,10 @@ export default function HowItWorksPage() {
       {
         step: '03',
         title: 'Fund Wallet',
-        headline: 'Secure the job with escrow',
+        headline: 'Secure the job with a Project Funds Account',
         description: 'Add funds to your wallet using a bank transfer, debit card, or loan. Work begins once your wallet is funded and your pro is ready.',
         icon: Wallet,
-        features: ['Bank Transfer', 'Debit Card', 'Loan Options', 'Escrow Protection']
+        features: ['Bank Transfer', 'Debit Card', 'Loan Options', 'Project Funds Account Security']
       },
       {
         step: '04',
@@ -122,9 +122,9 @@ export default function HowItWorksPage() {
         step: '03',
         title: 'Get Notified When Funds Are Ready',
         headline: 'Start only when it\'s secure',
-        description: 'The client funds their A List Wallet. We notify you once escrow is funded so you can begin work with complete confidence.',
+        description: 'The client funds their A-List Wallet. We notify you once the Project Funds Account is funded so you can begin work with complete confidence.',
         icon: Shield,
-        features: ['Escrow Notification', 'Secure Start', 'Fund Verification', 'Work Confidence']
+        features: ['Funding Notification', 'Secure Start', 'Fund Verification', 'Work Confidence']
       },
       {
         step: '04',

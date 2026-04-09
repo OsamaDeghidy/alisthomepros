@@ -276,7 +276,7 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
                             funded_at=timezone.now(),
                             auto_release_date=timezone.now() + timedelta(days=7),  # Auto-release after 7 days
                             terms_accepted=True,
-                            description=f"Escrow for project: {project.title}"
+                            description=f"Project Funds Account for project: {project.title}"
                         )
                         
                         # Calculate processing fee amount
@@ -290,7 +290,7 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
                             amount=Decimal(str(project_cost)),
                             transaction_type='debit',
                             source='project_payment',
-                            description=f"Payment for project: {project.title} (moved to escrow)",
+                            description=f"Payment for project: {project.title} (moved to Project Funds Account)",
                             escrow=escrow
                         )
                         
@@ -539,7 +539,8 @@ class IntakeLeadSerializer(serializers.ModelSerializer):
         model = IntakeLead
         fields = [
             'id', 'full_name', 'email', 'phone', 'message',
-            'source_path', 'language', 'consent', 'status',
+            'source_path', 'lead_source', 'role_type', 'service_type',
+            'language', 'consent', 'status',
             'created_at', 'updated_at'
         ]
         read_only_fields = ['id', 'status', 'created_at', 'updated_at']

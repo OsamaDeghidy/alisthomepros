@@ -481,7 +481,7 @@ export default function MakePaymentPage() {
                 <div>
                   <h4 className="text-sm font-medium text-blue-800">Secure Payment</h4>
                   <p className="text-sm text-blue-700 mt-1">
-                    Your payment is protected by bank-level encryption and held in escrow until milestone completion.
+                    Your payment is protected by bank-level encryption and held in a Project Funds Account until milestone completion.
                   </p>
                 </div>
               </div>
@@ -550,7 +550,7 @@ export default function MakePaymentPage() {
                 <div className="flex items-start space-x-2">
                   <Info className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div className="text-sm text-blue-700">
-                    <p className="font-medium">Payment will be held in escrow</p>
+                    <p className="font-medium">Payment will be held in a Project Funds Account</p>
                     <p>Funds will be released when the milestone is marked as complete and you approve the work.</p>
                   </div>
                 </div>

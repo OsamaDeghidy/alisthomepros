@@ -297,10 +297,31 @@ class HomepageApiService {
         };
       } catch (fallbackError) {
         return {
-          professionals: [],
+          professionals: professionalsResponse.results,
           services: []
         };
       }
+    }
+  }
+
+  // Submit project intake lead
+  async submitIntakeLead(data: {
+    full_name: string;
+    email: string;
+    phone: string;
+    message?: string;
+    service_type?: string;
+    role_type?: string;
+    source_path?: string;
+    lead_source?: string;
+    consent: boolean;
+  }): Promise<any> {
+    try {
+      const response = await api.post(`${this.baseUrl}/intake-lead/`, data);
+      return response.data;
+    } catch (error) {
+      console.error('Error submitting intake lead:', error);
+      throw error;
     }
   }
 

@@ -17,11 +17,14 @@ import {
   Share2,
   Building2,
   HardHat,
-  Search
+  Search,
+  Award
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { APP_GATEWAY_URL } from '@/config/site';
+import { homepageApi } from '@/services/homepageApi';
+import { toast } from 'react-hot-toast';
 
 export default function GuestHomePage() {
   const [zipCode, setZipCode] = useState('');
@@ -36,46 +39,91 @@ export default function GuestHomePage() {
     window.location.href = url.toString();
   };
 
+  // Intake Form State
+  const [intakeData, setIntakeData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    serviceType: '',
+    budget: '',
+    timeline: '',
+    location: '',
+    description: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleIntakeSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await homepageApi.submitIntakeLead({
+        full_name: intakeData.fullName,
+        email: intakeData.email,
+        phone: intakeData.phone,
+        message: `Budget: ${intakeData.budget}\nTimeline: ${intakeData.timeline}\nDescription: ${intakeData.description}`,
+        service_type: intakeData.serviceType,
+        source_path: '/guest',
+        role_type: 'Client',
+        lead_source: 'Funnel Intake',
+        consent: true
+      });
+      toast.success('Project submitted successfully! We will contact you soon.');
+      // Update: Redirect to registration after success to keep them in the funnel
+      setTimeout(() => {
+        window.location.href = `${APP_GATEWAY_URL}/register?role=homeowner&email=${encodeURIComponent(intakeData.email)}`;
+      }, 2000);
+    } catch (error) {
+      toast.error('Failed to submit. Please try again or join directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const audiences = [
     {
       id: 'homeowners',
       title: 'Homeowners',
-      desc: 'Find & book elite Florida pros for any job, small or complex.',
+      desc: 'Post projects. Get matched. Stay in control of your home vision.',
       icon: Building2,
       color: 'bg-primary-50 text-primary-600',
-      cta: 'Find a Pro'
+      cta: 'I Need a Pro',
+      slug: 'homeowner'
     },
     {
       id: 'home-pros',
       title: 'Home Pros',
-      desc: 'Grow your business with high-quality leads and professional tools.',
+      desc: 'Access high-value jobs and grow your business with elite tools.',
       icon: Hammer,
-      color: 'bg-gold-50 text-gold-600',
-      cta: 'Join as Pro'
+      color: 'bg-success-50 text-success-600',
+      cta: "I'm a Home Pro",
+      slug: 'pro'
     },
     {
       id: 'crew-members',
       title: 'Crew Members',
-      desc: 'Connect with contractors and find consistent work on major projects.',
+      desc: 'Find consistent work and join elite teams on South Florida’s top jobs.',
       icon: HardHat,
       color: 'bg-blue-50 text-blue-600',
-      cta: 'Find Work'
+      cta: "I'm Crew",
+      slug: 'crew'
     },
     {
       id: 'specialists',
       title: 'Specialists',
-      desc: 'Elite management for large-scale residential and commercial projects.',
+      desc: 'Manage projects and earn from coordination in our elite ecosystem.',
       icon: Target,
       color: 'bg-gray-900 text-white',
-      cta: 'Specialist Access'
+      cta: "I'm a Specialist",
+      slug: 'specialist'
     },
     {
       id: 'referral-partners',
       title: 'Referral Partners',
-      desc: 'Build your network and earn multipliers on every successful job.',
+      desc: 'Build your network and earn recurring income from every connection.',
       icon: Share2,
-      color: 'bg-gold-600 text-white',
-      cta: 'Start Earning'
+      color: 'bg-primary-600 text-white',
+      cta: 'I Want to Earn',
+      slug: 'partner'
     }
   ];
 
@@ -89,18 +137,18 @@ export default function GuestHomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Content Column */}
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center px-4 py-2 bg-gold-50 text-gold-700 rounded-full text-xs font-black mb-8 animate-fade-in border border-gold-100 tracking-widest uppercase">
-                <MapPin className="w-3 h-3 mr-2 text-gold-600" />
+              <div className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-xs font-black mb-8 animate-fade-in border border-primary-100 tracking-widest uppercase">
+                <MapPin className="w-3 h-3 mr-2 text-primary-600" />
                 Serving All of South Florida
               </div>
               <h1 className="text-6xl lg:text-8xl font-black text-gray-900 leading-[0.9] mb-8 tracking-tighter">
-                Home Services <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-500 to-gold-500">
-                  Reimagined.
+                South Florida’s <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-500 to-success-500">
+                  Private Network.
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                The elite ecosystem for South Florida home maintenance. From quick fixes to large-scale specialist projects, manage everything in one powerful app.
+                Where top Home Pros, skilled crews, and serious homeowners connect, get hired, and get projects done right.
               </p>
 
               {/* Action Buttons */}
@@ -110,8 +158,8 @@ export default function GuestHomePage() {
                   target="_blank"
                   className="group relative inline-flex items-center justify-center bg-gray-900 text-white px-12 py-6 rounded-[2.5rem] font-black text-xl transition-all hover:bg-black hover:scale-105 active:scale-95 shadow-2xl shadow-gray-200"
                 >
-                  <Smartphone className="mr-3 h-6 w-6 text-gold-400" />
-                  Get the App Now
+                  <Smartphone className="mr-3 h-6 w-6 text-primary-400" />
+                  Enter the Network
                   <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-2" />
                 </Link>
                 
@@ -129,7 +177,7 @@ export default function GuestHomePage() {
                  <div className="flex items-center gap-3">
                     <div className="flex -space-x-3">
                        <div className="w-10 h-10 rounded-full border-2 border-white bg-primary-100 flex items-center justify-center text-[10px] font-black text-primary-700 shadow-sm">JW</div>
-                       <div className="w-10 h-10 rounded-full border-2 border-white bg-gold-100 flex items-center justify-center text-[10px] font-black text-gold-700 shadow-sm">AS</div>
+                       <div className="w-10 h-10 rounded-full border-2 border-white bg-success-100 flex items-center justify-center text-[10px] font-black text-success-700 shadow-sm">AS</div>
                        <div className="w-10 h-10 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center text-[10px] font-black text-blue-700 shadow-sm">MK</div>
                     </div>
                     <div className="flex flex-col">
@@ -138,7 +186,7 @@ export default function GuestHomePage() {
                     </div>
                  </div>
                  <div className="flex items-center gap-1">
-                    {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 fill-gold-400 text-gold-400" />)}
+                    {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 fill-primary-400 text-primary-400" />)}
                     <span className="text-xs font-black text-gray-900 ml-2">4.9/5 RATING</span>
                  </div>
               </div>
@@ -148,7 +196,7 @@ export default function GuestHomePage() {
             <div className="relative">
               <div className="bg-white p-10 md:p-12 rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-gray-100 relative z-10">
                  <h3 className="text-3xl font-black text-gray-900 mb-2 tracking-tight">Need a Pro?</h3>
-                 <p className="text-gray-500 mb-8 font-medium">Tell us what you need, and we'll bridge you to the right specialist.</p>
+                 <p className="text-gray-500 mb-8 font-medium">Tell us what you need and we’ll connect you with the right A-List professional.</p>
                  
                  <form onSubmit={handleLeadSubmit} className="space-y-4">
                     <div className="relative">
@@ -177,47 +225,47 @@ export default function GuestHomePage() {
                       type="submit"
                       className="w-full bg-gray-900 text-white py-5 rounded-2xl font-black text-lg hover:bg-black transition-all flex items-center justify-center group shadow-xl shadow-gray-200"
                     >
-                       Continue in App
+                       Continue Inside the Network
                        <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                     </button>
                  </form>
                  
                  <div className="mt-8 flex items-center justify-center gap-8 opacity-30 grayscale contrast-125">
                     <span className="text-xs font-black tracking-tighter">FLORIDA TRUST</span>
-                    <span className="text-xs font-black tracking-tighter underline decoration-gold-500 underline-offset-4">PRO SECURE</span>
+                    <span className="text-xs font-black tracking-tighter underline decoration-primary-500 underline-offset-4">PRO SECURE</span>
                     <span className="text-xs font-black tracking-tighter italic">ELITE HUB</span>
                  </div>
               </div>
               {/* Decorative Orb */}
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gold-400 rounded-full blur-[80px] opacity-20 -z-10"></div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-success-400 rounded-full blur-[80px] opacity-20 -z-10"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Audience Routing Section */}
+      {/* Role Selection Section */}
       <section className="py-32 px-4 bg-white relative overflow-hidden">
          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
-               <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">Built for the Entire Ecosystem</h2>
-               <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">Select your role to see how A-List Home Professionals empowers your workflow.</p>
+               <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">Choose Your Role to Enter A-List</h2>
+               <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">Every user has a role. Every role has power.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                {audiences.map((audience) => (
                   <Link 
                     key={audience.id}
-                    href={APP_GATEWAY_URL}
+                    href={`${APP_GATEWAY_URL}?role=${audience.slug}`}
                     target="_blank"
                     className="p-10 rounded-[3rem] border border-gray-50 bg-gray-50/50 hover:bg-white hover:shadow-2xl hover:border-white transition-all group flex flex-col h-full"
                   >
                      <div className={`w-16 h-16 ${audience.color} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
                         <audience.icon className="w-8 h-8" />
                      </div>
-                     <h3 className="text-2xl font-black text-gray-900 mb-4">{audience.title}</h3>
+                     <h3 className="text-2xl font-black text-gray-900 mb-4">{audience.cta}</h3>
                      <p className="text-gray-500 font-medium leading-relaxed mb-10 flex-1">{audience.desc}</p>
                      <div className="flex items-center text-gray-900 font-black text-sm uppercase tracking-widest group-hover:text-primary-600 transition-colors">
-                        {audience.cta}
+                        Enter the Network
                         <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-2" />
                      </div>
                   </Link>
@@ -226,30 +274,213 @@ export default function GuestHomePage() {
          </div>
       </section>
 
-      {/* One Ecosystem Showcase */}
-      <section className="py-32 bg-gray-900 text-white border-y border-white/5 relative overflow-hidden">
+      {/* A-List Ecosystem Showcase */}
+      <section className="py-32 bg-gray-50 relative overflow-hidden">
+         <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-20">
+               <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">Inside the A-List Ecosystem</h2>
+               <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">One platform. Every role. Fully connected.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+               {[
+                  { title: 'Homeowners', desc: 'Post projects. Get matched. Stay in control.', icon: Building2 },
+                  { title: 'Home Pros', desc: 'Access high-value jobs and grow your business.', icon: Hammer },
+                  { title: 'Crew Members', desc: 'Find consistent work and join elite teams.', icon: HardHat },
+                  { title: 'Specialists', desc: 'Manage projects and earn from coordination.', icon: Target },
+                  { title: 'Referral Partners', desc: 'Build your network and earn recurring income.', icon: Share2 }
+               ].map((item, i) => (
+                  <div key={i} className="flex gap-6 items-start">
+                     <div className="w-12 h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center shrink-0">
+                        <item.icon className="w-6 h-6 text-primary-600" />
+                     </div>
+                     <div>
+                        <h4 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h4>
+                        <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                     </div>
+                  </div>
+               ))}
+            </div>
+         </div>
+      </section>
+      
+      {/* Why A-List Section */}
+      <section className="py-32 px-4 bg-white relative overflow-hidden">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+               <h2 className="text-4xl md:text-7xl font-black text-gray-950 mb-6 tracking-tighter italic">
+                  “No bidding wars. No recycled leads. <br className="hidden md:block"/>Just real opportunities.”
+               </h2>
+               <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium leading-relaxed">
+                  Most platforms sell access. A-List builds real connections between homeowners, professionals, and crews.
+               </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-[4rem] overflow-hidden border border-gray-100 shadow-2xl">
+               {/* Left: Traditional */}
+               <div className="bg-gray-50 p-12 md:p-20">
+                  <h3 className="text-3xl font-black text-gray-400 mb-12 uppercase tracking-widest">Traditional Platforms</h3>
+                  <ul className="space-y-8">
+                     {[
+                        'Pay for leads that aren’t exclusive',
+                        'Compete against multiple contractors',
+                        'Limited control over project flow',
+                        'Disconnected communication',
+                        'No real network, just listings'
+                     ].map((point, i) => (
+                        <li key={i} className="flex items-center gap-4 text-gray-500 font-bold">
+                           <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+                           {point}
+                        </li>
+                     ))}
+                  </ul>
+               </div>
+               
+               {/* Right: A-List (Highlighted) */}
+               <div className="bg-gold-600 p-12 md:p-20 text-white relative">
+                  <div className="absolute top-0 right-0 p-12 opacity-10 text-gold-200">
+                     <ShieldCheck className="w-64 h-64" />
+                  </div>
+                  <h3 className="text-3xl font-black mb-12 uppercase tracking-widest text-gold-100">The A-List Network</h3>
+                  <ul className="space-y-8 relative z-10">
+                     {[
+                        'Direct access to real opportunities',
+                        'Position yourself instead of chasing leads',
+                        'Build long-term relationships',
+                        'Full project visibility and coordination',
+                        'One connected ecosystem for every role'
+                     ].map((point, i) => (
+                        <li key={i} className="flex items-center gap-4 text-white font-black text-lg">
+                           <CheckCircle className="w-6 h-6 text-gold-300" />
+                           {point}
+                        </li>
+                     ))}
+                  </ul>
+                  <div className="mt-16 pt-12 border-t border-white/20">
+                     <p className="text-2xl font-black italic mb-2">“Most platforms make you compete. A-List puts you in position.”</p>
+                     <p className="text-gold-100 font-bold text-sm tracking-widest uppercase">The Power Move for Florida Pros</p>
+                  </div>
+               </div>
+            </div>
+            
+            <div className="mt-16 text-center">
+               <p className="text-gray-400 font-medium mb-8">Every connection happens inside a controlled system with verified users and secure Project Funds Accounts.</p>
+               <Link href={APP_GATEWAY_URL} target="_blank" className="inline-flex items-center gap-2 px-10 py-5 bg-gray-950 text-white rounded-2xl font-black hover:bg-black transition-all group">
+                  Enter the Network
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+               </Link>
+            </div>
+         </div>
+      </section>
+
+      {/* Early Member Advantage Section */}
+      <section className="py-32 px-4 bg-primary-50 relative overflow-hidden">
+         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/40 to-transparent"></div>
+         <div className="max-w-7xl mx-auto relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+               <div>
+                  <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter">Get In Early. <br/>Win Bigger.</h2>
+                  <p className="text-xl text-gray-600 mb-12 font-medium leading-relaxed">Early members gain access to opportunities before the platform scales. Position yourself as a founding force in South Florida’s elite network.</p>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                     {[
+                        { title: 'Priority Job Access', icon: Zap },
+                        { title: 'Less Competition', icon: Target },
+                        { title: 'Founding Positioning', icon: Award },
+                        { title: 'High Visibility', icon: Star }
+                     ].map((item, i) => (
+                        <div key={i} className="flex items-center gap-4 p-6 bg-white rounded-3xl border border-primary-100 shadow-sm">
+                           <item.icon className="w-6 h-6 text-primary-600" />
+                           <span className="font-black text-gray-900 uppercase tracking-tight text-sm">{item.title}</span>
+                        </div>
+                     ))}
+                  </div>
+                  
+                  <Link href={APP_GATEWAY_URL} target="_blank" className="mt-12 inline-flex items-center gap-2 px-12 py-6 bg-primary-600 text-white rounded-[2.5rem] font-black text-xl hover:bg-primary-700 transition-all shadow-xl shadow-primary-200">
+                     Join the Network Now
+                     <ArrowRight className="w-6 h-6" />
+                  </Link>
+               </div>
+               
+               <div className="relative aspect-square">
+                  <div className="absolute inset-0 bg-primary-200 rounded-[4rem] rotate-3 blur-2xl opacity-20"></div>
+                  <div className="relative h-full bg-white rounded-[4rem] border border-primary-100 p-12 flex flex-col justify-center items-center text-center shadow-2xl shadow-primary-200/20">
+                     <div className="w-24 h-24 bg-primary-50 rounded-3xl flex items-center justify-center mb-8">
+                        <Users className="w-12 h-12 text-primary-600" />
+                     </div>
+                     <span className="px-4 py-1 bg-primary-50 text-primary-600 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">Limited Availability</span>
+                     <h3 className="text-3xl font-black text-gray-900 mb-4 tracking-tight leading-none mb-4 uppercase">Founding Member <br/>Positioning</h3>
+                     <p className="text-gray-500 font-medium">Locked-in status for the first 1,000 verified professionals in Florida.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* Membership Section */}
+      <section className="py-32 px-4 bg-white relative overflow-hidden">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-24">
+               <div className="inline-flex items-center gap-2 px-4 py-2 bg-success-50 text-success-700 rounded-full text-xs font-black uppercase tracking-widest mb-8">
+                  <Zap className="w-4 h-4" />
+                  Limited spots per trade, per area
+               </div>
+               <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-8 tracking-tighter leading-none">Choose Your Level</h2>
+               <p className="text-xl text-gray-500 font-bold mb-4">Access determines opportunity.</p>
+               <p className="text-lg text-primary-600 font-black italic max-w-2xl mx-auto italic uppercase tracking-tighter">
+                  “Most contractors compete for jobs. A-List members get positioned for them.”
+               </p>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-12">
+               {/* Simplified Tiers for the funnel */}
+               {[
+                  { title: 'Free Access', price: '0', desc: 'Basic network entry and profile.', cta: 'Get Started Free', color: 'bg-gray-50 text-gray-950' },
+                  { title: 'Home Pro', price: '174.99', desc: 'The high-standard membership for top businesses.', cta: 'Register Now', color: 'bg-primary-600 text-white', featured: true },
+                  { title: 'Crew Member', price: '124.99', desc: 'Trade visibility and consistent job flow.', cta: 'Join the Crew', color: 'bg-gray-50 text-gray-950' }
+               ].map((tier, i) => (
+                  <div key={i} className={`${tier.color} rounded-[3.5rem] p-12 border border-gray-100 flex flex-col h-full ${tier.featured ? 'scale-105 shadow-2xl relative z-10' : ''}`}>
+                     <h4 className="text-2xl font-black mb-4 tracking-tight uppercase">{tier.title}</h4>
+                     <p className={`text-sm font-medium mb-12 ${tier.featured ? 'text-white/60' : 'text-gray-400'}`}>{tier.desc}</p>
+                     <div className="flex items-baseline gap-1 mb-12">
+                        <span className="text-6xl font-black tracking-tighter">${tier.price}</span>
+                        <span className={`text-[10px] font-black uppercase tracking-widest ${tier.featured ? 'text-white/40' : 'text-gray-300'}`}>/ Month</span>
+                     </div>
+                     <Link href={APP_GATEWAY_URL} target="_blank" className={`w-full py-6 px-8 rounded-2xl font-black text-center transition-all ${tier.featured ? 'bg-white text-primary-600 hover:bg-primary-50' : 'bg-gray-900 text-white hover:bg-black'}`}>
+                        {tier.cta}
+                     </Link>
+                  </div>
+               ))}
+            </div>
+         </div>
+      </section>
+
+      {/* App Control Section (Everything runs inside) */}
+      <section className="py-32 bg-gray-950 text-white border-y border-white/5 relative overflow-hidden">
          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-600 rounded-full blur-[200px] opacity-10 -translate-y-1/2 translate-x-1/2"></div>
          <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                <div>
-                  <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 text-primary-400 rounded-full text-xs font-black mb-8 tracking-widest uppercase">
-                     Total Control
+                  <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 text-primary-400 rounded-full text-xs font-black mb-8 tracking-widest uppercase italic">
+                     Centralized Command
                   </div>
-                  <h2 className="text-5xl md:text-7xl font-black mb-12 tracking-tighter leading-none">The Specialist <br/><span className="text-gold-400">Standard.</span></h2>
+                  <h2 className="text-5xl md:text-7xl font-black mb-12 tracking-tighter leading-none">Everything Runs <br/><span className="text-primary-400">Inside the App.</span></h2>
+                  <p className="text-xl text-white/50 mb-16 leading-relaxed font-medium">From project funding to communication, everything is handled in one place.</p>
                   
-                  <div className="space-y-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10">
                      {[
-                        { title: 'Home Services Reality', desc: 'No more generic templates. We connect you with verified tradespeople who know the Florida landscape.' },
-                        { title: 'Project Specialists', desc: 'Access elite project managers for complex renovations and residential builds.' },
-                        { title: 'Secure App Ecosystem', desc: 'Contracts, payments, and messaging—all handled in the highly secure A-List app.' }
+                        { title: 'Project Funds Account', desc: 'Secure payment protection for every milestone.' },
+                        { title: 'Messaging System', desc: 'Direct, encrypted collaboration between roles.' },
+                        { title: 'Job Tracking', desc: 'Real-time visibility into every construction phase.' },
+                        { title: 'Crew Coordination', desc: 'Manage elite teams without leaving the ecosystem.' },
+                        { title: 'Referral Tracking', desc: 'Monitor your rewards and network growth live.' }
                      ].map((item, i) => (
-                        <div key={i} className="flex gap-6">
-                           <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-gold-500 transition-colors">
-                              <CheckCircle className="w-6 h-6 text-gold-400" />
+                        <div key={i} className="flex gap-4 items-start">
+                           <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-primary-500 transition-colors">
+                              <CheckCircle className="w-5 h-5 text-primary-400" />
                            </div>
                            <div>
-                              <h4 className="text-xl font-bold mb-2">{item.title}</h4>
-                              <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                              <h4 className="text-lg font-bold mb-1 tracking-tight">{item.title}</h4>
+                              <p className="text-white/40 text-xs leading-relaxed font-medium">{item.desc}</p>
                            </div>
                         </div>
                      ))}
@@ -258,39 +489,198 @@ export default function GuestHomePage() {
                   <Link
                     href={APP_GATEWAY_URL}
                     target="_blank"
-                    className="mt-16 inline-flex items-center justify-center bg-gold-500 text-gray-950 px-12 py-5 rounded-2xl font-black text-lg hover:bg-gold-400 transition-all shadow-xl shadow-gold-500/20"
+                    className="mt-20 inline-flex items-center justify-center bg-white text-gray-950 px-16 py-6 rounded-[2.5rem] font-black text-xl hover:bg-primary-50 hover:text-primary-600 transition-all shadow-2xl"
                   >
-                     Explore the App
-                     <ArrowRight className="ml-3 w-5 h-5" />
+                     Enter the App
+                     <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2" />
                   </Link>
                </div>
                
                <div className="relative">
-                  <div className="aspect-square bg-white/5 rounded-[4rem] border border-white/10 p-12 flex flex-col justify-center items-center text-center">
-                     <Smartphone className="w-24 h-24 text-gold-500 mb-12" />
-                     <h3 className="text-3xl font-black mb-4 tracking-tight">Trust matters. <br/>Download A-List.</h3>
-                     <p className="text-white/40 font-medium">Your bridge into a safer home services market.</p>
-                  </div>
-                  {/* Floating elements */}
-                  <div className="absolute -top-6 -right-6 bg-white p-6 rounded-3xl shadow-2xl">
-                     <Users className="w-8 h-8 text-primary-600" />
-                  </div>
-                  <div className="absolute -bottom-6 -left-6 bg-gold-500 p-6 rounded-3xl shadow-2xl">
-                     <ShieldCheck className="w-8 h-8 text-gray-900" />
-                  </div>
-               </div>
+                   <div className="aspect-[4/5] bg-white/5 rounded-[4rem] border border-white/10 p-12 flex flex-col justify-center items-center text-center">
+                      <Smartphone className="w-32 h-32 text-primary-500 mb-12 animate-pulse" />
+                      <h3 className="text-4xl font-black mb-4 tracking-tight leading-tight">Elite Control <br/>at Your Fingertips.</h3>
+                      <p className="text-white/40 font-medium max-w-[280px]">Your bridge into a safer, more profitable home services market.</p>
+                   </div>
+                   {/* Floating elements */}
+                   <div className="absolute top-10 -right-8 bg-white p-6 rounded-[2rem] shadow-2xl">
+                      <ShieldCheck className="w-8 h-8 text-primary-600" />
+                   </div>
+                   <div className="absolute -bottom-6 -left-6 bg-primary-500 p-8 rounded-[2.5rem] shadow-2xl">
+                      <div className="text-white font-black text-2xl uppercase tracking-tighter leading-none mb-1">Secure</div>
+                      <div className="text-white/60 text-[10px] font-black uppercase tracking-widest">Funds Protected</div>
+                   </div>
+                </div>
             </div>
          </div>
       </section>
 
-      {/* Final Meta */}
-      <section className="py-24 px-4 text-center bg-white border-t border-gray-100">
-         <h2 className="text-3xl font-black text-gray-900 mb-4 tracking-tight tracking-tighter">Florida Pros. Global Standard.</h2>
-         <p className="text-gray-500 font-medium mb-12">Copyright © 2026 A-List Home Professionals. All rights reserved.</p>
-         <div className="flex justify-center gap-8 text-gray-300 font-black text-xs uppercase tracking-[0.2em]">
-            <span>Privacy</span>
-            <span>Terms</span>
-            <span>Safety</span>
+      {/* Project Intake Section */}
+      <section id="project-intake" className="py-32 px-4 bg-white relative overflow-hidden">
+         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div>
+               <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-8 tracking-tighter">Tell Us About Your Project</h2>
+               <p className="text-xl text-gray-500 font-medium mb-12 max-w-xl">We’ll connect you with the right A-List professional for your specific needs in South Florida.</p>
+               
+               <div className="space-y-6">
+                  {['Verified Specialists', 'Rapid Response Time', 'Direct Connections', 'Secure Milestone Funding'].map((text, i) => (
+                     <div key={i} className="flex items-center gap-4 text-gray-950 font-black tracking-tight text-lg">
+                        <CheckCircle className="w-6 h-6 text-success-500" />
+                        {text}
+                     </div>
+                  ))}
+               </div>
+            </div>
+            
+            <div className="bg-white rounded-[4rem] p-10 md:p-16 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-gray-100 relative">
+               <form onSubmit={handleIntakeSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                     <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Full Name</label>
+                     <input 
+                        type="text" 
+                        placeholder="John Doe" 
+                        className="w-full bg-gray-50 p-5 rounded-2xl border-none font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500"
+                        value={intakeData.fullName}
+                        onChange={(e) => setIntakeData({ ...intakeData, fullName: e.target.value })}
+                        required
+                     />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Email Address</label>
+                        <input 
+                           type="email" 
+                           placeholder="john@example.com" 
+                           className="w-full bg-gray-50 p-5 rounded-2xl border-none font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500"
+                           value={intakeData.email}
+                           onChange={(e) => setIntakeData({ ...intakeData, email: e.target.value })}
+                           required
+                        />
+                     </div>
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Phone Number</label>
+                        <input 
+                           type="tel" 
+                           placeholder="(555) 000-0000" 
+                           className="w-full bg-gray-50 p-5 rounded-2xl border-none font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500"
+                           value={intakeData.phone}
+                           onChange={(e) => setIntakeData({ ...intakeData, phone: e.target.value })}
+                           required
+                        />
+                     </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Project Type</label>
+                        <select 
+                           className="w-full bg-gray-50 p-5 rounded-2xl border-none font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500 appearance-none"
+                           value={intakeData.serviceType}
+                           onChange={(e) => setIntakeData({ ...intakeData, serviceType: e.target.value })}
+                           required
+                        >
+                           <option value="">Select Type...</option>
+                           <option value="Interior Painting">Interior Painting</option>
+                           <option value="Exterior Painting">Exterior Painting</option>
+                           <option value="Project Management">Project Management</option>
+                           <option value="Full Renovation">Full Renovation</option>
+                        </select>
+                     </div>
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Budget Range</label>
+                        <select 
+                           className="w-full bg-gray-50 p-5 rounded-2xl border-none font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500 appearance-none"
+                           value={intakeData.budget}
+                           onChange={(e) => setIntakeData({ ...intakeData, budget: e.target.value })}
+                           required
+                        >
+                           <option value="">Select Budget...</option>
+                           <option value="Under $5k">Under $5k</option>
+                           <option value="$5k - $25k">$5k - $25k</option>
+                           <option value="$25k - $100k">$25k - $100k</option>
+                           <option value="$100k+">$100k+</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Timeline</label>
+                        <select 
+                           className="w-full bg-gray-50 p-5 rounded-2xl border-none font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500 appearance-none"
+                           value={intakeData.timeline}
+                           onChange={(e) => setIntakeData({ ...intakeData, timeline: e.target.value })}
+                           required
+                        >
+                           <option value="">Select Timeline...</option>
+                           <option value="Immediately">Immediately</option>
+                           <option value="1-3 Months">1-3 Months</option>
+                           <option value="3-6 Months">3-6 Months</option>
+                           <option value="Flexible">Flexible</option>
+                        </select>
+                     </div>
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Location</label>
+                        <input 
+                           type="text" 
+                           placeholder="Zip Code" 
+                           className="w-full bg-gray-50 p-5 rounded-2xl border-none font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500"
+                           value={intakeData.location}
+                           onChange={(e) => setIntakeData({ ...intakeData, location: e.target.value })}
+                           required
+                        />
+                     </div>
+                  </div>
+                  <div className="space-y-2">
+                     <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Description</label>
+                     <textarea 
+                        rows={3} 
+                        placeholder="Tell us about the scope of your vision..." 
+                        className="w-full bg-gray-50 p-5 rounded-3xl border-none font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500"
+                        value={intakeData.description}
+                        onChange={(e) => setIntakeData({ ...intakeData, description: e.target.value })}
+                     ></textarea>
+                  </div>
+                  <button 
+                     type="submit"
+                     disabled={isSubmitting}
+                     className={`w-full bg-gray-950 text-white p-6 rounded-2xl font-black text-xl hover:bg-black transition-all shadow-xl shadow-gray-200 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  >
+                     {isSubmitting ? 'Connecting...' : 'Get Matched Now'}
+                  </button>
+               </form>
+            </div>
+         </div>
+      </section>
+
+      {/* Final Meta / Footer CTA */}
+      <section className="py-40 px-4 text-center bg-gray-50 border-t border-gray-100 overflow-hidden relative">
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-600/10 rounded-full blur-[150px] -z-10"></div>
+         <div className="max-w-4xl mx-auto relative z-10">
+            <h2 className="text-6xl md:text-8xl font-black text-gray-950 mb-10 tracking-tighter leading-none uppercase">
+               Your Network <br />
+               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-success-500">Determines Your</span> <br />
+               Opportunities.
+            </h2>
+            <p className="text-2xl text-gray-500 font-medium mb-16 italic max-w-2xl mx-auto">
+               Join A-List and position yourself at the top of South Florida’s home service elite.
+            </p>
+            <Link
+               href={APP_GATEWAY_URL}
+               target="_blank"
+               className="inline-flex items-center justify-center bg-gray-950 text-white px-20 py-8 rounded-[3rem] font-black text-3xl transition-all hover:bg-black hover:scale-105 active:scale-95 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.3)] group"
+            >
+               Enter the Network
+               <ArrowRight className="ml-5 h-10 w-10 transition-transform group-hover:translate-x-3" />
+            </Link>
+         </div>
+         
+         {/* Minimal Footer */}
+         <div className="mt-40 pt-12 border-t border-gray-200/50">
+            <p className="text-gray-400 font-black uppercase tracking-[0.3em] text-[10px] mb-8">Florida Pros. Global Standard.</p>
+            <div className="flex justify-center gap-12 text-gray-400 font-bold text-xs uppercase tracking-widest">
+               <Link href="/privacy" className="hover:text-primary-600 transition-colors">Privacy</Link>
+               <Link href="/terms" className="hover:text-primary-600 transition-colors">Terms</Link>
+               <Link href="/about" className="hover:text-primary-600 transition-colors">How it works</Link>
+            </div>
          </div>
       </section>
       

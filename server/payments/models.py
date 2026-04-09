@@ -39,7 +39,7 @@ class Wallet(models.Model):
         validators=[MinValueValidator(0)]
     )
     
-    # Pending balance (in escrow or processing)
+    # Pending balance (in Project Funds Account or processing)
     pending_balance = models.DecimalField(
         max_digits=15, 
         decimal_places=2, 
@@ -166,7 +166,7 @@ class WalletTransaction(models.Model):
 
 
 class EscrowAccount(models.Model):
-    """حساب Escrow لحماية الدفعات"""
+    """حساب Project Funds Account لحماية الدفعات"""
     STATUS_CHOICES = [
         ('pending', 'Pending'),
         ('funded', 'Funded'),
@@ -284,12 +284,12 @@ class EscrowAccount(models.Model):
     
     class Meta:
         db_table = 'escrow_accounts'
-        verbose_name = 'Escrow Account'
-        verbose_name_plural = 'Escrow Accounts'
+        verbose_name = 'Project Funds Account'
+        verbose_name_plural = 'Project Funds Accounts'
         ordering = ['-created_at']
     
     def __str__(self):
-        return f"Escrow {self.escrow_id} - ${self.amount}"
+        return f"Project Funds Account {self.escrow_id} - ${self.amount}"
     
     def save(self, *args, **kwargs):
         """Calculate fees and net amount"""
@@ -341,7 +341,7 @@ class EscrowAccount(models.Model):
                 currency=self.currency,
                 status='succeeded',
                 payment_type='escrow_release',
-                description=f"Escrow release for {self.contract.title}"
+                description=f"Project Funds Account release for {self.contract.title}"
             )
             
             return True
@@ -366,7 +366,7 @@ class EscrowAccount(models.Model):
                 currency=self.currency,
                 status='succeeded',
                 payment_type='refund',
-                description=f"Escrow refund: {reason}"
+                description=f"Project Funds Account refund: {reason}"
             )
             
             return True
@@ -442,7 +442,7 @@ class Payment(models.Model):
     TYPE_CHOICES = [
         ('project_payment', 'Project Payment'),
         ('milestone_payment', 'Milestone Payment'),
-        ('escrow_release', 'Escrow Release'),
+        ('escrow_release', 'Project Funds Account Release'),
         ('subscription', 'Subscription'),
         ('refund', 'Refund'),
         ('withdrawal', 'Withdrawal'),

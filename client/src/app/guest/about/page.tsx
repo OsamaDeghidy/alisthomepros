@@ -27,25 +27,25 @@ export default function GuestAboutPage() {
     { icon: MessageSquare, title: 'Direct Messaging', desc: 'Real-time collaboration with specialists and crew members in-app.' },
     { icon: Users, title: 'Crew Builder', desc: 'Build and manage elite teams for large-scale Florida projects.' },
     { icon: Target, title: 'Pro Visibility', desc: 'Rank at the top of the A-List directory for your specialty.' },
-    { icon: Shield, title: 'Escrow Protection', desc: 'All payments are secured in escrow until milestones are completed.' },
+    { icon: Shield, title: 'Project Funds Account', desc: 'All payments are secured in your Project Funds Account until milestones are completed.' },
     { icon: Share2, title: 'Network Multipliers', desc: 'Earn referral bonuses that multiply based on your network activity.' },
   ];
 
   return (
-    <div className="bg-[#fcfdff] min-h-screen selection:bg-gold-100 selection:text-gold-900">
+    <div className="bg-[#fcfdff] min-h-screen selection:bg-primary-100 selection:text-primary-900">
       {/* Premium Hero Header */}
       <section className="bg-gray-950 text-white py-32 px-4 relative overflow-hidden text-center">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-600 rounded-full blur-[150px] opacity-10 -translate-y-1/2 translate-x-1/4"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-600 rounded-full blur-[150px] opacity-10 -translate-y-1/2 translate-x-1/4"></div>
         <div className="max-w-4xl mx-auto relative z-10">
-           <Link href="/" className="inline-flex items-center gap-2 text-gold-400 hover:text-white transition-colors mb-12 font-black uppercase tracking-[0.2em] text-[10px]">
+           <Link href="/" className="inline-flex items-center gap-2 text-primary-400 hover:text-white transition-colors mb-12 font-black uppercase tracking-[0.2em] text-[10px]">
               <ArrowLeft className="w-4 h-4" />
               Back to Home
            </Link>
-           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-gold-400 rounded-full text-xs font-black uppercase tracking-widest mb-8">
+           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-primary-400 rounded-full text-xs font-black uppercase tracking-widest mb-8">
               < Award className="w-4 h-4" />
               Elite Membership
            </div>
-           <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">The Specialist <br/><span className="text-gold-400">Ecosystem.</span></h1>
+           <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">The Specialist <br/><span className="text-primary-400">Ecosystem.</span></h1>
            <p className="text-xl md:text-2xl text-white/50 font-medium max-w-2xl mx-auto leading-relaxed italic">
               "A-List Home Professionals isn't just a directory—it's a high-performance engine for Florida's top construction and maintenance specialists."
            </p>
@@ -76,7 +76,7 @@ export default function GuestAboutPage() {
                </div>
                <div className="relative">
                   <div className="aspect-[4/5] bg-gray-900 rounded-[4rem] p-12 flex flex-col justify-between text-white overflow-hidden">
-                     <div className="w-16 h-16 bg-gold-400 text-gray-900 rounded-2xl flex items-center justify-center">
+                     <div className="w-16 h-16 bg-primary-500 text-white rounded-2xl flex items-center justify-center">
                         <Cpu className="w-8 h-8" />
                      </div>
                      <div>
@@ -102,7 +102,7 @@ export default function GuestAboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                {perks.map((perk, i) => (
                   <div key={i} className="p-10 rounded-[3rem] bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 flex flex-col items-center text-center group hover:bg-gray-950 hover:text-white transition-all duration-500">
-                     <div className="w-16 h-16 bg-gold-50 text-gold-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-gold-500 group-hover:text-gray-900 transition-all duration-500">
+                     <div className="w-16 h-16 bg-primary-50 text-primary-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-500 group-hover:text-white transition-all duration-500">
                         <perk.icon className="w-8 h-8" />
                      </div>
                      <h4 className="text-2xl font-black mb-4 tracking-tight">{perk.title}</h4>
@@ -124,7 +124,7 @@ export default function GuestAboutPage() {
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
                {/* Tier 1: Free */}
-               <div className="bg-white/5 rounded-[3.5rem] p-10 border border-white/10 flex flex-col h-full hover:border-gold-500/50 transition-colors">
+               <div className="bg-white/5 rounded-[3.5rem] p-10 border border-white/10 flex flex-col h-full hover:border-primary-500/50 transition-colors">
                   <div className="mb-12">
                      <h4 className="text-2xl font-black text-white mb-4">Network Access</h4>
                      <p className="text-white/40 text-sm font-medium mb-10 leading-relaxed italic">Join the directory and appear in basic Florida home service searches.</p>
@@ -134,9 +134,9 @@ export default function GuestAboutPage() {
                      </div>
                   </div>
                   <ul className="space-y-4 mb-12 flex-1">
-                     <li className="flex gap-3 text-sm font-bold text-white/70 tracking-tight"><Check className="w-5 h-5 text-gold-500 shrink-0" /> Basic Professional Profile</li>
-                     <li className="flex gap-3 text-sm font-bold text-white/70 tracking-tight"><Check className="w-5 h-5 text-gold-500 shrink-0" /> Local Directory Inclusion</li>
-                     <li className="flex gap-3 text-sm font-bold text-white/70 tracking-tight"><Check className="w-5 h-5 text-gold-500 shrink-0" /> Network Community Access</li>
+                     <li className="flex gap-3 text-sm font-bold text-white/70 tracking-tight"><Check className="w-5 h-5 text-primary-500 shrink-0" /> Basic Professional Profile</li>
+                     <li className="flex gap-3 text-sm font-bold text-white/70 tracking-tight"><Check className="w-5 h-5 text-primary-500 shrink-0" /> Local Directory Inclusion</li>
+                     <li className="flex gap-3 text-sm font-bold text-white/70 tracking-tight"><Check className="w-5 h-5 text-primary-500 shrink-0" /> Network Community Access</li>
                   </ul>
                   <Link href={APP_GATEWAY_URL} target="_blank" className="w-full py-5 px-8 bg-white/10 text-white rounded-2xl font-black text-center hover:bg-white/20 transition-all border border-white/5">
                      Get Started Free
@@ -144,8 +144,8 @@ export default function GuestAboutPage() {
                </div>
 
                {/* Tier 2: Home Pro (Most Popular) */}
-               <div className="bg-gold-500 rounded-[3.5rem] p-10 flex flex-col h-full relative scale-105 z-10 shadow-[0_40px_80px_-20px_rgba(247,144,9,0.3)]">
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gray-900 text-gold-400 px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-xl">
+               <div className="bg-success-500 rounded-[3.5rem] p-10 flex flex-col h-full relative scale-105 z-10 shadow-[0_40px_80px_-20px_rgba(34,197,94,0.3)]">
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gray-900 text-success-400 px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-xl">
                      Professional Elite
                   </div>
                   <div className="mb-12 pt-6">
@@ -170,7 +170,7 @@ export default function GuestAboutPage() {
                </div>
 
                {/* Tier 3: Crew Member */}
-               <div className="bg-white/5 rounded-[3.5rem] p-10 border border-white/10 flex flex-col h-full hover:border-gold-500/50 transition-colors">
+               <div className="bg-white/5 rounded-[3.5rem] p-10 border border-white/10 flex flex-col h-full hover:border-primary-500/50 transition-colors">
                   <div className="mb-12">
                      <h4 className="text-2xl font-black text-white mb-4">Crew Member</h4>
                      <p className="text-white/40 text-sm font-medium mb-10 leading-relaxed">Consistent work and trade visibility for active Florida field professionals.</p>
@@ -181,10 +181,10 @@ export default function GuestAboutPage() {
                   </div>
                   <ul className="space-y-4 mb-12 flex-1">
                      {['Trade Specialist Profile', 'Skill & Portfolio Showcase', 'Verified Trade Badges', 'Professional Network Access', 'Work Invitation Gateway'].map((item, i) => (
-                        <li key={i} className="flex gap-3 text-sm font-bold text-white/70 tracking-tight"><Check className="w-5 h-5 text-gold-500 shrink-0" /> {item}</li>
+                        <li key={i} className="flex gap-3 text-sm font-bold text-white/70 tracking-tight"><Check className="w-5 h-5 text-primary-500 shrink-0" /> {item}</li>
                      ))}
                   </ul>
-                  <Link href={APP_GATEWAY_URL} target="_blank" className="w-full py-5 px-8 bg-white text-gray-950 rounded-2xl font-black text-center hover:bg-gold-50 transition-all">
+                  <Link href={APP_GATEWAY_URL} target="_blank" className="w-full py-5 px-8 bg-white text-gray-950 rounded-2xl font-black text-center hover:bg-primary-50 hover:text-primary-600 transition-all">
                      Join the Crew
                   </Link>
                </div>
@@ -202,7 +202,7 @@ export default function GuestAboutPage() {
                target="_blank"
                className="group relative inline-flex items-center justify-center bg-gray-900 text-white px-20 py-7 rounded-[2.5rem] font-black text-2xl transition-all hover:bg-black hover:scale-105 active:scale-95 shadow-2xl"
             >
-               <Smartphone className="w-8 h-8 mr-4 text-gold-400" />
+               <Smartphone className="w-8 h-8 mr-4 text-primary-400" />
                Get the App
                <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-2" />
             </Link>

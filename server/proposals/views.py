@@ -103,7 +103,7 @@ def proposal_detail(request, proposal_id):
 def create_contract_from_proposal(proposal, contract_data=None):
     """
     إنشاء عقد من العرض المقبول مع إمكانية تخصيص البيانات
-    وتحديث العقد المؤقت والحساب الضامن
+    وتحديث العقد المؤقت وحساب أموال المشروع
     """
     try:
         print(f"DEBUG: Creating contract from proposal {proposal.id}")
@@ -145,7 +145,7 @@ def create_contract_from_proposal(proposal, contract_data=None):
         print(f"DEBUG: Total amount: {total_amount}")
         print(f"DEBUG: Payment type: {payment_type} (milestone-based)")
         
-        # البحث عن العقد المؤقت والحساب الضامن المرتبط بالمشروع
+        # البحث عن العقد المؤقت وحساب أموال المشروع المرتبط بالمشروع
         from payments.models import EscrowAccount, Payment, Wallet
         
         temp_contract = None
@@ -163,10 +163,10 @@ def create_contract_from_proposal(proposal, contract_data=None):
             if temp_contract:
                 print(f"DEBUG: Found temporary contract: {temp_contract.id}")
                 
-                # البحث عن الحساب الضامن المرتبط بالعقد المؤقت
+                # البحث عن حساب أموال المشروع المرتبط بالعقد المؤقت
                 temp_escrow = EscrowAccount.objects.filter(
                     contract=temp_contract,
-                    professional=proposal.project.client,  # الحساب الضامن المؤقت يكون professional = client
+                    professional=proposal.project.client,  # حساب أموال المشروع المؤقت يكون professional = client
                     status='funded'
                 ).first()
                 
@@ -210,15 +210,15 @@ def create_contract_from_proposal(proposal, contract_data=None):
         except Exception as e:
             print(f"DEBUG: Error allocating contract funds: {e}")
         
-        # تحديث العقد المؤقت والحساب الضامن إذا وُجدا
+        # تحديث العقد المؤقت وحساب أموال المشروع إذا وُجدا
         if temp_contract and temp_escrow:
             try:
                 print(f"DEBUG: Updating temporary contract and escrow...")
                 
-                # تحديث الحساب الضامن ليشير إلى العقد الجديد والمحترف الجديد
+                # تحديث حساب أموال المشروع ليشير إلى العقد الجديد والمحترف الجديد
                 temp_escrow.contract = contract
                 temp_escrow.professional = proposal.professional
-                temp_escrow.description = f"Escrow for contract: {contract.title}"
+                temp_escrow.description = f"Project Funds Account for contract: {contract.title}"
                 temp_escrow.metadata.update({
                     'contract_id': contract.id,
                     'professional_id': proposal.professional.id,
@@ -228,7 +228,7 @@ def create_contract_from_proposal(proposal, contract_data=None):
                 temp_escrow.save()
                 print(f"DEBUG: Escrow updated successfully")
                 
-                # تحديث سجلات الدفع المرتبطة بالحساب الضامن
+                # تحديث سجلات الدفع المرتبطة بحساب أموال المشروع
                 Payment.objects.filter(
                     escrow=temp_escrow,
                     payee=proposal.project.client
@@ -242,17 +242,17 @@ def create_contract_from_proposal(proposal, contract_data=None):
                 try:
                     escrow_amount = temp_escrow.amount if temp_escrow else 0
                     if escrow_amount > total_amount:
-                        # إذا كان مبلغ الحساب الضامن أكبر من المبلغ الإجمالي، أضف الفرق
+                        # إذا كان مبلغ حساب أموال المشروع أكبر من المبلغ الإجمالي، أضف الفرق
                         additional_amount = escrow_amount - total_amount
                         additional_result = contract.allocate_contract_funds(additional_amount)
                         print(f"DEBUG: Additional contract funds allocated: {additional_result}")
                     elif escrow_amount < total_amount and contract.contract_balance == 0:
-                        # إذا لم يتم تخصيص أي أموال بعد، استخدم مبلغ الحساب الضامن
+                        # إذا لم يتم تخصيص أي أموال بعد، استخدم مبلغ حساب أموال المشروع
                         result = contract.allocate_contract_funds(escrow_amount)
                         print(f"DEBUG: Escrow contract funds allocated: {result}")
                     print(f"DEBUG: Final contract balance: {contract.contract_balance}")
                 except Exception as e:
-                    print(f"DEBUG: Error handling escrow contract funds: {e}")
+                    print(f"DEBUG: Error handling project funds account contract funds: {e}")
                     # If allocation fails, set balance manually as fallback
                     if contract.contract_balance == 0:
                         contract.contract_balance = temp_escrow.amount if temp_escrow else total_amount

@@ -105,7 +105,7 @@ export default function ProjectDetailPage() {
     contractType: 'Fixed Price',
     paymentTerms: 'Milestone-based',
     warranty: '2 years',
-    escrowAmount: '$1,700',
+    projectFundsAmount: '$1,700',
     paymentRequests: [
       {
         id: 1,
@@ -632,8 +632,8 @@ export default function ProjectDetailPage() {
                             <span className="font-medium text-orange-600">${totalPending.toLocaleString()}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Escrow Amount:</span>
-                            <span className="font-medium text-blue-600">{project.escrowAmount}</span>
+                            <span className="text-gray-600">Project Funds Account:</span>
+                            <span className="font-medium text-blue-600">{project.projectFundsAmount}</span>
                           </div>
                           <div className="flex justify-between border-t pt-2">
                             <span className="text-gray-600">Payment Progress:</span>
@@ -1142,8 +1142,8 @@ export default function ProjectDetailPage() {
                             <Shield className="h-5 w-5 text-blue-600" />
                           </div>
                           <div>
-                            <p className="text-sm text-blue-700">Escrow</p>
-                            <p className="text-xl font-bold text-blue-900">{project.escrowAmount}</p>
+                            <p className="text-sm text-blue-700">Project Funds Account</p>
+                            <p className="text-xl font-bold text-blue-900">{project.projectFundsAmount}</p>
                           </div>
                         </div>
                       </div>
@@ -1577,7 +1577,7 @@ export default function ProjectDetailPage() {
                   <option>Credit Card (**** 1234)</option>
                   <option>Bank Transfer</option>
                   <option>PayPal</option>
-                  <option>Escrow Release</option>
+                  <option>Project Funds Account Release</option>
                 </select>
               </div>
               
@@ -1599,7 +1599,7 @@ export default function ProjectDetailPage() {
                   <Info className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div className="text-sm text-blue-700">
                     <p className="font-medium">Payment Protection</p>
-                    <p>Your payment is protected by our escrow service until the milestone is completed to your satisfaction.</p>
+                    <p>Your payment is protected by our Project Funds Account service until the milestone is completed to your satisfaction.</p>
                   </div>
                 </div>
               </div>

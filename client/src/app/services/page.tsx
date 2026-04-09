@@ -27,7 +27,7 @@ export default function TermsOfServicePage() {
       id: 'platform-overview',
       title: 'Platform Overview',
       icon: Home,
-      content: 'A List Home Pros connects homeowners with trusted service providers, skilled workers, and project specialists for home improvement and construction-related services. We provide tools for posting projects, hiring professionals, managing jobs, funding payments through escrow, and resolving disputes.'
+      content: 'A List Home Pros connects homeowners with trusted service providers, skilled workers, and project specialists for home improvement and construction-related services. We provide tools for posting projects, hiring professionals, managing jobs, funding payments through the Project Funds Account, and resolving disputes.'
     },
     {
       id: 'user-roles',
@@ -48,10 +48,10 @@ export default function TermsOfServicePage() {
       content: `${PAYMENTS_STORY} Clients fund their wallet before hiring a professional. Wallets can be funded using a debit card or ACH bank transfer. Payments are processed by ${PAYMENTS_PROVIDER_NAME}. A List does not store your banking or card information.`
     },
     {
-      id: 'escrow-system',
-      title: 'Escrow & Dispute Resolution',
+      id: 'project-funds-system',
+      title: 'Project Funds Account & Dispute Resolution',
       icon: Shield,
-      content: 'Funds are held in escrow and only released once the client verifies that work has been completed or a milestone has been met. If there\'s a disagreement, A List offers a dispute resolution process. We do not guarantee outcomes but will mediate based on the evidence provided.'
+      content: 'Funds are held in a Project Funds Account and only released once the client verifies that work has been completed or a milestone has been met. If there\'s a disagreement, A List offers a dispute resolution process. We do not guarantee outcomes but will mediate based on the evidence provided.'
     },
     {
       id: 'subscription-plans',
@@ -63,7 +63,7 @@ export default function TermsOfServicePage() {
       id: 'conduct-standards',
       title: 'Conduct Standards',
       icon: Scale,
-      content: 'By using the platform, you agree to conduct business with honesty and professionalism. Misrepresentation, solicitation outside of A List, payment circumvention, harassment, or uploading harmful content may result in removal from the platform and forfeiture of funds in escrow.'
+      content: 'By using the platform, you agree to conduct business with honesty and professionalism. Misrepresentation, solicitation outside of A List, payment circumvention, harassment, or uploading harmful content may result in removal from the platform and forfeiture of funds in the Project Funds Account.'
     },
     {
       id: 'intellectual-property',
@@ -81,7 +81,7 @@ export default function TermsOfServicePage() {
       id: 'account-termination',
       title: 'Account Termination',
       icon: FileText,
-      content: 'You may close your account at any time. We reserve the right to remove users who violate our terms or compromise the integrity of the platform. Funds held in escrow at the time of termination may be reviewed before release.'
+      content: 'You may close your account at any time. We reserve the right to remove users who violate our terms or compromise the integrity of the platform. Funds held in the Project Funds Account at the time of termination may be reviewed before release.'
     },
     {
       id: 'terms-updates',
@@ -94,9 +94,9 @@ export default function TermsOfServicePage() {
   const userRoles = [
     {
       title: 'Clients',
-      description: 'Post jobs and fund work through secure escrow',
+      description: 'Post jobs and fund work through a secure Project Funds Account',
       icon: Home,
-      features: ['Post Projects', 'Fund Escrow', 'Hire Professionals', 'Manage Payments']
+      features: ['Post Projects', 'Fund Account', 'Hire Professionals', 'Manage Payments']
     },
     {
       title: 'Home Pros',

@@ -599,7 +599,7 @@ export default function RegisterPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Secure Payments</h4>
-                    <p className="text-yellow-100">Get paid safely with our escrow protection system</p>
+                    <p className="text-yellow-100">Get paid safely with our Project Funds Account protection system</p>
                   </div>
                 </div>
 

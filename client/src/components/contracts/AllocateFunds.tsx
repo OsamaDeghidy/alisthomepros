@@ -169,7 +169,7 @@ const AllocateFunds: React.FC<AllocateFundsProps> = ({
                 <p className="text-xl font-bold text-yellow-800">
                   {formatCurrency(pendingBalance)}
                 </p>
-                <p className="text-xs text-yellow-500">In escrow</p>
+                <p className="text-xs text-yellow-500">In Project Funds Account</p>
               </div>
             </div>
           </div>

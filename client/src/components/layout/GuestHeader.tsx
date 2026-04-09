@@ -52,21 +52,21 @@ export default function GuestHeader() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-black uppercase tracking-widest transition-all hover:text-gold-500 relative py-2 group ${
+                className={`text-sm font-black uppercase tracking-widest transition-all hover:text-primary-500 relative py-2 group ${
                   isActive(item.href) ? 'text-gray-900' : 'text-gray-500'
                 }`}
               >
                 {item.name}
-                <span className={`absolute bottom-0 left-0 h-0.5 bg-gold-500 transition-all duration-300 ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-primary-500 transition-all duration-300 ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
               </Link>
             ))}
             
             <Link
               href={APP_GATEWAY_URL}
               target="_blank"
-              className="inline-flex items-center justify-center bg-gray-950 text-white px-8 py-3.5 rounded-full text-xs font-black uppercase tracking-widest shadow-2xl hover:bg-gold-500 hover:text-gray-950 transition-all hover:scale-105 active:scale-95 group"
+              className="inline-flex items-center justify-center bg-primary-500 text-white px-8 py-3.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg hover:bg-primary-600 transition-all hover:scale-105 active:scale-95 group"
             >
-              <Smartphone className="w-4 h-4 mr-2 text-gold-400 group-hover:text-gray-950" />
+              <Smartphone className="w-4 h-4 mr-2" />
               Open App
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
@@ -91,7 +91,7 @@ export default function GuestHeader() {
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
               className={`block text-xl font-black uppercase tracking-tighter ${
-                isActive(item.href) ? 'text-gold-500' : 'text-gray-900'
+                isActive(item.href) ? 'text-primary-500' : 'text-gray-900'
               }`}
             >
               {item.name}
@@ -101,9 +101,9 @@ export default function GuestHeader() {
              <Link
                href={APP_GATEWAY_URL}
                target="_blank"
-               className="flex items-center justify-center bg-gray-950 text-white px-8 py-5 rounded-2xl text-lg font-black uppercase tracking-widest"
+               className="flex items-center justify-center bg-primary-500 text-white px-8 py-5 rounded-2xl text-lg font-black uppercase tracking-widest hover:bg-primary-600"
              >
-               <Smartphone className="w-5 h-5 mr-3 text-gold-400" />
+               <Smartphone className="w-5 h-5 mr-3" />
                Get the App
                <ArrowRight className="ml-2 h-5 w-5" />
              </Link>

@@ -233,7 +233,7 @@ export default function PaymentsPage() {
     {
       label: 'Pending Balance',
       value: `$${wallet?.pending_balance?.toLocaleString() || '0.00'}`,
-      change: 'In escrow',
+      change: 'In Project Funds Account',
       icon: Clock,
       color: 'text-yellow-600',
       bgColor: 'bg-yellow-50'

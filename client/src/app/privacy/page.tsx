@@ -26,7 +26,7 @@ export default function PrivacyPage() {
         'We use the information we collect to:',
         '• Operate and improve the platform',
         '• Verify accounts and facilitate user matching',
-        '• Process payments, escrow deposits, and wallet funding',
+        '• Process payments, Project Funds Account deposits, and wallet funding',
         '• Communicate with you about projects, updates, support issues, or promotions',
         '• Offer dispute resolution support and ensure platform integrity',
         '• Analyze trends and improve performance across all devices'
@@ -37,7 +37,7 @@ export default function PrivacyPage() {
       title: 'Wallet & Payment Security',
       icon: CreditCard,
       content: [
-        'All payments on A-List Home Pros are securely handled through our escrow wallet system. You may fund your wallet by:',
+        'All payments on A-List Home Pros are securely handled through our Project Funds Account system. You may fund your account by:',
         '• ACH bank transfer',
         '• Debit or credit card',
         '• Personal home improvement loan (subject to third-party approval)',
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
       icon: Shield,
       content: [
         'We do not sell or rent your personal information. We may share information with:',
-        '• Payment processors and escrow partners',
+        '• Payment processors and Project Funds Account partners',
         '• Customer support, marketing, and analytics service providers',
         '• Lenders and funding partners, when you request a loan',
         '• Government or legal authorities, when required by law',

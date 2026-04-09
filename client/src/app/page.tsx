@@ -125,7 +125,7 @@ export default function HomePage() {
                 Secure Payments
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Our escrow system protects your funds until work is completed to your satisfaction.
+                Our Project Funds Account system protects your funds until work is completed to your satisfaction.
               </p>
             </div>
 
@@ -175,7 +175,7 @@ export default function HomePage() {
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-1 mr-3" />
                   <div>
-                    <p className="font-medium text-gray-900">Escrow Protection</p>
+                    <p className="font-medium text-gray-900">Project Funds Account Protection</p>
                     <p className="text-gray-600">Funds are held securely until work is completed satisfactorily</p>
                   </div>
                 </li>

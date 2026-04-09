@@ -449,6 +449,9 @@ class IntakeLead(models.Model):
     phone = models.CharField(max_length=30)
     message = models.TextField(blank=True)
     source_path = models.CharField(max_length=255, blank=True)
+    lead_source = models.CharField(max_length=100, blank=True, help_text="e.g. SEO, Social, Referral")
+    role_type = models.CharField(max_length=50, blank=True, help_text="e.g. Client, Pro, Specialist")
+    service_type = models.CharField(max_length=100, blank=True, help_text="Specific trade or service interest")
     language = models.CharField(max_length=10, blank=True)
     consent = models.BooleanField(default=False)
     status = models.CharField(

@@ -26,7 +26,7 @@ export default function HelpPage() {
       faqs: [
         {
           question: 'How do payments work?',
-          answer: 'We use a secure escrow system. Funds are held safely and released to professionals upon milestone completion or project delivery.'
+          answer: 'We use a secure Project Funds Account. Funds are held safely and released to professionals upon milestone completion or project delivery.'
         },
         {
           question: 'What payment methods are accepted?',
