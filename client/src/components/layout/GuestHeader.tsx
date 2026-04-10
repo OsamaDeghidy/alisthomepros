@@ -28,6 +28,7 @@ export default function GuestHeader() {
     { name: 'About', href: '/about' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Network Hub', href: '/referral' },
+    { name: 'Investors', href: '/investors' },
     { name: 'Contact', href: '/contact' },
   ];
 

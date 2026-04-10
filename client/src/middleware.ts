@@ -39,7 +39,7 @@ export function middleware(request: NextRequest) {
   // Legal pages and other standalone pages that should always be accessible directly
   const platformExclusions = [
     '/client', '/professional', '/api', '/_next', '/images', '/favicon.ico',
-    '/terms', '/privacy', '/safety',
+    '/terms', '/privacy', '/safety', '/investors',
   ];
   const isExcluded = platformExclusions.some(prefix => pathname.startsWith(prefix));
 

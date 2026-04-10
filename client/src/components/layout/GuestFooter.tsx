@@ -39,6 +39,7 @@ export default function GuestFooter() {
                <Link href="/about" className="hover:text-primary-500 transition-colors">About the Network</Link>
                <Link href="/gallery" className="hover:text-primary-500 transition-colors">Project Gallery</Link>
                <Link href="/referral" className="hover:text-primary-500 transition-colors">Network Hub</Link>
+               <Link href="/investors" className="hover:text-primary-500 transition-colors">Investors</Link>
                <Link href="/contact" className="hover:text-primary-500 transition-colors">Direct Contact</Link>
             </div>
           </div>
@@ -63,10 +64,11 @@ export default function GuestFooter() {
              <Heart className="w-3 h-3 text-gold-500" />
              &copy; {currentYear} A-List Home Professionals. All rights reserved.
           </div>
-          <div className="flex gap-8 text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">
+          <div className="flex flex-wrap gap-6 text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] justify-center md:justify-end">
             <Link href="/terms" className="hover:text-gray-900 dark:hover:text-white transition-colors">Terms of Service</Link>
             <Link href="/privacy" className="hover:text-gray-900 dark:hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/safety" className="hover:text-gray-900 dark:hover:text-white transition-colors">Safety Standard</Link>
+            <Link href="/investors" className="hover:text-primary-500 transition-colors">Investors</Link>
           </div>
         </div>
       </div>
