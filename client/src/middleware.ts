@@ -14,9 +14,8 @@ export function middleware(request: NextRequest) {
   const gatewayRoutes: Record<string, string> = {
     '/': '/guest',
     '/about': '/guest/about',
-    '/gallery': '/guest/gallery',
-    '/referral': '/guest/referral',
-    '/contact': '/guest/contact',
+    '/inside-a-list': '/guest/inside-a-list',
+    '/pricing': '/guest/pricing',
   };
 
   // Case-insensitive mapping for static pages

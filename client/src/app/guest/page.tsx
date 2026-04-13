@@ -25,6 +25,8 @@ import Image from 'next/image';
 import { APP_GATEWAY_URL } from '@/config/site';
 import { homepageApi } from '@/services/homepageApi';
 import { toast } from 'react-hot-toast';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 export default function GuestHomePage() {
   const [zipCode, setZipCode] = useState('');
@@ -70,7 +72,7 @@ export default function GuestHomePage() {
       toast.success('Project submitted successfully! We will contact you soon.');
       // Update: Redirect to registration after success to keep them in the funnel
       setTimeout(() => {
-        window.location.href = `${APP_GATEWAY_URL}/register?role=homeowner&email=${encodeURIComponent(intakeData.email)}`;
+        window.location.href = `${APP_GATEWAY_URL}/register?role=property-owner&email=${encodeURIComponent(intakeData.email)}`;
       }, 2000);
     } catch (error) {
       toast.error('Failed to submit. Please try again or join directly.');
@@ -81,51 +83,61 @@ export default function GuestHomePage() {
 
   const audiences = [
     {
-      id: 'homeowners',
-      title: 'Homeowners',
-      desc: 'Post projects. Get matched. Stay in control of your home vision.',
-      icon: Building2,
-      color: 'bg-primary-50 text-primary-600',
-      cta: 'I Need a Pro',
-      slug: 'homeowner'
-    },
-    {
       id: 'home-pros',
-      title: 'Home Pros',
+      title: 'Home Pro',
       desc: 'Access high-value jobs and grow your business with elite tools.',
       icon: Hammer,
-      color: 'bg-gold-50 dark:bg-gold-500/10 text-gold-600 dark:text-gold-500',
       cta: "I'm a Home Pro",
-      slug: 'pro'
+      slug: 'pro',
+      image: '/alist_exterior_painting.png'
     },
     {
       id: 'crew-members',
-      title: 'Crew Members',
+      title: 'Crew Member',
       desc: 'Find consistent work and join elite teams on South Florida’s top jobs.',
       icon: HardHat,
-      color: 'bg-blue-50 text-blue-600',
       cta: "I'm Crew",
-      slug: 'crew'
+      slug: 'crew',
+      image: '/alist_exterior_painting_1774944716298.png'
+    },
+    {
+      id: 'property-owners',
+      title: 'Property Owner',
+      desc: 'Post projects. Get matched. Stay in control of your property vision.',
+      icon: Building2,
+      cta: 'I Need a Pro',
+      slug: 'property-owner',
+      image: '/alist_luxury_kitchen_1774944701026.png'
     },
     {
       id: 'specialists',
-      title: 'Specialists',
+      title: 'Specialist',
       desc: 'Manage projects and earn from coordination in our elite ecosystem.',
       icon: Target,
-      color: 'bg-gray-900 text-white',
       cta: "I'm a Specialist",
-      slug: 'specialist'
+      slug: 'specialist',
+      image: '/alist_project_management_1774945126428.png'
     },
     {
       id: 'referral-partners',
-      title: 'Referral Partners',
+      title: 'Referral Partner',
       desc: 'Build your network and earn recurring income from every connection.',
       icon: Share2,
-      color: 'bg-primary-600 text-white',
       cta: 'I Want to Earn',
-      slug: 'partner'
+      slug: 'partner',
+      image: '/alist_app_mockup_dashboard_1774877749663.png'
     }
   ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % audiences.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [audiences.length]);
 
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-primary-100 selection:text-primary-900">
@@ -143,12 +155,12 @@ export default function GuestHomePage() {
               </div>
               <h1 className="text-6xl lg:text-8xl font-black text-gray-900 leading-[0.9] mb-8 tracking-tighter">
                 South Florida’s <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-primary-400 to-gold-400">
+                <span className="text-[#0284c7]">
                   Private Network.
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                Where top Home Pros, skilled crews, and serious homeowners connect, get hired, and get projects done right.
+                Where top Home Pros, skilled crews, and serious property owners connect, get hired, and get projects done right.
               </p>
 
               {/* Action Buttons */}
@@ -164,7 +176,7 @@ export default function GuestHomePage() {
                 </Link>
                 
                 <Link
-                  href="/about"
+                  href="/inside-a-list"
                   className="inline-flex items-center justify-center text-gray-900 font-black text-lg hover:text-primary-600 transition-colors group tracking-tight"
                 >
                   How it Works
@@ -247,61 +259,66 @@ export default function GuestHomePage() {
       <section className="py-32 px-4 bg-white relative overflow-hidden">
          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
-               <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">Choose Your Role to Enter A-List</h2>
-               <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">Every user has a role. Every role has power.</p>
+               <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">Choose Your Role to Enter Inside A-List</h2>
+               <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium leading-relaxed">Choose your role to enter Inside A-List. Every user home has a role. Every role has a power.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {audiences.map((audience) => (
-                  <Link 
-                    key={audience.id}
-                    href={`${APP_GATEWAY_URL}?role=${audience.slug}`}
-                    target="_blank"
-                    className="p-10 rounded-[3rem] border border-gray-50 bg-gray-50/50 hover:bg-white hover:shadow-2xl hover:border-white transition-all group flex flex-col h-full"
-                  >
-                     <div className={`w-16 h-16 ${audience.color} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
-                        <audience.icon className="w-8 h-8" />
-                     </div>
-                     <h3 className="text-2xl font-black text-gray-900 mb-4">{audience.cta}</h3>
-                     <p className="text-gray-500 font-medium leading-relaxed mb-10 flex-1">{audience.desc}</p>
-                     <div className="flex items-center text-gray-900 font-black text-sm uppercase tracking-widest group-hover:text-primary-600 transition-colors">
-                        Enter the Network
-                        <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-2" />
-                     </div>
-                  </Link>
-               ))}
+            <div className="relative group">
+               {/* Carousel Container */}
+               <div 
+                 className="overflow-hidden cursor-grab active:cursor-grabbing"
+                 ref={carouselRef}
+               >
+                 <motion.div 
+                   className="flex gap-6"
+                   animate={{ x: `-${activeIndex * (100 / (typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 3.2))}%` }}
+                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                 >
+                   {audiences.map((audience, i) => (
+                      <Link 
+                        key={audience.id}
+                        href={`${APP_GATEWAY_URL}?role=${audience.slug}`}
+                        target="_blank"
+                        className="min-w-[100%] md:min-w-[30%] relative aspect-[4/5] rounded-[3.5rem] overflow-hidden group/card block"
+                      >
+                         <Image 
+                           src={audience.image} 
+                           alt={audience.title}
+                           fill
+                           className="object-cover transition-transform duration-700 group-hover/card:scale-110"
+                         />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                         
+                         <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                            <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-white/20">
+                               <audience.icon className="w-6 h-6 text-white" />
+                            </div>
+                            <h3 className="text-3xl font-black text-white mb-4 uppercase">{audience.cta}</h3>
+                            <p className="text-white/70 font-medium leading-relaxed mb-8 line-clamp-2 md:line-clamp-3">{audience.desc}</p>
+                            <div className="flex items-center text-primary-400 font-black text-sm uppercase tracking-widest">
+                               Enter the Network
+                               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/card:translate-x-2" />
+                            </div>
+                         </div>
+                      </Link>
+                   ))}
+                 </motion.div>
+               </div>
+
+               {/* Carousel Indicators */}
+               <div className="flex justify-center gap-3 mt-12">
+                  {audiences.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveIndex(i)}
+                      className={`h-2 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-12 bg-primary-600' : 'w-2 bg-gray-200 hover:bg-gray-300'}`}
+                    />
+                  ))}
+               </div>
             </div>
          </div>
       </section>
 
-      {/* A-List Ecosystem Showcase */}
-      <section className="py-32 bg-gray-50 relative overflow-hidden">
-         <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-20">
-               <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">Inside the A-List Ecosystem</h2>
-               <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">One platform. Every role. Fully connected.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-               {[
-                  { title: 'Homeowners', desc: 'Post projects. Get matched. Stay in control.', icon: Building2 },
-                  { title: 'Home Pros', desc: 'Access high-value jobs and grow your business.', icon: Hammer },
-                  { title: 'Crew Members', desc: 'Find consistent work and join elite teams.', icon: HardHat },
-                  { title: 'Specialists', desc: 'Manage projects and earn from coordination.', icon: Target },
-                  { title: 'Referral Partners', desc: 'Build your network and earn recurring income.', icon: Share2 }
-               ].map((item, i) => (
-                  <div key={i} className="flex gap-6 items-start">
-                     <div className="w-12 h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center shrink-0">
-                        <item.icon className="w-6 h-6 text-primary-600" />
-                     </div>
-                     <div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h4>
-                        <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-                     </div>
-                  </div>
-               ))}
-            </div>
-         </div>
-      </section>
       
       {/* Why A-List Section */}
       <section className="py-32 px-4 bg-white relative overflow-hidden">
@@ -311,7 +328,7 @@ export default function GuestHomePage() {
                   “No bidding wars. No recycled leads. <br className="hidden md:block"/>Just real opportunities.”
                </h2>
                <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium leading-relaxed">
-                  Most platforms sell access. A-List builds real connections between homeowners, professionals, and crews.
+                  Most platforms sell access. A-List builds real connections between property owners, professionals, and crews.
                </p>
             </div>
             
@@ -435,8 +452,8 @@ export default function GuestHomePage() {
                {/* Simplified Tiers for the funnel */}
                {[
                   { title: 'Free Access', price: '0', desc: 'Basic network entry and profile.', cta: 'Get Started Free', color: 'bg-gray-50 text-gray-950' },
-                  { title: 'Home Pro', price: '174.99', desc: 'The high-standard membership for top businesses.', cta: 'Register Now', color: 'bg-primary-600 text-white', featured: true },
-                  { title: 'Crew Member', price: '124.99', desc: 'Trade visibility and consistent job flow.', cta: 'Join the Crew', color: 'bg-gray-50 text-gray-950' }
+                  { title: 'Home Pro', price: '100', desc: 'The high-standard membership for top businesses.', cta: 'Register Now', color: 'bg-primary-600 text-white', featured: true },
+                  { title: 'Crew Member', price: '50', desc: 'Trade visibility and consistent job flow.', cta: 'Join the Crew', color: 'bg-gray-50 text-gray-950' }
                ].map((tier, i) => (
                   <div key={i} className={`${tier.color} rounded-[3.5rem] p-12 border border-gray-100 flex flex-col h-full ${tier.featured ? 'scale-105 shadow-2xl relative z-10' : ''}`}>
                      <h4 className="text-2xl font-black mb-4 tracking-tight uppercase">{tier.title}</h4>
@@ -454,66 +471,7 @@ export default function GuestHomePage() {
          </div>
       </section>
 
-      {/* App Control Section (Everything runs inside) */}
-      <section className="py-32 bg-gray-950 text-white border-y border-white/5 relative overflow-hidden">
-         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-600 rounded-full blur-[200px] opacity-10 -translate-y-1/2 translate-x-1/2"></div>
-         <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-               <div>
-                  <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 text-primary-400 rounded-full text-xs font-black mb-8 tracking-widest uppercase italic">
-                     Centralized Command
-                  </div>
-                  <h2 className="text-5xl md:text-7xl font-black mb-12 tracking-tighter leading-none">Everything Runs <br/><span className="text-primary-400">Inside the App.</span></h2>
-                  <p className="text-xl text-white/50 mb-16 leading-relaxed font-medium">From project funding to communication, everything is handled in one place.</p>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10">
-                     {[
-                        { title: 'Project Funds Account', desc: 'Secure payment protection for every milestone.' },
-                        { title: 'Messaging System', desc: 'Direct, encrypted collaboration between roles.' },
-                        { title: 'Job Tracking', desc: 'Real-time visibility into every construction phase.' },
-                        { title: 'Crew Coordination', desc: 'Manage elite teams without leaving the ecosystem.' },
-                        { title: 'Referral Tracking', desc: 'Monitor your rewards and network growth live.' }
-                     ].map((item, i) => (
-                        <div key={i} className="flex gap-4 items-start">
-                           <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-primary-500 transition-colors">
-                              <CheckCircle className="w-5 h-5 text-primary-400" />
-                           </div>
-                           <div>
-                              <h4 className="text-lg font-bold mb-1 tracking-tight">{item.title}</h4>
-                              <p className="text-white/40 text-xs leading-relaxed font-medium">{item.desc}</p>
-                           </div>
-                        </div>
-                     ))}
-                  </div>
-                  
-                  <Link
-                    href={APP_GATEWAY_URL}
-                    target="_blank"
-                    className="mt-20 inline-flex items-center justify-center bg-white text-gray-950 px-16 py-6 rounded-[2.5rem] font-black text-xl hover:bg-primary-50 hover:text-primary-600 transition-all shadow-2xl"
-                  >
-                     Enter the App
-                     <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2" />
-                  </Link>
-               </div>
-               
-               <div className="relative">
-                   <div className="aspect-[4/5] bg-white/5 rounded-[4rem] border border-white/10 p-12 flex flex-col justify-center items-center text-center">
-                      <Smartphone className="w-32 h-32 text-primary-500 mb-12 animate-pulse" />
-                      <h3 className="text-4xl font-black mb-4 tracking-tight leading-tight">Elite Control <br/>at Your Fingertips.</h3>
-                      <p className="text-white/40 font-medium max-w-[280px]">Your bridge into a safer, more profitable home services market.</p>
-                   </div>
-                   {/* Floating elements */}
-                   <div className="absolute top-10 -right-8 bg-white p-6 rounded-[2rem] shadow-2xl">
-                      <ShieldCheck className="w-8 h-8 text-primary-600" />
-                   </div>
-                   <div className="absolute -bottom-6 -left-6 bg-primary-500 p-8 rounded-[2.5rem] shadow-2xl">
-                      <div className="text-white font-black text-2xl uppercase tracking-tighter leading-none mb-1">Secure</div>
-                      <div className="text-white/60 text-[10px] font-black uppercase tracking-widest">Funds Protected</div>
-                   </div>
-                </div>
-            </div>
-         </div>
-      </section>
+
 
       {/* Project Intake Section */}
       <section id="project-intake" className="py-32 px-4 bg-white relative overflow-hidden">
@@ -680,7 +638,7 @@ export default function GuestHomePage() {
                <Link href="/privacy" className="hover:text-primary-600 transition-colors">Privacy</Link>
                <Link href="/terms" className="hover:text-primary-600 transition-colors">Terms</Link>
                <Link href="/safety" className="hover:text-primary-600 transition-colors">Safety</Link>
-               <Link href="/about" className="hover:text-primary-600 transition-colors">How it works</Link>
+               <Link href="/guest/gallery" className="hover:text-primary-600 transition-colors">How it works</Link>
             </div>
          </div>
       </section>

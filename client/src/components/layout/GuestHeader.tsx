@@ -26,10 +26,9 @@ export default function GuestHeader() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Network Hub', href: '/referral' },
+    { name: 'Inside A-List', href: '/inside-a-list' },
     { name: 'Investors', href: '/investors' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Pricing', href: '/pricing' },
   ];
 
   const isActive = (path: string) => pathname === path;
