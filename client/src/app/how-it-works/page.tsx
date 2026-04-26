@@ -39,7 +39,7 @@ export default function HowItWorksPage() {
     {
       id: 'client',
       title: 'Clients',
-      description: 'Homeowners posting projects',
+      description: 'Property Owners posting projects',
       icon: Home,
       color: 'primary'
     },
@@ -217,7 +217,7 @@ export default function HowItWorksPage() {
               How It Works
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed mb-8">
-              A simple, secure platform connecting homeowners with trusted professionals. 
+              A simple, secure platform connecting property owners with trusted professionals. 
               Choose your role below to see how A List Home Pros works for you.
             </p>
           </div>
@@ -331,7 +331,7 @@ export default function HowItWorksPage() {
                 <Home className="h-8 w-8 text-white" />
               </div>
               <h3 className="font-heading font-bold text-lg text-dark-900 mb-2">
-                For Homeowners
+                For Property Owners
               </h3>
               <p className="text-gray-600 text-sm mb-6">
                 Post your project and get matched with trusted professionals

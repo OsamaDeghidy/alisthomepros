@@ -77,7 +77,7 @@ export default function JsonLdSchema({ type, data }: JsonLdSchemaProps) {
         name: 'How does A-List Home Professionals work?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Our platform connects homeowners with verified home improvement professionals. Post your project, receive quotes, and hire the best professional for your needs.'
+          text: 'Our platform connects property owners with verified home improvement professionals. Post your project, receive quotes, and hire the best professional for your needs.'
         }
       },
       {
@@ -93,7 +93,7 @@ export default function JsonLdSchema({ type, data }: JsonLdSchemaProps) {
         name: 'How much does it cost to use A-List Home Professionals?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Our platform is free for homeowners to use. Professionals pay a small fee to be listed and to bid on projects.'
+          text: 'Our platform is free for property owners to use. Professionals pay a small fee to be listed and to bid on projects.'
         }
       }
     ]

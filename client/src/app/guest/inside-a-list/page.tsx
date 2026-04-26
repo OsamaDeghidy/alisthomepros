@@ -16,7 +16,7 @@ const VideoGallery = ({ title, description, videos }: { title: string, descripti
   <section className="py-16 px-4 relative overflow-hidden">
      <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-           <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter">{title}</h2>
+           <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter pr-4">{title}</h2>
            {description && <p className="text-gray-500 font-medium mt-3 text-lg leading-relaxed">{description}</p>}
         </div>
         
@@ -116,7 +116,7 @@ export default function InsideAListPage() {
             <Box className="w-5 h-5" />
             The Ecosystem
           </div>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-950 mb-8 tracking-tighter leading-none">Inside <br/><GoldText>A-List.</GoldText></h1>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-950 mb-8 tracking-tighter leading-none uppercase italic pr-12 overflow-visible">Inside <br/><span className="inline-block pr-10"><GoldText>A-List.</GoldText></span></h1>
           <p className="text-xl md:text-3xl text-gray-500 font-medium max-w-4xl mx-auto leading-relaxed tracking-tight">
             Explore the platform, the projects, and the professionals redefining the standard for home services in South Florida.
           </p>
@@ -131,7 +131,7 @@ export default function InsideAListPage() {
              <Users className="w-4 h-4" />
              Founders Circle Initiative
           </div>
-          <h3 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">
+          <h3 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter uppercase italic pr-12 overflow-visible">
             <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">{members}</span> 
             <span className="text-white/20"> / {targetMembers}</span> 
             <span className="text-2xl text-primary-400 align-middle ml-4 bg-primary-500/10 px-4 py-2 rounded-2xl border border-primary-500/20">Secured</span>
@@ -164,7 +164,7 @@ export default function InsideAListPage() {
                   <div className="inline-flex items-center px-5 py-2.5 bg-primary-500/10 text-primary-400 border border-primary-500/20 rounded-full text-xs font-black mb-10 tracking-widest uppercase italic">
                      Centralized Command
                   </div>
-                  <h2 className="text-6xl md:text-8xl font-black mb-12 tracking-tighter leading-none">Everything Runs <br/><span className="text-primary-400">Inside the App.</span></h2>
+                  <h2 className="text-6xl md:text-8xl font-black mb-12 tracking-tighter leading-none pr-4">Everything Runs <br/><span className="text-primary-400">Inside the App.</span></h2>
                   <p className="text-2xl text-white/50 mb-16 leading-relaxed font-medium">From project funding to communication, everything is handled in one place.</p>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
@@ -200,7 +200,7 @@ export default function InsideAListPage() {
                <div className="relative">
                    <div className="aspect-[4/5] bg-gray-900/50 backdrop-blur-3xl rounded-[4rem] border border-white/10 p-12 flex flex-col justify-center items-center text-center shadow-2xl relative z-10">
                       <Smartphone className="w-40 h-40 text-primary-500 mb-12 animate-pulse" />
-                      <h3 className="text-5xl font-black mb-6 tracking-tighter leading-tight">Elite Control <br/>at Your Fingertips.</h3>
+                      <h3 className="text-5xl font-black mb-6 tracking-tighter leading-tight pr-4">Elite Control <br/>at Your Fingertips.</h3>
                       <p className="text-white/40 font-medium text-lg max-w-[320px] leading-relaxed">Your bridge into a safer, more profitable property services market.</p>
                    </div>
                    <div className="absolute top-10 -right-8 bg-white p-8 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] z-20">
@@ -211,6 +211,44 @@ export default function InsideAListPage() {
                       <div className="text-white/80 text-[10px] font-black uppercase tracking-widest">Standard Secured</div>
                    </div>
                 </div>
+            </div>
+
+            {/* Comparison Block */}
+            <div className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-0 rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
+               <div className="bg-white/5 p-12 md:p-20 backdrop-blur-md">
+                  <h3 className="text-3xl font-black text-white/30 mb-12 uppercase tracking-widest">Traditional Platforms</h3>
+                  <ul className="space-y-8">
+                     {[
+                        'Pay for leads that aren’t exclusive',
+                        'Compete against multiple contractors',
+                        'Limited control over project flow',
+                        'Disconnected communication',
+                        'No real network, just listings'
+                     ].map((point, i) => (
+                        <li key={i} className="flex items-center gap-4 text-white/50 font-bold">
+                           <div className="w-2 h-2 rounded-full bg-white/20"></div>
+                           {point}
+                        </li>
+                     ))}
+                  </ul>
+               </div>
+               <div className="bg-primary-600 p-12 md:p-20 text-white relative">
+                  <h3 className="text-3xl font-black mb-12 uppercase tracking-widest text-primary-100">The A-List Network</h3>
+                  <ul className="space-y-8 relative z-10">
+                     {[
+                        'Direct access to real opportunities',
+                        'Position yourself instead of chasing leads',
+                        'Build long-term relationships',
+                        'Full project visibility and coordination',
+                        'One connected ecosystem for every role'
+                     ].map((point, i) => (
+                        <li key={i} className="flex items-center gap-4 text-white font-black text-lg">
+                           <CheckCircle className="w-6 h-6 text-gold-400" />
+                           {point}
+                        </li>
+                     ))}
+                  </ul>
+               </div>
             </div>
          </div>
       </section>
@@ -244,7 +282,7 @@ export default function InsideAListPage() {
 
       {/* CTA Section */}
       <section className="py-32 px-4 text-center bg-white border-t border-gray-100">
-        <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-12 tracking-tighter">Ready to join <br/>the <GoldText>Gold</GoldText> Standard?</h2>
+        <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-12 tracking-tighter pr-4">Ready to join <br/>the <GoldText>Gold</GoldText> Standard?</h2>
         <Link
           href={APP_GATEWAY_URL}
           target="_blank"

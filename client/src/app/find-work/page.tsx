@@ -290,7 +290,7 @@ export default function FindWorkPage() {
                 <span className="block text-gradient-primary">Home Project</span>
               </h1>
               <p className="text-lg sm:text-xl lg:text-2xl text-dark-600 leading-relaxed max-w-3xl mx-auto px-4">
-                Browse thousands of home improvement projects and connect with homeowners looking for skilled professionals.
+                Browse thousands of home improvement projects and connect with property owners looking for skilled professionals.
               </p>
             </div>
 

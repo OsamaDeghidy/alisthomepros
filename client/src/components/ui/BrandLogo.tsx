@@ -25,10 +25,11 @@ export function BrandLogo({ className = '', width = 120, height = 60 }: BrandLog
   }
 
   const isDark = resolvedTheme === 'dark';
+  const logoSrc = isDark ? '/logodark.jpeg' : '/logo sun.jpeg';
   
   return (
     <Image
-      src={isDark ? '/logodark.jpeg' : '/logo sun.jpeg'}
+      src={logoSrc}
       alt="A-List Home Pros"
       width={width}
       height={height}

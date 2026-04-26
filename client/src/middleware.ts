@@ -16,6 +16,15 @@ export function middleware(request: NextRequest) {
     '/about': '/guest/about',
     '/inside-a-list': '/guest/inside-a-list',
     '/pricing': '/guest/pricing',
+    '/media': '/guest/media',
+    '/press': '/guest/press',
+    '/articles': '/guest/articles',
+    '/help': '/guest/help',
+    '/investors': '/guest/investors',
+    '/investor-contact': '/guest/investor-contact',
+    '/community': '/guest/community',
+    '/safety': '/guest/safety',
+    '/contact': '/guest/contact',
   };
 
   // Case-insensitive mapping for static pages
@@ -38,7 +47,7 @@ export function middleware(request: NextRequest) {
   // Legal pages and other standalone pages that should always be accessible directly
   const platformExclusions = [
     '/client', '/professional', '/api', '/_next', '/images', '/favicon.ico',
-    '/terms', '/privacy', '/safety', '/investors',
+    '/terms', '/privacy',
   ];
   const isExcluded = platformExclusions.some(prefix => pathname.startsWith(prefix));
 

@@ -227,7 +227,7 @@ export default function Hero({ stats: apiStats }: HeroProps) {
           {/* Trust Bar */}
           <div className="pt-8">
             <div className="flex flex-col items-center gap-4">
-              <p className="text-sm text-dark-500 font-medium">Trusted by Florida homeowners and professionals</p>
+              <p className="text-sm text-dark-500 font-medium">Trusted by Florida property owners and professionals</p>
               <div className="flex flex-wrap items-center justify-center gap-8 opacity-90">
                 {/* Use trust logos from site config */}
                 {trustLogos.map((logo) => (

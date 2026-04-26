@@ -23,7 +23,7 @@ const pillars = [
     title: 'Project Funds Account — Built-In Payment Protection',
     body: `We replaced traditional payment methods with our Project Funds Account system. Here's how it works:`,
     bullets: [
-      'Homeowners fund their account before work begins — no upfront payments to contractors.',
+      'Property Owners fund their account before work begins — no upfront payments to contractors.',
       'Funds are held securely and only released when a milestone is confirmed complete.',
       'All payments are processed through encrypted, certified channels.',
       'Never pay a pro outside the platform — doing so removes all protections for both parties.'
@@ -38,7 +38,7 @@ const pillars = [
       'Every conversation is logged and available for review if a dispute arises.',
       'No off-platform solicitation or shadowing of relationships.',
       'Transparent project timelines, proposals, and milestone agreements in one place.',
-      'Direct, encrypted channels between homeowners, pros, crew, and specialists.'
+      'Direct, encrypted channels between property owners, pros, crew, and specialists.'
     ]
   },
   {
@@ -63,7 +63,7 @@ const pillars = [
       'Zero tolerance for harassment, discrimination, or threatening conduct.',
       'Authentic reviews only — manipulated ratings or fake testimonials are removed and penalized.',
       'Honest representation — your profile, skills, and history must be accurate.',
-      'Professionalism in all interactions, whether with homeowners, pros, or crew.',
+      'Professionalism in all interactions, whether with property owners, pros, or crew.',
       'Repeat violations result in permanent removal from the network.'
     ]
   },
@@ -118,7 +118,7 @@ export default function SafetyPage() {
         <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800 rounded-3xl p-8">
           <h2 className="text-2xl font-black mb-3 text-gray-900 dark:text-white">Our Commitment to You</h2>
           <p className="text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
-            A-List is a controlled, private network — not an open directory. Every feature, from our Project Funds Account to our verification system, is designed to protect homeowners, professionals, and crew from fraud, misrepresentation, and unsafe working conditions. These are not suggestions — they are enforced standards.
+            A-List is a controlled, private network — not an open directory. Every feature, from our Project Funds Account to our verification system, is designed to protect property owners, professionals, and crew from fraud, misrepresentation, and unsafe working conditions. These are not suggestions — they are enforced standards.
           </p>
         </div>
       </div>

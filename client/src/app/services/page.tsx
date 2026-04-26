@@ -27,7 +27,7 @@ export default function TermsOfServicePage() {
       id: 'platform-overview',
       title: 'Platform Overview',
       icon: Home,
-      content: 'A List Home Pros connects homeowners with trusted service providers, skilled workers, and project specialists for home improvement and construction-related services. We provide tools for posting projects, hiring professionals, managing jobs, funding payments through the Project Funds Account, and resolving disputes.'
+      content: 'A List Home Pros connects property owners with trusted service providers, skilled workers, and project specialists for home improvement and construction-related services. We provide tools for posting projects, hiring professionals, managing jobs, funding payments through the Project Funds Account, and resolving disputes.'
     },
     {
       id: 'user-roles',
@@ -277,7 +277,7 @@ export default function TermsOfServicePage() {
               Ready to Get Started?
             </h3>
             <p className="text-gray-300 mb-6">
-              Join thousands of homeowners and professionals on A List Home Pros
+              Join thousands of property owners and professionals on A List Home Pros
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link

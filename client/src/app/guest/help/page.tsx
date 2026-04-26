@@ -15,7 +15,7 @@ import {
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function HelpPage() {
+export default function GuestHelpPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
@@ -81,7 +81,7 @@ export default function HelpPage() {
                   key={i} 
                   className={`w-full flex items-center justify-between p-6 rounded-2xl border transition-all font-black uppercase tracking-widest text-xs italic ${cat.active ? 'bg-gray-950 text-white border-gray-900 shadow-xl' : 'bg-white text-gray-400 border-gray-100 hover:border-primary-400'}`}
                 >
-                   <div className="flex items-center gap-4 pr-4">
+                   <div className="flex items-center gap-4">
                       <cat.icon className={`w-5 h-5 ${cat.active ? 'text-primary-400' : 'text-gray-300'}`} />
                       {cat.label}
                    </div>
@@ -92,7 +92,7 @@ export default function HelpPage() {
 
            {/* FAQ Accordion */}
            <div className="lg:col-span-8 space-y-6">
-              <h2 className="text-3xl font-black text-gray-950 mb-10 tracking-tighter uppercase italic pr-12 overflow-visible">Frequently Asked Questions</h2>
+              <h2 className="text-3xl font-black text-gray-950 mb-10 tracking-tighter uppercase italic pr-4">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqs.map((faq, i) => (
                   <div key={i} className="bg-white border border-gray-100 rounded-[2rem] overflow-hidden shadow-sm">
@@ -100,13 +100,13 @@ export default function HelpPage() {
                        onClick={() => setOpenIndex(openIndex === i ? null : i)}
                        className="w-full flex items-center justify-between p-8 text-left group"
                      >
-                        <span className="text-xl font-black text-gray-950 tracking-tight uppercase italic group-hover:text-primary-600 transition-colors pr-12 overflow-visible">{faq.q}</span>
+                        <span className="text-xl font-black text-gray-950 tracking-tight uppercase italic group-hover:text-primary-600 transition-colors pr-4">{faq.q}</span>
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${openIndex === i ? 'bg-primary-600 text-white' : 'bg-gray-50 text-gray-400'}`}>
                            {openIndex === i ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                         </div>
                      </button>
                      <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? 'max-h-96 pb-8 px-8' : 'max-h-0'}`}>
-                        <div className="pt-4 border-t border-gray-50 text-gray-500 font-medium text-lg leading-relaxed italic pr-4">
+                        <div className="pt-4 border-t border-gray-50 text-gray-500 font-medium text-lg leading-relaxed italic">
                            {faq.a}
                         </div>
                      </div>
@@ -123,8 +123,8 @@ export default function HelpPage() {
             <div className="absolute top-0 left-0 w-full h-full bg-primary-600/5 pointer-events-none"></div>
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                <div>
-                  <h2 className="text-4xl font-black mb-6 tracking-tighter uppercase italic pr-12 overflow-visible">Still Need Help?</h2>
-                  <p className="text-white/60 text-xl font-medium italic pr-4">Our support force is ready to assist you with any platform questions.</p>
+                  <h2 className="text-4xl font-black mb-6 tracking-tighter uppercase italic pr-4">Still Need Help?</h2>
+                  <p className="text-white/60 text-xl font-medium italic">Our support force is ready to assist you with any platform questions.</p>
                </div>
                <div className="space-y-10">
                   <div className="flex items-center gap-6">
@@ -132,8 +132,8 @@ export default function HelpPage() {
                         <Phone className="w-6 h-6 text-white" />
                      </div>
                      <div>
-                        <p className="text-2xl font-black italic pr-4">1-866-882-5478</p>
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-widest italic pr-4">Mon - Fri: 8AM - 6PM EST</p>
+                        <p className="text-2xl font-black italic">1-866-882-5478</p>
+                        <p className="text-white/40 text-[10px] font-black uppercase tracking-widest italic">Mon - Fri: 8AM - 6PM EST</p>
                      </div>
                   </div>
                   <div className="flex items-center gap-6">
@@ -141,8 +141,8 @@ export default function HelpPage() {
                         <Mail className="w-6 h-6 text-white" />
                      </div>
                      <div>
-                        <p className="text-2xl font-black italic pr-4">support@alisthomepros.com</p>
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-widest italic pr-4">24-hour response target</p>
+                        <p className="text-2xl font-black italic">support@alisthomepros.com</p>
+                        <p className="text-white/40 text-[10px] font-black uppercase tracking-widest italic">24-hour response target</p>
                      </div>
                   </div>
                </div>

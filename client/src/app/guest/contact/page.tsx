@@ -15,7 +15,7 @@ import {
 import Link from 'next/link';
 import { CONTACT_PHONE, CONTACT_EMAIL, BUSINESS_HOURS_WEEKDAYS } from '@/config/site';
 
-export default function ContactPage() {
+export default function GuestContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,7 +43,7 @@ export default function ContactPage() {
            <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-tight uppercase italic pr-12 overflow-visible">
              Get in <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600 pr-10">Touch</span>
            </h1>
-           <p className="text-xl md:text-2xl text-white/60 font-medium max-w-2xl mx-auto leading-relaxed italic pr-4">
+           <p className="text-xl md:text-2xl text-white/60 font-medium max-w-2xl mx-auto leading-relaxed italic">
              Have questions about the A-List ecosystem? Our team is ready to provide the answers you need.
            </p>
         </div>
@@ -57,7 +57,7 @@ export default function ContactPage() {
            <div className="lg:col-span-5 space-y-12">
               <div className="space-y-6">
                  <h2 className="text-4xl font-black text-gray-950 tracking-tighter uppercase italic pr-4">Professional <br/>Support Force.</h2>
-                 <p className="text-xl text-gray-500 font-medium leading-relaxed italic pr-4">
+                 <p className="text-xl text-gray-500 font-medium leading-relaxed italic">
                    A-List is built on accountability. We are here to ensure your experience in the network is seamless and high-performing.
                  </p>
               </div>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                       <div>
                          <h4 className="text-sm font-black text-gray-950 uppercase tracking-widest mb-1 italic">{info.title}</h4>
                          <p className="text-xl text-gray-900 font-black italic tracking-tight pr-4">{info.details}</p>
-                         <p className="text-sm text-gray-400 font-bold uppercase tracking-widest mt-1 italic pr-4">{info.subtitle}</p>
+                         <p className="text-sm text-gray-400 font-bold uppercase tracking-widest mt-1 italic">{info.subtitle}</p>
                       </div>
                    </div>
                  ))}
@@ -92,7 +92,7 @@ export default function ContactPage() {
                     </div>
                     <h3 className="text-xl font-black uppercase tracking-tighter italic pr-4">A-List Standard</h3>
                  </div>
-                 <p className="text-white/60 font-medium leading-relaxed italic relative z-10 pr-4">
+                 <p className="text-white/60 font-medium leading-relaxed italic relative z-10">
                    All inquiries are encrypted and handled by our regional specialist force. Your privacy and data security are our highest priority.
                  </p>
               </div>

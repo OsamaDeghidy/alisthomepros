@@ -49,7 +49,7 @@ export interface Payment {
   amount: number;
   currency: string;
   status: 'pending' | 'processing' | 'succeeded' | 'failed' | 'cancelled';
-  payment_type: 'project_payment' | 'milestone_payment' | 'escrow_release' | 'subscription' | 'refund' | 'withdrawal' | 'platform_fee';
+  payment_type: 'project_payment' | 'milestone_payment' | 'project_funds_acct_release' | 'subscription' | 'refund' | 'withdrawal' | 'platform_fee';
   payment_type_display: 'outgoing' | 'incoming' | 'unknown';
   related_user: {
     id: number;

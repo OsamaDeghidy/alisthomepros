@@ -29,7 +29,7 @@ export default function InvestorsPage() {
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto font-medium leading-relaxed mb-12">
-            A-List Home Pros connects homeowners, professionals, and workforce into one scalable network built for how real projects move.
+            A-List Home Pros connects property owners, professionals, and workforce into one scalable network built for how real projects move.
           </p>
           <a
             href={`mailto:${INVESTOR_EMAIL}`}
@@ -52,7 +52,7 @@ export default function InvestorsPage() {
           </h2>
           <div className="space-y-6 text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-lg">
             <p>
-              The construction and home services industry is one of the largest sectors in the country, yet it still operates through disconnected systems. Homeowners struggle to identify reliable professionals, contractors are forced into inconsistent lead cycles, and labor access remains fragmented despite high demand. What should be a structured process often turns into uncertainty on all sides.
+              The construction and home services industry is one of the largest sectors in the country, yet it still operates through disconnected systems. Property Owners struggle to identify reliable professionals, contractors are forced into inconsistent lead cycles, and labor access remains fragmented despite high demand. What should be a structured process often turns into uncertainty on all sides.
             </p>
             <p>
               At the same time, there is no centralized system that aligns project demand, professional supply, workforce access, and coordination into one environment. The result is inefficiency, lost time, and missed opportunities across every level of the industry.
@@ -72,7 +72,7 @@ export default function InvestorsPage() {
           </h2>
           <div className="space-y-6 text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-lg">
             <p>
-              A-List Home Pros is built as a network-driven platform designed to bring structure to how home service projects are sourced, staffed, and completed. Instead of operating as a traditional lead marketplace, the platform connects homeowners, professionals, crew members, and specialists inside one ecosystem where each role has a defined place.
+              A-List Home Pros is built as a network-driven platform designed to bring structure to how home service projects are sourced, staffed, and completed. Instead of operating as a traditional lead marketplace, the platform connects property owners, professionals, crew members, and specialists inside one ecosystem where each role has a defined place.
             </p>
             <p>
               By aligning opportunity, labor, coordination, and payment flow, A-List creates a more efficient system for how projects move. The platform is designed to reduce friction, improve trust, and create a stronger foundation for both service providers and customers.
@@ -98,7 +98,7 @@ export default function InvestorsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: 'Homeowners', desc: 'Access trusted professionals and move projects forward with confidence.', icon: Building2 },
+              { title: 'Property Owners', desc: 'Access trusted professionals and move projects forward with confidence.', icon: Building2 },
               { title: 'Home Pros', desc: 'Get positioned for real opportunities inside a growing network.', icon: Hammer },
               { title: 'Crew Members', desc: 'Connect directly to consistent, active work.', icon: HardHat },
               { title: 'Specialists', desc: 'Coordinate and facilitate project movement.', icon: Target },
@@ -225,7 +225,7 @@ export default function InvestorsPage() {
           </h2>
           <div className="space-y-6 text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-lg mb-12">
             <p>
-              The construction and home services industry is at a point where traditional systems are no longer meeting the needs of the people who rely on them. Professionals are growing increasingly frustrated with inconsistent lead quality, homeowners are demanding more transparency and reliability, and skilled labor continues to face gaps in consistent opportunity despite strong demand.
+              The construction and home services industry is at a point where traditional systems are no longer meeting the needs of the people who rely on them. Professionals are growing increasingly frustrated with inconsistent lead quality, property owners are demanding more transparency and reliability, and skilled labor continues to face gaps in consistent opportunity despite strong demand.
             </p>
             <p>
               At the same time, there is a broader shift toward digital platforms that simplify how services are accessed and delivered. As technology adoption continues to grow across industries, the expectation for a more organized, efficient system within home services is becoming unavoidable.
@@ -257,7 +257,7 @@ export default function InvestorsPage() {
           </h2>
           <div className="space-y-6 text-white/60 font-medium leading-relaxed text-lg">
             <p>
-              A-List Home Pros is being built with the intention of becoming a central platform for how home service projects are sourced, coordinated, and completed. The goal is to create a system where homeowners, professionals, and workforce participants operate within a network that provides structure, visibility, and trust at every stage of the process.
+              A-List Home Pros is being built with the intention of becoming a central platform for how home service projects are sourced, coordinated, and completed. The goal is to create a system where property owners, professionals, and workforce participants operate within a network that provides structure, visibility, and trust at every stage of the process.
             </p>
             <p>
               As the platform grows, its value increases through network effects. More users create more opportunity, more connections, and stronger participation across all roles. This positions A-List not just as a tool, but as an environment where business activity can consistently take place.

@@ -14,7 +14,7 @@ const sections = [
     title: '1. What This Policy Covers',
     body: `A-List Home Professionals, LLC ("A-List," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and share your personal data when you use our platform — including the website, mobile application, and any related services.
 
-This policy applies to all users: A-List Clients (Homeowners), A-List Home Pros, A-List Crew Members, A-List Specialists, and Referral Partners.`,
+This policy applies to all users: A-List Clients (Property Owners), A-List Home Pros, A-List Crew Members, A-List Specialists, and Referral Partners.`,
   },
   {
     id: 'data-collected',
@@ -59,7 +59,7 @@ This policy applies to all users: A-List Clients (Homeowners), A-List Home Pros,
     body: 'We use your data to:',
     bullets: [
       'Verify identity and onboard users.',
-      'Match homeowners with professionals, crew, and specialists.',
+      'Match property owners with professionals, crew, and specialists.',
       'Facilitate payments through the Project Funds Account.',
       'Enable communication within the platform.',
       'Provide customer support and resolve disputes.',

@@ -100,7 +100,7 @@ export default function HomePage() {
               Why Choose A-List Home Pros?
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              We provide a comprehensive platform that connects homeowners with trusted professionals.
+              We provide a comprehensive platform that connects property owners with trusted professionals.
             </p>
           </div>
 
@@ -240,7 +240,7 @@ export default function HomePage() {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-            Join thousands of homeowners and professionals who trust A-List Home Pros for their projects.
+            Join thousands of property owners and professionals who trust A-List Home Pros for their projects.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

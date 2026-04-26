@@ -155,7 +155,7 @@ export default function GuestPricingPage() {
               <Star className="w-4 h-4" />
               Elite Membership
            </div>
-           <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">Choose Your <br/><span className="text-primary-400">Power in the Hub.</span></h1>
+           <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none uppercase italic pr-12 overflow-visible">Choose Your <br/><span className="inline-block text-primary-400 pr-10">Power in the Hub.</span></h1>
            <p className="text-xl md:text-2xl text-white/40 font-medium max-w-3xl mx-auto leading-relaxed italic">
               "Build the bridge. Connect the pros. Earn the rewards. The A-List Home Pros ecosystem is built for Florida's elite bridge builders."
            </p>

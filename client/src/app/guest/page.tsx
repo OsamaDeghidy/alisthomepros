@@ -84,48 +84,53 @@ export default function GuestHomePage() {
   const audiences = [
     {
       id: 'home-pros',
-      title: 'Home Pro',
+      title: 'I Am a Home Pro',
+      power: 'Scale your business',
       desc: 'Access high-value jobs and grow your business with elite tools.',
       icon: Hammer,
       cta: "I'm a Home Pro",
       slug: 'pro',
-      image: '/alist_exterior_painting.png'
+      image: '/home_pro_card.png'
     },
     {
       id: 'crew-members',
-      title: 'Crew Member',
+      title: 'I Am a Crew Member',
+      power: 'Secure consistent work',
       desc: 'Find consistent work and join elite teams on South Florida’s top jobs.',
       icon: HardHat,
       cta: "I'm Crew",
       slug: 'crew',
-      image: '/alist_exterior_painting_1774944716298.png'
+      image: '/crew_member_card.png'
     },
     {
       id: 'property-owners',
-      title: 'Property Owner',
+      title: 'I Need a Pro',
+      power: 'Total project control',
       desc: 'Post projects. Get matched. Stay in control of your property vision.',
       icon: Building2,
       cta: 'I Need a Pro',
       slug: 'property-owner',
-      image: '/alist_luxury_kitchen_1774944701026.png'
+      image: '/property_owner_card.png'
     },
     {
       id: 'specialists',
-      title: 'Specialist',
+      title: 'I Am a Specialist',
+      power: 'Monetize expertise',
       desc: 'Manage projects and earn from coordination in our elite ecosystem.',
       icon: Target,
       cta: "I'm a Specialist",
       slug: 'specialist',
-      image: '/alist_project_management_1774945126428.png'
+      image: '/specialist_card.png'
     },
     {
       id: 'referral-partners',
-      title: 'Referral Partner',
+      title: 'I Want to Earn',
+      power: 'Residual network income',
       desc: 'Build your network and earn recurring income from every connection.',
       icon: Share2,
       cta: 'I Want to Earn',
       slug: 'partner',
-      image: '/alist_app_mockup_dashboard_1774877749663.png'
+      image: '/referral_partner_card.png'
     }
   ];
 
@@ -153,7 +158,7 @@ export default function GuestHomePage() {
                 <MapPin className="w-3 h-3 mr-2 text-primary-600" />
                 Serving All of South Florida
               </div>
-              <h1 className="text-6xl lg:text-8xl font-black text-gray-900 leading-[0.9] mb-8 tracking-tighter">
+              <h1 className="text-6xl lg:text-8xl font-black text-gray-900 leading-[0.9] mb-8 tracking-tighter pr-4">
                 South Florida’s <br />
                 <span className="text-[#0284c7]">
                   Private Network.
@@ -179,7 +184,7 @@ export default function GuestHomePage() {
                   href="/inside-a-list"
                   className="inline-flex items-center justify-center text-gray-900 font-black text-lg hover:text-primary-600 transition-colors group tracking-tight"
                 >
-                  How it Works
+                  How It Works
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
@@ -293,10 +298,11 @@ export default function GuestHomePage() {
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-white/20">
                                <audience.icon className="w-6 h-6 text-white" />
                             </div>
-                            <h3 className="text-3xl font-black text-white mb-4 uppercase">{audience.cta}</h3>
+                            <span className="text-primary-400 font-black text-[10px] uppercase tracking-[0.2em] mb-2">{audience.power}</span>
+                            <h3 className="text-3xl font-black text-white mb-4 uppercase">{audience.title}</h3>
                             <p className="text-white/70 font-medium leading-relaxed mb-8 line-clamp-2 md:line-clamp-3">{audience.desc}</p>
-                            <div className="flex items-center text-primary-400 font-black text-sm uppercase tracking-widest">
-                               Enter the Network
+                            <div className="flex items-center text-white font-black text-sm uppercase tracking-widest bg-white/10 w-fit px-6 py-3 rounded-xl border border-white/10 backdrop-blur-sm group-hover/card:bg-primary-600 group-hover/card:border-primary-500 transition-all">
+                               Enter Inside A-List
                                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/card:translate-x-2" />
                             </div>
                          </div>
@@ -320,30 +326,24 @@ export default function GuestHomePage() {
       </section>
 
       
-      {/* Why A-List Section */}
+      {/* The A-List Edge Section */}
       <section className="py-32 px-4 bg-white relative overflow-hidden">
          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-               <h2 className="text-4xl md:text-7xl font-black text-gray-950 mb-6 tracking-tighter italic">
-                  “No bidding wars. No recycled leads. <br className="hidden md:block"/>Just real opportunities.”
+            <div className="text-center mb-24">
+               <h2 className="text-5xl md:text-8xl font-black text-gray-950 mb-8 tracking-tighter italic uppercase pr-4">
+                  “No bidding wars. <br className="hidden md:block"/>No recycled leads.”
                </h2>
-               <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium leading-relaxed">
-                  Most platforms sell access. A-List builds real connections between property owners, professionals, and crews.
+               <p className="text-2xl text-gray-500 max-w-3xl mx-auto font-medium leading-relaxed">
+                  Most platforms sell access. A-List builds real connections. One connected ecosystem for every role in South Florida’s property market.
                </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-[4rem] overflow-hidden border border-gray-100 shadow-2xl">
-               {/* Left: Traditional */}
-               <div className="bg-gray-50 p-12 md:p-20">
-                  <h3 className="text-3xl font-black text-gray-400 mb-12 uppercase tracking-widest">Traditional Platforms</h3>
-                  <ul className="space-y-8">
-                     {[
-                        'Pay for leads that aren’t exclusive',
-                        'Compete against multiple contractors',
-                        'Limited control over project flow',
-                        'Disconnected communication',
-                        'No real network, just listings'
-                     ].map((point, i) => (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32">
+               {/* Comparison Block Integrated */}
+               <div className="bg-gray-50 p-12 md:p-16 rounded-[4rem] border border-gray-100 shadow-sm">
+                  <h3 className="text-2xl font-black text-gray-400 mb-10 uppercase tracking-widest">Traditional Platforms</h3>
+                  <ul className="space-y-6">
+                     {['Pay for leads that aren’t exclusive', 'Compete against multiple contractors', 'Disconnected communication', 'No real network, just listings'].map((point, i) => (
                         <li key={i} className="flex items-center gap-4 text-gray-500 font-bold">
                            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
                            {point}
@@ -352,132 +352,57 @@ export default function GuestHomePage() {
                   </ul>
                </div>
                
-               {/* Right: A-List (Highlighted) */}
-               <div className="bg-primary-600 p-12 md:p-20 text-white relative">
-                  <div className="absolute top-0 right-0 p-12 opacity-10 text-white">
+               <div className="bg-gray-900 p-12 md:p-16 rounded-[4rem] text-white relative overflow-hidden shadow-2xl">
+                  <div className="absolute top-0 right-0 p-12 opacity-5 text-white">
                      <ShieldCheck className="w-64 h-64" />
                   </div>
-                  <h3 className="text-3xl font-black mb-12 uppercase tracking-widest text-primary-100">The A-List Network</h3>
-                  <ul className="space-y-8 relative z-10">
-                     {[
-                        'Direct access to real opportunities',
-                        'Position yourself instead of chasing leads',
-                        'Build long-term relationships',
-                        'Full project visibility and coordination',
-                        'One connected ecosystem for every role'
-                     ].map((point, i) => (
+                  <h3 className="text-2xl font-black mb-10 uppercase tracking-widest text-primary-400">The A-List Network</h3>
+                  <ul className="space-y-6 relative z-10">
+                     {['Direct access to real opportunities', 'Position yourself instead of chasing leads', 'Build long-term relationships', 'One connected ecosystem'].map((point, i) => (
                         <li key={i} className="flex items-center gap-4 text-white font-black text-lg">
-                           <CheckCircle className="w-6 h-6 text-gold-400" />
+                           <CheckCircle className="w-6 h-6 text-primary-500" />
                            {point}
                         </li>
                      ))}
                   </ul>
-                  <div className="mt-16 pt-12 border-t border-white/20">
-                     <p className="text-2xl font-black italic mb-2">“Most platforms make you compete. A-List puts you in position.”</p>
-                     <p className="text-primary-100 font-bold text-sm tracking-widest uppercase">The Power Move for Florida Pros</p>
-                  </div>
                </div>
             </div>
-            
-            <div className="mt-16 text-center">
-               <p className="text-gray-400 font-medium mb-8">Every connection happens inside a controlled system with verified users and secure Project Funds Accounts.</p>
-               <Link href={APP_GATEWAY_URL} target="_blank" className="inline-flex items-center gap-2 px-10 py-5 bg-gray-950 text-white rounded-2xl font-black hover:bg-black transition-all group">
-                  Enter the Network
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
-               </Link>
-            </div>
-         </div>
-      </section>
 
-      {/* Early Member Advantage Section */}
-      <section className="py-32 px-4 bg-primary-50 relative overflow-hidden">
-         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/40 to-transparent"></div>
-         <div className="max-w-7xl mx-auto relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-               <div>
-                  <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter">Get In Early. <br/>Win Bigger.</h2>
-                  <p className="text-xl text-gray-600 mb-12 font-medium leading-relaxed">Early members gain access to opportunities before the platform scales. Position yourself as a founding force in South Florida’s elite network.</p>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Get in Early Block */}
+            <div className="bg-primary-50 rounded-[4rem] p-12 md:p-24 relative overflow-hidden border border-primary-100">
+               <div className="absolute top-0 right-0 w-96 h-96 bg-primary-200 rounded-full blur-[100px] opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+                  <div>
+                     <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter pr-4">Get In Early. <br/>Win Bigger.</h2>
+                     <p className="text-xl text-gray-600 mb-10 font-medium leading-relaxed">Early members gain access to opportunities before the platform scales. Position yourself as a founding force in South Florida’s elite network.</p>
+                     <Link href={APP_GATEWAY_URL} target="_blank" className="inline-flex items-center gap-2 px-10 py-5 bg-primary-600 text-white rounded-2xl font-black hover:bg-primary-700 transition-all shadow-xl shadow-primary-200">
+                        Join the Network Now
+                        <ArrowRight className="w-5 h-5" />
+                     </Link>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
                      {[
-                        { title: 'Priority Job Access', icon: Zap },
+                        { title: 'Priority Access', icon: Zap },
                         { title: 'Less Competition', icon: Target },
-                        { title: 'Founding Positioning', icon: Award },
+                        { title: 'Founding Status', icon: Award },
                         { title: 'High Visibility', icon: Star }
                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-4 p-6 bg-white rounded-3xl border border-primary-100 shadow-sm">
-                           <item.icon className="w-6 h-6 text-primary-600" />
-                           <span className="font-black text-gray-900 uppercase tracking-tight text-sm">{item.title}</span>
+                        <div key={i} className="p-6 bg-white rounded-3xl border border-primary-100 shadow-sm flex flex-col items-center text-center">
+                           <item.icon className="w-8 h-8 text-primary-600 mb-3" />
+                           <span className="font-black text-gray-900 uppercase tracking-tighter text-xs">{item.title}</span>
                         </div>
                      ))}
                   </div>
-                  
-                  <Link href={APP_GATEWAY_URL} target="_blank" className="mt-12 inline-flex items-center gap-2 px-12 py-6 bg-primary-600 text-white rounded-[2.5rem] font-black text-xl hover:bg-primary-700 transition-all shadow-xl shadow-primary-200">
-                     Join the Network Now
-                     <ArrowRight className="w-6 h-6" />
-                  </Link>
-               </div>
-               
-               <div className="relative aspect-square">
-                  <div className="absolute inset-0 bg-primary-200 rounded-[4rem] rotate-3 blur-2xl opacity-20"></div>
-                  <div className="relative h-full bg-white rounded-[4rem] border border-primary-100 p-12 flex flex-col justify-center items-center text-center shadow-2xl shadow-primary-200/20">
-                     <div className="w-24 h-24 bg-primary-50 rounded-3xl flex items-center justify-center mb-8">
-                        <Users className="w-12 h-12 text-primary-600" />
-                     </div>
-                     <span className="px-4 py-1 bg-primary-50 text-primary-600 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">Limited Availability</span>
-                     <h3 className="text-3xl font-black text-gray-900 mb-4 tracking-tight leading-none mb-4 uppercase">Founding Member <br/>Positioning</h3>
-                     <p className="text-gray-500 font-medium">Locked-in status for the first 1,000 verified professionals in Florida.</p>
-                  </div>
                </div>
             </div>
          </div>
       </section>
-
-      {/* Membership Section */}
-      <section className="py-32 px-4 bg-white relative overflow-hidden">
-         <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-24">
-               <div className="inline-flex items-center gap-2 px-4 py-2 bg-success-50 text-success-700 rounded-full text-xs font-black uppercase tracking-widest mb-8">
-                  <Zap className="w-4 h-4" />
-                  Limited spots per trade, per area
-               </div>
-               <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-8 tracking-tighter leading-none">Choose Your Level</h2>
-               <p className="text-xl text-gray-500 font-bold mb-4">Access determines opportunity.</p>
-               <p className="text-lg text-primary-600 font-black italic max-w-2xl mx-auto italic uppercase tracking-tighter">
-                  “Most contractors compete for jobs. A-List members get positioned for them.”
-               </p>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-12">
-               {/* Simplified Tiers for the funnel */}
-               {[
-                  { title: 'Free Access', price: '0', desc: 'Basic network entry and profile.', cta: 'Get Started Free', color: 'bg-gray-50 text-gray-950' },
-                  { title: 'Home Pro', price: '100', desc: 'The high-standard membership for top businesses.', cta: 'Register Now', color: 'bg-primary-600 text-white', featured: true },
-                  { title: 'Crew Member', price: '50', desc: 'Trade visibility and consistent job flow.', cta: 'Join the Crew', color: 'bg-gray-50 text-gray-950' }
-               ].map((tier, i) => (
-                  <div key={i} className={`${tier.color} rounded-[3.5rem] p-12 border border-gray-100 flex flex-col h-full ${tier.featured ? 'scale-105 shadow-2xl relative z-10' : ''}`}>
-                     <h4 className="text-2xl font-black mb-4 tracking-tight uppercase">{tier.title}</h4>
-                     <p className={`text-sm font-medium mb-12 ${tier.featured ? 'text-white/60' : 'text-gray-400'}`}>{tier.desc}</p>
-                     <div className="flex items-baseline gap-1 mb-12">
-                        <span className="text-6xl font-black tracking-tighter">${tier.price}</span>
-                        <span className={`text-[10px] font-black uppercase tracking-widest ${tier.featured ? 'text-white/40' : 'text-gray-300'}`}>/ Month</span>
-                     </div>
-                     <Link href={APP_GATEWAY_URL} target="_blank" className={`w-full py-6 px-8 rounded-2xl font-black text-center transition-all ${tier.featured ? 'bg-white text-primary-600 hover:bg-primary-50' : 'bg-gray-900 text-white hover:bg-black'}`}>
-                        {tier.cta}
-                     </Link>
-                  </div>
-               ))}
-            </div>
-         </div>
-      </section>
-
-
 
       {/* Project Intake Section */}
       <section id="project-intake" className="py-32 px-4 bg-white relative overflow-hidden">
          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div>
-               <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-8 tracking-tighter">Tell Us About Your Project</h2>
+               <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-8 tracking-tighter pr-4">Tell Us About Your Project</h2>
                <p className="text-xl text-gray-500 font-medium mb-12 max-w-xl">We’ll connect you with the right A-List professional for your specific needs in South Florida.</p>
                
                <div className="space-y-6">
@@ -613,7 +538,7 @@ export default function GuestHomePage() {
       <section className="py-40 px-4 text-center bg-gray-50 border-t border-gray-100 overflow-hidden relative">
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-600/10 rounded-full blur-[150px] -z-10"></div>
          <div className="max-w-4xl mx-auto relative z-10">
-            <h2 className="text-6xl md:text-8xl font-black text-gray-950 dark:text-white mb-10 tracking-tighter leading-none uppercase text-center">
+            <h2 className="text-6xl md:text-8xl font-black text-gray-950 dark:text-white mb-10 tracking-tighter leading-none uppercase text-center pr-4">
                Your Network <br />
                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-300">Determines Your</span> <br />
                Opportunities.
@@ -631,16 +556,7 @@ export default function GuestHomePage() {
             </Link>
          </div>
          
-         {/* Minimal Footer */}
-         <div className="mt-40 pt-12 border-t border-gray-200/50">
-            <p className="text-gray-400 font-black uppercase tracking-[0.3em] text-[10px] mb-8">Florida Pros. Global Standard.</p>
-            <div className="flex justify-center gap-12 text-gray-400 font-bold text-xs uppercase tracking-widest">
-               <Link href="/privacy" className="hover:text-primary-600 transition-colors">Privacy</Link>
-               <Link href="/terms" className="hover:text-primary-600 transition-colors">Terms</Link>
-               <Link href="/safety" className="hover:text-primary-600 transition-colors">Safety</Link>
-               <Link href="/guest/gallery" className="hover:text-primary-600 transition-colors">How it works</Link>
-            </div>
-         </div>
+
       </section>
       
       <style jsx global>{`

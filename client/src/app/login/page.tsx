@@ -224,7 +224,7 @@ export default function LoginPage() {
               Join the Leading Home Services Platform
             </h3>
             <p className="text-xl text-primary-100 leading-relaxed">
-              Connect with thousands of verified professionals and homeowners. Grow your business with A-List Home Pros.
+              Connect with thousands of verified professionals and property owners. Grow your business with A-List Home Pros.
             </p>
           </div>
 

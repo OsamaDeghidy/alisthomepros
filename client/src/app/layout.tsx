@@ -77,14 +77,17 @@ export default function RootLayout({
   // تحديد ما إذا كانت الصفحة الحالية ضمن "واجهة الزوار البسيطة"
   // If SITE_MODE is 'gateway', we use the Guest layout for the root and specified paths.
   // Explicit /guest paths always use the guest layout.
-  const guestPaths = ['/', '/about', '/pricing', '/inside-a-list', '/terms', '/privacy', '/safety', '/investors'];
   const isGuestPage = pathname?.startsWith('/guest') || 
-                     (SITE_MODE === 'gateway' && guestPaths.includes(pathname || ''));
+                     (process.env.NEXT_PUBLIC_SITE_MODE === 'gateway' && 
+                      !pathname?.startsWith('/client') && 
+                      !pathname?.startsWith('/professional') && 
+                      !pathname?.startsWith('/admin') &&
+                      !pathname?.startsWith('/profile'));
 
   return (
     <html lang="en" dir="ltr">
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <AuthProvider>
             <ToastProvider>
               {isGuestPage ? (

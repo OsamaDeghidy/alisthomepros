@@ -156,7 +156,7 @@ export default function RegisterPage() {
               Create New Account
             </h2>
             <p className="text-dark-600 dark:text-dark-400">
-              Join thousands of homeowners and professionals
+              Join thousands of property owners and professionals
             </p>
           </div>
 
@@ -534,7 +534,7 @@ export default function RegisterPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Quality Leads</h4>
-                    <p className="text-primary-100">Access to pre-qualified homeowners ready to hire</p>
+                    <p className="text-primary-100">Access to pre-qualified property owners ready to hire</p>
                   </div>
                 </div>
 

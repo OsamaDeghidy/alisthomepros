@@ -2168,7 +2168,7 @@ Copy
 Delete
 العميل    طلب التعديلات   دى اعمل خطه و ظبط التعديلات من غير ما تبوظا المشروع 
  1. Homepage conversion – Add a strong hero section headline like:
-“Post Your Project — Get Vetted Florida Pros with Escrow Protection”
+“Post Your Project — Get Vetted Florida Pros with Project Funds acct Protection”
 with a bold “Post a Project” CTA and a simple 3-step explainer.
 2. Unify payments – The site currently shows “National Bank Card Services” on pricing but mentions PayPal/other methods in Help. We need one clear and consistent payments story across the whole site.
 3. Fix placeholder details – Replace the placeholder phone number (+1-555-123-4567) with our real contact number and email, plus business hours.

@@ -53,7 +53,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
-              Connecting homeowners with trusted professionals for quality home improvement projects. Your trusted partner for all home services.
+              Connecting property owners with trusted professionals for quality home improvement projects. Your trusted partner for all home services.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (

@@ -27,7 +27,6 @@ export default function GuestHeader() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Inside A-List', href: '/inside-a-list' },
-    { name: 'Investors', href: '/investors' },
     { name: 'Pricing', href: '/pricing' },
   ];
 
