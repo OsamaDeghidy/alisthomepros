@@ -33,51 +33,47 @@ const GoldText = ({ children }: { children: React.ReactNode }) => (
 export default function GuestPricingPage() {
   const tiers = [
     {
+      name: 'Founding Member',
+      price: '$100',
+      period: 'Deposit',
+      desc: 'Secure your elite status during our pre-launch phase.',
+      features: [
+        'Fixed Price Forever ($100/mo instead of $200)',
+        'Exclusive Founding Member Badge',
+        'Map Priority Visibility',
+        'Early Platform Access',
+        'Direct Founder Support'
+      ],
+      cta: 'Secure Founding Status',
+      isFounding: true,
+      isPrimary: true,
+      regularPrice: '$200'
+    },
+    {
       name: 'Network Access',
       price: '$0',
-      regularPrice: '$0',
       desc: 'Join the ecosystem and start building your reputation.',
       features: ['Basic profile', 'Basic interaction', 'Basic visibility'],
-      cta: 'Join Now',
-      isFounding: false
+      cta: 'Coming Soon',
+      isComingSoon: true
     },
     {
       name: 'Home Pro',
-      price: '$100',
-      regularPrice: '$200',
+      price: '$200',
       period: '/mo',
       desc: 'The elite standard for South Florida contractors.',
       features: ['Priority Verification', 'Exclusive Opportunities', 'Pro Visibility'],
-      cta: 'Become a Pro',
-      isFounding: true
+      cta: 'Coming Soon',
+      isComingSoon: true
     },
     {
       name: 'Crew Member',
-      price: '$50',
-      regularPrice: '$80',
+      price: '$80',
       period: '/mo',
       desc: 'For skilled workers ready to join top-tier teams.',
       features: ['Team Matching', 'Job Alerts', 'Milestone Protection'],
-      cta: 'Join a Crew',
-      isFounding: true
-    },
-    {
-      name: 'Home Pro — Lifetime',
-      price: '$5,000',
-      period: 'one-time',
-      desc: 'Eternal access to the A-List ecosystem.',
-      features: ['All Pro Features', 'Lifetime Status', 'No Recurring Fees'],
-      cta: 'Secure Lifetime',
-      isFounding: false
-    },
-    {
-      name: 'Crew Member — Lifetime',
-      price: '$3,500',
-      period: 'one-time',
-      desc: 'Forever part of Florida\'s elite crew network.',
-      features: ['All Crew Features', 'Lifetime Status', 'No Recurring Fees'],
-      cta: 'Secure Lifetime',
-      isFounding: false
+      cta: 'Coming Soon',
+      isComingSoon: true
     }
   ];
 
@@ -107,7 +103,7 @@ export default function GuestPricingPage() {
     { icon: MessageSquare, title: 'Direct Messaging', desc: 'Communicate securely within the ecosystem.' },
     { icon: Users, title: 'Crew Builder', desc: 'Form or join elite teams for complex projects.' },
     { icon: Star, title: 'Pro Visibility', desc: 'Stand out with the A-List verified badge.' },
-    { icon: Wallet, title: 'Project Funds Account', desc: 'Secure payment protection for every milestone.' },
+    { icon: Wallet, title: 'Secure Milestone Payouts', desc: 'Payments processed via licensed partners (Stripe). A-List never holds your funds.' },
     { icon: Scale, title: 'Network Multipliers', desc: 'Earn rewards for growing the A-List network.' },
     { icon: CreditCard, title: 'Secure & Direct Payments', desc: 'Fast, reliable payouts on project completion.' }
   ];
@@ -167,18 +163,23 @@ export default function GuestPricingPage() {
          <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
                {tiers.map((tier, i) => (
-                  <div key={i} className={`flex flex-col bg-white rounded-[3rem] p-8 border ${tier.isFounding ? 'border-primary-200 ring-4 ring-primary-50/50' : 'border-gray-100'} shadow-2xl hover:scale-[1.02] transition-all group`}>
+                  <div key={i} className={`flex flex-col bg-white rounded-[3rem] p-8 border ${tier.isPrimary ? 'border-primary-600 ring-4 ring-primary-50' : 'border-gray-100'} shadow-2xl hover:scale-[1.02] transition-all group relative overflow-hidden`}>
                      {tier.isFounding && (
                         <div className="bg-primary-600 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full self-start mb-6 -ml-2 -mt-2">
-                           Founding Rate
+                           Founding Status
                         </div>
                      )}
-                     <h3 className="text-xl font-black text-gray-900 mb-2 uppercase tracking-tight">{tier.name}</h3>
+                     {tier.isComingSoon && (
+                        <div className="absolute top-8 right-8 bg-gray-100 text-gray-500 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                           Coming Soon
+                        </div>
+                     )}
+                     <h3 className={`text-xl font-black mb-2 uppercase tracking-tight ${tier.isPrimary ? 'text-primary-600' : 'text-gray-900'}`}>{tier.name}</h3>
                      <p className="text-xs text-gray-400 font-medium mb-8 leading-relaxed h-12 overflow-hidden">{tier.desc}</p>
                      
                      <div className="mb-8">
-                        {tier.isFounding && (
-                           <span className="text-gray-300 line-through text-lg font-black mr-2">{tier.regularPrice}</span>
+                        {tier.isFounding && (tier as any).regularPrice && (
+                           <span className="text-gray-300 line-through text-lg font-black mr-2">{(tier as any).regularPrice}</span>
                         )}
                         <span className="text-4xl font-black text-gray-950">{tier.price}</span>
                         {tier.period && (
@@ -195,17 +196,23 @@ export default function GuestPricingPage() {
                         ))}
                      </ul>
 
-                     <Link
-                        href={`${APP_GATEWAY_URL}/register?tier=${tier.name.toLowerCase()}`}
-                        target="_blank"
-                        className={`w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest text-center transition-all ${
-                           tier.isFounding 
-                           ? 'bg-primary-600 text-white shadow-xl shadow-primary-500/20 hover:bg-primary-700' 
-                           : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                        }`}
-                     >
-                        {tier.cta}
-                     </Link>
+                     {tier.isComingSoon ? (
+                        <div className="w-full py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest text-center bg-gray-50 text-gray-400 border border-gray-100 italic">
+                           Available After General Launch
+                        </div>
+                     ) : (
+                        <Link
+                           href={`${APP_GATEWAY_URL}/register?tier=${tier.name.toLowerCase().replace(' ', '-')}`}
+                           target="_blank"
+                           className={`w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest text-center transition-all ${
+                              tier.isPrimary 
+                              ? 'bg-primary-600 text-white shadow-xl shadow-primary-500/20 hover:bg-primary-700' 
+                              : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                           }`}
+                        >
+                           {tier.cta}
+                        </Link>
+                     )}
                   </div>
                ))}
             </div>

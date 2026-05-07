@@ -6,10 +6,10 @@ import { BrandLogo } from '../ui/BrandLogo';
 export default function Footer() {
   const footerSections = {
     'For Clients': [
+      { name: 'Start Your Project', href: '/start-your-project' },
       { name: 'Post a Project', href: '/post-project' },
       { name: 'Browse Professionals', href: '/professionals' },
       { name: 'How It Works', href: '/how-it-works' },
-      
     ],
     'For Professionals': [
       { name: 'Find Work', href: '/find-work' },
@@ -93,8 +93,13 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
-          <div className="text-gray-400 text-sm">
-            © 2024 A-List Home Professionals Inc. All Rights Reserved
+          <div className="flex flex-col space-y-2">
+            <p className="text-[10px] text-gray-500 italic leading-relaxed max-w-4xl">
+              A-List Home Pros is a networking and marketplace platform. We do not perform contracting work, hold member or client funds, or guarantee the work, conduct, or outcomes of any member. License verification reflects status reported by the Florida DBPR as of the verification date and may change. Members are independent businesses, not employees or agents of A-List Home Pros. Nothing on this website constitutes legal, financial, or tax advice. Investment opportunities are limited to qualified investors per applicable securities exemptions.
+            </p>
+            <div className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} A-List Home Professionals Inc. All Rights Reserved
+            </div>
           </div>
           <div className="flex flex-wrap gap-6">
             <Link

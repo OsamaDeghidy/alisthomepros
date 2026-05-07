@@ -56,29 +56,7 @@ const VideoGallery = ({ title, description, videos }: { title: string, descripti
 );
 
 export default function InsideAListPage() {
-  const [members, setMembers] = useState(0);
-  const targetMembers = 1000;
-  
-  // Animated counter effect for Ticker
-  useEffect(() => {
-    const target = 842; // Example true current value
-    const duration = 2000;
-    const steps = 60;
-    const stepTime = duration / steps;
-    let current = 0;
-    
-    const timer = setInterval(() => {
-       current += Math.ceil(target / steps);
-       if (current >= target) {
-          setMembers(target);
-          clearInterval(timer);
-       } else {
-          setMembers(current);
-       }
-    }, stepTime);
-    
-    return () => clearInterval(timer);
-  }, []);
+
 
   const howItWorksVideos = [
     { title: 'How Clients Post Projects', duration: '1:45', desc: 'See the streamlined process for bringing your vision to the network taking you direct to a certified pro.', image: '/alist_luxury_kitchen.png' },
@@ -131,20 +109,9 @@ export default function InsideAListPage() {
              <Users className="w-4 h-4" />
              Founders Circle Initiative
           </div>
-          <h3 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter uppercase italic pr-12 overflow-visible">
-            <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">{members}</span> 
-            <span className="text-white/20"> / {targetMembers}</span> 
-            <span className="text-2xl text-primary-400 align-middle ml-4 bg-primary-500/10 px-4 py-2 rounded-2xl border border-primary-500/20">Secured</span>
+          <h3 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase italic pr-12 overflow-visible">
+            Charter membership is <span className="text-primary-400">limited</span> to 1,000 founding pros.
           </h3>
-          
-          <div className="max-w-4xl mx-auto bg-white/5 rounded-full h-5 mb-6 overflow-hidden p-0.5 border border-white/10 shadow-[inset_0_2px_4px_rgba(0,0,0,0.4)]">
-             <div 
-               className="bg-gradient-to-r from-primary-700 via-primary-500 to-primary-400 h-full rounded-full transition-all duration-[2000ms] ease-out relative overflow-hidden shadow-[0_0_20px_rgba(0,191,255,0.5)]" 
-               style={{ width: `${(members / targetMembers) * 100}%` }}
-             >
-                <div className="absolute inset-0 bg-white/20 w-full h-full animate-[shimmer_2s_infinite] -skew-x-12"></div>
-             </div>
-          </div>
           <p className="text-white/40 text-base md:text-lg font-medium tracking-wide">Help us reach our genesis goal. Limited lifetime access remains.</p>
         </div>
         <style jsx>{`
@@ -169,7 +136,7 @@ export default function InsideAListPage() {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
                      {[
-                        { title: 'Project Funds Account', desc: 'Secure payment protection for every milestone.' },
+                        { title: 'Secure Milestone Payouts', desc: 'Payments processed via licensed partners. A-List never holds your funds.' },
                         { title: 'Messaging System', desc: 'Direct, encrypted collaboration between roles.' },
                         { title: 'Job Tracking', desc: 'Real-time visibility into every construction phase.' },
                         { title: 'Crew Coordination', desc: 'Manage elite teams without leaving the ecosystem.' },
@@ -253,32 +220,17 @@ export default function InsideAListPage() {
          </div>
       </section>
 
-      {/* Galleries section content */}
+      {/* Galleries section hidden until videos are ready */}
+      {/* 
       <div className="bg-gray-50 pt-24 pb-32">
         <VideoGallery 
            title="How It Works" 
            description="Detailed breakdowns of our core systems and the protection they offer."
            videos={howItWorksVideos} 
         />
-        
-        <VideoGallery 
-           title="Platform Walkthroughs" 
-           description="Step-by-step tours of the A-List dashboard tailored to your role."
-           videos={walkthroughVideos} 
-        />
-
-        <VideoGallery 
-           title="A-List Spotlights" 
-           description="Stories from the network. See how top pros and huge projects thrive inside A-List."
-           videos={spotlightVideos} 
-        />
-
-        <VideoGallery 
-           title="Featured Content" 
-           description="Direct updates from the founders and the future of the platform."
-           videos={featuredContent} 
-        />
+        ...
       </div>
+      */}
 
       {/* CTA Section */}
       <section className="py-32 px-4 text-center bg-white border-t border-gray-100">

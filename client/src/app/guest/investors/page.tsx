@@ -15,6 +15,15 @@ import Link from 'next/link';
 export default function GuestInvestorsPage() {
   return (
     <div className="bg-[#fcfdff] min-h-screen selection:bg-primary-100 selection:text-primary-900">
+      {/* 🚨 Legal Risk Disclosure Banner */}
+      <div className="bg-amber-50 border-b border-amber-100 py-4 px-4 text-center relative z-50">
+        <div className="max-w-7xl mx-auto flex items-start gap-3 justify-center text-left md:text-center">
+          <span className="text-amber-600 text-xl leading-none">⚠️</span>
+          <p className="text-[10px] md:text-xs text-amber-900 font-medium leading-relaxed max-w-5xl">
+            This page contains forward-looking statements about A-List Home Pros' business plans. Any investment opportunities are offered only to qualified investors under applicable securities exemptions. Nothing on this page constitutes an offer to sell or a solicitation of an offer to buy any security. Past performance does not guarantee future results. Investing in early-stage companies involves significant risk, including total loss of capital.
+          </p>
+        </div>
+      </div>
       {/* Hero Section */}
       <section className="bg-gray-950 text-white py-40 px-4 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary-600 rounded-full blur-[200px] opacity-10 -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
@@ -32,7 +41,7 @@ export default function GuestInvestorsPage() {
            </p>
            <div className="flex flex-col sm:flex-row gap-6">
               <Link href="/investor-contact" className="px-12 py-6 bg-white text-gray-950 rounded-[2rem] font-black text-xl uppercase tracking-tighter hover:bg-primary-500 hover:text-white transition-all shadow-2xl shadow-primary-500/20 text-center">
-                Invest with A-List
+                Request Investor Package
               </Link>
               <button className="px-12 py-6 bg-white/5 border border-white/10 text-white rounded-[2rem] font-black text-xl uppercase tracking-tighter hover:bg-white/10 transition-all text-center">
                 Download Deck
@@ -159,6 +168,37 @@ export default function GuestInvestorsPage() {
            </div>
         </div>
       </section>
+       {/* Risk Factors Section */}
+       <section className="py-24 px-4 bg-gray-50 border-t border-gray-100">
+          <div className="max-w-4xl mx-auto">
+             <div className="flex items-center gap-3 mb-10">
+                <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
+                   <ShieldCheck className="w-5 h-5 text-amber-600" />
+                </div>
+                <h2 className="text-3xl font-black text-gray-950 tracking-tighter uppercase italic">Risk Factors</h2>
+             </div>
+             
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                {[
+                   { title: "Early-Stage Risk", desc: "Investment in early-stage companies involves a high degree of risk and potential for total loss of capital." },
+                   { title: "Market & Competition", desc: "The home services market is highly competitive and subject to rapid shifts in consumer behavior." },
+                   { title: "Regulatory Risk", desc: "Changes in Florida contractor licensing or payment processing regulations may impact operations." },
+                   { title: "Key Person Risk", desc: "The company is currently dependent on the strategic vision and leadership of the founder." },
+                   { title: "Liquidity Risk", desc: "Investment in private entities is illiquid and there is no public market for the company's securities." },
+                   { title: "Capital Requirement", desc: "Future growth may require significant additional capital with no guarantee of future funding availability." }
+                ].map((risk, i) => (
+                   <div key={i} className="border-l-2 border-gray-200 pl-6 py-2">
+                      <h4 className="text-sm font-black text-gray-900 uppercase tracking-wide mb-2">{risk.title}</h4>
+                      <p className="text-xs text-gray-500 font-medium leading-relaxed">{risk.desc}</p>
+                   </div>
+                ))}
+             </div>
+             
+             <p className="mt-16 text-[10px] text-gray-400 font-medium leading-relaxed italic text-center">
+                *Potential investors should review the full investor disclosure package and consult with financial and legal advisors before making any investment decisions.
+             </p>
+          </div>
+       </section>
     </div>
   );
 }

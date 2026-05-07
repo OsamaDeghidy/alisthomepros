@@ -53,6 +53,7 @@ export default function GuestFooter() {
             <h4 className="text-sm font-black uppercase tracking-[0.3em] text-primary-500">Company</h4>
             <div className="flex flex-col space-y-5 text-base font-bold text-gray-400">
               <Link href="/about" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">About</Link>
+              <Link href="/founder" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">The Founder's Message</Link>
               <Link href="/inside-a-list" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">How It Works</Link>
               <Link href="/contact" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Contact</Link>
               <Link href="#" className="text-gray-600 cursor-not-allowed uppercase tracking-wider italic">Careers</Link>
@@ -63,6 +64,7 @@ export default function GuestFooter() {
           <div className="lg:col-span-2 space-y-8">
             <h4 className="text-sm font-black uppercase tracking-[0.3em] text-primary-500">Resources</h4>
             <div className="flex flex-col space-y-5 text-base font-bold text-gray-400">
+              <Link href="/start-your-project" className="text-primary-500 hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Start Your Project</Link>
               <Link href="/media" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Media</Link>
               <Link href="/press" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Press & News</Link>
               <Link href="/articles" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Articles</Link>
@@ -89,15 +91,21 @@ export default function GuestFooter() {
               <Link href="/privacy" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Privacy</Link>
               <Link href="/community" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Community</Link>
               <Link href="/safety" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Safety</Link>
+              <Link href="/verification" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Verification Standards</Link>
             </div>
           </div>
         </div>
 
         {/* 7. Footer Bottom Strip */}
         <div className="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-12">
-          <div className="flex items-center gap-3 text-sm font-black text-gray-500 uppercase tracking-widest italic">
-            <GoldText>&copy; {currentYear}</GoldText>
-            <span>A-List Home Professionals. All rights reserved.</span>
+          <div className="flex flex-col gap-4 items-center lg:items-start">
+            <p className="text-[10px] font-black text-gray-600 uppercase tracking-[0.1em] italic max-w-4xl text-center lg:text-left leading-relaxed">
+              A-List Home Pros is a networking and marketplace platform. We do not perform contracting work, hold member or client funds, or guarantee the work, conduct, or outcomes of any member. License verification reflects status reported by the Florida DBPR as of the verification date and may change. Members are independent businesses, not employees or agents of A-List Home Pros. Nothing on this website constitutes legal, financial, or tax advice. Investment opportunities are limited to qualified investors per applicable securities exemptions.
+            </p>
+            <div className="flex items-center gap-3 text-sm font-black text-gray-500 uppercase tracking-widest italic">
+              <GoldText>&copy; {currentYear}</GoldText>
+              <span>A-List Home Professionals. All rights reserved.</span>
+            </div>
           </div>
           
           <div className="flex flex-col md:flex-row items-center gap-8">
