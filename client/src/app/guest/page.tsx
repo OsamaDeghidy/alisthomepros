@@ -388,8 +388,8 @@ export default function GuestHomePage() {
                   <div>
                      <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tighter pr-4">Get In Early. <br/>Win Bigger.</h2>
                      <p className="text-xl text-gray-600 mb-10 font-medium leading-relaxed">Early members gain access to opportunities before the platform scales. Position yourself as a founding force in South Florida’s elite network.</p>
-                     <Link href={APP_GATEWAY_URL} target="_blank" className="inline-flex items-center gap-2 px-10 py-5 bg-primary-600 text-white rounded-2xl font-black hover:bg-primary-700 transition-all shadow-xl shadow-primary-200">
-                        Join the Network Now
+                     <Link href="https://pay.alisthomepros.com/b/cNidR991ta0tchxfHMfMA01" target="_blank" className="inline-flex items-center gap-2 px-10 py-5 bg-primary-600 text-white rounded-2xl font-black hover:bg-primary-700 transition-all shadow-xl shadow-primary-200">
+                        Secure Founding Membership
                         <ArrowRight className="w-5 h-5" />
                      </Link>
                   </div>

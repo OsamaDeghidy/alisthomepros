@@ -202,7 +202,7 @@ export default function GuestPricingPage() {
                         </div>
                      ) : (
                         <Link
-                           href={`${APP_GATEWAY_URL}/register?tier=${tier.name.toLowerCase().replace(' ', '-')}`}
+                           href={tier.isFounding ? 'https://pay.alisthomepros.com/b/cNidR991ta0tchxfHMfMA01' : `${APP_GATEWAY_URL}/register?tier=${tier.name.toLowerCase().replace(' ', '-')}`}
                            target="_blank"
                            className={`w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest text-center transition-all ${
                               tier.isPrimary 

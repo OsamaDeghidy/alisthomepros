@@ -200,7 +200,7 @@ export default function FounderPage() {
             {/* B.7 — CTAs */}
             <div className="flex flex-col sm:flex-row gap-6">
                <Link 
-                 href={`${APP_GATEWAY_URL}/register?role=pro`}
+                 href="https://pay.alisthomepros.com/b/cNidR991ta0tchxfHMfMA01"
                  className="px-10 py-6 bg-gray-950 text-white rounded-3xl font-black text-lg hover:bg-black transition-all shadow-2xl flex items-center justify-center uppercase tracking-widest"
                >
                   Apply for Founding Membership
