@@ -94,11 +94,15 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
           <div className="flex flex-col space-y-2">
-            <p className="text-[10px] text-gray-500 italic leading-relaxed max-w-4xl">
-              A-List Home Pros is a networking and marketplace platform. We do not perform contracting work, hold member or client funds, or guarantee the work, conduct, or outcomes of any member. License verification reflects status reported by the Florida DBPR as of the verification date and may change. Members are independent businesses, not employees or agents of A-List Home Pros. Nothing on this website constitutes legal, financial, or tax advice. Investment opportunities are limited to qualified investors per applicable securities exemptions.
+            <p className="text-[8px] text-gray-500 italic leading-relaxed max-w-4xl uppercase">
+              A-LIST HOME PROS IS A NETWORKING AND MARKETPLACE PLATFORM DESIGNED TO CONNECT A-LIST CLIENTS, HOME PROS, CREW MEMBERS, AND SPECIALISTS. A-LIST HOME PROS DOES NOT PERFORM CONTRACTING WORK AND IS NOT THE CONTRACTOR OF RECORD FOR PROJECTS LISTED OR FACILITATED THROUGH THE PLATFORM. PROJECT PAYMENTS OR PROJECT FUNDS ACCOUNTS MAY BE FACILITATED THROUGH THIRD-PARTY PAYMENT PROVIDERS. A-LIST HOME PROS DOES NOT TAKE OWNERSHIP OF CLIENT OR MEMBER FUNDS AND DOES NOT ACT AS A BANK, ESCROW AGENT, OR MONEY TRANSMITTER. WE DO NOT GUARANTEE THE WORK, CONDUCT, PERFORMANCE, QUALITY, OR OUTCOMES OF ANY MEMBER OR PROJECT.
+              <br className="my-1 block" />
+              LICENSE VERIFICATION REFLECTS STATUS REPORTED BY THE FLORIDA DBPR AS OF THE DATE OF VERIFICATION AND MAY CHANGE AT ANY TIME. MEMBERS ARE INDEPENDENT BUSINESSES OR INDIVIDUALS AND ARE NOT EMPLOYEES, AGENTS, JOINT VENTURERS, OR REPRESENTATIVES OF A-LIST HOME PROS.
+              <br className="my-1 block" />
+              NOTHING ON THIS PLATFORM CONSTITUTES LEGAL, TAX, FINANCIAL, OR PROFESSIONAL ADVICE. USERS ARE RESPONSIBLE FOR THEIR OWN DUE DILIGENCE BEFORE ENTERING INTO ANY AGREEMENT, TRANSACTION, OR PROJECT RELATIONSHIP.
             </p>
-            <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} A-List Home Professionals Inc. All Rights Reserved
+            <div className="text-gray-400 text-[10px] uppercase font-bold tracking-wider">
+              © 2026 A-LIST HOME PROFESSIONALS. ALL RIGHTS RESERVED.
             </div>
           </div>
           <div className="flex flex-wrap gap-6">

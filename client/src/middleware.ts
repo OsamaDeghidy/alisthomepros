@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const { pathname, searchParams } = request.nextUrl;
+  const { pathname } = request.nextUrl;
   const siteMode = process.env.NEXT_PUBLIC_SITE_MODE;
 
   // Only apply logic if in gateway mode
@@ -26,11 +26,17 @@ export function middleware(request: NextRequest) {
     '/safety': '/guest/safety',
     '/contact': '/guest/contact',
     '/verification': '/guest/verification',
-    '/founder': '/guest/founder',
   };
 
   // Case-insensitive mapping for static pages
   const normalizedPath = pathname.toLowerCase();
+
+  // Redirect old /founder or /guest/founder links to /about
+  if (normalizedPath === '/founder' || normalizedPath === '/guest/founder') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/about';
+    return NextResponse.redirect(url);
+  }
   
   if (gatewayRoutes[normalizedPath]) {
     const url = request.nextUrl.clone();

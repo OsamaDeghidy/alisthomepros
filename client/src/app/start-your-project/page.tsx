@@ -102,7 +102,7 @@ const FAQ_DATA = [
   },
   {
     q: "What if I'm not happy with my match?",
-    a: "Reach out directly to (561) 888-4930 or jwest@alisthp.com. Jeffrey will personally re-match you with a different A-List Founding Pro at no additional cost."
+    a: "Reach out directly to 1-866-882-5478 or jwest@alisthp.com. Jeffrey will personally re-match you with a different A-List Founding Pro at no additional cost."
   },
   {
     q: "Does A-List Home Pros guarantee the work?",
@@ -152,7 +152,7 @@ export default function StartYourProject() {
             "name": "A-List Home Pros",
             "description": "South Florida contractor matching service. Founder personally matches homeowners and property owners with vetted, license-verified contractors.",
             "url": "https://www.alisthomepros.com/start-your-project",
-            "telephone": "+1-561-888-4930",
+            "telephone": "+1-866-882-5478",
             "email": "jwest@alisthp.com",
             "areaServed": [
               {"@type": "AdministrativeArea", "name": "Palm Beach County, Florida"},
@@ -193,9 +193,9 @@ export default function StartYourProject() {
             <BrandLogo width={180} height={60} className="h-10 md:h-12 w-auto" />
           </Link>
           <div className="flex items-center gap-4 md:gap-8">
-            <a href="tel:5618884930" className="flex items-center gap-2 text-white hover:text-primary-400 transition-colors">
+            <a href="tel:18668825478" className="flex items-center gap-2 text-white hover:text-primary-400 transition-colors">
               <Phone className="w-5 h-5 text-[#B8960C]" />
-              <span className="hidden md:inline font-bold">(561) 888-4930</span>
+              <span className="hidden md:inline font-bold">1-866-882-5478</span>
               <span className="md:hidden"><Smartphone className="w-6 h-6" /></span>
             </a>
             <button 
@@ -468,13 +468,13 @@ export default function StartYourProject() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-8 pt-4">
-                <a href="tel:5618884930" className="flex items-center gap-4 group">
+                <a href="tel:18668825478" className="flex items-center gap-4 group">
                   <div className="w-14 h-14 bg-[#B8960C] text-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 italic">Call Directly</p>
-                    <p className="text-xl font-black text-gray-950 italic tracking-tighter">(561) 888-4930</p>
+                    <p className="text-xl font-black text-gray-950 italic tracking-tighter">1-866-882-5478</p>
                   </div>
                 </a>
                 <a href="mailto:jwest@alisthp.com" className="flex items-center gap-4 group">
@@ -563,7 +563,7 @@ export default function StartYourProject() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">Phone</label>
-                    <input required type="tel" placeholder="(561) 888-4930" className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg" />
+                    <input required type="tel" placeholder="1-866-882-5478" className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg" />
                   </div>
                 </div>
 

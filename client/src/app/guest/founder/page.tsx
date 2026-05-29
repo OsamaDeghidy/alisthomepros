@@ -182,11 +182,11 @@ export default function FounderPage() {
                   <p className="text-xl text-[#B8960C] font-bold uppercase tracking-widest">Founder, A-List Home Pros</p>
                </div>
                <div className="flex flex-col gap-4">
-                  <a href="tel:5618884930" className="flex items-center justify-center lg:justify-start gap-4 text-gray-600 hover:text-primary-600 transition-colors font-bold text-xl">
+                  <a href="tel:18668825478" className="flex items-center justify-center lg:justify-start gap-4 text-gray-600 hover:text-primary-600 transition-colors font-bold text-xl">
                      <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center">
                         <Phone className="w-6 h-6" />
                      </div>
-                     (561) 888-4930
+                     1-866-882-5478
                   </a>
                   <a href="mailto:jwest@alisthp.com" className="flex items-center justify-center lg:justify-start gap-4 text-gray-600 hover:text-primary-600 transition-colors font-bold text-xl">
                      <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center">

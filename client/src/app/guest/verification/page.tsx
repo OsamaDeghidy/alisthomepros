@@ -327,9 +327,9 @@ export default function VerificationPage() {
                   <Mail className="w-8 h-8 text-primary-600" />
                   <span className="font-black uppercase italic text-sm">jwest@alisthp.com</span>
                </a>
-               <a href="tel:5618884930" className="p-8 bg-gray-50 rounded-3xl border border-gray-100 hover:border-primary-500 transition-all flex flex-col items-center gap-4">
+               <a href="tel:18668825478" className="p-8 bg-gray-50 rounded-3xl border border-gray-100 hover:border-primary-500 transition-all flex flex-col items-center gap-4">
                   <Phone className="w-8 h-8 text-primary-600" />
-                  <span className="font-black uppercase italic text-sm">(561) 888-4930</span>
+                  <span className="font-black uppercase italic text-sm">1-866-882-5478</span>
                </a>
                <Link href="/contact" className="p-8 bg-gray-50 rounded-3xl border border-gray-100 hover:border-primary-500 transition-all flex flex-col items-center gap-4">
                   <HelpCircle className="w-8 h-8 text-primary-600" />
