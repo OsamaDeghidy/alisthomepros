@@ -15,10 +15,10 @@ export default function GuestFooter() {
     <footer className="bg-gray-950 text-white border-t border-gray-800 pt-32 pb-12 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary-600/5 rounded-full blur-[150px] pointer-events-none"></div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
-          
+
           {/* 2. Brand Column (Col 1-4) */}
           <div className="lg:col-span-4 space-y-10">
             <Link href="/" className="inline-block group transition-transform hover:scale-105">
@@ -29,12 +29,12 @@ export default function GuestFooter() {
               />
             </Link>
             <div className="space-y-6">
-               <p className="text-xl font-black italic tracking-tight text-white uppercase italic">
-                 South Florida's <GoldText>Private Network</GoldText>
-               </p>
-               <p className="text-gray-400 text-lg font-medium leading-relaxed max-w-sm italic">
-                 The high-performance ecosystem for construction and home service elite. We don't just connect; we position for success.
-               </p>
+              <p className="text-xl font-black italic tracking-tight text-white uppercase italic">
+                South Florida's <GoldText>Private Network</GoldText>
+              </p>
+              <p className="text-gray-400 text-lg font-medium leading-relaxed max-w-sm italic">
+                The high-performance ecosystem for construction and home service elite. We don't just connect; we position for success.
+              </p>
             </div>
             <div className="flex gap-6">
               <div className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[#B8960C]">
@@ -99,21 +99,21 @@ export default function GuestFooter() {
         <div className="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-12">
           <div className="flex flex-col gap-4 items-center lg:items-start">
             <p className="text-[8px] font-black text-gray-600 uppercase tracking-[0.1em] italic max-w-4xl text-center lg:text-left leading-relaxed">
-              A-LIST HOME PROS IS A NETWORKING AND MARKETPLACE PLATFORM DESIGNED TO CONNECT A-LIST CLIENTS, HOME PROS, CREW MEMBERS, AND SPECIALISTS. A-LIST HOME PROS DOES NOT PERFORM CONTRACTING WORK AND IS NOT THE CONTRACTOR OF RECORD FOR PROJECTS LISTED OR FACILITATED THROUGH THE PLATFORM. PROJECT PAYMENTS OR PROJECT FUNDS ACCOUNTS MAY BE FACILITATED THROUGH THIRD-PARTY PAYMENT PROVIDERS. A-LIST HOME PROS DOES NOT TAKE OWNERSHIP OF CLIENT OR MEMBER FUNDS AND DOES NOT ACT AS A BANK, ESCROW AGENT, OR MONEY TRANSMITTER. WE DO NOT GUARANTEE THE WORK, CONDUCT, PERFORMANCE, QUALITY, OR OUTCOMES OF ANY MEMBER OR PROJECT.
+              A LIST HOME PROS IS A NETWORKING AND MARKETPLACE PLATFORM DESIGNED TO CONNECT A LIST CLIENTS, HOME PROS, CREW MEMBERS, AND SPECIALISTS. A LIST HOME PROS DOES NOT PERFORM CONTRACTING WORK AND IS NOT THE CONTRACTOR OF RECORD FOR PROJECTS LISTED OR FACILITATED THROUGH THE PLATFORM. PROJECT PAYMENTS OR PROJECT FUNDS ACCOUNTS MAY BE FACILITATED THROUGH THIRD-PARTY PAYMENT PROVIDERS. A LIST HOME PROS DOES NOT TAKE OWNERSHIP OF CLIENT OR MEMBER FUNDS AND DOES NOT ACT AS A BANK, ESCROW AGENT, OR MONEY TRANSMITTER. WE DO NOT GUARANTEE THE WORK, CONDUCT, PERFORMANCE, QUALITY, OR OUTCOMES OF ANY MEMBER OR PROJECT.
               <br className="my-1 block" />
-              LICENSE VERIFICATION REFLECTS STATUS REPORTED BY THE FLORIDA DBPR AS OF THE DATE OF VERIFICATION AND MAY CHANGE AT ANY TIME. MEMBERS ARE INDEPENDENT BUSINESSES OR INDIVIDUALS AND ARE NOT EMPLOYEES, AGENTS, JOINT VENTURERS, OR REPRESENTATIVES OF A-LIST HOME PROS.
+              LICENSE VERIFICATION REFLECTS STATUS REPORTED BY THE FLORIDA DBPR AS OF THE DATE OF VERIFICATION AND MAY CHANGE AT ANY TIME. MEMBERS ARE INDEPENDENT BUSINESSES OR INDIVIDUALS AND ARE NOT EMPLOYEES, AGENTS, JOINT VENTURERS, OR REPRESENTATIVES OF A LIST HOME PROS.
               <br className="my-1 block" />
               NOTHING ON THIS PLATFORM CONSTITUTES LEGAL, TAX, FINANCIAL, OR PROFESSIONAL ADVICE. USERS ARE RESPONSIBLE FOR THEIR OWN DUE DILIGENCE BEFORE ENTERING INTO ANY AGREEMENT, TRANSACTION, OR PROJECT RELATIONSHIP.
             </p>
             <div className="flex items-center gap-3 text-[10px] font-black text-gray-500 uppercase tracking-widest italic">
               <GoldText>&copy; 2026</GoldText>
-              <span>A-LIST HOME PROFESSIONALS. ALL RIGHTS RESERVED.</span>
+              <span>A LIST HOME PROFESSIONALS. ALL RIGHTS RESERVED.</span>
             </div>
           </div>
-          
+
           <div className="flex flex-col md:flex-row items-center gap-8">
             <p className="text-lg font-black text-white italic uppercase tracking-tight">
-              Join the <GoldText>A-List Network</GoldText> Today
+              Join the <GoldText>A List Network</GoldText> Today
             </p>
             <Link
               href={APP_GATEWAY_URL}
