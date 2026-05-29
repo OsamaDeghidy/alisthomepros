@@ -26,8 +26,10 @@ export default function GuestHeader() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
+    { name: 'Founder', href: '/founder' },
     { name: 'Inside A-List', href: '/inside-a-list' },
     { name: 'Pricing', href: '/pricing' },
+    { name: 'Post Your Project', href: '/start-your-project' },
   ];
 
   const isActive = (path: string) => pathname === path;

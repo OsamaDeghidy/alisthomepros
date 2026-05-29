@@ -63,7 +63,7 @@ export default function GuestFooter() {
           <div className="lg:col-span-2 space-y-8">
             <h4 className="text-sm font-black uppercase tracking-[0.3em] text-primary-500">Resources</h4>
             <div className="flex flex-col space-y-5 text-base font-bold text-gray-400">
-              <Link href="/start-your-project" className="text-primary-500 hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Start Your Project</Link>
+              <Link href="/start-your-project" className="text-primary-500 hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Post Your Project</Link>
               <Link href="/media" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Media</Link>
               <Link href="/press" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Press & News</Link>
               <Link href="/articles" className="hover:text-[#B8960C] transition-colors uppercase tracking-wider italic">Articles</Link>
