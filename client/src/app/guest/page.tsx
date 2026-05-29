@@ -382,54 +382,7 @@ export default function GuestHomePage() {
                </div>
             </div>
          </div>
-      </section>
-
-      {/* Property Owner CTA Section */}
-      <section id="property-owner-portal" className="py-32 px-4 bg-gray-50 relative overflow-hidden">
-         <div className="max-w-7xl mx-auto bg-white rounded-[4rem] p-12 md:p-24 shadow-2xl border border-gray-100 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary-100 rounded-full blur-[120px] opacity-30 -translate-y-1/2 translate-x-1/2"></div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center relative z-10">
-               <div>
-                  <div className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-xs font-black mb-8 border border-primary-100 tracking-widest uppercase">
-                    Property Owner Portal
-                  </div>
-                  <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-8 tracking-tighter uppercase pr-4">
-                     Are You a <GoldText>Property Owner</GoldText>?
-                  </h2>
-                  <p className="text-2xl text-gray-500 font-medium mb-12 max-w-xl leading-relaxed">
-                     Post your project today and get matched with vetted A-List Home Pros who can help with residential, commercial, and property improvement needs.
-                  </p>
-                  
-                  <div className="space-y-6">
-                     {[
-                        'Direct connection to vetted A-List Pros',
-                        'Jeffrey personally reviews every submission',
-                        'No bidding wars, no shared leads',
-                        'Total project control and security'
-                     ].map((text, i) => (
-                        <div key={i} className="flex items-center gap-4 text-gray-950 font-black tracking-tight text-lg">
-                           <CheckCircle className="w-6 h-6 text-primary-600" />
-                           {text}
-                        </div>
-                     ))}
-                  </div>
-               </div>
-               
-               <div className="bg-gray-50 rounded-3xl p-10 md:p-16 border border-gray-200 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-3xl font-black text-gray-900 mb-4 tracking-tight uppercase">Post Your Project</h3>
-                  <p className="text-gray-500 mb-10 font-bold">Submit details and get matched with South Florida's A-List Pros.</p>
-                  
-                  <Link 
-                     href="/start-your-project"
-                     className="w-full bg-primary-600 text-white py-6 rounded-2xl font-black text-xl hover:bg-primary-700 transition-all shadow-xl shadow-primary-200 uppercase tracking-widest"
-                  >
-                     Post Your Project Now
-                  </Link>
-               </div>
-            </div>
-         </div>
-      </section>
+       </section>
 
       {/* Final Meta / Footer CTA */}
       <section className="py-40 px-4 text-center bg-gray-50 border-t border-gray-100 overflow-hidden relative">

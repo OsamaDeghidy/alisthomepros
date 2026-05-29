@@ -40,12 +40,12 @@ export default function AboutPage() {
              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600 pr-10">A Directory.</span>
            </h1>
            <div className="text-2xl md:text-3xl text-white/90 font-black max-w-4xl mx-auto leading-tight space-y-8 uppercase tracking-tighter italic pr-12 overflow-visible">
-             <p className="pr-4">
-               <GoldText>A-List</GoldText> Home Professionals is a high-performance ecosystem — engineered for South Florida's most elite construction and home service forces.
-             </p>
-             <p className="text-primary-400 pr-4">
-               Stop scrolling through lists of "providers." Start operating inside a system where the best move forward and the rest get left behind.
-             </p>
+              <p className="pr-4">
+                <GoldText>A-List</GoldText> Home Professionals is a high-performance ecosystem, engineered specifically to support South Florida's dedicated construction and home service professionals.
+              </p>
+              <p className="text-primary-400 pr-4">
+                Moving beyond outdated directories, we connect property owners directly with qualified professionals through a platform built on trust, transparency, and high service standards.
+              </p>
              <div className="pt-8">
                 <Link href={APP_GATEWAY_URL} target="_blank" className="inline-flex items-center gap-4 px-12 py-6 bg-white text-gray-950 rounded-[2.5rem] font-black text-xl hover:bg-primary-50 transition-all shadow-2xl shadow-primary-500/20">
                    Enter the Ecosystem
@@ -72,7 +72,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
                <div className="space-y-10 text-2xl text-gray-600 font-medium leading-relaxed pr-4">
                   <p>
-                     For twenty years, the "big platforms" have run the same predatory play: capture a property owner's data, package it as a "lead," and sell it to five, six, sometimes ten contractors simultaneously. 
+                     For twenty years, the big platforms have run the same predatory play: capture a property owner's data, package it as a lead, and sell it to five, six, sometimes ten contractors simultaneously. 
                   </p>
                   <p className="text-gray-950 font-black italic border-l-8 border-primary-500 pl-8 py-4 bg-primary-50/30 pr-4">
                      It’s a race to the bottom where the only winner is the platform collecting fees on a job that only one person can actually perform. 
@@ -126,46 +126,51 @@ export default function AboutPage() {
 
             <div className="space-y-12 text-2xl font-medium text-gray-800 leading-relaxed relative z-10 mt-12 bg-white p-12 md:p-20 rounded-[4rem] shadow-2xl border border-gray-100">
                <p className="text-3xl font-black text-gray-950 tracking-tighter uppercase italic leading-tight pr-12 overflow-visible">
-                  I didn’t build this in a boardroom. I built it because I saw the system eat the people who build Florida.
+                  I didn't build this in a boardroom. I built it because I saw the system fail the people who build Florida.
                </p>
                
                <p className="pr-4">
-                  I’ve spent years in construction. I’ve been on the ground, watching how this industry actually moves. I saw new contractors with massive skill get ignored because they didn’t have the ad budget to pay off the gatekeepers. I saw veterans — guys who’ve been doing high-end work in Florida for 30 years — burned out and disgusted because lead platforms were selling them the same recycled leads they just sold to five of their competitors.
+                  I've spent years in construction. I've been on the ground, watching how this industry actually moves. I saw new contractors with massive skill get ignored because they didn't have the ad budget to pay off the gatekeepers. I saw veterans, who had been doing high-end work in Florida for thirty years, become burned out because lead platforms were selling them the same recycled leads they just sold to five of their competitors.
                </p>
 
                <p className="pr-4">
                   The trust was dead. Property owners were gambling on whoever had the biggest marketing budget, not the best results. Contractors were losing jobs to guys who gamed the review systems. It was a structural failure, and it needed a structural solution.
                </p>
 
-               <div className="p-10 bg-gray-950 text-white rounded-[3rem] font-black italic relative overflow-hidden">
+               <div className="p-10 bg-gray-950 text-white rounded-[3rem] font-black italic relative overflow-hidden text-center">
                   <span className="relative z-10 block pr-4">
-                     "I started studying models like Uber. They didn’t just change how people got a ride — they rebuilt the entire relationship through infrastructure. I knew construction needed exactly that."
+                     Verification Builds Trust. Certification Earns Respect.
                   </span>
-                  <div className="absolute top-0 right-0 p-10 opacity-10">
-                     <TrendingUp className="w-32 h-32" />
-                  </div>
                </div>
 
                <p className="pr-4">
-                  I asked: What if the platform actually served the professional? What if "verified" actually meant something? What if property owners could connect with someone who genuinely earned their standing?
+                  When you join A-List and complete the verification process, you become an A-List Verified Member. Verification may include identity confirmation, credential reviews, licensing verification, insurance verification, and other accountability measures designed to help build trust within the ecosystem.
                </p>
 
                <p className="pr-4">
-                  That’s what <GoldText>A-List</GoldText> is. And you have to earn it. We’ve built AI into the infrastructure — not for show, but as a core engine to match, monitor, and scale how projects actually move. This has never been done in construction.
+                  As you continue to participate, build your reputation, and meet additional accountability standards, you may earn A-List Certified status.
                </p>
 
-               <p className="text-gray-950 font-black italic text-3xl tracking-tighter uppercase pr-4">
-                  Who is this for?
+               <p className="text-gray-950 font-black pr-4">
+                  A-List Verified Members have proven who they are.
                </p>
-               
+
+               <p className="text-primary-600 font-black pr-4">
+                  A-List Certified Members have proven how they operate.
+               </p>
+
                <p className="pr-4">
-                  It’s for the serious Property Owners, the General Contractors, the Skilled Trades, the Coordinators, and the Income Earners who keep South Florida running. If you want a directory, go to the yellow pages. If you want to join an elite ecosystem where quality is the currency — you belong here.
+                  Certification is earned through accountability, professionalism, and a demonstrated commitment to the A-List Standard.
+               </p>
+
+               <p className="text-gray-950 font-black italic pr-4">
+                  That's what being A-List is all about.
                </p>
 
                <div className="pt-16 border-t border-gray-100 flex items-center justify-between">
                   <div>
                      <p className="text-xl text-gray-400 font-bold uppercase tracking-[0.3em] mb-4 pr-4">The New Standard</p>
-                     <h4 className="text-3xl font-black text-gray-950 tracking-tighter uppercase pr-4">— Jeffrey Donald West Jr.</h4>
+                     <h4 className="text-3xl font-black text-gray-950 tracking-tighter uppercase pr-4">Jeffrey Donald West Jr.</h4>
                   </div>
                   <div className="hidden md:block">
                      <ShieldCheck className="w-20 h-20 text-primary-600 opacity-20" />

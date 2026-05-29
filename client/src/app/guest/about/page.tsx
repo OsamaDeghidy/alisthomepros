@@ -74,12 +74,12 @@ export default function AboutPage() {
              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600 pr-10">A Directory.</span>
            </h1>
            <div className="text-2xl md:text-3xl text-white/90 font-black max-w-4xl mx-auto leading-tight space-y-8 uppercase tracking-tighter italic pr-12 overflow-visible">
-             <p>
-               <GoldText>A-List</GoldText> Home Professionals is a high-performance ecosystem — engineered for South Florida's most elite construction and home service forces.
-             </p>
-             <p className="text-primary-400">
-               Stop scrolling through lists of "providers." Start operating inside a system where the best move forward and the rest get left behind.
-             </p>
+              <p>
+                <GoldText>A-List</GoldText> Home Professionals is a high-performance ecosystem, engineered specifically to support South Florida's dedicated construction and home service professionals.
+              </p>
+              <p className="text-primary-400">
+                Moving beyond outdated directories, we connect property owners directly with qualified professionals through a platform built on trust, transparency, and high service standards.
+              </p>
              <div className="pt-8">
                 <Link href={APP_GATEWAY_URL} target="_blank" className="inline-flex items-center gap-4 px-12 py-6 bg-white text-gray-950 rounded-[2.5rem] font-black text-xl hover:bg-primary-50 transition-all shadow-2xl shadow-primary-500/20">
                    Enter the Ecosystem
@@ -106,7 +106,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
                <div className="space-y-10 text-2xl text-gray-600 font-medium leading-relaxed">
                   <p>
-                     For twenty years, the "big platforms" have run the same predatory play: capture a property owner's data, package it as a "lead," and sell it to five, six, sometimes ten contractors simultaneously. 
+                     For twenty years, the big platforms have run the same predatory play: capture a property owner's data, package it as a lead, and sell it to five, six, sometimes ten contractors simultaneously. 
                   </p>
                   <p className="text-gray-950 font-black italic border-l-8 border-primary-500 pl-8 py-4 bg-primary-50/30">
                      It’s a race to the bottom where the only winner is the platform collecting fees on a job that only one person can actually perform. 
@@ -194,9 +194,9 @@ export default function AboutPage() {
                         <p className="text-2xl md:text-3xl font-black text-gray-950 tracking-tighter uppercase italic leading-tight text-primary-600">
                            I didn't build this in a boardroom. I built it because I saw the system eat the people who build Florida.
                         </p>
-                        <p>
-                           I've spent years in construction. I've been on the ground, watching how this industry actually moves. I saw new contractors with massive skill get ignored because they didn't have the ad budget to pay off the gatekeepers. I saw veterans — guys who've been doing high-end work in Florida for thirty years — burned out and disgusted because lead platforms were selling them the same recycled leads they just sold to five of their competitors.
-                        </p>
+                         <p>
+                            I've spent years in construction. I've been on the ground, watching how this industry actually moves. I saw new contractors with massive skill get ignored because they didn't have the ad budget to pay off the gatekeepers. I saw veterans, who had been doing high-end work in Florida for thirty years, become burned out and disgusted because lead platforms were selling them the same recycled leads they just sold to five of their competitors.
+                         </p>
                         <p>
                            The trust was dead. Homeowners were gambling on whoever had the biggest marketing budget, not the best results. Contractors were losing jobs to guys who gamed the review systems. It was a structural failure, and it needed a structural solution.
                         </p>
@@ -205,33 +205,42 @@ export default function AboutPage() {
                      <div className="space-y-6">
                         <h3 className="text-3xl font-black text-gray-950 uppercase italic tracking-tighter border-l-8 border-primary-600 pl-6">What Changed My Thinking</h3>
                         <p>
-                           I started studying the platforms that actually changed industries. Uber didn't just make taxis more convenient — they rebuilt the entire relationship between the rider, the driver, and the infrastructure connecting them. They created accountability, transparency, and a system where the quality of the experience was the product.
+                           I studied how modern platforms successfully transformed entire industries. Rather than simply adding convenience, they rebuilt trust and transparency between all parties through reliable infrastructure, making quality and accountability the main priority.
                         </p>
                         <p>
-                           That model stayed with me. I started asking: what would that look like for construction? What if the platform actually served the professional — not just processed them? What if "license-verified" actually meant something specific, documented, and current? What if homeowners could connect with someone who genuinely earned their standing?
+                           That inspired me to think about the construction industry. I wanted to build a platform that truly supports professionals while giving property owners complete peace of mind. To achieve this, we made license verification a thorough, active, and fully documented process so that clients can connect with professionals who have earned their strong reputation.
                         </p>
                      </div>
 
                      <div className="space-y-6">
                         <h3 className="text-3xl font-black text-gray-950 uppercase italic tracking-tighter border-l-8 border-[#B8960C] pl-6">What A-List Is</h3>
-                        <p className="bg-gray-950 text-white p-10 rounded-[3rem] font-black italic relative overflow-hidden shadow-2xl">
-                           <span className="relative z-10">That's what A-List is. And you have to earn it.</span>
-                        </p>
-                        <p>
-                           When you join A-List and go through the verification process — license confirmation, insurance verification, identity validation — you become an A-List Member. When you complete additional accountability steps and earn your badges, you become A-List Certified.
-                        </p>
-                        <p>
-                           A-List Members are in the family. They're inside the ecosystem. But they haven't yet completed everything required to carry the certified name. The badge isn't given — it's built. Through credentials. Through accountability. Through a process that proves you're not just in this industry — you're committed to doing it right.
-                        </p>
-                        <p>
-                           We don't certify everyone who applies. We're building a network of South Florida's serious professionals — general contractors, skilled tradespeople, project coordinators, handymen, and the income earners who keep this industry moving.
-                        </p>
+                         <p className="bg-gray-950 text-white p-10 rounded-[3rem] font-black italic relative overflow-hidden shadow-2xl text-center">
+                            <span className="relative z-10">Verification Builds Trust. Certification Earns Respect.</span>
+                         </p>
+                         <p>
+                            When you join A-List and complete the verification process, you become an A-List Verified Member. Verification may include identity confirmation, credential reviews, licensing verification, insurance verification, and other accountability measures designed to help build trust within the ecosystem.
+                         </p>
+                         <p>
+                            As you continue to participate, build your reputation, and meet additional accountability standards, you may earn A-List Certified status.
+                         </p>
+                         <p className="text-gray-950 font-black">
+                            A-List Verified Members have proven who they are.
+                         </p>
+                         <p className="text-primary-600 font-black">
+                            A-List Certified Members have proven how they operate.
+                         </p>
+                         <p>
+                            Certification is earned through accountability, professionalism, and a demonstrated commitment to the A-List Standard.
+                         </p>
+                         <p className="text-gray-950 font-black italic">
+                            That's what being A-List is all about.
+                         </p>
                      </div>
 
                      <div className="pt-16 border-t border-gray-100 flex items-center justify-between">
                         <div>
                            <p className="text-xl text-gray-400 font-bold uppercase tracking-[0.3em] mb-4">The New Standard</p>
-                           <h4 className="text-3xl font-black text-gray-950 tracking-tighter uppercase">— Jeffrey D. West Jr.</h4>
+                            <h4 className="text-3xl font-black text-gray-950 tracking-tighter uppercase">Jeffrey D. West Jr.</h4>
                         </div>
                         <div className="hidden md:block">
                            <ShieldCheck className="w-20 h-20 text-primary-600 opacity-20" />

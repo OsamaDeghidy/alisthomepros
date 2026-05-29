@@ -94,33 +94,13 @@ export default function InsideAListPage() {
             <Box className="w-5 h-5" />
             The Ecosystem
           </div>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-950 mb-8 tracking-tighter leading-none uppercase italic pr-12 overflow-visible">Inside <br/><span className="inline-block pr-10"><GoldText>A-List.</GoldText></span></h1>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-950 mb-8 tracking-tighter leading-none uppercase italic pr-12 overflow-visible">Inside <GoldText>A-List.</GoldText></h1>
           <p className="text-xl md:text-3xl text-gray-500 font-medium max-w-4xl mx-auto leading-relaxed tracking-tight">
             Explore the platform, the projects, and the professionals redefining the standard for home services in South Florida.
           </p>
         </div>
       </section>
 
-      {/* Founding Member Ticker */}
-      <section className="py-16 bg-gray-950 text-white border-y border-white/10 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900/20 via-transparent to-transparent pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-primary-500/20 text-primary-400 border border-primary-500/30 rounded-full text-[10px] font-black uppercase tracking-widest mb-8">
-             <Users className="w-4 h-4" />
-             Founders Circle Initiative
-          </div>
-          <h3 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase italic pr-12 overflow-visible">
-            Charter membership is <span className="text-primary-400">limited</span> to 1,000 founding pros.
-          </h3>
-          <p className="text-white/40 text-base md:text-lg font-medium tracking-wide">Help us reach our genesis goal. Limited lifetime access remains.</p>
-        </div>
-        <style jsx>{`
-          @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-          }
-        `}</style>
-      </section>
 
       {/* Ecosystem section (Moved from Home) */}
       <section className="py-32 bg-gray-950 text-white relative overflow-hidden">
