@@ -3,22 +3,22 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Phone, 
-  Smartphone, 
-  CheckCircle, 
-  ShieldCheck, 
-  Lock, 
-  Clock, 
-  ArrowRight, 
-  Construction, 
-  Warehouse, 
-  Bath, 
-  Home, 
-  Zap, 
-  Paintbrush, 
-  ClipboardList, 
-  Target, 
+import {
+  Phone,
+  Smartphone,
+  CheckCircle,
+  ShieldCheck,
+  Lock,
+  Clock,
+  ArrowRight,
+  Construction,
+  Warehouse,
+  Bath,
+  Home,
+  Zap,
+  Paintbrush,
+  ClipboardList,
+  Target,
   ChevronDown,
   User,
   Check,
@@ -47,15 +47,15 @@ const SERVICE_CATEGORIES = [
 
 const CITIES = {
   'Palm Beach County': [
-    'West Palm Beach', 'Boca Raton', 'Boynton Beach', 'Delray Beach', 'Jupiter', 
+    'West Palm Beach', 'Boca Raton', 'Boynton Beach', 'Delray Beach', 'Jupiter',
     'Wellington', 'Royal Palm Beach', 'Lake Worth', 'Greenacres', 'Palm Beach Gardens', 'North Palm Beach'
   ],
   'Broward County': [
-    'Fort Lauderdale', 'Pompano Beach', 'Coral Springs', 'Plantation', 'Sunrise', 
+    'Fort Lauderdale', 'Pompano Beach', 'Coral Springs', 'Plantation', 'Sunrise',
     'Davie', 'Hollywood', 'Pembroke Pines', 'Miramar', 'Weston', 'Deerfield Beach'
   ],
   'Miami-Dade County': [
-    'Miami', 'Miami Beach', 'Coral Gables', 'Aventura', 'Doral', 
+    'Miami', 'Miami Beach', 'Coral Gables', 'Aventura', 'Doral',
     'Homestead', 'Kendall', 'Hialeah', 'North Miami', 'Pinecrest'
   ]
 };
@@ -199,7 +199,7 @@ ${formData.description}
 
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-primary-100 selection:text-primary-900">
-      
+
       {/* Schema Markup (AEO) */}
       <script
         type="application/ld+json"
@@ -213,9 +213,9 @@ ${formData.description}
             "telephone": "+1-866-882-5478",
             "email": "jwest@alisthp.com",
             "areaServed": [
-              {"@type": "AdministrativeArea", "name": "Palm Beach County, Florida"},
-              {"@type": "AdministrativeArea", "name": "Broward County, Florida"},
-              {"@type": "AdministrativeArea", "name": "Miami-Dade County, Florida"}
+              { "@type": "AdministrativeArea", "name": "Palm Beach County, Florida" },
+              { "@type": "AdministrativeArea", "name": "Broward County, Florida" },
+              { "@type": "AdministrativeArea", "name": "Miami-Dade County, Florida" }
             ],
             "serviceType": SERVICE_CATEGORIES.map(s => s.label),
             "founder": {
@@ -256,7 +256,7 @@ ${formData.description}
               <span className="hidden md:inline font-bold">1-866-882-5478</span>
               <span className="md:hidden"><Smartphone className="w-6 h-6" /></span>
             </a>
-            <button 
+            <button
               onClick={scrollToForm}
               className="bg-primary-600 text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-primary-500 transition-all shadow-lg shadow-primary-600/20 active:scale-95 animate-pulse"
             >
@@ -277,14 +277,14 @@ ${formData.description}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none uppercase italic">
             Post Your Project. <br />
             <span className="text-[#0284c7] not-italic">
-              Get Matched with A-List Pros.
+              Get Matched with A List Pros.
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 font-medium leading-relaxed max-w-3xl mx-auto italic">
             "Stop waiting on generic waitlists. Post your property project today and get personally matched with DBPR license-verified A-List contractors. No bidding wars, no spam — just A-List Florida results."
           </p>
           <div className="pt-8">
-            <button 
+            <button
               onClick={scrollToForm}
               className="group inline-flex items-center justify-center bg-white text-gray-950 px-16 py-7 rounded-[2.5rem] font-black text-xl uppercase tracking-widest hover:bg-primary-50 hover:text-primary-600 transition-all hover:scale-105 active:scale-95 shadow-2xl"
             >
@@ -368,14 +368,14 @@ ${formData.description}
             <div className="absolute -top-6 -left-6 bg-[#B8960C] text-white px-6 py-2.5 rounded-full font-black text-xs uppercase tracking-widest italic shadow-lg">
               Launch Phase — Direct Review
             </div>
-            
+
             {formSubmitted ? (
               <div className="py-16 text-center space-y-8 animate-fade-in">
                 <div className="w-24 h-24 bg-green-50 rounded-[2.5rem] flex items-center justify-center mx-auto text-green-600 shadow-inner">
                   <CheckCircle className="w-14 h-14" />
                 </div>
                 <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter">Your Project Has Been Posted!</h3>
-                
+
                 <div className="bg-gray-50 border border-gray-100 p-8 rounded-3xl max-w-2xl mx-auto space-y-4 text-left">
                   <p className="text-lg text-gray-700 font-medium leading-relaxed italic">
                     Jeffrey D. West Jr. has received your submission and will dispatch it directly to <strong className="text-gray-950 font-black">jwest@alisthp.com</strong>.
@@ -390,14 +390,14 @@ ${formData.description}
                 </div>
 
                 <div className="pt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                  <button 
-                    onClick={handleResetForm} 
+                  <button
+                    onClick={handleResetForm}
                     className="bg-gray-950 text-white px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-primary-600 transition-all active:scale-95"
                   >
                     Post Another Project
                   </button>
-                  <Link 
-                    href="/" 
+                  <Link
+                    href="/"
                     className="bg-gray-100 text-gray-900 px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-gray-200 transition-all text-center"
                   >
                     Return Home
@@ -408,7 +408,7 @@ ${formData.description}
               <form onSubmit={handleFormSubmit} className="space-y-10">
                 <div className="text-center md:text-left mb-8">
                   <h2 className="text-4xl font-black uppercase tracking-tighter italic mb-3">Post Your Project Details</h2>
-                  <p className="text-gray-500 font-semibold italic text-sm">Tell us what you need. Jeffrey will personally review and pair you with South Florida's A-List Pros.</p>
+                  <p className="text-gray-500 font-semibold italic text-sm">Tell us what you need. Jeffrey will personally review and pair you with South Florida's A List Pros.</p>
                 </div>
 
                 {/* Service Category Selection */}
@@ -420,20 +420,17 @@ ${formData.description}
                         key={category.id}
                         type="button"
                         onClick={() => setFormData(prev => ({ ...prev, category: category.id }))}
-                        className={`flex items-center gap-4 p-5 rounded-3xl border transition-all text-left group ${
-                          formData.category === category.id 
-                            ? 'border-primary-600 bg-primary-50/50 shadow-md ring-2 ring-primary-600/10' 
+                        className={`flex items-center gap-4 p-5 rounded-3xl border transition-all text-left group ${formData.category === category.id
+                            ? 'border-primary-600 bg-primary-50/50 shadow-md ring-2 ring-primary-600/10'
                             : 'border-gray-100 bg-gray-50 hover:bg-gray-100'
-                        }`}
+                          }`}
                       >
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                          formData.category === category.id ? 'bg-[#B8960C] text-white' : 'bg-white text-[#B8960C]'
-                        }`}>
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors ${formData.category === category.id ? 'bg-[#B8960C] text-white' : 'bg-white text-[#B8960C]'
+                          }`}>
                           <category.icon className="w-6 h-6" />
                         </div>
-                        <span className={`font-black uppercase tracking-tight text-xs ${
-                          formData.category === category.id ? 'text-gray-950' : 'text-gray-600'
-                        }`}>
+                        <span className={`font-black uppercase tracking-tight text-xs ${formData.category === category.id ? 'text-gray-950' : 'text-gray-600'
+                          }`}>
                           {category.label}
                         </span>
                       </button>
@@ -445,14 +442,14 @@ ${formData.description}
                 {formData.category === 'other' && (
                   <div className="space-y-2 animate-fade-in">
                     <label className="text-[11px] font-black uppercase tracking-[0.2em] text-[#B8960C] ml-4">Specify Specialty Trade</label>
-                    <input 
-                      required 
-                      type="text" 
+                    <input
+                      required
+                      type="text"
                       name="otherCategoryText"
                       value={formData.otherCategoryText}
                       onChange={handleInputChange}
-                      placeholder="e.g. Solar panel installation, impact window shutters, seawall repair..." 
-                      className="w-full px-8 py-6 bg-gray-50 border border-primary-200 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900" 
+                      placeholder="e.g. Solar panel installation, impact window shutters, seawall repair..."
+                      className="w-full px-8 py-6 bg-gray-50 border border-primary-200 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900"
                     />
                   </div>
                 )}
@@ -460,14 +457,14 @@ ${formData.description}
                 {/* Property Address / Location details */}
                 <div className="space-y-2">
                   <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">Property Address & Area</label>
-                  <input 
-                    required 
-                    type="text" 
+                  <input
+                    required
+                    type="text"
                     name="address"
                     value={formData.address}
                     onChange={handleInputChange}
-                    placeholder="e.g. 123 Ocean Drive, Boca Raton, FL 33432" 
-                    className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900" 
+                    placeholder="e.g. 123 Ocean Drive, Boca Raton, FL 33432"
+                    className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900"
                   />
                 </div>
 
@@ -475,8 +472,8 @@ ${formData.description}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">Desired Timeline</label>
-                    <select 
-                      required 
+                    <select
+                      required
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleInputChange}
@@ -489,10 +486,10 @@ ${formData.description}
                       <option value="flexible">Flexible / Planning ahead</option>
                     </select>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">Optional Budget Range</label>
-                    <select 
+                    <select
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
@@ -511,13 +508,13 @@ ${formData.description}
                 {/* Project Description Textarea */}
                 <div className="space-y-2">
                   <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">Project Description</label>
-                  <textarea 
-                    required 
+                  <textarea
+                    required
                     name="description"
                     value={formData.description}
                     onChange={handleInputChange}
                     minLength={20}
-                    placeholder="Describe your project here... Please provide as much detail as possible (scope of work, dimensions, specific materials, etc.) to help us make the best match." 
+                    placeholder="Describe your project here... Please provide as much detail as possible (scope of work, dimensions, specific materials, etc.) to help us make the best match."
                     className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-[2rem] focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg min-h-[180px] resize-none text-gray-900"
                   ></textarea>
                 </div>
@@ -525,30 +522,30 @@ ${formData.description}
                 {/* Contact Information */}
                 <div className="space-y-6 pt-4 border-t border-gray-100">
                   <h3 className="text-xl font-black uppercase italic tracking-tighter mb-6">Contact & Match Details</h3>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">First Name</label>
-                      <input 
-                        required 
-                        type="text" 
+                      <input
+                        required
+                        type="text"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
-                        placeholder="John" 
-                        className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900" 
+                        placeholder="John"
+                        className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900"
                       />
                     </div>
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">Last Name</label>
-                      <input 
-                        required 
-                        type="text" 
+                      <input
+                        required
+                        type="text"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        placeholder="Doe" 
-                        className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900" 
+                        placeholder="Doe"
+                        className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900"
                       />
                     </div>
                   </div>
@@ -556,26 +553,26 @@ ${formData.description}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">Email Address</label>
-                      <input 
-                        required 
-                        type="email" 
+                      <input
+                        required
+                        type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="john@example.com" 
-                        className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900" 
+                        placeholder="john@example.com"
+                        className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900"
                       />
                     </div>
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">Phone Number</label>
-                      <input 
-                        required 
-                        type="tel" 
+                      <input
+                        required
+                        type="tel"
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="(561) 555-0199" 
-                        className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900" 
+                        placeholder="(561) 555-0199"
+                        className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-3xl focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg text-gray-900"
                       />
                     </div>
                   </div>
@@ -591,16 +588,16 @@ ${formData.description}
                       <span className="text-xs font-black uppercase tracking-widest text-gray-500 italic group-hover:text-primary-600 transition-colors">I accept the terms of the matchmaking program.</span>
                     </label>
                   </div>
-                  
-                  <button 
-                    type="submit" 
+
+                  <button
+                    type="submit"
                     disabled={isSubmitting || !formData.category}
                     className="w-full bg-gray-950 text-white py-8 rounded-3xl font-black uppercase tracking-widest text-lg hover:bg-primary-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all shadow-2xl shadow-gray-950/20 active:scale-[0.98] flex items-center justify-center group"
                   >
                     {isSubmitting ? 'Posting Project Details...' : 'Post Your Project'}
                     <ArrowRight className="ml-4 h-6 w-6 transition-transform group-hover:translate-x-3" />
                   </button>
-                  
+
                   <p className="text-center text-xs font-black text-gray-400 uppercase italic tracking-widest">
                     Free matchmaking service. Jeffrey D. West Jr. personally handles matches.
                   </p>
@@ -615,14 +612,14 @@ ${formData.description}
       <section className="py-24 md:py-40 bg-gray-50 border-t border-gray-100">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-24 space-y-4">
-            <h2 className="text-5xl md:text-7xl font-black text-gray-950 tracking-tighter uppercase italic leading-none">Frequently <br/> <GoldText>Asked Questions</GoldText></h2>
+            <h2 className="text-5xl md:text-7xl font-black text-gray-950 tracking-tighter uppercase italic leading-none">Frequently <br /> <GoldText>Asked Questions</GoldText></h2>
             <p className="text-xl text-gray-400 font-medium italic">Everything you need to know before posting your project.</p>
           </div>
 
           <div className="space-y-4">
             {FAQ_DATA.map((faq, i) => (
               <div key={i} className="border-b border-gray-200 last:border-0 bg-white p-6 rounded-3xl shadow-sm">
-                <button 
+                <button
                   onClick={() => setActiveFaq(activeFaq === i ? null : i)}
                   className="w-full flex justify-between items-center text-left group"
                 >
