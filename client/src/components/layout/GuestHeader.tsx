@@ -83,7 +83,7 @@ export default function GuestHeader() {
               className="inline-flex items-center justify-center bg-primary-600 text-white px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-primary-500/20 hover:bg-primary-700 transition-all hover:scale-105 active:scale-95 group"
             >
               <Smartphone className="w-4 h-4 mr-2" />
-              Open App
+              Enter the App
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </nav>
@@ -128,7 +128,7 @@ export default function GuestHeader() {
                className="flex items-center justify-center bg-primary-600 text-white px-8 py-5 rounded-2xl text-lg font-black uppercase tracking-widest hover:bg-primary-700 shadow-xl shadow-primary-500/20"
              >
                <Smartphone className="w-5 h-5 mr-3" />
-               Get the App
+               Enter the App
                <ArrowRight className="ml-2 h-5 w-5" />
              </Link>
           </div>

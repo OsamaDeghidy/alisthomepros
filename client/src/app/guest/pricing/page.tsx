@@ -318,7 +318,7 @@ export default function GuestPricingPage() {
            className="group relative inline-flex items-center justify-center bg-gray-900 text-white px-20 py-7 rounded-[2.5rem] font-black text-2xl transition-all hover:bg-black hover:scale-105 active:scale-95 shadow-2xl"
          >
            <Smartphone className="w-8 h-8 mr-4 text-primary-400 transition-transform group-hover:rotate-12" />
-           Open App Now
+           Enter the App
            <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-2" />
          </Link>
       </section>

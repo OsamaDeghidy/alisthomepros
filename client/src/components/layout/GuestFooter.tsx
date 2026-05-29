@@ -124,7 +124,7 @@ export default function GuestFooter() {
               className="group inline-flex items-center justify-center bg-white text-gray-950 px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-primary-500 hover:text-white transition-all shadow-xl shadow-white/5"
             >
               <Smartphone className="w-5 h-5 mr-3 transition-transform group-hover:scale-110" />
-              Open App
+              Enter the App
               <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-2" />
             </Link>
           </div>

@@ -309,7 +309,7 @@ export default function PrivacyPage() {
             target="_blank"
             className="inline-flex items-center gap-3 bg-white text-primary-600 px-10 py-5 rounded-[2rem] font-black text-lg hover:bg-primary-50 transition-all"
           >
-            Enter the Network
+            Enter the App
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

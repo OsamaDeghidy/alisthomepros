@@ -179,7 +179,7 @@ export default function GuestHomePage() {
                   className="group relative inline-flex items-center justify-center bg-gray-900 text-white px-12 py-6 rounded-[2.5rem] font-black text-xl transition-all hover:bg-black hover:scale-105 active:scale-95 shadow-2xl shadow-gray-200"
                 >
                   <Smartphone className="mr-3 h-6 w-6 text-primary-400" />
-                  Enter the Network
+                  Enter the App
                   <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-2" />
                 </Link>
                 
@@ -448,7 +448,7 @@ export default function GuestHomePage() {
                target="_blank"
                className="inline-flex items-center justify-center bg-gray-950 text-white px-20 py-8 rounded-[3rem] font-black text-3xl transition-all hover:bg-black hover:scale-105 active:scale-95 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.3)] group"
             >
-               Enter the Network
+               Enter the App
                <ArrowRight className="ml-5 h-10 w-10 transition-transform group-hover:translate-x-3" />
             </Link>
          </div>

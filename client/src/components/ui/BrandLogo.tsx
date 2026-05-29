@@ -11,7 +11,6 @@ interface BrandLogoProps {
 }
 
 export function BrandLogo({ className = '', width = 120, height = 60 }: BrandLogoProps) {
-  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Avoid hydration mismatch
@@ -24,8 +23,7 @@ export function BrandLogo({ className = '', width = 120, height = 60 }: BrandLog
     return <div style={{ width, height }} className={className} />;
   }
 
-  const isDark = resolvedTheme === 'dark';
-  const logoSrc = isDark ? '/logodark.jpeg' : '/logo sun.jpeg';
+  const logoSrc = '/logo.png';
   
   return (
     <Image
