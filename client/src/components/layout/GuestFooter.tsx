@@ -29,11 +29,14 @@ export default function GuestFooter() {
               />
             </Link>
             <div className="space-y-6">
-              <p className="text-xl font-black italic tracking-tight text-white uppercase italic">
-                South Florida's <GoldText>Private Network</GoldText>
+              <p className="text-xl font-black tracking-tight text-white uppercase">
+                More Than a Network. <GoldText>An Ecosystem</GoldText>
               </p>
-              <p className="text-gray-400 text-lg font-medium leading-relaxed max-w-sm italic">
-                The high-performance ecosystem for construction and home service elite. We don't just connect; we position for success.
+              <p className="text-gray-400 text-sm font-semibold leading-relaxed max-w-md">
+                The platform connecting property owners, Home Pros, crews, and specialists through trusted relationships, project opportunities, and a growing construction ecosystem.
+              </p>
+              <p className="text-gray-500 text-xs font-semibold leading-relaxed max-w-md">
+                Whether you're posting a project, looking for work, building a team, or growing your business, A-List Home Pros helps you connect with the right people.
               </p>
             </div>
             <div className="flex gap-6">
@@ -112,8 +115,8 @@ export default function GuestFooter() {
           </div>
 
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <p className="text-lg font-black text-white italic uppercase tracking-tight">
-              Join the <GoldText>A List Network</GoldText> Today
+            <p className="text-lg font-black text-white uppercase tracking-tight">
+              Join <GoldText>A-List Home Pros</GoldText> Today
             </p>
             <Link
               href={APP_GATEWAY_URL}

@@ -191,58 +191,31 @@ export default function GuestHomePage() {
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
-
-              {/* Trust Strip */}
-              <div className="mt-16 pt-8 border-t border-gray-100 flex flex-wrap items-center justify-center lg:justify-start gap-10">
-                 <div className="flex items-center gap-3">
-                    <div className="flex -space-x-3">
-                       <div className="w-10 h-10 rounded-full border-2 border-white bg-primary-100 flex items-center justify-center text-[10px] font-black text-primary-700 shadow-sm">JW</div>
-                       <div className="w-10 h-10 rounded-full border-2 border-white bg-success-100 flex items-center justify-center text-[10px] font-black text-success-700 shadow-sm">AS</div>
-                       <div className="w-10 h-10 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center text-[10px] font-black text-blue-700 shadow-sm">MK</div>
-                    </div>
-                    <div className="flex flex-col">
-                       <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Elite Network</span>
-                       <span className="text-sm font-black text-gray-900 leading-none">5k+ Florida Pros</span>
-                    </div>
-                 </div>
-                  <div className="flex items-center gap-1">
-                    {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 fill-blue-400 text-blue-400" />)}
-                    <span className="text-xs font-black text-gray-900 ml-2">4.9/5 RATING</span>
-                  </div>
-              </div>
             </div>
-
-            {/* Homeowner Waitlist Module */}
+            
+            {/* Property Owner CTA Module */}
             <div className="relative">
               <div className="bg-white p-10 md:p-12 rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-gray-100 relative z-10 overflow-hidden">
                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                 <h3 className="text-3xl font-black text-gray-900 mb-2 tracking-tight italic">Are You a <GoldText>Homeowner</GoldText>?</h3>
-                 <p className="text-gray-500 mb-8 font-medium italic">Join the exclusive launch waitlist to be first in line when we open to the public.</p>
+                 <h3 className="text-3xl font-black text-gray-900 mb-4 tracking-tight">Are You a <GoldText>Property Owner</GoldText>?</h3>
+                 <p className="text-gray-500 mb-8 font-semibold leading-relaxed">
+                   Post your project today and get matched with vetted A-List Home Pros who can help with residential, commercial, and property improvement needs.
+                 </p>
                  
-                 <form onSubmit={(e) => { e.preventDefault(); toast.success('Joined waitlist! We will notify you at launch.'); }} className="space-y-4">
-                    <div className="space-y-4">
-                       <input 
-                         type="email" 
-                         placeholder="Enter your email" 
-                         className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-primary-500 font-bold"
-                         required
-                       />
-                    </div>
-                    <button 
-                      type="submit"
-                      className="w-full bg-primary-600 text-white py-5 rounded-2xl font-black text-lg hover:bg-primary-700 transition-all flex items-center justify-center group shadow-xl shadow-primary-200 uppercase italic tracking-widest"
-                    >
-                       Join the Launch Waitlist
-                       <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-                    </button>
-                 </form>
+                 <Link 
+                   href="/start-your-project"
+                   className="w-full bg-primary-600 text-white py-5 rounded-2xl font-black text-lg hover:bg-primary-700 transition-all flex items-center justify-center group shadow-xl shadow-primary-200 uppercase tracking-widest text-center"
+                 >
+                    Post Your Project Now
+                    <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                 </Link>
                  
                  <div className="mt-8 flex items-center justify-center gap-4">
                     <div className="flex -space-x-2">
                        {[1,2,3].map(i => <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-200"></div>)}
                     </div>
-                    <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest italic">842 Homeowners Waiting</span>
-                 </div>
+                    <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Matches Dispatched Daily</span>
+                  </div>
               </div>
               {/* Decorative Orb */}
               <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#B8960C] rounded-full blur-[80px] opacity-10 -z-10"></div>
@@ -411,29 +384,29 @@ export default function GuestHomePage() {
          </div>
       </section>
 
-      {/* Homeowner Waitlist Section */}
-      <section id="homeowner-waitlist" className="py-32 px-4 bg-gray-50 relative overflow-hidden">
+      {/* Property Owner CTA Section */}
+      <section id="property-owner-portal" className="py-32 px-4 bg-gray-50 relative overflow-hidden">
          <div className="max-w-7xl mx-auto bg-white rounded-[4rem] p-12 md:p-24 shadow-2xl border border-gray-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary-100 rounded-full blur-[120px] opacity-30 -translate-y-1/2 translate-x-1/2"></div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center relative z-10">
                <div>
                   <div className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-xs font-black mb-8 border border-primary-100 tracking-widest uppercase">
-                    Coming Soon for Homeowners
+                    Property Owner Portal
                   </div>
-                  <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-8 tracking-tighter uppercase italic pr-4">
-                     Are You a <GoldText>Homeowner</GoldText>?
+                  <h2 className="text-5xl md:text-7xl font-black text-gray-950 mb-8 tracking-tighter uppercase pr-4">
+                     Are You a <GoldText>Property Owner</GoldText>?
                   </h2>
                   <p className="text-2xl text-gray-500 font-medium mb-12 max-w-xl leading-relaxed">
-                     The A-List Network is currently in its <span className="text-gray-900 font-black italic">Founding Pro Phase</span>. We are only accepting contractors and crew members at this time.
+                     Post your project today and get matched with vetted A-List Home Pros who can help with residential, commercial, and property improvement needs.
                   </p>
                   
                   <div className="space-y-6">
                      {[
-                        'Be first to access verified elite pros',
-                        'Early access to project management tools',
-                        'Direct founder matchmaking service',
-                        'Exclusive launch-day benefits'
+                        'Direct connection to vetted A-List Pros',
+                        'Jeffrey personally reviews every submission',
+                        'No bidding wars, no shared leads',
+                        'Total project control and security'
                      ].map((text, i) => (
                         <div key={i} className="flex items-center gap-4 text-gray-950 font-black tracking-tight text-lg">
                            <CheckCircle className="w-6 h-6 text-primary-600" />
@@ -443,36 +416,16 @@ export default function GuestHomePage() {
                   </div>
                </div>
                
-               <div className="bg-gray-50 rounded-3xl p-10 md:p-16 border border-gray-200">
-                  <h3 className="text-3xl font-black text-gray-900 mb-4 tracking-tight uppercase italic">Join the Waitlist</h3>
-                  <p className="text-gray-500 mb-10 font-bold italic">Secure your spot in line for the public launch in South Florida.</p>
+               <div className="bg-gray-50 rounded-3xl p-10 md:p-16 border border-gray-200 flex flex-col items-center justify-center text-center">
+                  <h3 className="text-3xl font-black text-gray-900 mb-4 tracking-tight uppercase">Post Your Project</h3>
+                  <p className="text-gray-500 mb-10 font-bold">Submit details and get matched with South Florida's A-List Pros.</p>
                   
-                  <form onSubmit={(e) => { e.preventDefault(); toast.success('Joined waitlist! We will notify you.'); }} className="space-y-6">
-                     <div className="space-y-2">
-                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Full Name</label>
-                        <input 
-                           type="text" 
-                           placeholder="Enter your name" 
-                           className="w-full bg-white p-5 rounded-2xl border border-gray-100 font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500"
-                           required
-                        />
-                     </div>
-                     <div className="space-y-2">
-                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4">Email Address</label>
-                        <input 
-                           type="email" 
-                           placeholder="Enter your email" 
-                           className="w-full bg-white p-5 rounded-2xl border border-gray-100 font-bold text-gray-900 outline-none focus:ring-2 focus:ring-primary-500"
-                           required
-                        />
-                     </div>
-                     <button 
-                        type="submit"
-                        className="w-full bg-primary-600 text-white p-6 rounded-2xl font-black text-xl hover:bg-primary-700 transition-all shadow-xl shadow-primary-200 uppercase tracking-widest italic"
-                     >
-                        Join Launch Waitlist
-                     </button>
-                  </form>
+                  <Link 
+                     href="/start-your-project"
+                     className="w-full bg-primary-600 text-white py-6 rounded-2xl font-black text-xl hover:bg-primary-700 transition-all shadow-xl shadow-primary-200 uppercase tracking-widest"
+                  >
+                     Post Your Project Now
+                  </Link>
                </div>
             </div>
          </div>
