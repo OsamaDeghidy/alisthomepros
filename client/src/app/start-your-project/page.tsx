@@ -20,7 +20,6 @@ import {
   ClipboardList, 
   Target, 
   ChevronDown,
-  Upload,
   User,
   Check,
   Star
@@ -124,9 +123,6 @@ export default function PostYourProjectPage() {
     description: ''
   });
 
-  const [photoFile, setPhotoFile] = useState<File | null>(null);
-  const [photoName, setPhotoName] = useState('');
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -148,14 +144,6 @@ export default function PostYourProjectPage() {
     }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setPhotoFile(file);
-      setPhotoName(file.name);
-    }
-  };
-
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -166,7 +154,6 @@ Project Category: ${formData.category === 'other' ? `Other: ${formData.otherCate
 Property Address/Area: ${formData.address}
 Timeline: ${formData.timeline}
 Budget: ${formData.budget || 'Not specified'}
-Photo Attachment: ${photoName || 'None'}
 
 Description:
 ${formData.description}
@@ -207,8 +194,6 @@ ${formData.description}
       budget: '',
       description: ''
     });
-    setPhotoFile(null);
-    setPhotoName('');
     setFormSubmitted(false);
   };
 
@@ -291,12 +276,12 @@ ${formData.description}
           </div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none uppercase italic">
             Post Your Project. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-[#E2C044] to-primary-600 not-italic">
-              Get Matched with Elite Pros.
+            <span className="text-[#0284c7] not-italic">
+              Get Matched with A-List Pros.
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 font-medium leading-relaxed max-w-3xl mx-auto italic">
-            "Stop waiting on generic waitlists. Post your property project today and get personally matched with DBPR license-verified A-List contractors. No bidding wars, no spam — just elite Florida results."
+            "Stop waiting on generic waitlists. Post your property project today and get personally matched with DBPR license-verified A-List contractors. No bidding wars, no spam — just A-List Florida results."
           </p>
           <div className="pt-8">
             <button 
@@ -329,7 +314,7 @@ ${formData.description}
               },
               {
                 step: '02',
-                title: 'Elite Vetted Match',
+                title: 'A-List Vetted Match',
                 desc: 'Our founder personally reviews your submission and pairs you with exactly ONE license-verified A-List Founding Pro suited for your scope. No spam, no list scrolling.'
               },
               {
@@ -423,7 +408,7 @@ ${formData.description}
               <form onSubmit={handleFormSubmit} className="space-y-10">
                 <div className="text-center md:text-left mb-8">
                   <h2 className="text-4xl font-black uppercase tracking-tighter italic mb-3">Post Your Project Details</h2>
-                  <p className="text-gray-500 font-semibold italic text-sm">Tell us what you need. Jeffrey will personally review and pair you with South Florida's elite.</p>
+                  <p className="text-gray-500 font-semibold italic text-sm">Tell us what you need. Jeffrey will personally review and pair you with South Florida's A-List Pros.</p>
                 </div>
 
                 {/* Service Category Selection */}
@@ -535,24 +520,6 @@ ${formData.description}
                     placeholder="Describe your project here... Please provide as much detail as possible (scope of work, dimensions, specific materials, etc.) to help us make the best match." 
                     className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-[2rem] focus:ring-4 focus:ring-primary-500/10 outline-none transition-all font-bold text-lg min-h-[180px] resize-none text-gray-900"
                   ></textarea>
-                </div>
-
-                {/* Optional Photo Drag-Drop Area */}
-                <div className="space-y-2">
-                  <label className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 ml-4">Upload Project Photo (Optional)</label>
-                  <div className="border-2 border-dashed border-gray-200 hover:border-primary-500 rounded-[2rem] p-8 flex flex-col items-center justify-center bg-gray-50/50 hover:bg-gray-50 transition-all cursor-pointer relative group">
-                    <input 
-                      type="file" 
-                      accept="image/*"
-                      onChange={handleFileChange}
-                      className="absolute inset-0 opacity-0 cursor-pointer"
-                    />
-                    <Upload className="w-10 h-10 text-[#B8960C] mb-4 group-hover:scale-110 transition-transform" />
-                    <p className="text-sm font-black text-gray-700 uppercase tracking-tight mb-2">
-                      {photoName ? `Selected: ${photoName}` : 'Drag and drop or click to upload'}
-                    </p>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Images (Max 10MB)</p>
-                  </div>
                 </div>
 
                 {/* Contact Information */}
