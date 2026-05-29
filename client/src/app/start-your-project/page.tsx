@@ -63,7 +63,7 @@ const CITIES = {
 const FAQ_DATA = [
   {
     q: "How fast will I be matched with a contractor?",
-    a: "Jeffrey, our founder, personally reviews every project submission. You'll be matched with a vetted A-List Founding Pro within 24–72 hours."
+    a: "Jeffrey, our founder, personally reviews every project submission. You'll be matched with a vetted A List Founding Pro within 24–72 hours."
   },
   {
     q: "Will my information be sold to multiple contractors?",
@@ -78,24 +78,24 @@ const FAQ_DATA = [
     a: "Any construction or home services project — kitchen and bathroom remodels, roofing, painting, flooring, electrical, plumbing, HVAC, landscaping, pool construction, full renovations, and more. If it's residential or light commercial in South Florida, we likely have a pro for it."
   },
   {
-    q: "Where does A-List Home Pros currently operate?",
+    q: "Where does A List Home Pros currently operate?",
     a: "We currently serve Palm Beach County, Broward County, and Miami-Dade County in South Florida. If your project is outside this area, submit it anyway — we may be able to refer you."
   },
   {
-    q: "Are A-List contractors licensed and insured?",
-    a: "Every A-List Founding Pro has their Florida contractor or trade license verified through the Florida Department of Business and Professional Regulation (DBPR), and provides a current general liability insurance certificate before joining the network."
+    q: "Are A List contractors licensed and insured?",
+    a: "Every A List Founding Pro has their Florida contractor or trade license verified through the Florida Department of Business and Professional Regulation (DBPR), and provides a current general liability insurance certificate before joining the network."
   },
   {
     q: "Who is Jeffrey D. West Jr.?",
-    a: "Jeffrey is the founder of A-List Home Pros. He's a longtime South Florida construction professional who built A-List as the alternative to lead-gen platforms that sell leads to multiple competing contractors. Jeffrey personally reviews every project that comes through this page."
+    a: "Jeffrey is the founder of A List Home Pros. He's a longtime South Florida construction professional who built A List as the alternative to lead-gen platforms that sell leads to multiple competing contractors. Jeffrey personally reviews every project that comes through this page."
   },
   {
     q: "What if I'm not happy with my match?",
-    a: "Reach out directly to 1-866-882-5478 or jwest@alisthp.com. Jeffrey will personally re-match you with a different A-List Founding Pro at no additional cost."
+    a: "Reach out directly to 1-866-882-5478 or jwest@alisthp.com. Jeffrey will personally re-match you with a different A List Founding Pro at no additional cost."
   },
   {
-    q: "Does A-List Home Pros guarantee the work?",
-    a: "A-List Home Pros is a matching platform — we connect property owners with license-verified contractors but do not perform the work ourselves or guarantee outcomes. All work is between you and your matched contractor under a direct agreement."
+    q: "Does A List Home Pros guarantee the work?",
+    a: "A List Home Pros is a matching platform — we connect property owners with license-verified contractors but do not perform the work ourselves or guarantee outcomes. All work is between you and your matched contractor under a direct agreement."
   },
   {
     q: "Can property managers and businesses submit projects too?",
@@ -207,7 +207,7 @@ ${formData.description}
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "A-List Home Pros",
+            "name": "A List Home Pros",
             "description": "South Florida contractor matching service. Property owners post their projects and get matched directly with verified, elite professionals.",
             "url": "https://www.alisthomepros.com/start-your-project",
             "telephone": "+1-866-882-5478",
@@ -281,7 +281,7 @@ ${formData.description}
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 font-medium leading-relaxed max-w-3xl mx-auto italic">
-            "Stop waiting on generic waitlists. Post your property project today and get personally matched with DBPR license-verified A-List contractors. No bidding wars, no spam — just A-List Florida results."
+            "Stop waiting on generic waitlists. Post your property project today and get personally matched with DBPR license-verified A List contractors. No bidding wars, no spam — just A List Florida results."
           </p>
           <div className="pt-8">
             <button
@@ -302,7 +302,7 @@ ${formData.description}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-50 text-primary-700 rounded-full text-[10px] font-black uppercase tracking-widest italic">
               Confidence & Control
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-950 tracking-tighter uppercase italic">How A-List Works</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-950 tracking-tighter uppercase italic">How A List Works</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -314,13 +314,13 @@ ${formData.description}
               },
               {
                 step: '02',
-                title: 'A-List Vetted Match',
-                desc: 'Our founder personally reviews your submission and pairs you with exactly ONE license-verified A-List Founding Pro suited for your scope. No spam, no list scrolling.'
+                title: 'A List Vetted Match',
+                desc: 'Our founder personally reviews your submission and pairs you with exactly ONE license-verified A List Founding Pro suited for your scope. No spam, no list scrolling.'
               },
               {
                 step: '03',
                 title: 'Manage Securely in the App',
-                desc: 'Communicate directly, coordinate work, and release secure milestone payments directly through the A-List application infrastructure.'
+                desc: 'Communicate directly, coordinate work, and release secure milestone payments directly through the A List application infrastructure.'
               }
             ].map((step, i) => (
               <div key={i} className="relative p-12 bg-gray-50 rounded-[3rem] border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all group overflow-hidden">
@@ -385,7 +385,7 @@ ${formData.description}
                     Our automated matching engine is in its final pre-launch phase. Right now, Jeffrey is doing 100% manual matchmaking to ensure the highest quality matches.
                   </p>
                   <p className="text-sm text-gray-500 leading-relaxed font-semibold">
-                    Expect a direct email or phone call from your matched license-verified A-List Founding Pro within 24 to 72 hours.
+                    Expect a direct email or phone call from your matched license-verified A List Founding Pro within 24 to 72 hours.
                   </p>
                 </div>
 
@@ -421,8 +421,8 @@ ${formData.description}
                         type="button"
                         onClick={() => setFormData(prev => ({ ...prev, category: category.id }))}
                         className={`flex items-center gap-4 p-5 rounded-3xl border transition-all text-left group ${formData.category === category.id
-                            ? 'border-primary-600 bg-primary-50/50 shadow-md ring-2 ring-primary-600/10'
-                            : 'border-gray-100 bg-gray-50 hover:bg-gray-100'
+                          ? 'border-primary-600 bg-primary-50/50 shadow-md ring-2 ring-primary-600/10'
+                          : 'border-gray-100 bg-gray-50 hover:bg-gray-100'
                           }`}
                       >
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors ${formData.category === category.id ? 'bg-[#B8960C] text-white' : 'bg-white text-[#B8960C]'
@@ -581,7 +581,7 @@ ${formData.description}
                 <div className="pt-6 space-y-8">
                   <div className="space-y-4">
                     <p className="text-[11px] text-gray-400 leading-relaxed font-semibold italic px-4">
-                      By submitting, I agree A-List Home Pros may contact me by phone, SMS, or email about this project and may share my project details with the matched A-List Founding Pro. Message and data rates may apply. Reply STOP to unsubscribe. See <Link href="/privacy" className="underline">Privacy Policy</Link> and <Link href="/terms" className="underline">Terms</Link>.
+                      By submitting, I agree A List Home Pros may contact me by phone, SMS, or email about this project and may share my project details with the matched A List Founding Pro. Message and data rates may apply. Reply STOP to unsubscribe. See <Link href="/privacy" className="underline">Privacy Policy</Link> and <Link href="/terms" className="underline">Terms</Link>.
                     </p>
                     <label className="flex items-center gap-4 px-4 cursor-pointer group">
                       <input type="checkbox" required className="w-6 h-6 rounded-lg border-2 border-gray-200 text-primary-600 focus:ring-primary-500 cursor-pointer" />
