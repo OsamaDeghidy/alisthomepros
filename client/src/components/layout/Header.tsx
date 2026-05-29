@@ -138,7 +138,7 @@ function Header() {
     { name: 'Home', href: '/', icon: 'Home' },
     { name: 'Find Work', href: '/find-work', icon: 'Users' },
     { name: 'How It Works', href: '/how-it-works', icon: 'HelpCircle' },
-    { name: 'A-List Membership', href: '/pricing', icon: 'CreditCard' },
+    { name: 'Membership', href: '/pricing', icon: 'CreditCard' },
     { name: 'About Us', href: '/about', icon: 'Info' },
     { name: 'Help', href: '/help', icon: 'HelpCircle' },
     { name: 'Privacy', href: '/privacy', icon: 'FileText', submenu: [
