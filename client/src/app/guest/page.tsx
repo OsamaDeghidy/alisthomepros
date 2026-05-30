@@ -162,14 +162,19 @@ export default function GuestHomePage() {
                 Serving All of South Florida
               </div>
               <h1 className="text-6xl lg:text-8xl font-black text-gray-900 leading-[0.9] mb-8 tracking-tighter pr-4">
-                South Florida’s <br />
+                More Than a Network. <br />
                 <span className="text-[#0284c7]">
-                  Founding Pro Network.
+                  An Ecosystem
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                Registration is now open for contractors and home service professionals only. Secure your founding membership at a lifetime fixed rate before the public launch. Limited to the first 1,000 members.
-              </p>
+              <div className="text-xl text-gray-600 mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium space-y-6">
+                <p>
+                  The platform connecting property owners, Home Pros, crews, and specialists through trusted relationships, project opportunities, and a growing construction ecosystem.
+                </p>
+                <p>
+                  Whether you're posting a project, looking for work, building a team, or growing your business, A-List Home Pros helps you connect with the right people.
+                </p>
+              </div>
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
