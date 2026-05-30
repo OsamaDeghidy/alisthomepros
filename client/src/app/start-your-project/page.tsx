@@ -260,7 +260,7 @@ ${formData.description}
               onClick={scrollToForm}
               className="bg-primary-600 text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-primary-500 transition-all shadow-lg shadow-primary-600/20 active:scale-95 animate-pulse"
             >
-              Post a Project
+              How to Post
             </button>
           </div>
         </div>
@@ -280,9 +280,14 @@ ${formData.description}
               Get Matched with A List Pros.
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/60 font-medium leading-relaxed max-w-3xl mx-auto italic">
-            "Stop waiting on generic waitlists. Post your property project today and get personally matched with DBPR license-verified A List contractors. No bidding wars, no spam — just A List Florida results."
-          </p>
+          <div className="text-xl md:text-2xl text-white/60 font-medium leading-relaxed max-w-3xl mx-auto italic space-y-4">
+            <p>
+              Whether you're improving your home, rental property, investment property, or commercial space, A-List Home Pros helps connect you with verified professionals you can trust.
+            </p>
+            <p className="text-white/80 font-black not-italic">
+              No bidding wars. No spam. No guessing. Just qualified Florida Home Pros ready to help bring your project to life.
+            </p>
+          </div>
           <div className="pt-8">
             <button
               onClick={scrollToForm}
@@ -585,7 +590,7 @@ ${formData.description}
                     </p>
                     <label className="flex items-center gap-4 px-4 cursor-pointer group">
                       <input type="checkbox" required className="w-6 h-6 rounded-lg border-2 border-gray-200 text-primary-600 focus:ring-primary-500 cursor-pointer" />
-                      <span className="text-xs font-black uppercase tracking-widest text-gray-500 italic group-hover:text-primary-600 transition-colors">I accept the terms of the matchmaking program.</span>
+                      <span className="text-xs font-black uppercase tracking-widest text-gray-500 italic group-hover:text-primary-600 transition-colors">I accept the terms of service</span>
                     </label>
                   </div>
 
@@ -598,9 +603,7 @@ ${formData.description}
                     <ArrowRight className="ml-4 h-6 w-6 transition-transform group-hover:translate-x-3" />
                   </button>
 
-                  <p className="text-center text-xs font-black text-gray-400 uppercase italic tracking-widest">
-                    Free matchmaking service. Jeffrey D. West Jr. personally handles matches.
-                  </p>
+
                 </div>
               </form>
             )}
