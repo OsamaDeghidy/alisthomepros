@@ -125,17 +125,33 @@ export default function AboutPage() {
             </h2>
 
             <div className="space-y-12 text-2xl font-medium text-gray-800 leading-relaxed relative z-10 mt-12 bg-white p-12 md:p-20 rounded-[4rem] shadow-2xl border border-gray-100">
-               <p className="text-3xl font-black text-gray-950 tracking-tighter uppercase italic leading-tight pr-12 overflow-visible">
-                  I didn't build this in a boardroom. I built it because I saw the system fail the people who build Florida.
-               </p>
-               
-               <p className="pr-4">
-                  I've spent years in construction. I've been on the ground, watching how this industry actually moves. I saw new contractors with massive skill get ignored because they didn't have the ad budget to pay off the gatekeepers. I saw veterans, who had been doing high-end work in Florida for thirty years, become burned out because lead platforms were selling them the same recycled leads they just sold to five of their competitors.
-               </p>
+                <p className="text-3xl font-black text-gray-950 tracking-tighter uppercase italic leading-tight pr-12 overflow-visible text-primary-600">
+                   I built A-List Home Pros from experience.
+                </p>
+                
+                <p className="pr-4">
+                   Over the years, I've worked in construction, property services, and project management. I've seen great projects. I've seen difficult projects. I've seen relationships between property owners and professionals succeed, and I've seen them break down.
+                </p>
 
-               <p className="pr-4">
-                  The trust was dead. Property owners were gambling on whoever had the biggest marketing budget, not the best results. Contractors were losing jobs to guys who gamed the review systems. It was a structural failure, and it needed a structural solution.
-               </p>
+                <p className="pr-4">
+                   I've also learned that no one is perfect. Not property owners. Not contractors. Not crew members. Not even me.
+                </p>
+
+                <p className="text-gray-950 font-black italic border-l-8 border-primary-500 pl-8 py-4 bg-primary-50/30 pr-4">
+                   Construction is a people business. Miscommunication happens. Expectations can get missed. Problems arise. What matters is accountability, transparency, and having a system that helps people work through those challenges.
+                </p>
+
+                <p className="pr-4">
+                   As I spent more time in the industry, I realized the problem wasn't that there weren't good professionals or good property owners. The problem was that trust was often missing from the process.
+                </p>
+
+                <p className="text-3xl font-black text-gray-950 tracking-tighter uppercase italic leading-tight pr-12 overflow-visible text-primary-600">
+                   That's what inspired me to build A-List Home Pros.
+                </p>
+
+                <p className="pr-4">
+                   A platform designed to help create more accountability, more transparency, and better connections between the people who build projects and the people who invest in them.
+                </p>
 
                <div className="p-10 bg-gray-950 text-white rounded-[3rem] font-black italic relative overflow-hidden text-center">
                   <span className="relative z-10 block pr-4">

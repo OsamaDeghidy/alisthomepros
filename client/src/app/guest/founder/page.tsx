@@ -67,32 +67,26 @@ export default function FounderPage() {
                <div className="space-y-16 text-2xl text-gray-600 font-medium leading-relaxed">
                   <div className="space-y-8">
                      <h2 className="text-4xl font-black text-gray-900 uppercase italic tracking-tighter border-l-8 border-[#B8960C] pl-8">Why I Built This</h2>
-                     <p>
-                        I didn't build this in a boardroom. I built it because I saw the system eat the people who build Florida.
+                     <p className="text-3xl font-black text-gray-900 italic">
+                        I built A-List Home Pros from experience.
                      </p>
                      <p>
-                        I've spent years in construction. I've been on the ground, watching how this industry actually moves. I saw new contractors with massive skill get ignored because they didn't have the ad budget to pay off the gatekeepers. I saw veterans, who have been doing high-end work in Florida for thirty years, become burned out and disgusted because lead platforms were selling them the same recycled leads they just sold to five of their competitors.
+                        Over the years, I've worked in construction, property services, and project management. I've seen great projects. I've seen difficult projects. I've seen relationships between property owners and professionals succeed, and I've seen them break down.
                      </p>
                      <p>
-                        The trust was dead. Homeowners were gambling on whoever had the biggest marketing budget, not the best results. Contractors were losing jobs to guys who gamed the review systems. It was a structural failure, and it needed a structural solution.
+                        I've also learned that no one is perfect. Not property owners. Not contractors. Not crew members. Not even me.
                      </p>
-                  </div>
-
-                  {/* B.3 — Pull Quote */}
-                  <div className="py-12 px-10 bg-primary-50/30 border-l-[12px] border-[#B8960C] rounded-r-[3rem] italic">
-                     <p className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight mb-6">
-                        "Most contractors compete for jobs. A-List members get positioned for them."
-                     </p>
-                     <cite className="text-xl font-bold uppercase tracking-widest text-[#B8960C] not-italic">Jeffrey D. West Jr.</cite>
-                  </div>
-
-                  <div className="space-y-8">
-                     <h2 className="text-4xl font-black text-gray-900 uppercase italic tracking-tighter border-l-8 border-primary-600 pl-8">What Changed My Thinking</h2>
-                     <p>
-                        I started studying the platforms that actually changed industries. Uber didn't just make taxis more convenient; they rebuilt the entire relationship between the rider, the driver, and the infrastructure connecting them. They created accountability, transparency, and a system where the quality of the experience was the product.
+                     <p className="text-gray-950 font-black italic border-l-8 border-[#B8960C] pl-8 py-4 bg-primary-50/30">
+                        Construction is a people business. Miscommunication happens. Expectations can get missed. Problems arise. What matters is accountability, transparency, and having a system that helps people work through those challenges.
                      </p>
                      <p>
-                        That model stayed with me. I started asking: what would that look like for construction? What if the platform actually served the professional; not just processed them? What if "license-verified" actually meant something specific, documented, and current? What if homeowners could connect with someone who genuinely earned their standing?
+                        As I spent more time in the industry, I realized the problem wasn't that there weren't good professionals or good property owners. The problem was that trust was often missing from the process.
+                     </p>
+                     <p className="text-3xl font-black text-gray-950 tracking-tighter uppercase italic leading-tight text-primary-600">
+                        That's what inspired me to build A-List Home Pros.
+                     </p>
+                     <p>
+                        A platform designed to help create more accountability, more transparency, and better connections between the people who build projects and the people who invest in them.
                      </p>
                   </div>
 

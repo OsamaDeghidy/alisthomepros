@@ -192,23 +192,25 @@ export default function AboutPage() {
                      <div className="space-y-6">
                         <h3 className="text-3xl font-black text-gray-950 uppercase italic tracking-tighter border-l-8 border-[#B8960C] pl-6">Why I Built This</h3>
                         <p className="text-2xl md:text-3xl font-black text-gray-950 tracking-tighter uppercase italic leading-tight text-primary-600">
-                           I didn't build this in a boardroom. I built it because I saw the system eat the people who build Florida.
-                        </p>
-                         <p>
-                            I've spent years in construction. I've been on the ground, watching how this industry actually moves. I saw new contractors with massive skill get ignored because they didn't have the ad budget to pay off the gatekeepers. I saw veterans, who had been doing high-end work in Florida for thirty years, become burned out and disgusted because lead platforms were selling them the same recycled leads they just sold to five of their competitors.
-                         </p>
-                        <p>
-                           The trust was dead. Homeowners were gambling on whoever had the biggest marketing budget, not the best results. Contractors were losing jobs to guys who gamed the review systems. It was a structural failure, and it needed a structural solution.
-                        </p>
-                     </div>
-
-                     <div className="space-y-6">
-                        <h3 className="text-3xl font-black text-gray-950 uppercase italic tracking-tighter border-l-8 border-primary-600 pl-6">What Changed My Thinking</h3>
-                        <p>
-                           I studied how modern platforms successfully transformed entire industries. Rather than simply adding convenience, they rebuilt trust and transparency between all parties through reliable infrastructure, making quality and accountability the main priority.
+                           I built A-List Home Pros from experience.
                         </p>
                         <p>
-                           That inspired me to think about the construction industry. I wanted to build a platform that truly supports professionals while giving property owners complete peace of mind. To achieve this, we made license verification a thorough, active, and fully documented process so that clients can connect with professionals who have earned their strong reputation.
+                           Over the years, I've worked in construction, property services, and project management. I've seen great projects. I've seen difficult projects. I've seen relationships between property owners and professionals succeed, and I've seen them break down.
+                        </p>
+                        <p>
+                           I've also learned that no one is perfect. Not property owners. Not contractors. Not crew members. Not even me.
+                        </p>
+                        <p className="text-gray-950 font-black italic border-l-8 border-primary-500 pl-8 py-4 bg-primary-50/30">
+                           Construction is a people business. Miscommunication happens. Expectations can get missed. Problems arise. What matters is accountability, transparency, and having a system that helps people work through those challenges.
+                        </p>
+                        <p>
+                           As I spent more time in the industry, I realized the problem wasn't that there weren't good professionals or good property owners. The problem was that trust was often missing from the process.
+                        </p>
+                        <p className="text-2xl md:text-3xl font-black text-gray-950 tracking-tighter uppercase italic leading-tight text-primary-600">
+                           That's what inspired me to build A-List Home Pros.
+                        </p>
+                        <p>
+                           A platform designed to help create more accountability, more transparency, and better connections between the people who build projects and the people who invest in them.
                         </p>
                      </div>
 
