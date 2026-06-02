@@ -63,7 +63,7 @@ const CITIES = {
 const FAQ_DATA = [
   {
     q: "How fast will I be matched with a contractor?",
-    a: "Jeffrey, our founder, personally reviews every project submission. You'll be matched with a vetted A List Founding Pro within 24–72 hours."
+    a: "An A-List Specialist reviews every project submission. You'll be matched with a vetted A-List Founding Pro within 24–72 hours."
   },
   {
     q: "Will my information be sold to multiple contractors?",
@@ -86,12 +86,12 @@ const FAQ_DATA = [
     a: "Every A List Founding Pro has their Florida contractor or trade license verified through the Florida Department of Business and Professional Regulation (DBPR), and provides a current general liability insurance certificate before joining the network."
   },
   {
-    q: "Who is Jeffrey D. West Jr.?",
-    a: "Jeffrey is the founder of A List Home Pros. He's a longtime South Florida construction professional who built A List as the alternative to lead-gen platforms that sell leads to multiple competing contractors. Jeffrey personally reviews every project that comes through this page."
+    q: "What is an A-List Specialist?",
+    a: "An A-List Specialist is a project support professional within the A-List Home Pros ecosystem. Specialists help review project information, answer questions, coordinate communication, and assist property owners in connecting with qualified A-List Home Pros. Their role is to help make the process smoother, more organized, and more efficient from project posting through contractor selection."
   },
   {
     q: "What if I'm not happy with my match?",
-    a: "Reach out directly to 1-866-882-5478 or jwest@alisthp.com. Jeffrey will personally re-match you with a different A List Founding Pro at no additional cost."
+    a: "Reach out directly to 1-866-882-5478 or support@alisthomepros.com. An A-List Specialist will re-match you with a different A-List Founding Pro at no additional cost."
   },
   {
     q: "Does A List Home Pros guarantee the work?",
@@ -99,7 +99,7 @@ const FAQ_DATA = [
   },
   {
     q: "Can property managers and businesses submit projects too?",
-    a: "Yes. The form welcomes homeowners, property managers, real estate investors, landlords, and business owners. Just submit your project and Jeffrey will match it appropriately."
+    a: "Yes. The form welcomes homeowners, property managers, real estate investors, landlords, and business owners. Just submit your project and an A-List Specialist will match it appropriately."
   }
 ];
 
@@ -211,7 +211,7 @@ ${formData.description}
             "description": "South Florida contractor matching service. Property owners post their projects and get matched directly with verified, elite professionals.",
             "url": "https://www.alisthomepros.com/start-your-project",
             "telephone": "+1-866-882-5478",
-            "email": "jwest@alisthp.com",
+            "email": "support@alisthomepros.com",
             "areaServed": [
               { "@type": "AdministrativeArea", "name": "Palm Beach County, Florida" },
               { "@type": "AdministrativeArea", "name": "Broward County, Florida" },
@@ -260,7 +260,7 @@ ${formData.description}
               onClick={scrollToForm}
               className="bg-primary-600 text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-primary-500 transition-all shadow-lg shadow-primary-600/20 active:scale-95 animate-pulse"
             >
-              How to Post
+              Post Your Project
             </button>
           </div>
         </div>
@@ -307,7 +307,7 @@ ${formData.description}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-50 text-primary-700 rounded-full text-[10px] font-black uppercase tracking-widest italic">
               Confidence & Control
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-950 tracking-tighter uppercase italic">How A List Works</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-950 tracking-tighter uppercase italic">How to Post</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -383,11 +383,11 @@ ${formData.description}
 
                 <div className="bg-gray-50 border border-gray-100 p-8 rounded-3xl max-w-2xl mx-auto space-y-4 text-left">
                   <p className="text-lg text-gray-700 font-medium leading-relaxed italic">
-                    Jeffrey D. West Jr. has received your submission and will dispatch it directly to <strong className="text-gray-950 font-black">jwest@alisthp.com</strong>.
+                    An A-List Specialist has received your submission and will dispatch it to our verified builder network.
                   </p>
                   <p className="text-sm text-gray-500 leading-relaxed font-semibold">
                     <strong className="text-primary-600 uppercase tracking-widest text-xs block mb-1">Coming Soon:</strong>
-                    Our automated matching engine is in its final pre-launch phase. Right now, Jeffrey is doing 100% manual matchmaking to ensure the highest quality matches.
+                    Our automated matching engine is in its final pre-launch phase. Right now, an A-List Specialist is doing manual matchmaking to ensure the highest quality matches.
                   </p>
                   <p className="text-sm text-gray-500 leading-relaxed font-semibold">
                     Expect a direct email or phone call from your matched license-verified A List Founding Pro within 24 to 72 hours.
@@ -413,7 +413,7 @@ ${formData.description}
               <form onSubmit={handleFormSubmit} className="space-y-10">
                 <div className="text-center md:text-left mb-8">
                   <h2 className="text-4xl font-black uppercase tracking-tighter italic mb-3">Post Your Project Details</h2>
-                  <p className="text-gray-500 font-semibold italic text-sm">Tell us what you need. Jeffrey will personally review and pair you with South Florida's A List Pros.</p>
+                  <p className="text-gray-500 font-semibold italic text-sm">Tell us what you need. An A-List Specialist will review your project details and help connect you with qualified A-List Home Pros based on your project's needs.</p>
                 </div>
 
                 {/* Service Category Selection */}
@@ -668,7 +668,7 @@ ${formData.description}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-[600px] bg-primary-600/30 rounded-full blur-[200px] pointer-events-none"></div>
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-8">
           <h2 className="text-5xl md:text-7xl font-black uppercase italic leading-none">Need Direct Assistance?</h2>
-          <p className="text-xl text-white/60 font-medium italic max-w-2xl mx-auto">Jeffrey D. West Jr. is available directly for property owners needing customized matchmaking guidance.</p>
+          <p className="text-xl text-white/60 font-medium italic max-w-2xl mx-auto">An A-List Specialist is available directly for property owners needing customized matchmaking guidance.</p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center pt-4">
             <a href="tel:18668825478" className="flex items-center gap-4 group justify-center">
               <div className="w-14 h-14 bg-[#B8960C] text-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -679,13 +679,13 @@ ${formData.description}
                 <p className="text-xl font-black text-white italic tracking-tighter">1-866-882-5478</p>
               </div>
             </a>
-            <a href="mailto:jwest@alisthp.com" className="flex items-center gap-4 group justify-center">
+            <a href="mailto:support@alisthomepros.com" className="flex items-center gap-4 group justify-center">
               <div className="w-14 h-14 bg-white text-gray-950 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Target className="w-6 h-6 text-[#B8960C]" />
               </div>
               <div className="text-left">
                 <p className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">Direct Email</p>
-                <p className="text-xl font-black text-white italic tracking-tighter">jwest@alisthp.com</p>
+                <p className="text-xl font-black text-white italic tracking-tighter">support@alisthomepros.com</p>
               </div>
             </a>
           </div>
