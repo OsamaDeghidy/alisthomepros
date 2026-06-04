@@ -33,47 +33,65 @@ const GoldText = ({ children }: { children: React.ReactNode }) => (
 export default function GuestPricingPage() {
   const tiers = [
     {
-      name: 'Founding Member',
-      price: '$100',
-      period: 'Deposit',
-      desc: 'Secure your elite status during our pre-launch phase.',
+      name: 'FREE NETWORK ACCESS',
+      price: '$0',
+      period: 'FREE FOREVER',
+      desc: 'Start building your presence inside the A-List ecosystem.',
       features: [
-        'Fixed Price Forever ($100/mo instead of $200)',
-        'Exclusive Founding Member Badge',
-        'Map Priority Visibility',
-        'Early Platform Access',
-        'Direct Founder Support'
+        'Create your profile',
+        'Explore opportunities in your area',
+        'Connect with Property Owners, Home Pros, Specialists, and Crew Members',
+        'Build your reputation and activity history',
+        'Receive platform updates and announcements',
+        'Access basic visibility within the network'
+      ],
+      cta: 'Get Started Free',
+      isFounding: false,
+      isPrimary: false,
+      buttonLink: '/register?tier=free'
+    },
+    {
+      name: 'HOMEPRO FOUNDING MEMBER',
+      price: '$200',
+      period: '/mo',
+      desc: 'All the tools, visibility, and opportunities you need to grow your professional business and win more work.',
+      features: [
+        'Appear in project searches and recommendations',
+        'Receive project opportunities from Property Owners',
+        'Submit interest on posted projects',
+        'Build reviews and trust signals',
+        'Access Project Hub communication tools',
+        'Request Crew Members when needed',
+        'Verification and profile credibility tools',
+        'Business growth resources and platform support'
       ],
       cta: 'Secure Founding Status',
       isFounding: true,
       isPrimary: true,
-      regularPrice: '$200'
+      regularPrice: '$450',
+      buttonLink: 'https://pay.alisthomepros.com/b/cNidR991ta0tchxfHMfMA01'
     },
     {
-      name: 'Network Access',
-      price: '$0',
-      desc: 'Join the ecosystem and start building your reputation.',
-      features: ['Basic profile', 'Basic interaction', 'Basic visibility'],
-      cta: 'Coming Soon',
-      isComingSoon: true
-    },
-    {
-      name: 'Home Pro',
-      price: '$200',
+      name: 'CREW FOUNDING MEMBER',
+      price: '$50',
       period: '/mo',
-      desc: 'The elite standard for South Florida contractors.',
-      features: ['Priority Verification', 'Exclusive Opportunities', 'Pro Visibility'],
-      cta: 'Coming Soon',
-      isComingSoon: true
-    },
-    {
-      name: 'Crew Member',
-      price: '$80',
-      period: '/mo',
-      desc: 'For skilled workers ready to join top-tier teams.',
-      features: ['Team Matching', 'Job Alerts', 'Milestone Protection'],
-      cta: 'Coming Soon',
-      isComingSoon: true
+      desc: 'All the tools, visibility, and opportunities you need to grow your crew and get more work.',
+      features: [
+        'Create a professional crew profile',
+        'Appear in crew searches',
+        'Receive work opportunities from Home Pros',
+        'Build ratings and work history',
+        'Track projects and activity',
+        'Showcase skills, certifications, and experience',
+        'Access opportunities across the ecosystem',
+        'Increase visibility as your profile grows',
+        'Build long term relationships with Home Pros and Property Owners'
+      ],
+      cta: 'Join as Crew Founder',
+      isFounding: true,
+      isPrimary: true,
+      regularPrice: '$100',
+      buttonLink: '/register?tier=crew-founding'
     }
   ];
 
@@ -175,18 +193,13 @@ export default function GuestPricingPage() {
 
       {/* Membership Tiers Grid */}
       <section className="py-24 px-4 -mt-20 relative z-20">
-         <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+         <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                {tiers.map((tier, i) => (
                   <div key={i} className={`flex flex-col bg-white rounded-[3rem] p-8 border ${tier.isPrimary ? 'border-primary-600 ring-4 ring-primary-50' : 'border-gray-100'} shadow-2xl hover:scale-[1.02] transition-all group relative overflow-hidden`}>
                      {tier.isFounding && (
                         <div className="bg-primary-600 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full self-start mb-6 -ml-2 -mt-2">
                            Founding Status
-                        </div>
-                     )}
-                     {tier.isComingSoon && (
-                        <div className="absolute top-8 right-8 bg-gray-100 text-gray-500 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
-                           Coming Soon
                         </div>
                      )}
                      <h3 className={`text-xl font-black mb-2 uppercase tracking-tight ${tier.isPrimary ? 'text-primary-600' : 'text-gray-900'}`}>{tier.name}</h3>
@@ -211,23 +224,17 @@ export default function GuestPricingPage() {
                         ))}
                      </ul>
 
-                     {tier.isComingSoon ? (
-                        <div className="w-full py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest text-center bg-gray-50 text-gray-400 border border-gray-100 italic">
-                           Available After General Launch
-                        </div>
-                     ) : (
-                        <Link
-                           href={tier.isFounding ? 'https://pay.alisthomepros.com/b/cNidR991ta0tchxfHMfMA01' : `${APP_GATEWAY_URL}/register?tier=${tier.name.toLowerCase().replace(' ', '-')}`}
-                           target="_blank"
-                           className={`w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest text-center transition-all ${
-                              tier.isPrimary 
-                              ? 'bg-primary-600 text-white shadow-xl shadow-primary-500/20 hover:bg-primary-700' 
-                              : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                           }`}
-                        >
-                           {tier.cta}
-                        </Link>
-                     )}
+                     <Link
+                        href={tier.buttonLink}
+                        target={tier.buttonLink.startsWith('http') ? '_blank' : undefined}
+                        className={`w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest text-center transition-all ${
+                           tier.isPrimary 
+                           ? 'bg-primary-600 text-white shadow-xl shadow-primary-500/20 hover:bg-primary-700' 
+                           : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                        }`}
+                     >
+                        {tier.cta}
+                     </Link>
                   </div>
                ))}
             </div>
