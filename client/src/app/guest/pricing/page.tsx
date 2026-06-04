@@ -142,11 +142,7 @@ export default function GuestPricingPage() {
          trad: 'No verification — anyone can sign up',
          alist: 'A list verified not certified on this page'
       },
-      {
-         feature: 'Trust',
-         trad: 'Property owners can\'t trust who they hire',
-         alist: 'Property owners know every pro is A-List verified'
-      },
+
       {
          feature: 'Profit',
          trad: 'Platform profits, contractor competes',
@@ -228,8 +224,8 @@ export default function GuestPricingPage() {
                            href={tier.buttonLink}
                            target={tier.buttonLink.startsWith('http') ? '_blank' : undefined}
                            className={`w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest text-center transition-all ${tier.isPrimary
-                                 ? 'bg-primary-600 text-white shadow-xl shadow-primary-500/20 hover:bg-primary-700'
-                                 : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                              ? 'bg-primary-600 text-white shadow-xl shadow-primary-500/20 hover:bg-primary-700'
+                              : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                               }`}
                         >
                            {tier.cta}
