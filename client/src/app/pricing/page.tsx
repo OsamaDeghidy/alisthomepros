@@ -99,7 +99,7 @@ export default function PricingPage() {
         'Build long term relationships with Home Pros and Property Owners'
       ],
       buttonText: 'Join as Crew Founder',
-      buttonLink: '/register?tier=crew-founding',
+      buttonLink: 'https://pay.alisthomepros.com/b/aFacN591t1tXgxNeDIfMA02',
       popular: false,
       badge: 'Limited Spots',
       gradient: 'from-blue-50/50 via-white to-blue-50/10 dark:from-blue-950/20 dark:via-gray-900 dark:to-gray-950',
@@ -244,7 +244,7 @@ export default function PricingPage() {
               </div>
               <h4 className="text-xl font-black mb-3 uppercase tracking-tight">3. Scale & Win</h4>
               <p className="text-white/40 text-sm font-medium leading-relaxed">
-                Appear in project matching, request crew assistance, and build reviews that earn Certified status.
+                Appear in project matching, request crew assistance, and build reviews that earn Verified status.
               </p>
             </div>
           </div>
